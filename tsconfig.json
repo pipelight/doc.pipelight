@@ -1,0 +1,55 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "strict": true,
+    "resolveJsonModule": true,
+    "strictNullChecks": false,
+    "noImplicitAny": true,
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@composables/*": ["src/composables/*"],
+      "@components/*": ["src/components/*"],
+      "@views": ["/src/components/views"],
+      "@nav": ["/src/components/navigation"],
+      "@layout": ["/src/components/layout"],
+      "@pickers/*": ["src/components/pickers/*"],
+      "@forms": ["/src/components/forms"],
+      "@service/*": ["src/service/*"],
+      "@router/*": ["src/router/*"],
+      "@store/*": ["src/store/*"],
+      "@type/*": ["src/type/*"],
+      "@css/*": ["src/css/*"]
+    },
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
+    "types": [
+      "vite/client", "node"
+    ]
+  },
+  "include": [
+    "*.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx",
+  ],
+  "exclude": ["node_modules",
+    ".storybook/**/*.js",
+    ".storybook/*.js",
+    ".storybook/**/*.ts",
+    "**/*.stories.ts",
+    "stories/**/*.js",
+    "stories/**/*.ts",
+    "stories/**/*.vue"
+  ]
+}
