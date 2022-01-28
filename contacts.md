@@ -1,6 +1,4 @@
-# Contacts
-
-Contact us:
+# Contact us
 
 Send a mail: [service@theeevent.app](mailto:service@theeevent.app)
 

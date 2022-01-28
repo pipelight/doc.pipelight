@@ -1,7 +1,8 @@
-# Why SimpCICD
+# Why Simp ?
 
-Have you ever dive into DevOps? CICD tools are such a pain.
-I was tired of the heavy config needed for CICD's other tools to work well.
+Have you ever dive into DevOps?
+CICD tools are such a pain.
+I was tired of the heavy config needed for deployement tools to work well.
 
 As my projects or all so small and written in Javascript
 

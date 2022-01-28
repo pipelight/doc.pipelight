@@ -13,7 +13,7 @@ features:
   - title: 💡 Extra simple API.
     details: Start deploying fast with simple configs.
   - title: 🛠️ Flexible Usage
-    details: Plug with ssh, rsync, docker, kubernetes and much more...
+    details: 100% compatibily with every tool! Plug with ssh, rsync, docker, kubernetes and much more...
 
 footer: MIT Licensed | Copyright © 2019-present Areskul
 ---

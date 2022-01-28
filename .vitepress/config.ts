@@ -7,14 +7,14 @@ export default defineConfig({
   ],
   themeConfig: {
     repo: "areskul/simpcicd",
+    logo: "/images/simp.png",
     sidebar: {
-      logo: "/images/simp.png",
       "/": [
         {
           text: "Guide",
           children: [
             {
-              text: "Why SimpCICD",
+              text: "Why Simp ?",
               link: "/guide/why"
             },
             {
