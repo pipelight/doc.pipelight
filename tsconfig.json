@@ -15,20 +15,9 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "baseUrl": ".",
+    "rootDir": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@composables/*": ["src/composables/*"],
-      "@components/*": ["src/components/*"],
-      "@views": ["/src/components/views"],
-      "@nav": ["/src/components/navigation"],
-      "@layout": ["/src/components/layout"],
-      "@pickers/*": ["src/components/pickers/*"],
-      "@forms": ["/src/components/forms"],
-      "@service/*": ["src/service/*"],
-      "@router/*": ["src/router/*"],
-      "@store/*": ["src/store/*"],
-      "@type/*": ["src/type/*"],
-      "@css/*": ["src/css/*"]
+      "@/*": ["./.vitepress/theme/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
     "types": [
@@ -41,15 +30,6 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx",
-  ],
-  "exclude": ["node_modules",
-    ".storybook/**/*.js",
-    ".storybook/*.js",
-    ".storybook/**/*.ts",
-    "**/*.stories.ts",
-    "stories/**/*.js",
-    "stories/**/*.ts",
-    "stories/**/*.vue"
+    "tests/**/*.tsx"
   ]
 }

@@ -5,14 +5,6 @@
 </p>
 <br/>
 
-# Warning
-
-Don't dowload now!
-
-It's still in early stage development!
-
-See you nex week 😊...
-
 # Getting Started
 
 ## Install
