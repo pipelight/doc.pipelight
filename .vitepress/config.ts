@@ -6,6 +6,7 @@ export default defineConfig({
     ["link", { rel: "icon", type: "image/png", href: "/images/simp.png" }]
   ],
   themeConfig: {
+    repo: "areskul/simpcicd",
     sidebar: {
       logo: "/images/simp.png",
       "/": [
@@ -18,7 +19,7 @@ export default defineConfig({
             },
             {
               text: "Getting Started",
-              link: "/guide/index"
+              link: "/guide/"
             }
           ]
         }
