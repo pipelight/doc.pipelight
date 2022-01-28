@@ -1,18 +1,33 @@
 import { defineConfig } from "vitepress";
 export default defineConfig({
-  title: "SimpCICD",
-  description: "Everithing about SimpCICD",
+  title: "Simp CICD",
+  description: "Deployment Framework for Simple-Minded",
+  head: [
+    ["link", { rel: "icon", type: "image/png", href: "/images/simp.png" }]
+  ],
   themeConfig: {
-    sidebar: [
-      {
-        text: "Guide",
-        link: "/about/"
-      }
-    ],
+    sidebar: {
+      logo: "/images/simp.png",
+      "/": [
+        {
+          text: "Guide",
+          children: [
+            {
+              text: "Why SimpCICD",
+              link: "/guide/why"
+            },
+            {
+              text: "Getting Started",
+              link: "/guide/index"
+            }
+          ]
+        }
+      ]
+    },
     nav: [
       {
         text: "Guide",
-        link: "/about/"
+        link: "/guide/"
       },
       {
         text: "Contacts",

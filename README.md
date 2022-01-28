@@ -2,7 +2,7 @@
 
 Based on VitePress.
 
-Hosted at [simp.areskul.com](simp.areskul.com)
+Hosted at [simp.areskul.com](https://simp.areskul.com)
 
 ## Hey Dude share your tips.
 
