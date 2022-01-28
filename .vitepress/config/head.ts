@@ -11,7 +11,7 @@ const head: HeadConfig[] = [
         "simpcicd, simp, cicd, typescript, continuous, delivery, integration, deployment"
     }
   ],
-  ["link", { rel: "icon", type: "image/svg+xml", href: "/assets/logo.svg" }],
+  ["link", { rel: "icon", type: "image/png", href: "/images/simp.png" }],
 
   ["meta", { name: "HandheldFriendly", content: "True" }],
   ["meta", { name: "MobileOptimized", content: "320" }],

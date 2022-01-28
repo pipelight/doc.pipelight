@@ -5,7 +5,6 @@ import type { DefaultTheme } from "@/config";
 const themeConfig: DefaultTheme.Config = {
   logo: "/images/simp.png",
   repo: "areskul/simpcicd",
-  docsDir: ".",
   docsBranch: "master",
   nav,
   sidebar,
