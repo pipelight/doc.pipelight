@@ -47,3 +47,5 @@ pipelines: [
   }
 ];
 ```
+
+Pipeline "second" will execute if "first" succeeds.

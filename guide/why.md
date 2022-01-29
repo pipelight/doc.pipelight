@@ -42,25 +42,23 @@ Devs who need simplicity but efficency though.
 
 It uses a config file and executes the commands it contains.
 
-```json
-pipeline : {
-  name: "test",
-  steps: [
-    {
-      name: "build",
-      commands: ["yarn install", "yarn build"],
-      // See ?! Here are your bash commands! :D
-    },
-  ],
-  trigger: {
-    branch: [
-      "main",
+```js
+pipelines: [
+  {
+    name: "test",
+    steps: [
+      {
+        name: "build",
+        commands: ["yarn install", "yarn build"]
+        // See ?! Here are your bash commands! :D
+      }
     ],
-    event: [
-      "push",
-    ]
+    trigger: {
+      branch: ["main"],
+      event: ["push"]
+    }
   }
-}
+];
 ```
 
 It runs the pipeline.

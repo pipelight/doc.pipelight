@@ -68,25 +68,23 @@ Everithing fits in a config file.
 
 Here is a simple example of what could contain simp.config.json
 
-```json
-pipeline : {
-  name: "test",
-  steps: [
-    {
-      name: "build",
-      commands: ["yarn install", "yarn build"],
-    },
-  ],
-  trigger: {
-    branch: [
-      "master",
-      "dev"
-    ]
+```js
+//simp.config.js
+pipelines: [
+  {
+    name: "test",
+    steps: [
+      {
+        name: "build",
+        commands: ["yarn install", "yarn build"]
+      }
+    ],
+    trigger: {
+      branch: ["master", "dev"]
+    }
   }
-}
+];
 ```
-
-It becomes interesting when you use Typescript.
 
 ## Integrates with your tools
 
@@ -110,24 +108,27 @@ import type { Config } from "simpcicd";
 
 const dockerOptions = " -t myapp .";
 
-const config = {
-  pipeline: {
-    name: "test",
-    steps: [
-      {
-        name: "build",
-        commands: ["yarn install", "yarn build"]
+const config: Config = {
+  pipelines: [
+    {
+      name: "test",
+      steps: [
+        {
+          name: "build",
+          commands: ["yarn install", "yarn build"]
+        },
+        {
+          name: "docker",
+          commands: [`docker ${dockerOptions}`]
+        }
+      ],
+      trigger: {
+        branch: ["master", "dev"]
       }
-      {
-        name: "docker",
-        commands: [`docker ${dockerOptions}`]
-      }
-    ],
-    trigger: {
-      branch: ["master", "dev"]
     }
-  }
+  ]
 };
+
 export default config;
 ```
 
