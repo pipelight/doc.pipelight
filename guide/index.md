@@ -12,7 +12,7 @@
 Install cli
 
 ```bash
-yarn add -g simpcicd
+yarn gloabl add simpcicd
 ```
 
 ```bash
