@@ -81,7 +81,7 @@ pipeline : {
   steps: [
     {
       name: "build",
-      commands: ["yarn install", "yarn build"]
+      commands: ["yarn install", "yarn build"],
     },
   ],
   trigger: {

@@ -1,50 +1,77 @@
 # Why Simp ?
 
-Have you ever dive into DevOps?
-CICD tools are such a pain.
-I was tired of the heavy config needed for deployement tools to work well.
+## Why another cicd tool ?
 
-As my projects or all so small and written in Javascript
+As my projects or all so small.
+I used to test and deploy them with bash/pyhton scripts.
 
-I wanted more than a bash/python script to deploy,..
-and less than the monolithic freemium crap out there.
+But as it grew, I needed a cool way to automate this job.
+
+With things like auto-deploy on every push to master (why not ?).
+Maybe background exexcution.
+Verbose and colorful Logs (with size limit!).
+No mandatory gui but a simple cli.
+Compatibility with all my existing tools.
+
+And at least but not last a tiny package size.
+
+I've heard about Jenkins, Drone CI, and others but i'm affraid of
+either the install process and the documentation.
+
+So I came up with this.
 
 ## What it is
 
-It's a tool to deploy your sites online... at least I wish it was.
-But it's just a bash wrapper written in Typescript.
+It's a tool to deploy sites online...
+at least I wish it was.
+But it's just a bash command wrapper written in Typescript.
 
 ## What it does
 
 It takes "bash" commands.
 And triggers it when you demand it.
 
+You basically execute "routines"
+
 ## Who is it for
 
-For devs that value their times and want their projects deployed fast.
+For devs who don't want to mess with big CICD names for now.
+Devs who need simplicity but efficency though.
 
 ## Yes but how ?
 
-It uses a config file with pipelines -> steps -> commands
+It uses a config file and executes the commands it contains.
 
-```bash
+```json
 pipeline : {
   name: "test",
   steps: [
     {
       name: "build",
-      commands: ["yarn install", "yarn build"]
-      // See ?! Here are tour bash commands! :D
+      commands: ["yarn install", "yarn build"],
+      // See ?! Here are your bash commands! :D
     },
   ],
   trigger: {
     branch: [
       "main",
+    ],
+    event: [
+      "push",
     ]
   }
 }
 ```
 
-It stops when a step/command fails an report a VERBOSE ERROR!
+pipelines -> steps -> commands
 
-Fuck yeah! It's all verbose so you can troubleshoot it easily wherever the error comes from.
+It stops whenever a step/command fails and return a verbose log.
+So that you know wich command, in which step, in which pipeline failed, at a glance.
+
+No obscure debbuging message. Just stacktrace.
+
+## Furthermore
+
+If you still cannot figure out how this globally works.
+Read further.
+Or if I wasn't clear enough, please tell me.

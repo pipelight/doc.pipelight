@@ -7,6 +7,6 @@ export const nav: DefaultTheme.Config["nav"] = [
   },
   {
     text: "Contacts",
-    link: "/contacts"
+    link: "/others/contacts"
   }
 ];
