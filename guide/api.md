@@ -2,7 +2,7 @@
 
 ### Useful commands
 
-Parse config with
+Print config with
 
 ```bash
 simp
