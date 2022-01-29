@@ -95,9 +95,7 @@ pipeline : {
 
 It becomes interesting when you use Typescript.
 
-## Module
-
-### Integrates with your tools
+## Integrates with your tools
 
 There we are.
 You're gonna enjoy this part.
@@ -140,7 +138,7 @@ const config = {
 export default config;
 ```
 
-### Generate config file for CLI
+## Generate config file for CLI
 
 For now .ts config file can't be interpreted by cli.
 
@@ -165,7 +163,7 @@ script:{
 }
 ```
 
-### Generate hooks
+## Generate hooks
 
 ```ts
 // deploy.ts

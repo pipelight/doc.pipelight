@@ -14,9 +14,7 @@ Set config file with (.json only)
 simp --config <file>
 ```
 
-## Module
-
-### Chande Working directory
+## Chande Working directory
 
 Commands run in project root folder by default.
 You can change it like so:
@@ -31,7 +29,7 @@ steps: [
 ];
 ```
 
-### Parallele pipeline execution
+## Parallele pipeline execution
 
 By default pipelines or independants.
 But you can change this behavior.
