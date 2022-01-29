@@ -12,6 +12,10 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
         {
           text: "Getting Started",
           link: "/guide/"
+        },
+        {
+          text: "Deep dive",
+          link: "/guide/api"
         }
       ]
     }
