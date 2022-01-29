@@ -16,7 +16,7 @@ simp --config <file>
 
 ## Module
 
-## Chande Working directory
+### Chande Working directory
 
 Commands run in project root folder by default.
 You can change it like so:
@@ -24,9 +24,28 @@ You can change it like so:
 ```ts
 steps: [
   {
-    name: changeDir,
+    name: "changeDir",
     cwd: "./bin",
-    commands: [...]
+    commands: [...commands]
+  }
+];
+```
+
+### Parallele pipeline execution
+
+By default pipelines or independants.
+But you can change this behavior.
+
+```ts
+pipelines: [
+  {
+    name: "second",
+    depends_on: "first",
+    steps: [...steps]
+  },
+  {
+    name: "first",
+    steps: [...steps]
   }
 ];
 ```

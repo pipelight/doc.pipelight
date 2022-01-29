@@ -15,8 +15,8 @@ Compatibility with all my existing tools.
 
 And at least but not last a tiny package size.
 
-I've heard about Jenkins, Drone CI, and others but i'm affraid of
-either the install process and the documentation.
+I know there is a lot of CICD tools but i'm affraid of
+either the install process or the documentation.
 
 So I came up with this.
 
@@ -63,6 +63,7 @@ pipeline : {
 }
 ```
 
+It runs the pipeline.
 pipelines -> steps -> commands
 
 It stops whenever a step/command fails and return a verbose log.
