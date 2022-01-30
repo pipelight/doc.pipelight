@@ -14,7 +14,10 @@ const config = defineConfig({
         },
         {
           name: "deploy",
-          commands: [`rsync -ar ${localFiles} linode:${remoteFoler}`]
+          commands: [
+            `ssh linode -t \"rm -rf\ ${remoteFoler}/*"`,
+            `rsync -ar ${localFiles} linode:${remoteFoler}`
+          ]
         }
       ],
       trigger: {
