@@ -14,7 +14,11 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           link: "/guide/"
         },
         {
-          text: "Deep dive",
+          text: "Master the Cli",
+          link: "/guide/cli"
+        },
+        {
+          text: "API (Typescript lovers)",
           link: "/guide/api"
         }
       ]
