@@ -2,36 +2,26 @@
 
 ## Why another cicd tool ?
 
-As my projects or all so small.
-I used to test and deploy them with bash/pyhton scripts.
+As my projects were all so small,I used to test and deploy them with bash/pyhton scripts.
 
-But as it grew, I needed a cool way to automate this job.
+But i needed automation and verbose logs.
 
-With things like auto-deploy on every push to master (why not ?).
-Maybe background exexcution.
-Verbose and colorful Logs (with size limit!).
-No mandatory gui but a simple cli.
-Compatibility with all my existing tools.
-
-And at least but not last a tiny package size.
-
-I know there is a lot of CICD tools but i'm affraid of
+I know there is a lot of existing CICD tools but i'm affraid of
 either the install process or the documentation.
 
-So I came up with this.
+So I came up with a "Custom Command Line Wrapper"
 
 ## What it is
 
-It's a tool to deploy sites online...
-at least I wish it was.
-But it's just a bash command wrapper written in Typescript.
+It's a tool to execute routines.
+Like deploying your site online, executing tests...
+
+Basically it's just a glue between all your preexisting tools.
 
 ## What it does
 
 It takes "bash" commands.
 And triggers it when you demand it.
-
-You basically execute "routines"
 
 ## Who is it for
 
@@ -64,10 +54,7 @@ pipelines: [
 It runs the pipeline.
 pipelines -> steps -> commands
 
-It stops whenever a step/command fails and return a verbose log.
-So that you know wich command, in which step, in which pipeline failed, at a glance.
-
-No obscure debbuging message. Just stacktrace.
+It stops whenever a step/command fails and return a verbose logs with stacktrace.
 
 ## Furthermore
 
