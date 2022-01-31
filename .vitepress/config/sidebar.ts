@@ -22,6 +22,10 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           link: "/guide/config"
         },
         {
+          text: "Git Hooks (Automation)",
+          link: "/guide/hooks"
+        },
+        {
           text: "API (Typescript lovers)",
           link: "/guide/api"
         },
