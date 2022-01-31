@@ -1,4 +1,4 @@
-# Log FIles
+# Log Files
 
 ## Warning
 
