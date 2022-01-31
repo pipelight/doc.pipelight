@@ -18,38 +18,27 @@ simp trigger --pipeline <pipeline name> --verbose
 
 ## Config
 
-### Chande Working directory
+### Non-Blocking Step execution
 
-Commands run in project root folder by default.
-You can change it like so:
+Here 2nd step will always be executed even if 1st step fails.
 
-```ts
-steps: [
-  {
-    name: "changeDir",
-    cwd: "./bin",
-    commands: [...commands]
-  }
-];
-```
-
-### Parallele pipeline execution
-
-By default pipelines or independants.
-But you can change this behavior.
-
-Pipeline "second" will execute if "first" succeeds.
+The 1st step will stop and throw a warning whenever a command fails.
 
 ```ts
 pipelines: [
   {
-    name: "second",
-    depends_on: "first",
-    steps: [...steps]
-  },
-  {
-    name: "first",
-    steps: [...steps]
+    name: "my_test",
+    steps: [
+      {
+        name: "first",
+        try_catch : true,
+        commands: [...my_commands]
+      }
+      {
+        name: "second",
+        commands: [...my_commands]
+      }
+    ]
   }
 ];
 ```
