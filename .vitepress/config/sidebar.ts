@@ -27,7 +27,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
         },
         {
           text: "Log files",
-          link: "/guide/cli.mdogs"
+          link: "/guide/logs"
         }
       ]
     }
