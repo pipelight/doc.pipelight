@@ -24,7 +24,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
         {
           text: "API (Typescript lovers)",
           link: "/guide/api"
-        }
+        },
         {
           text: "Log files",
           link: "/guide/cli.mdogs"
