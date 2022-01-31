@@ -49,7 +49,7 @@ export default config;
 import { useTrigger } from "simpcicd";
 import config from "simp.config.ts";
 
-const trigger = useTrigger(config);
+const { trigger } = useTrigger(config);
 trigger("my_prod_pip");
 ```
 
@@ -63,7 +63,8 @@ import { useHooks } from "simpcicd";
 import config from "simp.config.ts";
 
 // Generate git hooks
-const hooks = useHooks(config);
+const { makeHooks } = useHooks();
+makeHooks(config);
 ```
 
 ## Stil want to use the CLI ?
