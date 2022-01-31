@@ -7,7 +7,7 @@
 import { useHooks, useCli, useLogs, useTrigger } from "simpcicd";
 ```
 
-## Integrate with you favorite tools
+## Integrate with your favorite tools
 
 Create a config file in .ts
 And enjoy creating greate pipelines
@@ -54,6 +54,8 @@ trigger("my_prod_pip");
 ```
 
 ## Generate hooks
+
+With this import git hooks will be regenerated on every build.
 
 ```ts
 // makeHooks.ts
