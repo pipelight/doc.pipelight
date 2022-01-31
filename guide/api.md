@@ -64,7 +64,7 @@ import config from "simp.config.ts";
 const hooks = useHooks(config);
 ```
 
-## Stil want to use the CLI
+## Stil want to use the CLI ?
 
 ```ts
 // deploy.ts

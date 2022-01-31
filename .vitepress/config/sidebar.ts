@@ -18,8 +18,16 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           link: "/guide/cli"
         },
         {
+          text: "Master the Pipe",
+          link: "/guide/config"
+        },
+        {
           text: "API (Typescript lovers)",
           link: "/guide/api"
+        }
+        {
+          text: "Log files",
+          link: "/guide/cli.mdogs"
         }
       ]
     }
