@@ -26,11 +26,15 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           link: "/guide/hooks"
         },
         {
+          text: "Logs",
+          link: "/guide/logs"
+        }
+        {
           text: "API (Typescript lovers)",
           link: "/guide/api"
         },
         {
-          text: "Log files",
+          text: "Generated files",
           link: "/guide/logs"
         }
       ]

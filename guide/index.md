@@ -44,7 +44,7 @@ This will transform your pipelines in git hooks
 simp hooks
 ```
 
-### Config
+## Config
 
 Here is a simple example of what could contain simp.config.json
 

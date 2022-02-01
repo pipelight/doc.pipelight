@@ -2,9 +2,73 @@
 
 ## Usage
 
+Simp exposes simple but often used functions.
+
 ```ts
 // deploy.ts
-import { useHooks, useCli, useLogs, useTrigger } from "simpcicd";
+import { useHooks, useCli, useLogs, useTrigger, useExec } from "simpcicd";
+```
+
+## Exec
+
+Execute a bash string
+
+```ts
+import { useExec } from "simpcicd";
+const { exec } = useExec();
+
+const globbing = "*.mp3";
+exec(`ls -al ${globbing}`);
+```
+
+## Trigger pipelines
+
+Manually trigger pipelines
+
+```ts
+// makeHooks.ts
+import { useTrigger } from "simpcicd";
+import config from "simp.config.ts";
+
+const { trigger } = useTrigger(config);
+trigger("my_prod_pip");
+```
+
+Use trigger takes an optional Config Object as argument.
+If not provided, it falls back to simp.config.js
+
+## Generate hooks
+
+Manually generate every hooks, or hook for a single pipeline
+
+```ts
+// myHooks.ts
+import { useHooks } from "simpcicd";
+import config from "simp.config.ts";
+const { generateHooks, generateHook } = useHooks(config);
+// Generate git hooks
+makeHooks(config);
+//or
+makeHook("default");
+```
+
+Or create a fully customized hook, by providing the helper a function.
+
+```ts
+// myHooks.ts
+import { useHooks } from "simpcicd";
+import { useExec } from "simpcicd";
+import config from "simp.config.ts";
+
+//Make your own customized hooks
+
+const { makeHook } = useHooks(config);
+
+makeHook(() => {
+  console.log("this is my hook");
+  const { exec } = useExec();
+  exec("touch my_hook");
+});
 ```
 
 ## Integrate with your favorite tools
@@ -42,32 +106,10 @@ const config: Config = {
 export default config;
 ```
 
-## Trigger pipelines
+## Dooh,I can't use the CLI with a '.ts' config
 
-```ts
-// makeHooks.ts
-import { useTrigger } from "simpcicd";
-import config from "simp.config.ts";
-
-const { trigger } = useTrigger(config);
-trigger("my_prod_pip");
-```
-
-## Generate hooks
-
-With this import git hooks will be regenerated on every build.
-
-```ts
-// makeHooks.ts
-import { useHooks } from "simpcicd";
-import config from "simp.config.ts";
-
-// Generate git hooks
-const { makeHooks } = useHooks();
-makeHooks(config);
-```
-
-## Stil want to use the CLI ?
+If you have made a simp.config.ts, it won't be recognized by the cli.
+You have to import the config in helpers if you want to use it.
 
 ```ts
 // deploy.ts
