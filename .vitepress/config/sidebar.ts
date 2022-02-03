@@ -1,7 +1,7 @@
 import type { DefaultTheme } from "@/config";
 
 export const sidebar: DefaultTheme.Config["sidebar"] = {
-  "/": [
+  "/guide": [
     {
       text: "Guide",
       children: [
