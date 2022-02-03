@@ -1,10 +1,10 @@
-# Deployement Stategies
+# Deployment Stategies
 
 ## Dummy deploy through with (scp/rsync)
 
 Here is a dummy deploy with rsync
 
-## Blue-Green Canary Deployement
+## Blue-Green Canary
 
 Here is a blue-green canary deployment with docker and nginx
 

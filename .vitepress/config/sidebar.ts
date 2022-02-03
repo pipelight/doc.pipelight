@@ -45,7 +45,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
       text: "CookBook",
       children: [
         {
-          text: "Deployements",
+          text: "Deployments",
           link: "/cookbook/strategies"
         }
       ]
