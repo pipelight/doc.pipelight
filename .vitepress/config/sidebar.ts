@@ -39,5 +39,16 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
         }
       ]
     }
+  ],
+  "/cookbook": [
+    {
+      text: "CookBook",
+      children: [
+        {
+          text: "Deployements",
+          link: "/cookbook/strategies"
+        }
+      ]
+    }
   ]
 };

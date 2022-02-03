@@ -7,6 +7,7 @@ import type { UserConfig } from "vitepress";
 const config: UserConfig<DefaultTheme.Config> = {
   title: metaData.title,
   description: metaData.description,
+  lang: "en-US",
   head,
   themeConfig
 };

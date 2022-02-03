@@ -650,15 +650,15 @@ run-parallel@^1.1.9:
   dependencies:
     queue-microtask "^1.2.2"
 
-simpcicd@^0.1.6, simpcicd@^0.1.8:
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/simpcicd/-/simpcicd-0.1.8.tgz#73c4b43a7603c043967d59ee2f3c124cf06d2f26"
-  integrity sha512-Vc6KRgu34QfRX10qQYWAz0kRBbpPrJZSUCLMdXUz6GMmYEbamkee1nkDwG1XehEyCKId7+skH5M+E0+ZlrSkSA==
+simpcicd@^0.1.16, simpcicd@^0.1.9:
+  version "0.1.16"
+  resolved "https://registry.yarnpkg.com/simpcicd/-/simpcicd-0.1.16.tgz#e1559919a8645a3e4bbc4a84083efcd77eb70238"
+  integrity sha512-TgAU0V1+vUiKEEmO1fITAQrn3FvzkRp+zmCMcp1kCGV/4XOINOkJnQGJj3O0Iscsv1IzBgTf4cIaxYhnZoMVpg==
   dependencies:
     cac "^6.7.12"
     lilconfig "^2.0.4"
     picocolors "^1.0.0"
-    simpcicd "^0.1.6"
+    simpcicd "^0.1.9"
     tslog "^3.3.1"
     typescript "^4.5.5"
 

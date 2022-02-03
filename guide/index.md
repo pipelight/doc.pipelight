@@ -46,22 +46,24 @@ simp hooks
 
 ## Config
 
-Here is a simple example of what could contain simp.config.json
+Here is a simple example of what could contain a config file.
 
-```js
-//simp.config.js
-pipelines: [
-  {
-    name: "test",
-    steps: [
-      {
-        name: "build",
-        commands: ["yarn install", "yarn build"]
+```ts
+//simp.config.ts
+export default {
+  pipelines: [
+    {
+      name: "test",
+      steps: [
+        {
+          name: "build",
+          commands: ["yarn install", "yarn build"]
+        }
+      ],
+      trigger: {
+        branch: ["master", "dev"]
       }
-    ],
-    trigger: {
-      branch: ["master", "dev"]
     }
-  }
-];
+  ]
+};
 ```

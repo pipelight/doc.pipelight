@@ -7,9 +7,9 @@ const themeConfig: DefaultTheme.Config = {
   repo: "areskul/simpcicd",
   docsBranch: "master",
   nav,
-  sidebar,
-  editLinks: true,
-  editLinkText: "Suggest changes to this page"
+  sidebar
+  // editLinks: true,
+  // editLinkText: "Suggest changes to this page"
 };
 
 export default themeConfig;

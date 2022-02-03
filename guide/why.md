@@ -32,7 +32,8 @@ Devs who need simplicity but efficency though.
 
 It uses a config file and executes the commands it contains.
 
-```js
+```ts
+simp.config.ts;
 pipelines: [
   {
     name: "test",
@@ -51,7 +52,7 @@ pipelines: [
 ];
 ```
 
-It runs the pipeline.
+It runs the pipeline as a cascade like:
 pipelines -> steps -> commands
 
 It stops whenever a step/command fails and return a verbose logs with stacktrace.
@@ -60,4 +61,5 @@ It stops whenever a step/command fails and return a verbose logs with stacktrace
 
 If you still cannot figure out how this globally works.
 Read further.
+
 Or if I wasn't clear enough, please tell me.

@@ -11,7 +11,7 @@ import { useHooks, useCli, useLogs, useTrigger, useExec } from "simpcicd";
 
 ## Exec
 
-Execute a bash string
+Execute a bash command
 
 ```ts
 import { useExec } from "simpcicd";
@@ -62,7 +62,7 @@ import config from "simp.config.ts";
 
 //Make your own customized hooks
 
-const { makeHook } = useHooks(config);
+const { makeHook } = useHooks();
 
 makeHook(() => {
   console.log("this is my hook");
@@ -104,35 +104,4 @@ const config: Config = {
 };
 
 export default config;
-```
-
-## Dooh,I can't use the CLI with a '.ts' config
-
-If you have made a simp.config.ts, it won't be recognized by the cli.
-You have to import the config in helpers if you want to use it.
-
-```ts
-// deploy.ts
-import { useCli } from "simpcicd";
-import config from "simp.config.ts";
-
-useCli(config);
-```
-
-Then add the script in your package.json
-
-```json
-script:{
-  "simp" : "ts-node deploy.ts"
-}
-```
-
-And call the cli through yarn or npm
-
-```bash
-yarn simp trigger --pipeline test
-```
-
-```bash
-npm run simp trigger --pipeline test
 ```
