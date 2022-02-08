@@ -2,7 +2,7 @@ import { metaData } from "./constants";
 import type { HeadConfig } from "vitepress";
 
 const head: HeadConfig[] = [
-  ["meta", { name: "author", content: "Windi CSS Team" }],
+  ["meta", { name: "author", content: "Areskul" }],
   [
     "meta",
     {
@@ -17,7 +17,7 @@ const head: HeadConfig[] = [
   ["meta", { name: "MobileOptimized", content: "320" }],
   ["meta", { name: "theme-color", content: "#f28fbc" }],
 
-  ["meta", { name: "twitter:card", content: "summary_large_image" }],
+  ["meta", { name: "twitter:card", content: "/images/simp_light.png" }],
   ["meta", { name: "twitter:site", content: metaData.site }],
   ["meta", { name: "twitter:title", value: metaData.title }],
   ["meta", { name: "twitter:description", value: metaData.description }],
