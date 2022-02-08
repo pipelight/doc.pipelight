@@ -49,10 +49,6 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           link: "/api/"
         },
         {
-          text: "Types",
-          link: "/api/"
-        },
-        {
           text: "Cookbook",
           link: "/cookbook/strategies"
         }

@@ -18,8 +18,8 @@ module.exports = {
   ],
   plugins: [
     // "vue",
-    "prettier",
-    "@typescript-eslint"
+    "prettier"
+    // "@typescript-eslint"
   ],
   parserOptions: {
     parser: "@typescript-eslint/parser",
