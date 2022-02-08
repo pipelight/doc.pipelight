@@ -21,8 +21,8 @@ const config = defineConfig({
         }
       ],
       trigger: {
-        branch: ["main", "master", "dev"],
-        action: ["push"]
+        branches: ["main", "master", "dev"],
+        actions: ["push"]
       }
     }
   ]

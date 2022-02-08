@@ -40,17 +40,17 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
       ]
     }
   ],
-  "/references": [
+  "/api": [
     {
       text: "API References",
       children: [
         {
           text: "Helpers",
-          link: "/references/"
+          link: "/api/"
         },
         {
           text: "Types",
-          link: "/references/"
+          link: "/api/"
         },
         {
           text: "Cookbook",
