@@ -1,4 +1,4 @@
-import { defineConfig } from "simpcicd;
+import { defineConfig } from "simpcicd";
 
 const localFiles = `.vitepress/dist/*`;
 const remoteFoler = `Static/Perso/docs.simp.cicd`;
@@ -27,4 +27,5 @@ const config = defineConfig({
     }
   ]
 });
+
 export default config;
