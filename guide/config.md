@@ -2,9 +2,10 @@
 
 ## Non-Blocking Step execution
 
-Here 2nd step will always be executed even if 1st step fails.
+A non-blocking step will try to execute every commands.
+If a command fails, it will not stop the pipeline exuecution.
 
-The 1st step will stop and throw a warning whenever a command fails.
+Here 2nd step will always be executed even if 1st step fails.
 
 ```ts
 pipelines: [

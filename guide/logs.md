@@ -2,10 +2,9 @@
 
 ## Print logs
 
-Every log is printed with tslog in stdout when triggering pipeline..
-And it is saved under the log folder under.
-
-.simp/logs/
+Every log is printed with [tslog](https://tslog.js.org/)
+in stdout/stderr when triggering a pipeline..
+And it is saved in the log folder **.simp/logs/**
 
 ## Comming soon
 
