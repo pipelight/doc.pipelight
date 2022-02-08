@@ -13,7 +13,7 @@ pipelines: [
     steps: [
       {
         name: "first",
-        try_catch : true,
+        "non-blocking" : true,
         commands: [...my_commands]
       }
       {

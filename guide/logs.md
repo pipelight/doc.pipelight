@@ -1,15 +1,13 @@
 # Log Files
 
-## Warning
-
-Feature still under development.
-
 ## Print logs
 
 Every log is printed with tslog in stdout when triggering pipeline..
 And it is saved under the log folder under.
 
 .simp/logs/
+
+## Comming soon
 
 Display last logs of every triggers with the CLI.
 

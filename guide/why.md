@@ -45,8 +45,8 @@ pipelines: [
       }
     ],
     trigger: {
-      branch: ["main"],
-      event: ["push"]
+      branches: ["main"],
+      actions: ["push"]
     }
   }
 ];

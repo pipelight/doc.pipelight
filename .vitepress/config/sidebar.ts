@@ -30,12 +30,31 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           link: "/guide/logs"
         },
         {
-          text: "API (Typescript lovers)",
-          link: "/guide/api"
-        },
-        {
           text: "Generated files",
           link: "/guide/storage"
+        },
+        {
+          text: "Cookbook",
+          link: "/cookbook/strategies"
+        }
+      ]
+    }
+  ],
+  "/references": [
+    {
+      text: "API References",
+      children: [
+        {
+          text: "Helpers",
+          link: "/references/"
+        },
+        {
+          text: "Types",
+          link: "/references/"
+        },
+        {
+          text: "Cookbook",
+          link: "/cookbook/strategies"
         }
       ]
     }

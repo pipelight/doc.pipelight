@@ -1,14 +1,15 @@
 # Git Hooks (Here we are!)
 
-That is what interest you if you wan't to autodeploy on push.
-And many more...
+If you wan't to autodeploy on push.
+And many more automation.
 
-## Principle
+## Config
 
 You can choose branch and action for which to trigger the pipeline.
+Actions are named according to [git-hooks](https://githooks.com/) names.
 
-```js
-//simp.config.js
+```ts
+//simp.config.ts
 ...
 
 pipelines: [
@@ -18,12 +19,11 @@ pipelines: [
       {
         name: "build",
         commands: ["yarn install", "yarn build"]
-        // See ?! Here are your bash commands! :D
       }
     ],
     trigger: {
-      branch: ["main"],
-      event: ["push"]
+      branches: ["main"],
+      actions: ["pre-push"]
     }
   }
 ];
@@ -31,15 +31,22 @@ pipelines: [
 ...
 ```
 
-Those files are processed in commonjs through rollup.
-And symlinked from .simp/hooks/cjs to .git/hooks
+# Comming Soon
 
-Note: git hooks have no file extension.
+## Create custom script hooks
 
-```js
-//simp.hook.template
-#!/usr/bin/node
+### Manually
 
-console.log('done')
+You can put a scrit under .simp/hooks/src/<git-hook name>.<branch name>.ts
 
+Example : The file pre-commit.master.ts will be executed each time you commit to master
+
+It will be executed if conditions are met
+
+### Or with the api
+
+Using a callback function and params
+
+```ts
+toHook();
 ```

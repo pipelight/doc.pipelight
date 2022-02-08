@@ -27,7 +27,7 @@ npm install --save-dev simpcicd
 ### Usage
 
 ```bash
-## in your terminal
+# in your favorite shell
 simp <command> <options> <args>
 ```
 
@@ -38,7 +38,8 @@ This will trigger a pipeline execution
 simp trigger --pipeline <pipeline name>
 ```
 
-This will transform your pipelines in git hooks
+This will transform your pipelines in git hooks.
+So that triggering is automated according to your git actions.
 
 ```bash
 simp hooks
@@ -46,7 +47,7 @@ simp hooks
 
 ## Config
 
-Here is a simple example of what could contain a config file.
+Here is an example of what could contain a basic config file.
 
 ```ts
 //simp.config.ts
@@ -61,7 +62,8 @@ export default {
         }
       ],
       trigger: {
-        branch: ["master", "dev"]
+        branches: ["master", "dev"]
+        actions: ["pre-push", "pre-commit"]
       }
     }
   ]
