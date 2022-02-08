@@ -22,7 +22,7 @@ const config = defineConfig({
       ],
       trigger: {
         branches: ["main", "master", "dev"],
-        actions: ["push"]
+        actions: ["pre-push"]
       }
     }
   ]
