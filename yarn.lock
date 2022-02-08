@@ -825,10 +825,10 @@ signal-exit@^3.0.2:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.7.tgz#a9a1767f8af84155114eaabd73f99273c8f59ad9"
   integrity sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==
 
-simpcicd@^0.4.9:
-  version "0.4.9"
-  resolved "https://registry.yarnpkg.com/simpcicd/-/simpcicd-0.4.9.tgz#926e0f4e4001bffb2d4112bd5c80abbe46c66651"
-  integrity sha512-awzLCCj0booCkaC+RufMS2FnXhDtBp6S204L4QjyGZrf6AvctN5Hc7ETiwQWMYDarjRUOL/tc1EsChNuYecHyw==
+simpcicd@^0.4.10:
+  version "0.4.10"
+  resolved "https://registry.yarnpkg.com/simpcicd/-/simpcicd-0.4.10.tgz#ee7ca64b9f7b807bd6bd748c55d13d9f5ba27777"
+  integrity sha512-mXxR6uA7IB2vNSP70PlsTHVt6tHrZkiLcgS91xl5q7nl+5z56WSOqt2Ji/tuut5Z4OaTIOPZUJCLxcnVxcgIZw==
   dependencies:
     "@sliphua/lilconfig-ts-loader" "^3.2.2"
     "@supercharge/fs" "^3.4.0"

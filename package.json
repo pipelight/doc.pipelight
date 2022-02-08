@@ -9,7 +9,7 @@
     "serve": "vitepress serve"
   },
   "devDependencies": {
-    "simpcicd": "^0.4.9",
+    "simpcicd": "^0.4.10",
     "vite-plugin-windicss": "^1.6.3",
     "vitepress": "^0.21.6",
     "windicss": "^3.4.3"
