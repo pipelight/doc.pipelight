@@ -1,31 +1,9 @@
 import { defineConfig } from "simpcicd";
-
-const localFiles = `.vitepress/dist/*`;
-const remoteFoler = `Static/Perso/docs.simp.cicd`;
+import { defaultConfig } from ".simp/config/simp.default.config";
+import { nextConfig } from ".simp/config/simp.next.config";
 
 const config = defineConfig({
-  pipelines: [
-    {
-      name: "default",
-      steps: [
-        {
-          name: "build",
-          commands: ["yarn", "yarn build"]
-        },
-        {
-          name: "deploy",
-          commands: [
-            `ssh linode -t \"rm -rf\ ${remoteFoler}/*"`,
-            `rsync -ar ${localFiles} linode:${remoteFoler}`
-          ]
-        }
-      ],
-      trigger: {
-        branches: ["main", "master", "dev"],
-        actions: ["pre-push"]
-      }
-    }
-  ]
+  pipelines: [...defaultConfig, ...nextConfig]
 });
 
 export default config;
