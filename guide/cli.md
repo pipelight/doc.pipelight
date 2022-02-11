@@ -26,10 +26,16 @@ Verbose pipeline execution.
 simp trigger --pipeline <pipeline name> --verbose
 ```
 
-Generate hooks
+Generate hooks (Automation)
 
 ```bash
 simp hooks
+```
+
+Print Logs
+
+```bash
+simp logs
 ```
 
 More options with help flag.

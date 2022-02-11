@@ -14,7 +14,7 @@ Here is a complete list of helpers
 ```ts
 // deploy.ts
 import {
-  //useHooks,
+  useHooks,
   useCli,
   //useLogs,
   useTrigger,
@@ -69,8 +69,6 @@ trigger("default");
 Use trigger takes an optional Config Object as argument.
 If not provided, it falls back to simp.config.js
 
-## Comming Soon
-
 ### useHooks
 
 Manually generate git-hooks
@@ -84,6 +82,10 @@ const config = useConfig();
 makeHooks(config);
 ```
 
+## Comming Soon
+
+### useHooks
+
 Or create a fully customized hook with the helper function.
 
 ```ts
@@ -93,12 +95,20 @@ import { useExec } from "simpcicd";
 import config from "simp.config.ts";
 
 //Make your own customized hooks
+const { toHook } = useHooks();
 
-const { makeHooks, toHook } = useHooks();
-
-makeHooks(() => {
+toHook(() => {
   console.log("this is my hook");
   const { exec } = useExec();
   exec("touch myfile.txt");
 });
+```
+
+### useLogs
+
+It wasn't meant to be tweaked but...
+If you want to refine logs limit/colors... nevermind I will expose it!!
+
+```ts
+import { useLogs } from "simpcicd";
 ```
