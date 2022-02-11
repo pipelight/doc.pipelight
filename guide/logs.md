@@ -2,10 +2,10 @@
 
 ## Print logs
 
-Every log is printed with [tslog](https://tslog.js.org/)
+Every log is printed with [tslog](https://tslog.js.org/).
 And it is saved as .json in the log folder **.simp/logs/**
 
-Display last trigger logs with the CLI.
+Display last logs with the CLI.
 
 ```bash
 simp logs
@@ -15,7 +15,7 @@ The non-verbose "minimal" output looks actually like that.
 And is likely to change for the better.
 
 <p align="center">
-  <img height="400" src="https://simp.areskul.com/images/logs.png" alt="pretty logs">
+  <img class="terminal" src="https://simp.areskul.com/images/logs.png" alt="pretty logs">
 </p>
 
 ##File tree

@@ -6,3 +6,9 @@
   height: 30px;
   margin-right: 2px;
 }
+img {
+  &.terminal {
+    width: 100%;
+    @apply rounded-md;
+  }
+}
