@@ -45,7 +45,7 @@ Find a config file and return the config Object
 ```ts
 import { useConfig } from "simpcicd";
 
-const config = useConfig();
+const config = await useConfig();
 ```
 
 is the same as
@@ -78,7 +78,7 @@ Manually generate git-hooks
 import { useHooks, useConfig } from "simpcicd";
 
 const { makeHooks } = useHooks();
-const config = useConfig();
+const config = await useConfig();
 makeHooks(config);
 ```
 

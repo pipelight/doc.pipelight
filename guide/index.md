@@ -62,7 +62,7 @@ export default {
         }
       ],
       trigger: {
-        branches: ["master", "dev"]
+        branches: ["master", "dev"],
         actions: ["pre-push", "pre-commit"]
       }
     }
