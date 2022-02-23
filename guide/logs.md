@@ -18,7 +18,7 @@ And is likely to change for the better.
   <img class="terminal" src="https://simp.areskul.com/images/logs.png" alt="pretty logs">
 </p>
 
-##File tree
+## File tree
 
 Hooks execution generates log files.
 Located in .simp/logs/[pipeline]/ and queriable with the cli.
