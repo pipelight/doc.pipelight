@@ -20,5 +20,8 @@
     "vitepress": "^0.21.6",
     "windicss": "^3.4.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@endemolshinegroup/cosmiconfig-typescript-loader": "^3.0.2",
+    "cosmiconfig": "^7.0.1"
+  }
 }
