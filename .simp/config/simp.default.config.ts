@@ -1,9 +1,7 @@
-import { defineConfig } from "simpcicd";
-
 const localFiles = `.vitepress/dist/*`;
 const remoteFoler = `Static/Perso/docs.simp.cicd`;
 
-export const defaultConfig = defineConfig({
+export const defaultConfig = {
   pipelines: [
     {
       name: "default",
@@ -26,4 +24,4 @@ export const defaultConfig = defineConfig({
       }
     }
   ]
-});
+};
