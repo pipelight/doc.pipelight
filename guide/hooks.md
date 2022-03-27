@@ -30,23 +30,3 @@ pipelines: [
 
 ...
 ```
-
-# Comming Soon
-
-## Create custom script hooks
-
-### Manually
-
-You can put a scrit under .simp/hooks/src/${git-hook name}.${branch name}.ts
-
-Example : The file pre-commit.master.ts will be executed each time you commit to master
-
-It will be executed if conditions are met
-
-### Or with the api
-
-Using a callback function and params
-
-```ts
-toHook();
-```

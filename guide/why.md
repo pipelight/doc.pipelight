@@ -32,8 +32,8 @@ Devs who need simplicity but efficency though.
 
 It uses a config file and executes the commands it contains.
 
-```ts
-simp.config.ts;
+```js
+//simp.config.mjs;
 pipelines: [
   {
     name: "test",

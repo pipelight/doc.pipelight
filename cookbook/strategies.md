@@ -4,6 +4,34 @@
 
 Here is a dummy deploy with rsync
 
+```js
+//simp.config.mjs
+export default {
+  pipelines: [
+    {
+      name: "default",
+      steps: [
+        {
+          name: "build",
+          commands: ["yarn", "yarn build"]
+        },
+        {
+          name: "deploy",
+          commands: [
+            `ssh linode -t \"rm -rf\ ${remoteFoler}/*"`,
+            `rsync -ar ${localFiles} linode:${remoteFoler}`
+          ]
+        }
+      ],
+      trigger: {
+        branches: ["master", "main"],
+        actions: ["pre-push"]
+      }
+    }
+  ]
+};
+```
+
 ## Blue-Green Canary
 
 Here is a blue-green canary deployment with docker and nginx
