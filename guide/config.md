@@ -7,7 +7,7 @@ If a command fails, it will not stop the pipeline exuecution.
 
 Here 2nd step will always be executed even if 1st step fails.
 
-```ts
+```js
 pipelines: [
   {
     name: "my_test",

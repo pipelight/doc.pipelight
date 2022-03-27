@@ -2,13 +2,18 @@
 
 ## Print logs
 
-Every log is printed with [tslog](https://tslog.js.org/).
-And it is saved as .json in the log folder **.simp/logs/**
+The last 7 logs are saved in json inside **.simp/logs/** . S/O [tslog](https://tslog.js.org/).
 
 Display last logs with the CLI.
 
 ```bash
 simp logs
+```
+
+or
+
+```bash
+simp logs --verbose
 ```
 
 The non-verbose "minimal" output looks actually like that.
@@ -21,14 +26,4 @@ And is likely to change for the better.
 ## File tree
 
 Hooks execution generates log files.
-Located in .simp/logs/[pipeline]/ and queriable with the cli.
-
-It's just a the standard cli stdout.
-
-## Comming soon
-
-Or display logs by pipeline
-
-```bash
-simp logs --pipeline <pipeline name>
-```
+Located in .simp/logs/

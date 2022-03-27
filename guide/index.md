@@ -47,10 +47,10 @@ simp hooks
 
 ## Config
 
-Here is an example of what could contain a basic config file.
+Here is an example of what could contain a basic config file (simp.config.mjs)
 
-```ts
-//simp.config.ts
+```js
+//simp.config.mjs
 export default {
   pipelines: [
     {

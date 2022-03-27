@@ -8,8 +8,8 @@ And many more automation.
 You can choose branch and action for which to trigger the pipeline.
 Actions are named according to [git-hooks](https://githooks.com/) names.
 
-```ts
-//simp.config.ts
+```js
+//simp.config.mjs
 ...
 
 pipelines: [
