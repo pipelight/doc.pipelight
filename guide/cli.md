@@ -36,7 +36,6 @@ Print Logs
 
 ```bash
 simp logs
-
 ```
 
 or
