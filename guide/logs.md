@@ -29,6 +29,12 @@ You can inspect logs by pipeline
 simp logs --pipeline production
 ```
 
+Or by branch
+
+```bash
+simp logs --branch master
+```
+
 ## File tree
 
 Hooks execution generates log files.
