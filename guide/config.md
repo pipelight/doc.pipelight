@@ -8,6 +8,7 @@ If a command fails, it will not stop the pipeline exuecution.
 Here 2nd step will always be executed even if 1st step fails.
 
 ```js
+//simp.config.mjs
 pipelines: [
   {
     name: "my_test",

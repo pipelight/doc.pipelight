@@ -253,9 +253,9 @@
     recursive-readdir "~2.2.2"
 
 "@supercharge/goodies@~1.10.0":
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/@supercharge/goodies/-/goodies-1.10.0.tgz#547d5d0fd68e4592ea0ee088e08eaee4c426f0dc"
-  integrity sha512-qpl0B70L3MwUSZAbv3wqKUfjJ484CDz1mIiXvlRHwlLd70X5TM6er5N7/6+0EIq7beCYGY8o2WsEJjhHwyGptg==
+  version "1.10.1"
+  resolved "https://registry.yarnpkg.com/@supercharge/goodies/-/goodies-1.10.1.tgz#969d1732f774027a104f2ea289eeb6372b8e1b87"
+  integrity sha512-v1TRTpFvcVsDnz2QhdY8VS86ht6XgaseZu5+E8ETe04A4Mym8ff+6cC6GL8aPBo6Ii86mtTa+8REoFD31L8A1g==
 
 "@types/estree@0.0.39":
   version "0.0.39"
@@ -1059,9 +1059,9 @@ globby@^11.0.4:
     slash "^3.0.0"
 
 graceful-fs@^4.1.6, graceful-fs@^4.2.0, graceful-fs@^4.2.4:
-  version "4.2.9"
-  resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.9.tgz#041b05df45755e587a24942279b9d113146e1c96"
-  integrity sha512-NtNxqUcXgpW2iMrfqSfR73Glt39K+BLwWsPs94yR63v45T0Wbej7eRmL5cWfwEgqXnmjQp3zaJTshdRW/qC2ZQ==
+  version "4.2.10"
+  resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.10.tgz#147d3a006da4ca3ce14728c7aefc287c367d7a6c"
+  integrity sha512-9ByhssR2fPVsNZj478qUUbKfmL0+t5BDVyjShtyZZLiK7ZDAArFFfopyOTj0M05wE2tJPisA4iTnnXl2YoPvOA==
 
 has-flag@^4.0.0:
   version "4.0.0"
@@ -1449,10 +1449,10 @@ signal-exit@^3.0.2:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.7.tgz#a9a1767f8af84155114eaabd73f99273c8f59ad9"
   integrity sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==
 
-simpcicd@^0.5.70:
-  version "0.5.70"
-  resolved "https://registry.yarnpkg.com/simpcicd/-/simpcicd-0.5.70.tgz#8b216610bdcbe7519705bf13ddfdf27d22e6c29a"
-  integrity sha512-cvzo8y+lbmsfXsI/URnTIR9QRQJ1GnZlawu0qwO2DaLZec1hOAMBUHwNv0O+ldn2kD18DQPuBsFhY7RWLoBmbw==
+simpcicd@^0.6.7:
+  version "0.6.7"
+  resolved "https://registry.yarnpkg.com/simpcicd/-/simpcicd-0.6.7.tgz#730bea7d23fe410873f02b146e26412a392b8fe1"
+  integrity sha512-4F0KqjRdJO0fsP5wIilhXECnWpo2N3OZBSVD7k4oUOAdsWIARLRj+VzL/8e0+2fFWlvGCEyrXhp7H7R+kcUcvg==
   dependencies:
     "@rollup/plugin-typescript" "^8.3.0"
     "@supercharge/fs" "^3.4.0"
@@ -1466,9 +1466,9 @@ simpcicd@^0.5.70:
     typescript "^4.5.5"
 
 simple-git@^3.2.4:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/simple-git/-/simple-git-3.4.0.tgz#dea49dfafbc16a67b26221917fca1caaeb976e4a"
-  integrity sha512-sBRdudUc1yvi0xQQPuHXc1L9gTWkRn4hP2bbc7q4BTxR502d3JJAGsDOhrmsBY+wAZAw5JLl82tx55fSWYE65w==
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/simple-git/-/simple-git-3.5.0.tgz#3c3538f4d7a1b3c8f3904412b12740bdcad9c8b1"
+  integrity sha512-fZsaq5nzdxQRhMNs6ESGLpMUHoL5GRP+boWPhq9pMYMKwOGZV2jHOxi8AbFFA2Y/6u4kR99HoULizSbpzaODkA==
   dependencies:
     "@kwsites/file-exists" "^1.1.1"
     "@kwsites/promise-deferred" "^1.1.1"
