@@ -8,7 +8,7 @@ export const nextConfig = {
       steps: [
         {
           name: "build",
-          commands: ["yarn", "yarn build"]
+          commands: ["pnpm install", "pnpm build"]
         },
         {
           name: "deploy",

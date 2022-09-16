@@ -11,19 +11,19 @@ simp --print-config
 Trigger a pipeline execution
 
 ```bash
-simp trigger --pipeline <pipeline name>
+simp pipeline --trigger <pipeline name>
 ```
 
 or use shorthand
 
 ```bash
-simp trigger -p <pipeline name>
+simp pipeline -t <pipeline name>
 ```
 
 Verbose pipeline execution.
 
 ```bash
-simp trigger --pipeline <pipeline name> --verbose
+simp pipeline -t <pipeline name> --verbose
 ```
 
 Generate hooks (Automation)

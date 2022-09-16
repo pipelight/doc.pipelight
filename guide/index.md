@@ -35,7 +35,7 @@ For short.
 This will trigger a pipeline execution
 
 ```bash
-simp trigger --pipeline <pipeline name>
+simp pipeline --trigger <pipeline name>
 ```
 
 This will transform your pipelines in git hooks.
