@@ -4,7 +4,7 @@ const remoteFoler = `Static/Perso/next.docs.simp.cicd`;
 export const nextConfig = {
   pipelines: [
     {
-      name: "next::deploy",
+      name: "next:deploy",
       steps: [
         {
           name: "build",
