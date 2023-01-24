@@ -6,7 +6,7 @@ const remoteFoler = `Static/Perso/docs.simp.cicd`;
 export const defaultConfig = defineConfig({
   pipelines: [
     {
-      name: "default",
+      name: "default:deploy",
       steps: [
         {
           name: "build",
@@ -20,10 +20,12 @@ export const defaultConfig = defineConfig({
           ]
         }
       ],
-      trigger: {
-        branches: ["master", "main"],
-        actions: ["pre-push"]
-      }
+      triggers: [
+        {
+          branches: ["master", "main"],
+          actions: ["pre-push"]
+        }
+      ]
     }
   ]
 });
