@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /images/simp.png
+heroImage: /images/pipelight.png
 actionText: Get Started
 actionLink: /guide/
 
