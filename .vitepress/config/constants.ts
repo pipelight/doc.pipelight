@@ -8,5 +8,5 @@ export const metaData = {
   title: "Pipelight",
   description: "A Rust based CICD tool",
   site,
-  image: `${site}/images/simp_light.png`
+  image: `${site}/images/pipelight.png`
 };

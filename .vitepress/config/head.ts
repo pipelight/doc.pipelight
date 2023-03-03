@@ -8,16 +8,16 @@ const head: HeadConfig[] = [
     {
       name: "keywords",
       content:
-        "simpcicd, simp, cicd, typescript, continuous, delivery, integration, deployment"
+        "pipelight, cicd, typescript, continuous, delivery, integration, deployment"
     }
   ],
-  ["link", { rel: "icon", type: "image/png", href: "/images/simp.png" }],
+  ["link", { rel: "icon", type: "image/png", href: "/images/pipelight.png" }],
 
   ["meta", { name: "HandheldFriendly", content: "True" }],
   ["meta", { name: "MobileOptimized", content: "320" }],
   ["meta", { name: "theme-color", content: "#f28fbc" }],
 
-  ["meta", { name: "twitter:card", content: "/images/simp_light.png" }],
+  ["meta", { name: "twitter:card", content: "/images/pipelight.png" }],
   ["meta", { name: "twitter:site", content: metaData.site }],
   ["meta", { name: "twitter:title", value: metaData.title }],
   ["meta", { name: "twitter:description", value: metaData.description }],
