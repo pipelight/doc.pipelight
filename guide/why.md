@@ -1,15 +1,4 @@
-# Why Simp ?
-
-## Why another cicd tool ?
-
-As my projects were all so small,I used to test and deploy them with bash/pyhton scripts.
-
-But i needed automation and verbose logs.
-
-I know there is a lot of existing CICD tools but i'm affraid of
-either the install process or the documentation.
-
-So I came up with a "Custom Command Line Wrapper"
+# Why Pipelight ?
 
 ## What it is
 
@@ -21,19 +10,24 @@ Basically it's just a glue between all your preexisting tools.
 ## What it does
 
 It takes "bash" commands.
-And triggers it when you demand it.
+And triggers it when you decide.
 
 ## Who is it for
 
-For devs who don't want to mess with big CICD names for now.
+For power users.
+Because, it's easy to install, easy on computer ressources, and it's easy to dive into
+
+For lazy devs.
+Who don't want to mess with cumbersom CICD sofware for now.
+
 Devs who need simplicity but efficency though.
 
 ## Yes but how ?
 
 It uses a config file and executes the commands it contains.
 
-```js
-//simp.config.mjs;
+```ts
+//pipelight.config.ts;
 pipelines: [
   {
     name: "test",
@@ -41,25 +35,18 @@ pipelines: [
       {
         name: "build",
         commands: ["yarn install", "yarn build"]
-        // See ?! Here are your bash commands! :D
       }
     ],
-    trigger: {
-      branches: ["main"],
-      actions: ["push"]
-    }
+    triggers: [
+      {
+        branches: ["master", "main"],
+        actions: ["push"]
+      }
+    ]
   }
 ];
 ```
 
-It runs the pipeline as a cascade like:
-pipelines -> steps -> commands
-
-It stops whenever a step/command fails and return a verbose logs with stacktrace.
-
-## Furthermore
-
-If you still cannot figure out how this globally works.
-Read further.
-
-Or if I wasn't clear enough, please tell me.
+I won't make the affront to explain you how a pipeline works.
+But it sticks to standards raised by most known CICD tools (Drone.io, Gitlab CICD...)
+The normal execution flow stops whenever a command fails. (pipeline -> step -> command)
