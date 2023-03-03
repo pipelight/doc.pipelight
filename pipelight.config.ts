@@ -1,3 +1,4 @@
+import type { Config } from "npm:pipelight";
 // SSh helper
 const ssh = ({ host, cmd }: any) => {
   const params = "ssh -o TCPKeepAlive=no -C";
@@ -8,21 +9,22 @@ const params = {
   host: "linode",
   version: version,
   docker: {
+    network: "127.0.0.1",
     container: {
       name: `${version}.doc.pipelight.com`,
       dns: "doc.pipelight.areskul.com"
     },
     image: {
-      name: `${version}_doc_pipelight_com`
+      name: `pipelight/doc:${version}`
     },
     port: {
-      out: 8080,
+      out: 9080,
       in: 80
     }
   }
 };
 
-const makeConfig = ({ host, version, docker }: any) => {
+const makeConfig = ({ host, version, docker }: any): Config => {
   return {
     pipelines: [
       {
@@ -38,6 +40,7 @@ const makeConfig = ({ host, version, docker }: any) => {
               `docker build \
                 --label='traefik.enable=true' \
                 --label='traefik.http.routers.default.rule=Host("${docker.container.dns}")' \
+                --label='traefik.http.routers.default.tls=true' \
                 -t ${docker.image.name} .vitepress/dist`,
               `docker save ${docker.image.name} |ssh -C ${host} docker load`
             ]
@@ -58,8 +61,22 @@ const makeConfig = ({ host, version, docker }: any) => {
             commands: [
               ssh({
                 host: host,
-                cmd: `docker run -d -p ${docker.port.out}:${docker.port.in} \
+                cmd: `docker run -d -p ${docker.network}:${docker.port.out}:${docker.port.in} \
                   --name=${docker.container.name} ${docker.image.name}`
+              })
+            ]
+          },
+          {
+            name: `update remote nginx configuration`,
+            commands: [
+              `scp ./public/pipelight.nginx.conf ${host}:/etc/nginx/sites-enabled/pipelight.conf`,
+              ssh({
+                host: host,
+                cmd: "sudo nginx -t"
+              }),
+              ssh({
+                host: host,
+                cmd: "sudo systemctl restart nginx"
               })
             ]
           }

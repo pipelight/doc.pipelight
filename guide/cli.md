@@ -1,51 +1,66 @@
 # Master the Cli
 
-## Useful commands
+The cli is made on top of Rust clap-rs.
+So it is well self documented
 
-Print config with:
+## Most useful commands
+
+These are the 3 commands you'll combine to speed up your pipeline development process.
+
+Lint your config file with
 
 ```bash
-simp --print-config
+pipelight ls
 ```
 
-Trigger a pipeline execution
+Inspect your pipeline
 
 ```bash
-simp pipeline --trigger <pipeline name>
+pipelight ls <pipeline_name>
 ```
 
-or use shorthand
+Run it in background
 
 ```bash
-simp pipeline -t <pipeline name>
+pipelight ls <pipeline_name>
 ```
 
-Verbose pipeline execution.
+and then compulsivly check logs
 
 ```bash
-simp pipeline -t <pipeline name> --verbose
+pipelight logs -vvv
 ```
 
-Generate hooks (Automation)
+## Other commands
+
+Simulate the execution of a specified git-hook to trigger associated pipelines
 
 ```bash
-simp hooks
+pipelight trigger <git_hook_name>
 ```
 
-Print Logs
+Under the hood,
+every command checks if hooks are enabled.
+If something isn't working on a fresh directory. At least run:
 
 ```bash
-simp logs
+pipelight ls
 ```
 
-or
+Print colorful raw logs
 
 ```bash
-simp logs --verbose
+pipelight logs --json | jq
 ```
 
-More options with help flag.
+Discover some options by using the help flag.
 
 ```bash
-simp --help
+pipelight --help
+```
+
+on subcommands too.
+
+```bash
+pipelight run --help
 ```

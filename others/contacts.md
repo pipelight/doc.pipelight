@@ -1,3 +1,3 @@
-# Contact us
+# Contact me
 
-Join the [discord](https://discord.gg/swNRD3Xysz)
+Send a mail to areskul@areskul.com
