@@ -20,7 +20,7 @@ cargo build --release
 cp target/release/pipelight* /<my_bin_directory>/
 ```
 
-## Remove
+## Uninstall
 
 With an AUR package manager
 
@@ -34,9 +34,7 @@ Or delete binaries
 rm /<my_bin_directory>/pipelight*
 ```
 
-## Cli
-
-### Usage
+## Usage
 
 ```bash
 # in your favorite shell
@@ -66,36 +64,9 @@ pipelight logs -vvv
 </p>
 _The actulal pipeline to deploy this website._
 
-## Config
+## Config file
 
-Here is an example of what could contain a basic config file (simp.config.mjs)
-
-```ts
-//pipelight.config.ts
-
-export default {
-  pipelines: [
-    {
-      name: "test",
-      steps: [
-        {
-          name: "build",
-          commands: ["yarn install", "yarn build"]
-        }
-      ],
-      trigger: {
-        branches: ["master", "dev"],
-        actions: ["pre-push", "pre-commit"]
-      }
-    }
-  ]
-};
-```
-
-### Typings
-
-Supports Typescript.
-Import type definition from npm package.
+Here is an example of a basic config file.
 
 ```ts
 //pipelight.config.ts

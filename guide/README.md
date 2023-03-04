@@ -1,6 +1,6 @@
 # Pipelight
 
-A Lightweight CI/CD tool.
+A Lightweight CICD tool.
 
 Write pipelines in Javascript.
 And trigger them automatically on git action.

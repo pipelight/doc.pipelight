@@ -6,7 +6,7 @@ const site = isProd
 
 export const metaData = {
   title: "Pipelight",
-  description: "A Rust based CICD tool",
+  description: "A Lightweight CICD tool",
   site,
   image: `${site}/images/pipelight.png`
 };

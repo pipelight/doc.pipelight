@@ -1,5 +1,33 @@
 # Configuration in depth
 
+## Typings
+
+Supports Typescript.
+Import type definition from npm package.
+
+```ts
+//pipelight.config.ts
+import { Config } from "npm:pipelight";
+const config: Config = {
+  pipelines: [
+    {
+      name: "test",
+      steps: [
+        {
+          name: "build",
+          commands: ["yarn install", "yarn build"]
+        }
+      ],
+      trigger: {
+        branches: ["master", "dev"],
+        actions: ["pre-push", "pre-commit"]
+      }
+    }
+  ]
+};
+export default config;
+```
+
 ## Typescript types definition
 
 Here is the complete type definition
