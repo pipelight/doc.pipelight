@@ -32,19 +32,22 @@ It becomes pretty simple to share variables/env between tools and one click full
 
 ## Install
 
-From the AUR
+Package only available on Arch linux.
+(Available soon on Debian/Ubuntu and Fedora)
+
+Install from the AUR
 
 ```sh
 paru -S pipelight
 ```
 
-From Source
+Or from source
 
 ```sh
 git clone <this_repo>
 cd pipelight
 cargo build --release
-cp target/release/pipelight* /my_bin_directory/
+cp target/release/pipelight* /<my_bin_directory>/
 ```
 
 ---
@@ -78,15 +81,15 @@ const config = {
       steps: [
         {
           name: "list working directory",
-          commands: ["ls -alh"],
+          commands: ["ls -alh"]
         },
         {
           name: "get working directory",
-          commands: ["pwd"],
-        },
-      ],
-    },
-  ],
+          commands: ["pwd"]
+        }
+      ]
+    }
+  ]
 };
 export default config;
 ```
@@ -146,11 +149,11 @@ const config = {
       triggers: [
         {
           actions: ["pre-push", "pre-commit"],
-          branches: ["master"],
-        },
-      ],
-    },
-  ],
+          branches: ["master"]
+        }
+      ]
+    }
+  ]
 };
 export default config;
 ```
@@ -222,19 +225,19 @@ const config = {
       steps: [
         {
           name: "test",
-          commands: ["vitest"],
+          commands: ["vitest"]
         },
         {
           name: "build",
-          commands: ["vite build"],
+          commands: ["vite build"]
         },
         {
           name: "send",
-          commands: ["rsync local_files to_my_remote_server"],
-        },
-      ],
-    },
-  ],
+          commands: ["rsync local_files to_my_remote_server"]
+        }
+      ]
+    }
+  ]
 };
 export default config;
 ```
@@ -301,11 +304,11 @@ Overuse string interpolation!
 const params = {
   remote: {
     domain: "myserver.com",
-    path: "/remote/directory",
+    path: "/remote/directory"
   },
   local: {
-    path: "/my/build/directory",
-  },
+    path: "/my/build/directory"
+  }
 };
 
 const config = {
@@ -316,12 +319,12 @@ const config = {
         {
           name: "send files to server",
           commands: [
-            `scp -r ${params.local.path} ${params.remote.domain}@${params.remote.path}`,
-          ],
-        },
-      ],
-    },
-  ],
+            `scp -r ${params.local.path} ${params.remote.domain}@${params.remote.path}`
+          ]
+        }
+      ]
+    }
+  ]
 };
 export default config;
 ```
@@ -404,11 +407,11 @@ import { makeDefaultConfig } from ".pipelight/config/default.mjs";
 const params = {
   remote: {
     domain: "myserver.com",
-    path: "/remote/directory",
+    path: "/remote/directory"
   },
   local: {
-    path: "/my/build/directory",
-  },
+    path: "/my/build/directory"
+  }
 };
 
 const config = makeConfig(params);

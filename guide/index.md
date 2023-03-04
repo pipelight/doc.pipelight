@@ -2,24 +2,36 @@
 
 ## Install
 
-Install cli
+Package only available on Arch linux.
+(Available soon on Debian/Ubuntu and Fedora)
+
+Install from the AUR
 
 ```bash
-yarn gloabl add simpcicd
+paru -S pipelight
 ```
 
-```bash
-npm install -g simpcicd
+Or from source
+
+```sh
+git clone <this_repo>
+cd pipelight
+cargo build --release
+cp target/release/pipelight* /<my_bin_directory>/
 ```
 
-And helpers
+## Remove
+
+With an AUR package manager
 
 ```bash
-yarn add -D simpcicd
+paru -Rcns pipelight
 ```
 
-```bash
-npm install --save-dev simpcicd
+Or delete binaries
+
+```sh
+rm /<my_bin_directory>/pipelight*
 ```
 
 ## Cli
@@ -28,29 +40,34 @@ npm install --save-dev simpcicd
 
 ```bash
 # in your favorite shell
-simp <command> <options> <args>
+pipelight <command> <options> <args>
 ```
 
-For short.
+List available pipelines
+
+```bash
+pipelight ls
+```
+
 This will trigger a pipeline execution
 
 ```bash
-simp pipeline --trigger <pipeline name>
+pipelight run <pipeline_name>
 ```
 
-This will transform your pipelines in git hooks.
-So that triggering is automated according to your git actions.
+Check execution
 
 ```bash
-simp hooks
+pipelight logs -vvv
 ```
 
 ## Config
 
 Here is an example of what could contain a basic config file (simp.config.mjs)
 
-```js
-//simp.config.mjs
+```ts
+//pipelight.config.ts
+
 export default {
   pipelines: [
     {
@@ -68,4 +85,32 @@ export default {
     }
   ]
 };
+```
+
+### Typings
+
+Supports Typescript.
+Import type definition from npm package.
+
+```ts
+//pipelight.config.ts
+import { Config } from "npm:pipelight";
+const config: Config = {
+  pipelines: [
+    {
+      name: "test",
+      steps: [
+        {
+          name: "build",
+          commands: ["yarn install", "yarn build"]
+        }
+      ],
+      trigger: {
+        branches: ["master", "dev"],
+        actions: ["pre-push", "pre-commit"]
+      }
+    }
+  ]
+};
+export default config;
 ```
