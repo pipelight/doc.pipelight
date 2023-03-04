@@ -1,7 +1,7 @@
 # Master the Cli
 
-The cli is made on top of Rust clap-rs.
-So it is well self documented
+The cli is made on top of [clap](https://docs.rs/clap/latest/clap/).
+So it is well self documented.
 
 ## Most useful commands
 
@@ -22,7 +22,7 @@ pipelight ls <pipeline_name>
 Run it in background
 
 ```bash
-pipelight ls <pipeline_name>
+pipelight run <pipeline_name>
 ```
 
 and then compulsivly check logs
@@ -41,7 +41,7 @@ pipelight trigger <git_hook_name>
 
 Under the hood,
 every command checks if hooks are enabled.
-If something isn't working on a fresh directory. At least run:
+If git-hooks are not working on a fresh directory. At least run:
 
 ```bash
 pipelight ls
@@ -51,6 +51,12 @@ Print colorful raw logs
 
 ```bash
 pipelight logs --json | jq
+```
+
+Filter logs on pipeline logs
+
+```bash
+pipelight logs <pipeline_name>
 ```
 
 Discover some options by using the help flag.

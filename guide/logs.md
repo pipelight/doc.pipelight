@@ -2,40 +2,35 @@
 
 ## Print logs
 
-The last 10 logs are saved in json inside **.simp/logs/** . S/O [tslog](https://tslog.js.org/).
-
-Display last logs with the CLI.
+Display pretty logs
 
 ```bash
 simp logs
 ```
 
-or
+and increase verbosity to get your desired level of details.
 
 ```bash
-simp logs --verbose
+simp logs -v
 ```
 
-The non-verbose "minimal" output looks actually like that.
-And is likely to change for the better.
-
 <p align="center">
-  <img class="terminal" src="https://simp.areskul.com/images/logs.png" alt="pretty logs">
+  <img class="terminal" src="https://doc.pipelight.areskul.com/images/logs.png" alt="pretty verbose logs picture">
 </p>
 
 You can inspect logs by pipeline
 
 ```bash
-simp logs --pipeline production
+simp logs <pipeline_name>
 ```
 
-Or by branch
+And delete old logs with
 
 ```bash
-simp logs --branch master
+simp logs rm
 ```
 
-## File tree
+## Generated files
 
-Hooks execution generates log files.
-Located in .simp/logs/
+Pipeline execution generates log files.
+Located in .pipelight/logs/<pipeline_uuid>.json

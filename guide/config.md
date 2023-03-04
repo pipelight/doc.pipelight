@@ -2,20 +2,20 @@
 
 ## Non-Blocking Step execution
 
-A non-blocking step will try to execute every commands.
-If a command fails, it will not stop the pipeline exuecution.
+A non_blocking step will not stop pipeline execution on failure.
 
-Here 2nd step will always be executed even if 1st step fails.
+Here **second** step will always be executed even if **first** step fails.
 
-```js
-//simp.config.mjs
+```ts
+//pipelight.config.ts
+
 pipelines: [
   {
     name: "my_test",
     steps: [
       {
         name: "first",
-        "non-blocking" : true,
+        non_blocking : true,
         commands: [...my_commands]
       }
       {
