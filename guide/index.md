@@ -55,11 +55,16 @@ This will trigger a pipeline execution
 pipelight run <pipeline_name>
 ```
 
-Check execution
+Compulsively check execution
 
 ```bash
 pipelight logs -vvv
 ```
+
+<p align="center">
+  <img class="terminal" src="https://doc.pipelight.areskul.com/images/logs.png" alt="pretty verbose logs picture">
+</p>
+_The actulal pipeline to deploy this website._
 
 ## Config
 

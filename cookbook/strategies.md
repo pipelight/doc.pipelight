@@ -1,3 +1,131 @@
+# Tips
+
+## Make it soft on the eye
+
+For the sake of reusability and when you need to deploy in multiple evironnements.
+
+Overuse string interpolation!
+
+```ts
+//pipelight.config.ts
+const params = {
+  remote: {
+    domain: "myserver.com",
+    path: "/remote/directory"
+  },
+  local: {
+    path: "/my/build/directory"
+  }
+};
+
+const config = {
+  pipelines: [
+    {
+      name: "deploy",
+      steps: [
+        {
+          name: "send files to server",
+          commands: [
+            `scp -r ${params.local.path} ${params.remote.domain}@${params.remote.path}`
+          ]
+        }
+      ]
+    }
+  ]
+};
+export default config;
+```
+
+Overuse string interpolation, and parameter destructuring.
+
+```ts
+//pipelight.config.ts
+const params = {
+  remote: {
+    domain: "myserver.com",
+    path: "/remote/directory"
+
+  },
+  local: {
+    path: "/my/build/directory"
+  }
+};
+
+const makeConfig = ({remote, local}) = > {
+  pipelines: [
+    {
+      name: "deploy",
+      steps: [
+        {
+          name: `send files to ${remote.domain}`,
+          commands: [
+            `scp -r ${local.path} ${remote.domain}@${remote.path}`
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+const config = makeConfig(params)
+
+export default config;
+```
+
+## Split your config
+
+Split your config into multiple files and separate concerns.
+Overuse string interpolation, parameter destructuring and import/export ESM synthax.
+
+Export here
+
+```ts
+//.pipelight/config/default.ts
+
+const makeDefaultConfig = ({remote, local}) = > {
+  pipelines: [
+    {
+      name: "deploy",
+      steps: [
+        {
+          name: `send files to ${remote.domain}`,
+          commands: [
+            `scp -r ${local.path} ${remote.domain}@${remote.path}`
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+export {
+  makeDefaultConfig
+}
+
+```
+
+And import here
+
+```ts
+//pipelight.config.ts
+
+import { makeDefaultConfig } from ".pipelight/config/default.mjs";
+
+const params = {
+  remote: {
+    domain: "myserver.com",
+    path: "/remote/directory"
+  },
+  local: {
+    path: "/my/build/directory"
+  }
+};
+
+const config = makeConfig(params);
+
+export default config;
+```
+
 # Deployment Stategies
 
 ## Dummy deploy through with (scp/rsync)

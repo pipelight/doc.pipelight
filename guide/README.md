@@ -72,8 +72,8 @@ Pipelight is easy to install, fast, and usable on every project.
 
 Create a config file at the root of your project
 
-```mjs
-//pipelight.config.mjs
+```ts
+//pipelight.config.ts
 const config = {
   pipelines: [
     {
@@ -299,8 +299,8 @@ For the sake of reusability and when you need to deploy in multiple evironnement
 
 Overuse string interpolation!
 
-```mjs
-//pipelight.config.mjs
+```ts
+//pipelight.config.ts
 const params = {
   remote: {
     domain: "myserver.com",
@@ -331,8 +331,8 @@ export default config;
 
 Overuse string interpolation, and parameter destructuring.
 
-```mjs
-//pipelight.config.mjs
+```ts
+//pipelight.config.ts
 const params = {
   remote: {
     domain: "myserver.com",
@@ -372,8 +372,8 @@ Overuse string interpolation, parameter destructuring and import/export ESM synt
 
 Export here
 
-```mjs
-//.pipelight/config/default.mjs
+```ts
+//.pipelight/config/default.ts
 
 const makeDefaultConfig = ({remote, local}) = > {
   pipelines: [
@@ -399,8 +399,8 @@ export {
 
 And import here
 
-```mjs
-//pipelight.config.mjs
+```ts
+//pipelight.config.ts
 
 import { makeDefaultConfig } from ".pipelight/config/default.mjs";
 
@@ -442,8 +442,8 @@ you just have to return an object that satisfies the Config type.
 
 When you want to put stuffs from your computer to your server
 
-```mjs
-//pipelight.config.mjs
+```ts
+//pipelight.config.ts
 const config = {
   pipelines: [
     {
@@ -494,8 +494,8 @@ Install pipelight on your server and adapt the hooks.
 
 Build docker images where the power resides, which mean locally, and not on remote tiny server.
 
-```mjs
-//pipelight.config.mjs
+```ts
+//pipelight.config.ts
 const params = {
   remote: "myremote.com"
   image: {

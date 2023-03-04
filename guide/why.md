@@ -1,26 +1,34 @@
-# Why Pipelight ?
+# Pipelight
 
-## What it is
+A Lightweight CI/CD tool.
 
-It's a tool to execute routines.
-Like deploying your site online, executing tests...
+Write pipelines in Javascript.
+And trigger them automatically on git action.
 
-Basically it's just a glue between all your preexisting tools.
+[Full Documentation](https://pipelight.areskul.com) in progress.
 
-## What it does
+## What it is.
 
-It takes "bash" commands.
-And triggers it when you decide.
+A Rust program that execute "js strings parsed as bash commands" on a git event.
 
-## Who is it for
+## Motivation
 
-For power users.
-Because, it's easy to install, easy on computer ressources, and it's easy to dive into
+### Lazy
 
-For lazy devs.
-Who don't want to mess with cumbersom CICD sofware for now.
+Config is written in Js so lots of loops and variables can be used
+to end the struggle with CI/CD pipelines written in configuration optimised languages.
 
-Devs who need simplicity but efficency though.
+### Frugal Power User
+
+I've been working with quite small servers, that struggle to build docker images, forget about kubernetes, graphana and so on.
+But I have local powerful computers.
+Pipelight allows me to git-push from a machine, build on another, and send the result on my tiny server, so I don't have to spend much in Cloud ressources.
+
+### Heavy work
+
+When I need to deploy a machine and install and configure everything to deploy my apps in different envs..
+I use it with docker, ansible, vagrant and others.
+It becomes pretty simple to share variables/env between tools and one click full deployement.
 
 ## Yes but how ?
 
@@ -47,6 +55,4 @@ pipelines: [
 ];
 ```
 
-I won't make the affront to explain you how a pipeline works.
-But it sticks to standards raised by most known CICD tools (Drone.io, Gitlab CICD...)
-The normal execution flow stops whenever a command fails. (pipeline -> step -> command)
+Here pipelines configuration sticks to standards raised by most known CICD tools (Drone.io, Gitlab CICD...)
