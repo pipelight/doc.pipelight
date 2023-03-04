@@ -62,7 +62,7 @@ pipelight logs -vvv
 ```
 
 <p align="center">
-  <img class="terminal" src="https://doc.pipelight.areskul.com/images/log_level1.png" alt="pretty verbose logs picture">
+  <img class="terminal" src="https://doc.pipelight.areskul.com/images/log_level3.png" alt="pretty verbose logs picture">
 </p>
 _The actulal pipeline to deploy this website._
 

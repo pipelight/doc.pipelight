@@ -6,23 +6,23 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
       text: "Guide",
       children: [
         {
-          text: "Why Simp ?",
-          link: "/guide/why"
-        },
-        {
           text: "Getting Started",
           link: "/guide/"
         },
         {
-          text: "Master the Cli",
+          text: "Why Pipelight ?",
+          link: "/guide/why"
+        },
+        {
+          text: "Command line usage",
           link: "/guide/cli"
         },
         {
-          text: "Master the Pipe",
+          text: "Configuration in depth",
           link: "/guide/config"
         },
         {
-          text: "Git Hooks (Automation)",
+          text: "Triggers (Automation)",
           link: "/guide/hooks"
         },
         {
@@ -32,21 +32,6 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
         {
           text: "Generated files",
           link: "/guide/storage"
-        },
-        {
-          text: "Cookbook",
-          link: "/cookbook/strategies"
-        }
-      ]
-    }
-  ],
-  "/api": [
-    {
-      text: "API References",
-      children: [
-        {
-          text: "Helpers",
-          link: "/api/"
         },
         {
           text: "Cookbook",
