@@ -9,25 +9,31 @@ These are the 3 commands you'll combine to speed up your pipeline development pr
 
 Lint your config file with
 
-```bash
+```sh
 pipelight ls
 ```
 
 Inspect your pipeline
 
-```bash
+```sh
 pipelight ls <pipeline_name>
 ```
 
 Run it in background
 
-```bash
+```sh
 pipelight run <pipeline_name>
+```
+
+Abort pipeline execution
+
+```sh
+pipelight stop <pipeline_name>
 ```
 
 and then compulsivly check logs
 
-```bash
+```sh
 pipelight logs -vvv
 ```
 

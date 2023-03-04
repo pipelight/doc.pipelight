@@ -5,11 +5,17 @@ A Lightweight CICD tool.
 Write pipelines in Javascript.
 And trigger them automatically on git action.
 
-[Full Documentation](https://pipelight.areskul.com) in progress.
+Define, Run pipe, check logs, without living your terminal.
+
+[Full Documentation](https://doc.pipelight.areskul.com) in progress.
 
 ## What it is.
 
+A Typescript bash wrapper.
 A Rust program that execute "js strings parsed as bash commands" on a git event.
+And return pretty logs.
+
+...Same kind of software as Jenkins,Drone.io,Gitlab CICD ?
 
 ## Motivation
 
@@ -26,9 +32,9 @@ Pipelight allows me to git-push from a machine, build on another, and send the r
 
 ### Heavy work
 
-When I need to deploy a machine and install and configure everything to deploy my apps in different envs..
+When I need to deploy a machine, install and configure everything to deploy my apps in different envs..
 I use it with docker, ansible, vagrant and others.
-It becomes pretty simple to share variables/env between tools and one click full deployement.
+It becomes pretty simple to share variables/env between tools and create a one click full deployment.
 
 ## Install
 
@@ -106,10 +112,10 @@ or
 pipelight ls -vvvv
 ```
 
-Trigger a specific pipeline execution
+Run a pipeline
 
 ```sh
-pipelight run my_pipeline
+pipelight run <pipeline_name>
 ```
 
 Pretty print the pipeline status
@@ -117,8 +123,6 @@ Pretty print the pipeline status
 ```sh
 pipelight logs
 ```
-
-/// Insert log screenshot
 
 Verbosity can be increased
 
@@ -129,7 +133,7 @@ pipelight logs -vvvv
 Abort pipeline execution
 
 ```sh
-pipelight stop my_pipeline
+pipelight stop <pipeline_name>
 ```
 
 ## Triggers
@@ -160,44 +164,6 @@ export default config;
 
 Define triggers as combinations of branch-name and git-hooks.
 
-# Documentation
-
-## Types
-
-The only constraint of pipelight is to "default export" an Object of type Config.
-The second only constraint is that different Pipelines can't have the same name.
-
-Here "?" means optionnal property in Typescript
-
-```ts
-type Config {
-  pipelines?: [Pipeline]
-}
-type Pipeline {
-  name: String, \\ Must be
-  steps: [Step]
-  triggers?: [Trigger]
-}
-type Step {
-  command: [String]
-}
-
-struct Trigger {
-  branches: [String],
-  actions?: [Hook],
-}
-
-eum Hook {
-  "pre-push",
-  "pre-commit",
-    ...
-  // every git-hook
-}
-```
-
-For the sake of readability,
-it is a simplified object that omit success/failure/abortion callbacks and parallelism special types.
-
 ## How it works
 
 Think of it as a bash wrapper.
@@ -216,9 +182,10 @@ But at some point, this method lakes verbosity, and automation...
 
 Just put your commands into a Pipeline object.
 
-```mjs
-//pipelight.config.mjs
-const config = {
+```ts
+//pipelight.config.ts
+import { Config } from "npm:pipelight";
+const config: Config = {
   pipelines: [
     {
       name: "deploy",

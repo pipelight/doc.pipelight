@@ -96,6 +96,33 @@ export type {
 };
 ```
 
+## Parallel steps execution
+
+Trigger parallel execution by declaring a Parallel object that contains multiple Steps.
+
+```ts
+//pipelight.config.ts
+pipelines: [
+  {
+    name: "my_test",
+    steps: [
+      {
+        parallel: [
+          {
+            name: "first",
+            commands: [...my_commands]
+          },
+          {
+            name: "second",
+            commands: [...my_commands]
+          }
+        ]
+      }
+    ]
+  }
+];
+```
+
 ## Non-Blocking Step execution
 
 A non_blocking step will not stop pipeline execution on failure.
@@ -104,16 +131,15 @@ Here **second** step will always be executed even if **first** step fails.
 
 ```ts
 //pipelight.config.ts
-
 pipelines: [
   {
     name: "my_test",
     steps: [
       {
         name: "first",
-        non_blocking : true,
+        non_blocking: true,
         commands: [...my_commands]
-      }
+      },
       {
         name: "second",
         commands: [...my_commands]
@@ -121,4 +147,42 @@ pipelines: [
     ]
   }
 ];
+```
+
+## Pipeline Fallbacks
+
+Pipelines and steps have special fallbacks:
+
+- on_failure
+- on_success
+- on_abortion
+
+```ts
+//pipelight.config.ts
+const steps: Step[] = [
+  {
+    name: "send me an email",
+    commands: ""
+  }
+];
+const config: Config = {
+  pipelines: [
+    {
+      name: "my_test",
+      on_failure: steps,
+      on_success: steps,
+      on_abortion: steps,
+      steps: [
+        {
+          name: "first",
+          commands: [...my_commands]
+        },
+        {
+          name: "second",
+          commands: [...my_commands]
+        }
+      ]
+    }
+  ]
+};
 ```

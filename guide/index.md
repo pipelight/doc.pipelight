@@ -5,13 +5,21 @@
 Package only available on Arch linux.
 (Available soon on Debian/Ubuntu and Fedora)
 
-Install from the AUR
+Install from the AUR:
 
 ```bash
 paru -S pipelight
 ```
 
-Or from source
+Or from source:
+
+First install dependencies.
+
+```sh
+apt-get install deno
+```
+
+Then clone and build source code.
 
 ```sh
 git clone <this_repo>
