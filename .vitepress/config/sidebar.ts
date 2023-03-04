@@ -32,10 +32,6 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
         {
           text: "Generated files",
           link: "/guide/storage"
-        },
-        {
-          text: "Cookbook",
-          link: "/cookbook/strategies"
         }
       ]
     }
@@ -45,8 +41,8 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
       text: "CookBook",
       children: [
         {
-          text: "Deployments",
-          link: "/cookbook/strategies"
+          text: "Tips",
+          link: "/cookbook/tips"
         }
       ]
     }

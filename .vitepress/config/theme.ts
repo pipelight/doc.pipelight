@@ -3,8 +3,8 @@ import { nav } from "./nav";
 import type { DefaultTheme } from "@/config";
 
 const themeConfig: DefaultTheme.Config = {
-  logo: "/images/simp.png",
-  repo: "areskul/simpcicd",
+  logo: "/images/pipelight.png",
+  repo: "pipelight/pipelight",
   docsBranch: "master",
   nav,
   sidebar
