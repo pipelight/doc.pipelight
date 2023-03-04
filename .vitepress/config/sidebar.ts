@@ -32,6 +32,10 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
         {
           text: "Generated files",
           link: "/guide/storage"
+        },
+        {
+          text: "Cookbook",
+          link: "/cookbook/tips"
         }
       ]
     }

@@ -7,7 +7,7 @@ export const nav: DefaultTheme.Config["nav"] = [
   },
   {
     text: "Cookbook",
-    link: "/cookbook/"
+    link: "/cookbook/tips"
   },
   {
     text: "Contacts",
