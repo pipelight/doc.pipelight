@@ -5,7 +5,7 @@
 Display pretty logs
 
 ```bash
-simp logs
+pipelight logs
 ```
 
 <p align="center">
@@ -15,7 +15,7 @@ simp logs
 and increase verbosity to get your desired level of details.
 
 ```bash
-simp logs -v
+pipelight logs -v
 ```
 
 <p align="center">
@@ -23,7 +23,7 @@ simp logs -v
 </p>
 
 ```bash
-simp logs -vv
+pipelight logs -vv
 ```
 
 <p align="center">
@@ -33,19 +33,19 @@ simp logs -vv
 The maximum log level displays commands result.
 
 ```bash
-simp logs -vvv
+pipelight logs -vvv
 ```
 
 You can inspect logs by pipeline
 
 ```bash
-simp logs <pipeline_name>
+pipelight logs <pipeline_name>
 ```
 
 And delete old logs with
 
 ```bash
-simp logs rm
+pipelight logs rm
 ```
 
 ## Generated files
