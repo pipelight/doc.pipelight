@@ -15,7 +15,7 @@ A Typescript bash wrapper.
 A Rust program that execute "js strings parsed as bash commands" on a git event.
 And return pretty logs.
 
-...Same kind of software as Jenkins,Drone.io,Gitlab CICD ?
+...tries to be the same kind of software as Jenkins,Drone.io,Gitlab CICD
 
 ## Motivation
 
@@ -28,7 +28,7 @@ to end the struggle with CI/CD pipelines written in configuration optimised lang
 
 I've been working with quite small servers, that struggle to build docker images, forget about kubernetes, graphana and so on.
 But I have local powerful computers.
-Pipelight allows me to git-push from a machine, build on another, and send the result on my tiny server, so I don't have to spend much in Cloud ressources.
+Pipelight allows me to git-push from a machine, build on another, and send the result on my tiny server, so I don't have to spend much money in Cloud ressources.
 
 ### Heavy work
 
@@ -62,13 +62,12 @@ cp target/release/pipelight* /<my_bin_directory>/
 
 If you're too "zero attention genZ tiktok user" to go further in the documentation.
 Just read the [USAGE](#USAGE) section and rush to the CLI.
-It will yell a few times until your config file is good (don't forget to increase verbosity to debug).
+It will yell a few times until your config file is good to go.
 But in the end it will run smooth.
 Enjoy!
 
 In short:
-
-Pipelight is easy to install, fast, and usable on every project.
+Pipelight is easy to install, fast, and usable for every kind of project.
 
 ---
 
@@ -109,7 +108,7 @@ pipelight ls
 or
 
 ```sh
-pipelight ls -vvvv
+pipelight ls -vvv
 ```
 
 Run a pipeline
@@ -118,17 +117,22 @@ Run a pipeline
 pipelight run <pipeline_name>
 ```
 
-Pretty print the pipeline status
+Compulsively check execution with pretty termial logs
 
 ```sh
 pipelight logs
 ```
 
-Verbosity can be increased
+Verbosity can be increased..
 
 ```sh
-pipelight logs -vvvv
+pipelight logs -vvv
 ```
+
+<p align="center">
+  <img class="terminal" src="https://doc.pipelight.areskul.com/images/log_level3.png" alt="pretty verbose logs picture">
+</p>
+_The actulal pipeline to deploy the documentation website._
 
 Abort pipeline execution
 
@@ -140,12 +144,8 @@ pipelight stop <pipeline_name>
 
 Works better in a Git repo.
 
-```sh
-git init
-```
-
-```mjs
-//pipelight.config.mjs
+```ts
+//pipelight.config.ts
 const config = {
   pipelines: [
     {
@@ -236,258 +236,3 @@ Only git-hooks and bash commands with syntaxic sugar.
 ### Terminal friendly
 
 Deploy, Backup, Restore... without living your terminal.
-
-# Master the Cli
-
-Pipeline inspection
-
-```sh
-pipelight ls <pipeline_name>
-```
-
-or
-in depth json inspection
-
-```sh
-pipelight ls --json <pipeline_name>
-```
-
-For long pipelines, you may want to redirect the output to your favorite reader.
-
-```sh
-pipelight ls --json <pipeline_name> | less
-```
-
-# Tips
-
-## Make it soft on the eye
-
-For the sake of reusability and when you need to deploy in multiple evironnements.
-
-Overuse string interpolation!
-
-```ts
-//pipelight.config.ts
-const params = {
-  remote: {
-    domain: "myserver.com",
-    path: "/remote/directory"
-  },
-  local: {
-    path: "/my/build/directory"
-  }
-};
-
-const config = {
-  pipelines: [
-    {
-      name: "deploy",
-      steps: [
-        {
-          name: "send files to server",
-          commands: [
-            `scp -r ${params.local.path} ${params.remote.domain}@${params.remote.path}`
-          ]
-        }
-      ]
-    }
-  ]
-};
-export default config;
-```
-
-Overuse string interpolation, and parameter destructuring.
-
-```ts
-//pipelight.config.ts
-const params = {
-  remote: {
-    domain: "myserver.com",
-    path: "/remote/directory"
-
-  },
-  local: {
-    path: "/my/build/directory"
-  }
-};
-
-const makeConfig = ({remote, local}) = > {
-  pipelines: [
-    {
-      name: "deploy",
-      steps: [
-        {
-          name: `send files to ${remote.domain}`,
-          commands: [
-            `scp -r ${local.path} ${remote.domain}@${remote.path}`
-          ],
-        },
-      ],
-    },
-  ],
-};
-
-const config = makeConfig(params)
-
-export default config;
-```
-
-## Split your config
-
-Split your config into multiple files and separate concerns.
-Overuse string interpolation, parameter destructuring and import/export ESM synthax.
-
-Export here
-
-```ts
-//.pipelight/config/default.ts
-
-const makeDefaultConfig = ({remote, local}) = > {
-  pipelines: [
-    {
-      name: "deploy",
-      steps: [
-        {
-          name: `send files to ${remote.domain}`,
-          commands: [
-            `scp -r ${local.path} ${remote.domain}@${remote.path}`
-          ],
-        },
-      ],
-    },
-  ],
-};
-
-export {
-  makeDefaultConfig
-}
-
-```
-
-And import here
-
-```ts
-//pipelight.config.ts
-
-import { makeDefaultConfig } from ".pipelight/config/default.mjs";
-
-const params = {
-  remote: {
-    domain: "myserver.com",
-    path: "/remote/directory"
-  },
-  local: {
-    path: "/my/build/directory"
-  }
-};
-
-const config = makeConfig(params);
-
-export default config;
-```
-
-## Pipeline Duration computation
-
-While increasing log verbosity, you may encouter some duration for each pipeline step and commands
-
-This is the time it took for your command to process plus:
-
-- Commands subprocess/shell spawning time. (around 5ms on good/average machines)
-
-- and last but not least it takes into account the code that wraps those commands.
-
-  Pipelight code(logging, duration)
-  Your command
-  Pipelight code
-
-# CookBook / Deployement startegies
-
-In the end it's just JS, either it is functionnal programming or object oriented,
-you just have to return an object that satisfies the Config type.
-
-## Dummy deployement
-
-When you want to put stuffs from your computer to your server
-
-```ts
-//pipelight.config.ts
-const config = {
-  pipelines: [
-    {
-      name: "deploy",
-      steps: [
-        {
-          name: "send files to server",
-          commands: [
-            "rsync local_files to_my_remote_server"
-            "scp -r myfiles to_remote"
-          ],
-        },
-      ],
-    },
-  ],
-};
-export default config;
-```
-
-## Server Side deployement
-
-When you work in TEAM and want the server to deploy code.
-
-### On your local
-
-Creat a mirror repository.
-
-```sh
-git push --mirror ssh://username@mydomain.com/new-repository.git
-```
-
-### On your server(s)
-
-Install pipelight on your server and adapt the hooks.
-
-```mjs
-//pipelight.config.mjs
-      ...
-      triggers: [
-        {
-          actions: ["pre-receive", "update", "post-receive"],
-          branches: ["master"],
-        },
-      ],
-```
-
-## With remote Docker
-
-Build docker images where the power resides, which mean locally, and not on remote tiny server.
-
-```ts
-//pipelight.config.ts
-const params = {
-  remote: "myremote.com"
-  image: {
-    name: "my_app",
-    port:{
-      in: 8080 ,
-      out:80
-    }
-  }
-}
-const config = {
-  pipelines: [
-    {
-      name: "deploy",
-      steps: [
-        {
-          name: "build image",
-          commands: [
-            "rsync local_files to_my_remote_server"
-            "scp -r myfiles to_remote"
-          ],
-        },
-      ],
-    },
-  ],
-};
-export default config;
-```

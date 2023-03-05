@@ -2,6 +2,6 @@
 
 Based on VitePress.
 
-Hosted at [simp.areskul.com](https://simp.areskul.com)
+Hosted at [doc.pipelight.areskul.com](https://doc.pipelight.areskul.com)
 
 Fill free to add whatever piece of code to the cookBook.
