@@ -12,5 +12,9 @@ export const nav: DefaultTheme.Config["nav"] = [
   {
     text: "Contacts",
     link: "/others/contacts"
+  },
+  {
+    text: "Gitea",
+    link: "https://gitea.com/pipelight/pipelight"
   }
 ];
