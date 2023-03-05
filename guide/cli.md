@@ -31,7 +31,7 @@ Abort pipeline execution
 pipelight stop <pipeline_name>
 ```
 
-and then compulsivly check logs
+Check logs
 
 ```sh
 pipelight logs -vvv

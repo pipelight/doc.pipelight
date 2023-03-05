@@ -3,9 +3,11 @@
 In the end it's just JS, either it is functionnal programming or object oriented,
 you just have to return an object that satisfies the Config type.
 
-## Dummy deploy through with (scp/rsync)
+## Dummy deployment (ssh/scp/rsync)
 
-Here is a dummy deploy with rsync
+A dummy deploy is just sending files on remote server. It doesn't involve containerisation.
+
+Here is a dummy deploy..
 
 ```ts
 //pipelight.config.ts

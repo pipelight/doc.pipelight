@@ -7,34 +7,36 @@ And trigger them automatically on git action.
 
 Define, Run pipe, check logs, without living your terminal.
 
-[Full Documentation](https://doc.pipelight.areskul.com) in progress.
+[Full Documentation](https://doc.pipelight.areskul.com)
 
-## What it is.
+## What is it?
 
-A Typescript bash wrapper.
+It'a Typescript bash wrapper.
+
 A Rust program that execute "js strings parsed as bash commands" on a git event.
-And return pretty logs.
+And it diplays pretty logs.
 
 ...tries to be the same kind of software as Jenkins,Drone.io,Gitlab CICD
 
-## Motivation
+## Motivations
 
-### Lazy
+### I am Lazy
 
-Config is written in Js so lots of loops and variables can be used
-to end the struggle with CI/CD pipelines written in configuration optimised languages.
+Config is written in Js so loops and variables can be used
+to end the struggle with CICD pipelines written in configuration optimised languages (YAML/TOML).
+See it as Code as Config as Code.
 
 ### Frugal Power User
 
 I've been working with quite small servers, that struggle to build docker images, forget about kubernetes, graphana and so on.
 But I have local powerful computers.
-Pipelight allows me to git-push from a machine, build on another, and send the result on my tiny server, so I don't have to spend much money in Cloud ressources.
+Pipelight allows me to git-push from a machine, build on another, and send the result on my tiny server, so I don't have to spend much in Cloud ressources.
 
-### Heavy work
+### Need to do Heavy work
 
-When I need to deploy a machine, install and configure everything to deploy my apps in different envs..
+When I need to deploy a machine and install and configure everything to deploy my apps in different envs..
 I use it with docker, ansible, vagrant and others.
-It becomes pretty simple to share variables/env between tools and create a one click full deployment.
+It becomes pretty simple to share variables/env between tools.
 
 ## Install
 
@@ -230,6 +232,7 @@ Pipeline combines the speed and security of Rust with the easy scripting of Java
 ## Why so fast ?
 
 Pipelight is written in Rust and tightly coupled to linux and git.
+
 It doesn't reinvent the wheel by making cumbersom event listeners, secrets or plugins.
 Only git-hooks and bash commands with syntaxic sugar.
 

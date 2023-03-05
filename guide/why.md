@@ -1,15 +1,10 @@
-# Pipelight
+# Why Pipelight?
 
-A Lightweight CI/CD tool.
-
-Write pipelines in Javascript.
-And trigger them automatically on git action.
-
-## What it is.
+## What is it?
 
 A Rust program that execute "js strings parsed as bash commands" on a git event.
 
-## Motivation
+## Motivations
 
 ### I am Lazy
 
