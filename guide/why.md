@@ -5,8 +5,6 @@ A Lightweight CI/CD tool.
 Write pipelines in Javascript.
 And trigger them automatically on git action.
 
-[Full Documentation](https://pipelight.areskul.com) in progress.
-
 ## What it is.
 
 A Rust program that execute "js strings parsed as bash commands" on a git event.
