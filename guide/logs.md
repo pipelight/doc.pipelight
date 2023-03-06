@@ -36,6 +36,10 @@ The maximum log level displays commands result.
 pipelight logs -vvv
 ```
 
+<p align="center">
+  <img class="terminal" src="https://doc.pipelight.areskul.com/images/log_level4.png" alt="pretty verbose logs picture">
+</p>
+
 You can inspect logs by pipeline
 
 ```bash
