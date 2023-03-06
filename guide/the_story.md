@@ -1,3 +1,18 @@
+# Disclaimer
+
+Making software is about taking position. See [DarkFi manifesto](https://dark.fi/manifesto.html)
+
+So let me do what a normal [Arch Linux](https://wiki.archlinux.org/title/Installation_guide) user would do.
+I use arch btw.
+I think that using Linux is the path to go to bettern ones programming skill.
+And if you are not using it yet. You should give it a try.
+
+I may be harsh on some software/OS but it's only for you to understand my motivations.
+I don't realy hate those FOSS software.. But my hate against big techs is real.
+
+If you feel offenced, remember that you are not the software you are using.
+If you are not, and still reading, it means you belongs to the worthy.. This peace of greatness is for you!
+
 # The Automation Desilusions
 
 ## Bash is fast but scripting gets uncomfortable.
@@ -199,7 +214,7 @@ Pipeline combines the speed and security of Rust with the easy scripting of Java
 
 ## Needed something fast
 
-Pipelight is written in Rust and tightly coupled to linux and git.
+Pipelight is written in Rust and tightly coupled to **Linux** and **Git**.
 
 It doesn't reinvent the wheel by making cumbersom event listeners, secrets or plugins.
 Only git-hooks and bash commands with syntaxic sugar.
@@ -207,3 +222,11 @@ Only git-hooks and bash commands with syntaxic sugar.
 ### Terminal friendly
 
 Deploy, Backup, Restore... without living your terminal.
+
+### Linux Only
+
+The tradeoffs of being platefporm agnostic is:
+
+- the installation process
+- the execution speed
+- the source code complexity
