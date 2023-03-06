@@ -6,9 +6,6 @@ module.exports = {
       screens: {
         xs: "360px"
       },
-      container: {
-        center: true
-      },
       colors: {
         transparent: "transparent",
         gray: colors.neutral
