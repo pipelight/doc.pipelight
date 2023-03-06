@@ -83,7 +83,7 @@ But what if that cli isn't on point.
 
 Pipelight stays in the terminal, and is nothing more than a Command Line Tool.
 
-## Javascript to the rescue
+## Typescript to the rescue
 
 It can't be denied that Javascript success is due t's very appealing synthax.
 This language is:
@@ -158,5 +158,52 @@ pipelight logs
 Or get logs as json for further exploitation/integration
 
 ```bash
-pipelight logs --raw
+pipelight logs --json
 ```
+
+# Who is it for ?
+
+## Lazy programmers
+
+Config is written in TS so loops and variables can be used
+to end the struggle with CICD pipelines written in configuration optimised languages (YAML/TOML).
+If you come from devOps, see it as Code as Config as Code.
+
+## Frugal Power User
+
+I've been working with quite small servers, that struggle to build docker images, forget about kubernetes, graphana and so on.
+But I have local powerful computers.
+Pipelight allows me to git-push from a machine, build on another, and send the result on my tiny server, so I don't have to spend much in Cloud ressources.
+
+## Heavy workers
+
+When I need to deploy a machine and install and configure everything to deploy my apps in different envs..
+I use it with docker, ansible, vagrant and others.
+It becomes pretty simple to share variables/env between tools.
+
+# Why another CICD tool ?
+
+The need of something that keep it simple but allows for the great flexibility.
+
+Pipelight does not use neither secrets nor plugins.
+It directly loads your local environnement, so you can use your user ssh configuration, aliases and commands,
+so you can easily couple it with Ansible, docker, Vagrant...
+
+It takes Config as Code to another extend: Code as Config as Code!
+
+### The power of Javascript (Code as configuration)
+
+Javascrip is very good at writting object.
+You can write functions in javascript to create multiple pipelines in a breeze.
+Pipeline combines the speed and security of Rust with the easy scripting of Javascript.
+
+## Needed something fast
+
+Pipelight is written in Rust and tightly coupled to linux and git.
+
+It doesn't reinvent the wheel by making cumbersom event listeners, secrets or plugins.
+Only git-hooks and bash commands with syntaxic sugar.
+
+### Terminal friendly
+
+Deploy, Backup, Restore... without living your terminal.
