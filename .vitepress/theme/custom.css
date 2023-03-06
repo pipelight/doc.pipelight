@@ -23,6 +23,8 @@ p {
   @apply dark:bg-gray-800 !important;
 }
 .sidebar {
+  @apply bg-white text-gray-800 !important;
+  @apply dark:bg-gray-900 dark:text-gray-100 !important;
   @apply border-gray-200 border-r !important;
   @apply dark:border-gray-900 !important;
 }
