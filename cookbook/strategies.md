@@ -93,8 +93,8 @@ git push --mirror ssh://username@mydomain.com/new-repository.git
 
 Install pipelight on your server and adapt the hooks.
 
-```mjs
-//pipelight.config.mjs
+```ts
+//pipelight.config.ts
       ...
       triggers: [
         {

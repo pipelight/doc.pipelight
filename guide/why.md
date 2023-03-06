@@ -1,89 +1,30 @@
-# The automation desilusions
+# Why using pipelight ?
 
-## Bash is fast but scripting gets uncomfortable.
+## TL;DR
 
-I often need to automate tasks, and the fastest way to do it is by writting bash scripts.
+It's only bash commands with syntaxic sugar.
+The whole lifted by git-hooks!!
 
-For example, when I need to deploy a website, I write the following script.
-This is a basic bash script to test, build and send a website online.
+It enables:
 
-```sh
-#deploy.sh
-vitest
-vite build
-rsync local_files to_my_remote_server
-```
+- Automatic triggering on git event (pre-commit, pre-push...)
+- Verbose logging.
+- Easy variable declaration
+- Easy scripting with typescript
 
-But even though it's
+## Made for efficency
 
-- quickly written
-- rapidly tested
-
-the drawbacks are:
-
-- It has to be manualy executed everytime I update my website.
-- It's difficult to troubleshoot when something goes wrong.
-- It gets unreadable and unreusable as it grows.
-
-## CICD tools steal my time!
-
-### Installation is harsh
-
-I came to the point where I took the time to install [Drone.io](https://www.drone.io/).
-It was an exhausting process as I needed Gitea installed locally too.
-But I enjoyed using it.
-
-Drawbacks:
-
-- Difficult to install
-- Difficult to troubleshoot
-
-### Running is Ressource intensive
-
-My computer was on the verge of dying every time I had simultaneous pipelines running.
-At some point it crashed,
-And 4 hour of debugging later, I found out it was because I updated my nft-tables for some virtualization projects.
-
-Drawbacks:
-
-- Has ressource(cpu/ram) intensive event listeners
-- The best GUI on the market but still not on point though
-
-### YAML and TOML is exhausting
-
-Pipelines are most of the time defnied in YAML
-
-```yaml
-kind: pipeline
-type: docker
-name: default
-steps:
-  - name: greeting
-    image: alpine
-    commands:
-      - vitest
-      - vite build
-```
-
-But it's a pain to write variables, loops and its's imposible to write functions.
-
-# A brighter sky
-
-## Stick to the basics
-
-Pipelight is written in Rust, so it's fast!!
+Pipelight is written in [Rust](https://www.rust-lang.org/), so it's fast!!
 
 It doesn't reinvent the wheel by making cumbersom dockerized event listeners, secrets or plugins.
-It implements basic functionnality by beeing tightly coupled to Linux and Git.
+It implements basic functionnality by beeing tightly coupled to Linux and [Git](https://git-scm.com/).
 
-## A good cli > bad gui
+## Terminal friendly
 
-It's practical to see every logs in a gui and trigger pipelines from a click on a window.
-But what if that cli isn't on point.
-
+Run a pipeline and check logs without living your terminal.
 Pipelight stays in the terminal, and is nothing more than a Command Line Tool.
 
-## Javascript to the rescue
+## Typescript (Code as Configuration)
 
 It can't be denied that Javascript success is due t's very appealing synthax.
 This language is:
@@ -136,18 +77,17 @@ Then run the pipeline.
 pipelight run <pipeline_name>
 ```
 
-It enables:
+# Automation
 
-- Automatic triggering on git event (pre-commit, pre-push...)
-- Verbose logging.
-- Easy variable declaration
-- Easy scripting with typescript
+Add triggers to your pipeline definition.
+It will automatically run in the background on matching event.
 
-```bash
-pipelight logs
+```ts
+//pipelight.config.ts
+triggers: [
+  {
+    actions: ["pre-push"],
+    branches: ["master"],
+  },
+],
 ```
-
-# TL;DR
-
-It's only bash commands with syntaxic sugar.
-The whole lifted by git-hooks!!

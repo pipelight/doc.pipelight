@@ -1,3 +1,9 @@
 # Contact me
 
-Send a mail to areskul@areskul.com
+## Mail
+
+areskul@areskul.com
+
+## Telegram
+
+@Areskul

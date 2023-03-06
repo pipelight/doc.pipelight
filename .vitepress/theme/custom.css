@@ -3,7 +3,7 @@
 /* @tailwind utilities; */
 :root {
   --c-bg: inherit;
-  /* --c-divider-light: inherit; */
+  /* --c-divider-light: auto; */
   --code-bg-color: auto;
   --c-text: auto;
   --c-brand: #3f7739;
@@ -25,19 +25,27 @@ p {
 .sidebar {
   @apply bg-white text-gray-800 !important;
   @apply dark:bg-gray-900 dark:text-gray-100 !important;
-  @apply border-gray-200 border-r !important;
-  @apply dark:border-gray-900 !important;
+  /** Border */
+  @apply border-r !important;
+  @apply border-gray-200 !important;
+  @apply dark:border-gray-800 !important;
 }
 .nav-bar {
   @apply z-30;
   @apply bg-white text-gray-800 !important;
   @apply dark:bg-gray-900 dark:text-gray-100 !important;
-  @apply border-gray-200 border-b !important;
+  /** Border */
+  @apply border-b !important;
+  @apply border-gray-200 !important;
   @apply dark:border-gray-800 !important;
 }
 .logo {
   height: 30px;
   margin-right: 2px;
+}
+.icon {
+  @æpply text-white;
+  @apply fill-current !important;
 }
 .nav-link {
   @apply text-gray-800;
@@ -48,6 +56,6 @@ p {
 img {
   &.terminal {
     width: 100%;
-    @apply rounded-md;
+    @apply rounded-lg;
   }
 }

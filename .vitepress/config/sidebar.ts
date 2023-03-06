@@ -14,6 +14,10 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           link: "/guide/why"
         },
         {
+          text: "The story",
+          link: "/guide/the_story"
+        },
+        {
           text: "Command line usage",
           link: "/guide/cli"
         },
