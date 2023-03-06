@@ -1,10 +1,25 @@
+/* @tailwind base; */
+/* @tailwind components; */
+/* @tailwind utilities; */
 :root {
-  /* --c-brand: #f28fbc; */
-  /* --c-brand-light: #f28fff; */
+  --c-bg: inherit;
+  --c-text: inherit;
+  --c-brand: #3f7739;
+  --c-brand-light: #69b361;
 }
-.nav-bar .logo {
+.logo {
   height: 30px;
   margin-right: 2px;
+}
+.nav-link {
+  @apply text-white;
+  @apply dark:text-white;
+  height: 30px;
+  margin-right: 2px;
+}
+body {
+  @apply bg-white;
+  @apply dark:bg-black dark:text-white;
 }
 img {
   &.terminal {

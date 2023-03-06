@@ -16,7 +16,7 @@ const config: Config = {
       steps: [
         {
           name: "build",
-          commands: ["yarn install", "yarn build"]
+          commands: ["pnpm install", "pnpm build"]
         }
       ]
     }
