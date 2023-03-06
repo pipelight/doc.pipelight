@@ -77,7 +77,7 @@ Then run the pipeline.
 pipelight run <pipeline_name>
 ```
 
-# Automation
+## Automation
 
 Add triggers to your pipeline definition.
 It will automatically run in the background on matching event.
