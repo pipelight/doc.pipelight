@@ -3,9 +3,7 @@ import Example from '../.vitepress/theme/components/Example.vue';
 import Sheet from '../.vitepress/theme/components/Sheet.vue';
 </script>
 
-# Getting Started
-
-## The big picture
+# The big picture
 
 <Sheet>
 
@@ -33,6 +31,8 @@ pwd;
 rewrite it into pipeline --->
 
 <Example>
+### Typescript pipeline
+
 ```ts
 //pipelight.config.ts
 import { Config } from "npm:pipelight";
@@ -54,10 +54,6 @@ const config: Config = {
   ]
 };
 export default config;
-````
-
-```sh
-pipelight run example
 ```
 
 </Example>
@@ -65,9 +61,16 @@ pipelight run example
 get logs --->
 
 <Example>
+### Enable automation and logging
+
+```sh
+pipelight run example
+```
+
 ```sh
 pipelight logs -vvv
 ```
+
 ```sh
 ● Succeeded - Tue, 07 Mar 2023 16:07:30 +0100
 action: manual
@@ -75,14 +78,17 @@ pipeline: example (8.16ms)
 ├─step: list files (4.36ms)
 │   ╰─ls (4.26ms)
 │     ╰─example.config.ts
-│       example.sh 
-│       pipelight.config.ts 
-╰─step: get working directory (3.07ms)    
-    ╰─pwd (2.97ms)       
+│       example.sh
+│       pipelight.config.ts
+╰─step: get working directory (3.07ms)
+    ╰─pwd (2.97ms)
       ╰─/home/areskul/PIPE/playground/examples
 ```
+
 </Example>
 </Sheet>
+
+# Getting Started
 
 ## Install
 

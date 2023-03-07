@@ -149,3 +149,18 @@ const config = makeConfig(params);
 
 export default config;
 ```
+
+## Multiline strings
+
+To write multiline bash strings add a trailing '\' after a command.
+
+```ts
+commands: [
+  `docker build \
+    --label='traefik.enable=true' \
+    --label='traefik.http.routers.default.rule=Host("${docker.container.dns}")' \
+    --label='traefik.http.routers.default.tls=true' \
+    -t ${docker.image.name} .vitepress/dist`,
+  `docker save ${docker.image.name} |ssh -C ${host} docker load`
+];
+```
