@@ -58,7 +58,7 @@ export default config;
 
 </Example>
 
-get logs --->
+--->
 
 <Example>
 ### Enable automation and logging

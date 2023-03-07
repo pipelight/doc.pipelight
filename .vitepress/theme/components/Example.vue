@@ -7,7 +7,7 @@
 
 <style lang="postcss">
 .custom-code {
-  @apply flex flex-col align-middle;
+  @apply flex flex-col justify-center align-middle;
   .language-ts,
   .language-sh {
     @apply rounded-lg !important;

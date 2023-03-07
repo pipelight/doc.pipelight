@@ -19,11 +19,12 @@ p {
 .language-bash,
 .language-ts,
 .language-sh {
-  @apply bg-gray-800 !important;
+  @apply bg-gray-700 !important;
   @apply dark:bg-gray-800 !important;
 }
 .sidebar {
-  @apply bg-white text-gray-800 !important;
+  @apply bg-white !important;
+  @apply text-gray-800 !important;
   @apply dark:bg-gray-900 dark:text-gray-100 !important;
   /** Border */
   @apply border-r !important;
@@ -31,8 +32,9 @@ p {
   @apply dark:border-gray-800 !important;
 }
 .nav-bar {
+  @apply bg-white !important;
   @apply z-30;
-  @apply bg-white text-gray-800 !important;
+  @apply text-gray-800 !important;
   @apply dark:bg-gray-900 dark:text-gray-100 !important;
   /** Border */
   @apply border-b !important;
@@ -44,11 +46,17 @@ p {
   margin-right: 2px;
 }
 .icon {
-  @æpply text-white;
+  @apply text-white;
   @apply fill-current !important;
 }
+.action {
+  @apply text-white !important;
+  @apply dark:text-white;
+  height: 30px;
+  margin-right: 2px;
+}
 .nav-link {
-  @apply text-gray-800;
+  @apply text-black;
   @apply dark:text-white;
   height: 30px;
   margin-right: 2px;
