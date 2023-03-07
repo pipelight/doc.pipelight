@@ -64,10 +64,6 @@ export default config;
 ### Enable automation and logging
 
 ```sh
-pipelight run example
-```
-
-```sh
 pipelight logs -vvv
 ```
 
