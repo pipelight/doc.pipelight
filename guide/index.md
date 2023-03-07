@@ -71,19 +71,7 @@ pipelight run example
 pipelight logs -vvv
 ```
 
-```sh
-● Succeeded - Tue, 07 Mar 2023 16:07:30 +0100
-action: manual
-pipeline: example (8.16ms)
-├─step: list files (4.36ms)
-│   ╰─ls (4.26ms)
-│     ╰─example.config.ts
-│       example.sh
-│       pipelight.config.ts
-╰─step: get working directory (3.07ms)
-    ╰─pwd (2.97ms)
-      ╰─/home/areskul/PIPE/playground/examples
-```
+<img class="sexy" src="/images/example_log_level_4.png" alt="example pretty verbose logs">
 
 </Example>
 </Sheet>

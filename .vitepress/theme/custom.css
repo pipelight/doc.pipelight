@@ -66,4 +66,9 @@ img {
     width: 100%;
     @apply rounded-lg;
   }
+  &.sexy {
+    max-width: 400px;
+    min-width: 200px;
+    @apply rounded-lg;
+  }
 }
