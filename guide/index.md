@@ -1,4 +1,88 @@
+<script setup>
+import Example from '../.vitepress/theme/components/Example.vue';
+import Sheet from '../.vitepress/theme/components/Sheet.vue';
+</script>
+
 # Getting Started
+
+## The big picture
+
+<Sheet>
+
+<Example>
+### Basic bash script
+
+```sh
+#example.sh
+## List files
+
+ls;
+
+## Get working directory
+
+pwd;
+
+```
+
+```sh
+./example.sh
+```
+
+</Example>
+
+rewrite it into pipeline --->
+
+<Example>
+```ts
+//pipelight.config.ts
+import { Config } from "npm:pipelight";
+const config: Config = {
+  pipelines: [
+    {
+      name: "example",
+      steps: [
+        {
+          name: "list files",
+          commands: ["ls"]
+        },
+        {
+          name: "get working directory",
+          commands: ["pwd"]
+        }
+      ]
+    }
+  ]
+};
+export default config;
+````
+
+```sh
+pipelight run example
+```
+
+</Example>
+
+get logs --->
+
+<Example>
+```sh
+pipelight logs -vvv
+```
+```sh
+● Succeeded - Tue, 07 Mar 2023 16:07:30 +0100
+action: manual
+pipeline: example (8.16ms)
+├─step: list files (4.36ms)
+│   ╰─ls (4.26ms)
+│     ╰─example.config.ts
+│       example.sh 
+│       pipelight.config.ts 
+╰─step: get working directory (3.07ms)    
+    ╰─pwd (2.97ms)       
+      ╰─/home/areskul/PIPE/playground/examples
+```
+</Example>
+</Sheet>
 
 ## Install
 
@@ -7,7 +91,7 @@ The one click install package only available on Arch linux right now.
 
 Install from the AUR:
 
-```bash
+```sh
 paru -S pipelight
 ```
 
