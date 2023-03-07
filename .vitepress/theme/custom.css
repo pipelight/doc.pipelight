@@ -19,7 +19,7 @@ p {
 .language-bash,
 .language-ts,
 .language-sh {
-  @apply bg-gray-700 !important;
+  @apply bg-gray-800 !important;
   @apply dark:bg-gray-800 !important;
 }
 .sidebar {
