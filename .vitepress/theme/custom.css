@@ -64,12 +64,12 @@ p {
 img {
   &.terminal {
     width: 100%;
-    @apply rounded-lg;
+    @apply rounded-lg border border-solid border-gray-700;
   }
   &.sexy {
     max-width: 400px;
     min-width: 300px;
-    @apply rounded-lg;
+    @apply rounded-lg border border-solid border-gray-700;
     @apply my-4;
   }
 }

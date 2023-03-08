@@ -41,6 +41,7 @@ You get every last "RUN" every time you check logs.
 </p>
 
 You can then increase verbosity to get your desired level of details.
+Get steps status
 
 ```sh
 pipelight logs -v
@@ -50,22 +51,24 @@ pipelight logs -v
   <img class="terminal" src="/images/log_level_2.png" alt="pretty_verbose_logs_level_2_picture">
 </p>
 
+Get steps status and their commands status
+
 ```sh
 pipelight logs -vv
 ```
 
 <p align="center">
-  <img class="terminal" src="/images/log_level3.png" alt="pretty verbose logs picture">
+  <img class="terminal" src="/images/log_level_3.png" alt="pretty verbose logs picture">
 </p>
 
-The maximum log level displays commands result.
+Get steps status, their commands status, and commands output.
 
 ```sh
 pipelight logs -vvv
 ```
 
 <p align="center">
-  <img class="terminal" src="https://doc.pipelight.areskul.com/images/log_level4.png" alt="pretty verbose logs picture">
+  <img class="terminal" src="/images/log_level_4.png" alt="pretty verbose logs picture">
 </p>
 
 You can inspect logs by pipeline
