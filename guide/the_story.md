@@ -17,10 +17,10 @@ If you are not, and still reading, it means you belongs to the worthy.. This pea
 
 ## Bash is fast but scripting gets uncomfortable.
 
-I often need to automate tasks, and the fastest way to do it is by writting bash scripts.
+I often need to automate tasks, and the fastest way to do it is by writting sh scripts.
 
 For example, when I need to deploy a website, I write the following script.
-This is a basic bash script to test, build and send a website online.
+This is a basic sh script to test, build and send a website online.
 
 ```sh
 #deploy.sh
@@ -147,7 +147,7 @@ export default config;
 Wrap your commands into a Javascript Pipeline Object.
 Then run the pipeline.
 
-```bash
+```sh
 pipelight run <pipeline_name>
 ```
 
@@ -160,7 +160,7 @@ It enables:
 
 Display pretty logs
 
-```bash
+```sh
 pipelight logs
 ```
 
@@ -172,7 +172,7 @@ pipelight logs
 
 Or get logs as json for further exploitation/integration
 
-```bash
+```sh
 pipelight logs --json
 ```
 

@@ -8,7 +8,7 @@ import Features from '../.vitepress/theme/components/Features.vue';
 
 ## TL;DR
 
-It's only bash commands with syntaxic sugar.
+It's only sh commands with syntaxic sugar.
 The whole lifted by git-hooks!!
 
 It enables:
@@ -81,7 +81,7 @@ export default config;
 Wrap your commands into a Javascript Pipeline Object.
 Then run the pipeline.
 
-```bash
+```sh
 pipelight run <pipeline_name>
 ```
 

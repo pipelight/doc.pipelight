@@ -12,7 +12,7 @@ paru -S pipelight
 
 And uninstall
 
-```bash
+```sh
 paru -Rcns pipelight
 ```
 
@@ -44,26 +44,26 @@ rm /<my_bin_directory>/pipelight*
 It's a simple command line tool (CLI).
 Here is the set of most used commands.
 
-```bash
+```sh
 # in your favorite shell
 pipelight <command> <options> <args>
 ```
 
 List available pipelines:
 
-```bash
+```sh
 pipelight ls
 ```
 
 Trigger a pipeline execution:
 
-```bash
+```sh
 pipelight run <pipeline_name>
 ```
 
 Compulsively check execution state:
 
-```bash
+```sh
 pipelight logs -vvv
 ```
 
