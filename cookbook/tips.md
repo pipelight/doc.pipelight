@@ -150,6 +150,9 @@ const config = makeConfig(params);
 export default config;
 ```
 
+You may want to store files under .pipelight/config
+and import them in your main pipelight.config.ts
+
 ## Multiline strings
 
 To write multiline bash strings add a trailing '\' after a command.

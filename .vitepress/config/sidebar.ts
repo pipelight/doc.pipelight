@@ -36,10 +36,6 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
         {
           text: "Triggers (Automation)",
           link: "/guide/triggers"
-        },
-        {
-          text: "Generated files",
-          link: "/guide/storage"
         }
       ]
     }

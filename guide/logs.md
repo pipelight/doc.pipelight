@@ -1,11 +1,31 @@
 # Log Files
 
-## Print logs
+## Display logs
 
 You can either display **raw json logs** for further exploitation,
 
 ```sh
 pipelight logs --json
+```
+
+```json
+{
+  "name": "update remote nginx configuration",
+  "status": "Succeeded",
+  "duration": { "secs": 3, "nanos": 55221486 },
+  "commands": [
+    {
+      "status": "Succeeded",
+      "duration": { "secs": 1, "nanos": 260966718 },
+      "stdin": "scp ./public/pipelight.nginx.conf linode:/etc/nginx/sites-enabled/pipelight.conf",
+      "output": {
+        "status": "Succeeded",
+        "stdout": null,
+        "stderr": null
+      }
+    }
+  ]
+}
 ```
 
 or display **pretty logs** which is the command default behavior.
@@ -20,7 +40,7 @@ You get every last "RUN" every time you check logs.
   <img class="terminal" src="/images/log_level_1.png" alt="pretty_verbose_logs_level_1_picture">
 </p>
 
-You can then and verbosity to get your desired level of details.
+You can then increase verbosity to get your desired level of details.
 
 ```sh
 pipelight logs -v
@@ -64,3 +84,5 @@ pipelight logs rm
 
 Pipeline execution generates log files.
 Located in .pipelight/logs/<pipeline_uuid>.json
+Those are not meant to be used as is.
+Prefer reading logs with the available commands.
