@@ -1,17 +1,22 @@
 # Getting Started
 
-## Install
+## Install/Uninstall
 
-The one click install package only available on Arch linux right now.
-(Available soon on Debian/Ubuntu and Fedora)
+### With Arch Linux
 
-Install from the AUR:
+Install from the [AUR](https://aur.archlinux.org/packages?O=0&K=pipelight) with your favorite package manager.
 
 ```sh
 paru -S pipelight
 ```
 
-Or from source:
+And uninstall
+
+```bash
+paru -Rcns pipelight
+```
+
+### From sources
 
 First install dependencies.
 
@@ -28,15 +33,7 @@ cargo build --release
 cp target/release/pipelight* /<my_bin_directory>/
 ```
 
-## Uninstall
-
-With an AUR package manager
-
-```bash
-paru -Rcns pipelight
-```
-
-Or delete binaries
+Uninstall by deleting binaries
 
 ```sh
 rm /<my_bin_directory>/pipelight*
@@ -44,24 +41,27 @@ rm /<my_bin_directory>/pipelight*
 
 ## Usage
 
+It's a simple command line tool (CLI).
+Here is the set of most used commands.
+
 ```bash
 # in your favorite shell
 pipelight <command> <options> <args>
 ```
 
-List available pipelines
+List available pipelines:
 
 ```bash
 pipelight ls
 ```
 
-This will trigger a pipeline execution
+Trigger a pipeline execution:
 
 ```bash
 pipelight run <pipeline_name>
 ```
 
-Compulsively check execution
+Compulsively check execution state:
 
 ```bash
 pipelight logs -vvv
@@ -87,7 +87,7 @@ const config: Config = {
       steps: [
         {
           name: "build",
-          commands: ["yarn install", "yarn build"]
+          commands: ["pnpm install", "pnpm build"]
         }
       ],
       trigger: {
