@@ -1,4 +1,10 @@
+<script setup>
+import Features from '../.vitepress/theme/components/Features.vue';
+</script>
+
 # Why using pipelight ?
+
+<Features />
 
 ## TL;DR
 

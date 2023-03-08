@@ -70,5 +70,6 @@ img {
     max-width: 400px;
     min-width: 200px;
     @apply rounded-lg;
+    @apply my-4;
   }
 }

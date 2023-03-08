@@ -219,6 +219,8 @@ Pipelight is written in Rust and tightly coupled to **Linux** and **Git**.
 It doesn't reinvent the wheel by making cumbersom event listeners, secrets or plugins.
 Only git-hooks and bash commands with syntaxic sugar.
 
+Fast type checking due to deno instead of node for TS interpretation.
+
 ### Terminal friendly
 
 Deploy, Backup, Restore... without living your terminal.

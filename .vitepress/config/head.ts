@@ -8,7 +8,7 @@ const head: HeadConfig[] = [
     {
       name: "keywords",
       content:
-        "pipelight, cicd, typescript, continuous, delivery, integration, deployment"
+        "linux, automation, pipelight, cicd, bash, git, typescript, continuous, delivery, integration, deployment"
     }
   ],
   ["link", { rel: "icon", type: "image/png", href: "/images/pipelight.png" }],

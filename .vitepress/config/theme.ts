@@ -4,7 +4,6 @@ import type { DefaultTheme } from "@/config";
 
 const themeConfig: DefaultTheme.Config = {
   logo: "/images/pipelight.png",
-  // repo: "pipelight/pipelight",
   docsBranch: "master",
   nav,
   sidebar
