@@ -73,3 +73,13 @@ img {
     @apply my-4;
   }
 }
+.warning {
+  @apply rounded-lg border border-solid border-amber-600 !important;
+  @apply bg-inherit text-amber-500 !important;
+  p {
+    @apply bg-inherit;
+    @apply text-amber-600 !important;
+    @apply dark:text-amber-500 !important;
+    @apply py-1 m-0 !important;
+  }
+}

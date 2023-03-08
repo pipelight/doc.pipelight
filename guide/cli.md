@@ -7,7 +7,7 @@ So it is well self documented.
 
 These are the 3 commands you'll combine to speed up your pipeline development process.
 
-Lint your config file with
+**Lint** and List pipelines from your Config file with
 
 ```sh
 pipelight ls
@@ -71,7 +71,7 @@ Discover some options by using the help flag.
 pipelight --help
 ```
 
-on subcommands too.
+can be used on subcommands too.
 
 ```sh
 pipelight run --help

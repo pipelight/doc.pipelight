@@ -3,9 +3,18 @@
 If you wan't to autodeploy on push.
 And many more automation.
 
-## Config
+::: warning
 
-You can choose branches and actions for which to trigger the pipeline.
+Only works in a Git repository, so be sure to initialize a repo
+if you want to enable automation
+
+```sh
+git init
+```
+
+:::
+
+Make a combination of branches and actions for which to trigger the pipeline.
 
 ```ts
 triggers: [
@@ -19,7 +28,8 @@ triggers: [
 Actions are named according to [git-hooks](https://githooks.com/) names.
 And Branches are your git project branches names.
 
-Add triggers to your pipeline definition.
+Simply add triggers to your pipeline definition.
+Nothing more to do.
 
 ```ts
 //pipelight.config.ts

@@ -31,22 +31,18 @@ const items = [
       "Easily troubleshoot your scripts with pretty and verbose logs right in your terminal."
   },
   {
-    title: " 💡 Edit and Test pipelines quickly!",
+    title: "⚡ Blazing Fast",
     details:
-      " As long as you know Typescript synthax and a bit of Bash,.. you are good to go."
+      "Written in Rust to be as low level as possible and stick to bare script performances. Uses Deno for its quick Typechecking."
   },
   {
     title: "🚦 Automatic Trigger",
     details:
-      "Trigger your scripts in background on certain events without living your editor or terminal."
+      "Your pipelines are executed in background on some events. You don't leave your editor."
   },
   {
-    title: " 🏡 Keep it Local",
-    details: "Doesn't need you to host your code on big tech hubs"
-  },
-  {
-    title: " 🛠️ Easy Install/Uninstall",
-    details: " From source or from your distro repos."
+    title: "🛠️ Easy to Install/Handle",
+    details: "Intuitive commands and configuration."
   }
 ];
 </script>
