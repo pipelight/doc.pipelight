@@ -17,7 +17,7 @@ pipelight logs
 You get every last "RUN" every time you check logs.
 
 <p align="center">
-  <img class="terminal" src="/images/log_level1.png" alt="pretty_verbose_logs_level_1_picture">
+  <img class="terminal" src="/images/log_level_1.png" alt="pretty_verbose_logs_level_1_picture">
 </p>
 
 You can then and verbosity to get your desired level of details.
@@ -27,7 +27,7 @@ pipelight logs -v
 ```
 
 <p align="center">
-  <img class="terminal" src="/images/log_level2.png" alt="pretty_verbose_logs_level_2_picture">
+  <img class="terminal" src="/images/log_level_2.png" alt="pretty_verbose_logs_level_2_picture">
 </p>
 
 ```sh
