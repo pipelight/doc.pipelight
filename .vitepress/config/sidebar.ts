@@ -22,16 +22,20 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           link: "/guide/cli"
         },
         {
+          text: "Logs",
+          link: "/guide/logs"
+        },
+        {
+          text: "States",
+          link: "/guide/states"
+        },
+        {
           text: "Configuration in depth",
           link: "/guide/config"
         },
         {
           text: "Triggers (Automation)",
-          link: "/guide/hooks"
-        },
-        {
-          text: "Logs",
-          link: "/guide/logs"
+          link: "/guide/triggers"
         },
         {
           text: "Generated files",

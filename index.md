@@ -55,7 +55,7 @@ pwd;
 </div>
 
 <Example>
-### Rewrite it into Pipeline..
+### Rewrite it into a Pipeline..
 
 ```ts
 {

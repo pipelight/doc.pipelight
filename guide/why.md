@@ -38,6 +38,8 @@ This language is:
 - weakly typed so very easy to use.
 - It's possible to make variables, loops, and functions.
 
+It's the possible to write complex pipelines and decline them.
+
 And finally, this script...
 
 ```sh
