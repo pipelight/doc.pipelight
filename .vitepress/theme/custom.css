@@ -16,9 +16,9 @@ body {
 p {
   @apply text-gray-800 dark:text-gray-200 !important;
 }
-.language-bash,
+.language-sh,
 .language-ts,
-.language-sh {
+.language-json {
   @apply bg-gray-800 !important;
   @apply dark:bg-gray-800 !important;
 }

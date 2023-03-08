@@ -37,7 +37,7 @@ display: none
 ### Usual Bash script
 
 ```sh
-#example.sh
+#simple_example.sh
 ## List files
 ls;
 ## Get working directory
@@ -59,7 +59,7 @@ pwd;
 
 ```ts
 {
-  name: "example",
+  name: "simple_example",
   steps: [
     {
       name: "list files",

@@ -50,24 +50,15 @@ pipelight logs -vvv
 
 You can inspect logs by pipeline
 
-```bash
+```sh
 pipelight logs <pipeline_name>
 ```
 
 And delete old logs with
 
-```bash
+```sh
 pipelight logs rm
 ```
-
-## States
-
-<p align="center">
-  <img class="terminal" src="/images/running_log_level_2.png" alt="pretty_verbose_logs_level_2_picture">
-</p>
-<p align="center">
-  <img class="terminal" src="/images/log_level2.png" alt="pretty_verbose_logs_level_2_picture">
-</p>
 
 ## Generated files
 

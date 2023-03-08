@@ -3,8 +3,10 @@
 The pipeline have a global state.
 But every step and commands have a state too.
 
+## JSON logs
+
 Here is a partial json log containing a step with a single command.
-The state can be as the **status** key:
+The state can be seen as the **status** key:
 
 ```json
 {
@@ -25,6 +27,8 @@ The state can be as the **status** key:
   ]
 }
 ```
+
+## Pretty logs
 
 State is render as a color in pretty logs.
 

@@ -1,4 +1,4 @@
-# Master the Cli
+# Command line usage
 
 The cli is made on top of [clap](https://docs.rs/clap/latest/clap/).
 So it is well self documented.
@@ -41,7 +41,7 @@ pipelight logs -vvv
 
 Simulate the execution of a specified git-hook to trigger associated pipelines
 
-```bash
+```sh
 pipelight trigger <git_hook_name>
 ```
 
@@ -49,30 +49,30 @@ Under the hood,
 every command checks if hooks are enabled.
 If git-hooks are not working on a fresh directory. At least run:
 
-```bash
+```sh
 pipelight ls
 ```
 
-Print colorful raw logs
+Print colorful raw json logs
 
-```bash
+```sh
 pipelight logs --json | jq
 ```
 
 Filter logs on pipeline logs
 
-```bash
+```sh
 pipelight logs <pipeline_name>
 ```
 
 Discover some options by using the help flag.
 
-```bash
+```sh
 pipelight --help
 ```
 
 on subcommands too.
 
-```bash
+```sh
 pipelight run --help
 ```
