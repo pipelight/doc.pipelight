@@ -1,6 +1,7 @@
-# The Automation Desilusions
+# The Automation for newbies
 
-I made Pipelight because I needed more than shell script to deploy my software. But I couldn't find a cicd tool that suit my need.
+I made Pipelight because I needed more than shell script to deploy my software.
+But I couldn't find a cicd tool that suit my need.
 
 ## Why typescript over Bash or YAML/TOML for configuration
 
@@ -47,13 +48,13 @@ And now some cli follow...
 
 ## Why only a cli ?
 
-CICD tools steal my time.
-There is a whole ecosystem to install before one can reach automation with most known tools.
+Actual CICD tools steal are cumbersome in time and ressources.
+There is a whole ecosystem to install and troubleshoot before one can reach automation with most known tools.
 They try to be compatible with every OS, preaching when efficency and simplicity is needed.
 
-### Stick to the basics
+Pipelight sticks to the basics
 
-Pipelight is written in Rust, so it's fast!!
+It is written in Rust, so it's fast!
 It doesn't reinvent the wheel by making cumbersom dockerized event listeners, secrets or plugins.
 It implements basic functionnality by beeing tightly coupled to Linux and Git.
 
