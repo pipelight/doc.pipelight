@@ -1,5 +1,11 @@
 # Getting Started
 
+::: tip Software requirements
+Because it's speed is only due to it being tightly coupled to linux processes and git.
+Pipelight is only available on Linux distributions like [Arch Linux](https://wiki.archlinux.org/title/Installation_guide)
+If you're already using it, it means you belongs to the worthy.. This peace of greatness is for you!
+:::
+
 ## Install/Uninstall
 
 ### With Arch Linux

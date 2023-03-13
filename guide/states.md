@@ -1,34 +1,21 @@
 # States
 
-The pipeline have a global state.
-But every step and commands have a state too.
+A pipeline have a global state.
+But every step and command have its own state too.
 
-## JSON logs
+## States in JSON logs
 
-Here is a partial json log containing a step with a single command.
-The state can be seen as the **status** key:
+Here is a partial json log with a step whose state can be seen as the **status** key:
 
 ```json
 {
   "name": "update remote nginx configuration",
   "status": "Succeeded",
-  "duration": { "secs": 3, "nanos": 55221486 },
-  "commands": [
-    {
-      "status": "Succeeded",
-      "duration": { "secs": 1, "nanos": 260966718 },
-      "stdin": "scp ./public/pipelight.nginx.conf linode:/etc/nginx/sites-enabled/pipelight.conf",
-      "output": {
-        "status": "Succeeded",
-        "stdout": null,
-        "stderr": null
-      }
-    }
-  ]
+  "duration": { "secs": 3, "nanos": 55221486 }
 }
 ```
 
-## Pretty logs
+## States in Pretty logs
 
 State is render as a color in pretty logs.
 

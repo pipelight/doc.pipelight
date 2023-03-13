@@ -6,7 +6,12 @@ const themeConfig: DefaultTheme.Config = {
   logo: "/images/pipelight.png",
   docsBranch: "master",
   nav,
-  sidebar
+  sidebar,
+  appearance: false,
+  markdown: {
+    theme: "material-theme-palenight",
+    lineNumbers: true
+  }
   // editLinks: true,
   // editLinkText: "Suggest changes to this page"
 };

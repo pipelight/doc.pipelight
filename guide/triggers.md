@@ -5,8 +5,8 @@ And many more automation.
 
 ::: warning
 
-Only works in a Git repository, so be sure to initialize a repo
-if you want to enable automation
+Only works in a Git repository.
+Be sure to initialize a repo if you want to enable automation.
 
 ```sh
 git init

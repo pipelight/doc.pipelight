@@ -41,7 +41,7 @@ const items = [
       "Your pipelines are executed in background on some events. You don't leave your editor."
   },
   {
-    title: "🛠️ Easy to Install/Handle",
+    title: "🛠️ Easy to Use and Install",
     details: "Intuitive commands and configuration."
   }
 ];
@@ -62,9 +62,11 @@ const items = [
     min-width: 40%;
     max-width: 40%;
   }
-  @apply flex flex-col justify-center align-middle;
-  @apply rounded-lg;
-  @apply bg-gray-800 p-3 m-2 w-1/2;
+  @apply flex flex-col justify-center align-middle transition-all;
+  @apply rounded-lg drop-shadow-md p-3 m-2 w-1/2 border border-solid;
+  @apply bg-white text-gray-800 border-gray-300;
+  @apply dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700;
+  @apply hover:scale-105;
   .title {
     @apply font-bold;
     @apply text-xl;

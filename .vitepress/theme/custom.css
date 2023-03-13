@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 :root {
-  /* --c-divider-light: auto; */
-  /* --code-bg-color: auto; */
   --vp-c-text: auto;
   --vp-c-brand: #3f7739;
   --vp-button-brand-hover-bg: #69b361;
@@ -11,8 +9,13 @@
 .language-sh,
 .language-ts,
 .language-json {
+  @apply rounded-lg;
   @apply bg-gray-800 !important;
   @apply dark:bg-gray-900 !important;
+}
+.image {
+  @apply h-96 lg:h-72 transition-all;
+  @apply hover:scale-105;
 }
 .VPImage {
   @apply h-56;
