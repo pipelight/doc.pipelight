@@ -35,9 +35,6 @@ const tailwind = ref({
 .big {
   font-size: 50px;
 }
-.hid{
-display: none
-}
 </style>
 
 <Sheet>
@@ -58,12 +55,7 @@ pwd;
 
 </Example>
 
-<div :class="{ 'hid' : !tailwind.lg }">
-  <p class="big">⇢</p>
-</div>
-<div :class="{ 'hid' : tailwind.lg }">
-  <p class="big">⇣</p>
-</div>
+<p class="big">{{ tailwind.lg ? '⇢' : '⇣' }}</p>
 
 <Example>
 <h3> 
