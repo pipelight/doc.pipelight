@@ -6,43 +6,36 @@ import Features from '../.vitepress/theme/components/Features.vue';
 
 <Features />
 
-## TL;DR
-
-It's only sh commands with syntaxic sugar.
-The whole lifted by git-hooks!!
-
-It enables:
-
-- Automatic triggering on git event (pre-commit, pre-push...)
-- Verbose logging.
-- Easy variable declaration
-- Easy scripting with typescript
-
-## Made for efficency
-
-Pipelight is written in [Rust](https://www.rust-lang.org/), so it's fast!!
-
-It doesn't reinvent the wheel by making cumbersom dockerized event listeners, secrets or plugins.
-It implements basic functionnality by beeing tightly coupled to Linux and [Git](https://git-scm.com/).
-
-## Terminal friendly
-
-Run a pipeline and check logs without living your terminal.
-Pipelight stays in the terminal, and is nothing more than a Command Line Tool.
-
 ## Typescript (Code as Configuration)
 
-It can't be denied that Javascript success is due t's very appealing synthax.
-This language is:
+If sommething can be written in Javascript it wiil be. quote sitation
+As a pipeline get complexe, you want to add variables, conditions, loops and more.
 
-- weakly typed so very easy to use.
-- It's possible to make variables, loops, and functions.
+### Better than Bash
 
-It's the possible to write complex pipelines and decline them.
+Bash is very appaeling when scripting simple tasks, but...
 
-And finally, this script...
+- Syntax isn't common, and differs from most used languages.
+- Lakes structures like Array, Object, Map...
+- Because of the following a bash Linter can't be very useful to debug scripts
+
+See?! This becomes awefull!
 
 ```sh
+#deploy.sh
+if [[ -eq ]]
+vitest
+vite build
+rsync local_files to_my_remote_server
+```
+
+### Better than YAML
+
+Usual configuration optimised languages like YAML and TOML are not easy to tweak.
+The way to add variables, struct and loops is very tight to the automation tool you are using.
+So a different synthax for every tool.
+
+```yaml
 #deploy.sh
 vitest
 vite build
@@ -78,12 +71,19 @@ const config: Config = {
 export default config;
 ```
 
-Wrap your commands into a Javascript Pipeline Object.
-Then run the pipeline.
+## Logs
 
-```sh
-pipelight run <pipeline_name>
-```
+## Made for efficency
+
+Pipelight is written in [Rust](https://www.rust-lang.org/), so it's fast!!
+
+It doesn't reinvent the wheel by making cumbersom dockerized event listeners, secrets or plugins.
+It implements basic functionnality by beeing tightly coupled to Linux and [Git](https://git-scm.com/).
+
+## Terminal friendly
+
+Run a pipeline and check logs without living your terminal.
+Pipelight stays in the terminal, and is nothing more than a Command Line Tool.
 
 ## Automation
 

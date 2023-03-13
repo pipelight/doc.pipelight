@@ -1,65 +1,21 @@
-/* @tailwind base; */
+@tailwind base;
 @tailwind components;
-/* @tailwind utilities; */
+@tailwind utilities;
 :root {
-  --c-bg: inherit;
   /* --c-divider-light: auto; */
-  --code-bg-color: auto;
-  --c-text: auto;
-  --c-brand: #3f7739;
-  --c-brand-light: #69b361;
-}
-body {
-  @apply bg-white;
-  @apply dark:bg-gray-900 dark:text-gray-100;
-}
-p {
-  @apply text-gray-800 dark:text-gray-200 !important;
+  /* --code-bg-color: auto; */
+  --vp-c-text: auto;
+  --vp-c-brand: #3f7739;
+  --vp-button-brand-hover-bg: #69b361;
 }
 .language-sh,
 .language-ts,
 .language-json {
   @apply bg-gray-800 !important;
-  @apply dark:bg-gray-800 !important;
+  @apply dark:bg-gray-900 !important;
 }
-.sidebar {
-  @apply bg-white !important;
-  @apply text-gray-800 !important;
-  @apply dark:bg-gray-900 dark:text-gray-100 !important;
-  /** Border */
-  @apply border-r !important;
-  @apply border-gray-200 !important;
-  @apply dark:border-gray-800 !important;
-}
-.nav-bar {
-  @apply bg-white !important;
-  @apply z-30;
-  @apply text-gray-800 !important;
-  @apply dark:bg-gray-900 dark:text-gray-100 !important;
-  /** Border */
-  @apply border-b !important;
-  @apply border-gray-200 !important;
-  @apply dark:border-gray-800 !important;
-}
-.logo {
-  height: 30px;
-  margin-right: 2px;
-}
-.icon {
-  @apply text-white;
-  @apply fill-current !important;
-}
-.action {
-  @apply text-white !important;
-  @apply dark:text-white;
-  height: 30px;
-  margin-right: 2px;
-}
-.nav-link {
-  @apply text-black;
-  @apply dark:text-white;
-  height: 30px;
-  margin-right: 2px;
+.VPImage {
+  @apply h-56;
 }
 img {
   &.terminal {
@@ -71,15 +27,5 @@ img {
     min-width: 300px;
     @apply rounded-lg border border-solid border-gray-700;
     @apply my-4;
-  }
-}
-.warning {
-  @apply rounded-lg border border-solid border-amber-600 !important;
-  @apply bg-inherit text-amber-500 !important;
-  p {
-    @apply bg-inherit;
-    @apply text-amber-600 !important;
-    @apply dark:text-amber-500 !important;
-    @apply py-1 m-0 !important;
   }
 }

@@ -4,7 +4,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
   "/guide": [
     {
       text: "Guide",
-      children: [
+      items: [
         {
           text: "Getting Started",
           link: "/guide/"
@@ -43,7 +43,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
   "/cookbook": [
     {
       text: "CookBook",
-      children: [
+      items: [
         {
           text: "Tips",
           link: "/cookbook/tips"

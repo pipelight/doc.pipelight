@@ -1,15 +1,24 @@
 ---
-home: true
-sidebar: false
-heroImage: /images/pipelight.png
-actionText: Get Started
-actionLink: /guide/
+layout: home
+hero:
+  name: Pipelight
+  image:
+    src: /images/pipelight.png
+    alt: pipelight_logo
+  text: A tiny automation cli
+  tagline: Bash scripts with Typescript superpowers
+  actions:
+    - theme: brand
+      text: Get Started
+      link: /guide/
 
-altActionText: Why pipelight?
-altActionLink: /guide/why
+    - theme: alt
+      text: Why pipelight?
+      link: /guide/why
 ---
 
 <script setup>
+import ".vitepress/theme/custom.css"
 import Example from '.vitepress/theme/components/Example.vue';
 import Sheet from '.vitepress/theme/components/Sheet.vue';
 import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
@@ -34,7 +43,9 @@ display: none
 <Sheet>
 
 <Example>
-### Usual Bash script
+<h3> 
+Usual Bash script
+</h3>
 
 ```sh
 #simple_example.sh
@@ -55,7 +66,9 @@ pwd;
 </div>
 
 <Example>
-### Rewrite it into a Pipeline..
+<h3> 
+Rewrite it into a Pipeline..
+</h3>
 
 ```ts
 {
@@ -76,7 +89,9 @@ pwd;
 </Example>
 
 <Example>
-### ..enable Automation and Logging
+<h3>
+..enable Automation and Logging
+</h3>
 
 <img class="sexy" src="/images/example_log_level_4.png" alt="example pretty verbose logs">
 

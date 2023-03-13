@@ -1,6 +1,6 @@
 <template lang="pug">
-.custom-code
-  slot.my-width
+.vp-doc.custom-code
+  slot
 </template>
 
 <script setup>
@@ -17,11 +17,7 @@ const tailwind = ref({
 
 <style lang="postcss">
 .custom-code {
-  @apply flex justify-center align-middle items-center;
-  @apply flex flex-col justify-center align-middle;
-  .language-ts,
-  .language-sh {
-    @apply rounded-lg !important;
-  }
+  @apply flex align-middle items-center;
+  @apply flex flex-col align-middle;
 }
 </style>
