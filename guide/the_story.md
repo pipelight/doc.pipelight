@@ -1,5 +1,7 @@
 # The Automation for newbies
 
+People will usualy automate a process beginning with Bash, then python and install a Continuous Development tool.
+
 I made Pipelight because I needed more than shell script to deploy my software.
 But I couldn't find a cicd tool that suit my need.
 

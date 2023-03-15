@@ -21,9 +21,13 @@ const tailwind = ref({
 });
 const items = [
   {
-    title: "🤌 Typescript { Bash }",
+    title: "🛠️ Lightweight and Easy to Install",
+    details: "Has a very low footprint, with no minimal hardware requirements."
+  },
+  {
+    title: "Intuitive commands and configuration.",
     details:
-      "Enjoy wrapping your Bash with Typescript delicious and simple synthax."
+      "Sticks to the actual pipeline paradigm with a practical command line interface(cli). Nothing new if you've already use Drone.io, GitlabCICD or GiteaCICD"
   },
   {
     title: "🫦 Pretty Logs",
@@ -33,7 +37,7 @@ const items = [
   {
     title: "⚡ Blazing Fast",
     details:
-      "Written in Rust to be as low level as possible and stick to bare script performances. Uses Deno for its quick Typechecking."
+      "Written in Rust to be as low level as possible and stick to bare script performances."
   },
   {
     title: "🚦 Automatic Trigger",
@@ -41,8 +45,14 @@ const items = [
       "Your pipelines are executed in background on some events. You don't leave your editor."
   },
   {
-    title: "🛠️ Easy to Use and Install",
-    details: "Intuitive commands and configuration."
+    title: "🤌 Typescript { Bash }",
+    details:
+      "Enjoy wrapping your Bash with Typescript delicious and simple synthax. Uses Deno for its quick Typechecking."
+  },
+  {
+    title: "Free and Open-source",
+    details:
+      "Because many of other tools are cloud based or freemium, some need not to be."
   }
 ];
 </script>
