@@ -6,7 +6,7 @@ hero:
     src: /images/pipelight.png
     alt: pipelight_logo
   text: A tiny automation cli
-  tagline: Bash scripts with Typescript superpowers
+  tagline: The quickest and least painful way to automate... after the shell script.
   actions:
     - theme: brand
       text: Get Started
@@ -35,13 +35,16 @@ const tailwind = ref({
 .big {
   font-size: 50px;
 }
+.space {
+  @apply py-10;
+}
 </style>
 
 <Sheet>
 
 <Example>
 <h3> 
-Usual Bash script
+Your usual shell script...
 </h3>
 
 ```sh
@@ -59,11 +62,7 @@ pwd;
 
 <Example>
 <h3> 
-Rewrite it into a Pipeline..
-</h3>
-
-<h3> 
-in Typescrit
+...rewrited into a Pipeline...
 </h3>
 
 ```ts
@@ -82,13 +81,32 @@ in Typescrit
 }
 ```
 
-<h3> 
-TOML
+</Example>
+
+<p class="big">{{ tailwind.lg ? '⇢' : '⇣' }}</p>
+
+<Example>
+<h3>
+...gets Automation and Logging!
 </h3>
+
+<img class="sexy" src="/images/example_log_level_4.png" alt="example pretty verbose logs">
+
+</Example>
+</Sheet>
+
+<Sheet>
+<Example>
+<h4> 
+Supports the best and the worst
+</h4>
+<h4> 
+of config file formats
+</h4>
 
 ```toml
 [[pipelines]]
-  name =  "simple_example"
+name =  "simple_example"
 
 [[pipelines.steps]]
 name = "list directory"
@@ -98,10 +116,6 @@ commands = ["ls"]
 name = "get working directory"
 commands = ["pwd"]
 ```
-
-<h3> 
-YAML
-</h3>
 
 ```yml
 pipelines:
@@ -118,11 +132,19 @@ pipelines:
 </Example>
 
 <Example>
-<h3>
-..enable Automation and Logging
-</h3>
+<h4> 
+Never leave the term
+</h4>
 
+```sh
+pipelight run simple_example
+```
+
+```sh
+pipelight logs -vvv
+```
+
+<p class="big">{{ '⇣' }}</p>
 <img class="sexy" src="/images/example_log_level_4.png" alt="example pretty verbose logs">
-
 </Example>
 </Sheet>
