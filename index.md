@@ -62,6 +62,10 @@ pwd;
 Rewrite it into a Pipeline..
 </h3>
 
+<h3> 
+in Typescrit
+</h3>
+
 ```ts
 {
   name: "simple_example",
@@ -76,6 +80,39 @@ Rewrite it into a Pipeline..
     }
   ]
 }
+```
+
+<h3> 
+TOML
+</h3>
+
+```toml
+[[pipelines]]
+  name =  "simple_example"
+
+[[pipelines.steps]]
+name = "list directory"
+commands = ["ls"]
+
+[[pipelines.steps]]
+name = "get working directory"
+commands = ["pwd"]
+```
+
+<h3> 
+YAML
+</h3>
+
+```yml
+pipelines:
+  - name: simple_example
+    steps:
+      - commands:
+          - ls
+        name: list directory
+      - commands:
+          - pwd
+        name: get working directory
 ```
 
 </Example>

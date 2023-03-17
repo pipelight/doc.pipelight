@@ -8,10 +8,13 @@
 }
 .language-sh,
 .language-ts,
+.language-yml,
+.language-toml,
 .language-json {
   @apply rounded-lg;
   @apply bg-gray-800 !important;
   @apply dark:bg-gray-900 !important;
+  @apply min-w-full;
 }
 .image {
   @apply h-96 lg:h-72 transition-all;
