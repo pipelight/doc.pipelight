@@ -5,7 +5,7 @@ hero:
   image:
     src: /images/pipelight.png
     alt: pipelight_logo
-  text: A tiny automation cli
+  text: A tiny automation tool
   tagline: The quickest and least painful way to automate... after the shell script.
   actions:
     - theme: brand
@@ -32,8 +32,12 @@ const tailwind = ref({
 });
 </script>
 <style lang="postcss" scoped>
-.big {
+.xl {
   font-size: 50px;
+}
+.lg {
+  font-size: 25px;
+  @apply px-6 py-1;
 }
 .space {
   @apply py-10;
@@ -58,7 +62,7 @@ pwd;
 
 </Example>
 
-<p class="big">{{ tailwind.lg ? '⇢' : '⇣' }}</p>
+<p class="xl">{{ tailwind.lg ? '⇢' : '⇣' }}</p>
 
 <Example>
 <h3> 
@@ -83,7 +87,7 @@ pwd;
 
 </Example>
 
-<p class="big">{{ tailwind.lg ? '⇢' : '⇣' }}</p>
+<p class="xl">{{ tailwind.lg ? '⇢' : '⇣' }}</p>
 
 <Example>
 <h3>
@@ -97,12 +101,16 @@ pwd;
 
 <Sheet>
 <Example>
-<h4> 
-Supports the best and the worst
+<h4 class="lg"> 
+Write in your favorite
+file format
 </h4>
-<h4> 
-of config file formats
-</h4>
+<p> 
+...but Typescript is more fun 😈
+</p>
+</Example>
+
+<Example>
 
 ```toml
 [[pipelines]]
@@ -117,6 +125,10 @@ name = "get working directory"
 commands = ["pwd"]
 ```
 
+</Example>
+
+<Example>
+
 ```yml
 pipelines:
   - name: simple_example
@@ -130,11 +142,18 @@ pipelines:
 ```
 
 </Example>
+</Sheet>
 
+<Sheet>
 <Example>
-<h4> 
-Never leave the term
+<h4 class="lg"> 
+Never leave your terminal
 </h4>
+<p>
+the comfort of everything in one cli 😌
+</p>
+</Example>
+<Example>
 
 ```sh
 pipelight run simple_example
@@ -144,7 +163,19 @@ pipelight run simple_example
 pipelight logs -vvv
 ```
 
-<p class="big">{{ '⇣' }}</p>
-<img class="sexy" src="/images/example_log_level_4.png" alt="example pretty verbose logs">
+</Example>
+</Sheet>
+
+<Sheet>
+<Example>
+<h4> 
+Rust based.
+</h4>
+<h4> 
+Made with passion
+</h4>
+<h4> 
+for conscientious programmers.
+</h4>
 </Example>
 </Sheet>

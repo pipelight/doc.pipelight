@@ -1,9 +1,7 @@
 # Getting Started
 
-::: tip Software requirements
-Because it's speed is only due to it being tightly coupled to linux processes and git.
-Pipelight is only available on Linux distributions like [Arch Linux](https://wiki.archlinux.org/title/Installation_guide)
-If you're already using it, it means you belongs to the worthy.. This peace of greatness is for you!
+::: tip Hardware requirements
+Pipelight is a small software that has nearly no footprint. It can run on any device.
 :::
 
 ## Install/Uninstall
@@ -44,6 +42,11 @@ Uninstall by deleting binaries
 ```sh
 rm /<my_bin_directory>/pipelight*
 ```
+
+::: warning Software requirements
+Pipelight high performances are due to it being tightly coupled to Linux and Git.
+So it is only available on **Linux distributions** like [Arch Linux](https://wiki.archlinux.org/title/Installation_guide).
+:::
 
 ## Config file
 
