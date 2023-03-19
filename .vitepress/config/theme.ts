@@ -12,8 +12,6 @@ const themeConfig: DefaultTheme.Config = {
     theme: "material-theme-palenight",
     lineNumbers: true
   }
-  // editLinks: true,
-  // editLinkText: "Suggest changes to this page"
 };
 
 export default themeConfig;

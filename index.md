@@ -150,7 +150,7 @@ pipelines:
 Never leave your terminal
 </h4>
 <p>
-the comfort of everything in one cli 😌
+...cli feels like home 😌
 </p>
 </Example>
 <Example>
