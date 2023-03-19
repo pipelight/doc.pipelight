@@ -14,28 +14,24 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           link: "/guide/why"
         },
         {
-          text: "The story",
-          link: "/guide/the_story"
-        },
-        {
           text: "Command line usage",
           link: "/guide/cli"
-        },
-        {
-          text: "Logs",
-          link: "/guide/logs"
-        },
-        {
-          text: "States",
-          link: "/guide/states"
         },
         {
           text: "Configuration in depth",
           link: "/guide/config"
         },
         {
-          text: "Triggers (Automation)",
-          link: "/guide/triggers"
+          text: "Logs and States",
+          link: "/guide/logs"
+        },
+        {
+          text: "Cookbook",
+          link: "/cookbook/tips"
+        },
+        {
+          text: "The story",
+          link: "/guide/the_story"
         }
       ]
     }
@@ -45,8 +41,12 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
       text: "CookBook",
       items: [
         {
-          text: "Tips",
+          text: "Usefull Tips",
           link: "/cookbook/tips"
+        },
+        {
+          text: "Deployement Strategies",
+          link: "/cookbook/strategies"
         }
       ]
     }

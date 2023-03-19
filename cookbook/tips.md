@@ -1,4 +1,4 @@
-# Tips
+# Usefull Tips
 
 ## Get the best out of Typescript
 
@@ -7,7 +7,7 @@
 For easy debugging, import type definition from npm package.
 
 ```ts
-//pipelight.config.ts
+//pipelight.ts
 import { Config } from "npm:pipelight";
 const config: Config = {
   pipelines: [
@@ -30,8 +30,8 @@ Here are some pattern that I personnaly use.
 
 ### Overuse string interpolation!..
 
-```ts
-//pipelight.config.ts
+```ts{20}
+//pipelight.ts
 const params = {
   remote: {
     domain: "myserver.com",
@@ -62,8 +62,8 @@ export default config;
 
 ### ..Add Parameter destructuring..
 
-```ts
-//pipelight.config.ts
+```ts{13,21}
+//pipelight.ts
 const params = {
   remote: {
     domain: "myserver.com",
@@ -103,7 +103,7 @@ Overuse string interpolation, parameter destructuring and import/export ESM synt
 
 Export here
 
-```ts
+```ts{19-21}
 //.pipelight/config/default.ts
 
 const makeDefaultConfig = ({remote, local}): Config = > {
@@ -130,9 +130,8 @@ export {
 
 And import here
 
-```ts
-//pipelight.config.ts
-
+```ts{2}
+//pipelight.ts
 import { makeDefaultConfig } from ".pipelight/config/default.ts";
 
 const params = {
@@ -155,7 +154,7 @@ and import them in your main pipelight.config.ts
 
 ## Multiline strings
 
-To write multiline bash strings add a trailing '\' after a command.
+To write multiline strings use the trailing slash.
 
 ```ts
 commands: [

@@ -1,7 +1,11 @@
 # Getting Started
 
 ::: tip Hardware requirements
-Pipelight is a small software that has nearly no footprint. It can run on any device.
+Pipelight is a very small software that has nearly no footprint, so it can run on any device.
+:::
+::: warning Software requirements
+Pipelight high performances are due to it being tightly coupled to Linux and Git.
+So it is only available on **Linux distributions** like [Arch Linux](https://wiki.archlinux.org/title/Installation_guide).
 :::
 
 ## Install/Uninstall
@@ -14,15 +18,22 @@ Install from the [AUR](https://aur.archlinux.org/packages?O=0&K=pipelight) with 
 paru -S pipelight
 ```
 
-And uninstall
+And uninstall.
 
 ```sh
 paru -Rcns pipelight
 ```
 
+Remove generated files
+
+```sh
+rm -rf /<my_git_repo>/.git/hooks/
+rm -rf /<my_git_repo>/.pipelight/
+```
+
 ### From sources
 
-First install dependencies.
+First, install dependencies.
 
 ```sh
 apt-get install deno
@@ -37,16 +48,18 @@ cargo build --release
 cp target/release/pipelight* /<my_bin_directory>/
 ```
 
-Uninstall by deleting binaries
+Uninstall by deleting binaries.
 
 ```sh
 rm /<my_bin_directory>/pipelight*
 ```
 
-::: warning Software requirements
-Pipelight high performances are due to it being tightly coupled to Linux and Git.
-So it is only available on **Linux distributions** like [Arch Linux](https://wiki.archlinux.org/title/Installation_guide).
-:::
+Remove generated files
+
+```sh
+rm -rf /<my_git_repo>/.git/hooks/
+rm -rf /<my_git_repo>/.pipelight/
+```
 
 ## Config file
 
@@ -58,7 +71,7 @@ Create pipelines with steps and commands.
 Add automatic triggers and have fun.
 
 ```ts
-//pipelight.config.ts
+//pipelight.ts
 import type { Config } from "npm:pipelight";
 const config: Config = {
   pipelines: [
@@ -113,4 +126,4 @@ pipelight logs -vvv
   <img class="terminal" src="/images/log_level_4.png" alt="pretty verbose logs picture">
 </p>
 
-**The actulal pipeline to deploy this website.**
+_The actulal pipeline to deploy this website._

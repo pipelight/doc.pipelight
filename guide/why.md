@@ -2,40 +2,58 @@
 import Features from '../.vitepress/theme/components/Features.vue';
 </script>
 
-# The tasks you want to use pipelight for
+# Why using pipelight ?
 
-## Bettern your bash scripts
+Pipelight ought to be the least painfull solution to set up if you seek automation.
+
+## Bettern your shell scripts
 
 People usualy seek automation because they face repetitive thus painful tasks of varied nature.
-And they go down the road of automation
+And they go down the road of automation:
 
-- 1: edit a shell script (quick)
+- 1: edit a shell script (quick but lacks logging)
 - **Pipelight**
 - 2: make a python,javascript or either perl script (too specific, not reusable without effort)
-- 3: set up a cicd pipeline with its ecosystem (cumbersome)
+- 3: set up a cicd pipeline with its ecosystem (ressource and time consumming)
 
-Pipelight ought to be the least painfull solution to set up, after you made a bash srcipt.
+Running a pipeline instead of a shell script will provide you logging features and automation.
+Writting a pipeline instead of a shell script will bring Typescript, Toml or Yaml syntax/abilities to your script.
+Basicaly it encapsulate your shell commands into another language.
 
-## Software devlopment and deployment
+## Software development and deployment (CICD)
 
 ### Client side
 
-Client side automation (on pre-push, pre-commit...) to build and test before pushing to production branches.
+On your computer, you can enable client side automation by using specific triggers (on pre-push, pre-commit...).
 
+To **enforce code quality**,
+you can write pipelines to build and test your code before pushing it to production branches.
+
+For financial reasons:
 If you can't do the heavy work on your servers, you may want to do it localy with the latent power that resides in your PC.
-Build your software locally and send the result to your remote servers as:
+Make the **heavy computation locally**, like building your software and then only send the resulting archive or image to your remote servers as
 
-- an archive
-- a docker image
-- whatever your fantasy is
-
-It allows me to stick to [linode](https://www.linode.com/pricing/#compute-shared) minimum server costs.
+It allows me to stick to my provider **minimum server costs**.
 
 ### Server side
 
-Deploy (on pre-receive)
+Server side automation is achieved by using specific triggers too (on update, pre-receive...).
 
-# Why using pipelight over other tools
+Let's say:
+
+- you host your code on Gitea and have a pipelight config file on the root of this repo.
+- you run a linux server.
+
+To execute pipelines server-side, you need to add another remote url to your git repository.
+This url must point to the repo clone hosted on your linux server.
+
+Generate automation scripts by using pipelight a first time on this repo with.
+
+```sh
+pipelight ls
+```
+
+## Why using pipelight over other tools?
 
 <Features />
 
@@ -64,7 +82,6 @@ Add triggers to your pipeline definition.
 It will automatically run in the background on matching event and git branch.
 
 ```ts
-//pipelight.config.ts
 triggers: [
   {
     actions: ["pre-push"],

@@ -51,7 +51,7 @@ const tailwind = ref({
 Your usual shell script...
 </h3>
 
-```sh
+```sh{3,5}
 #simple_example.sh
 ## List files
 ls;
@@ -69,7 +69,7 @@ pwd;
 ...rewrited into a Pipeline...
 </h3>
 
-```ts
+```ts{6,10}
 {
   name: "simple_example",
   steps: [

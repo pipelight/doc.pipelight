@@ -159,7 +159,7 @@ But at some point, this method lakes verbosity, and automation...
 Just put your commands into a Pipeline object.
 
 ```ts
-//pipelight.config.ts
+//pipelight.ts
 import { Config } from "npm:pipelight";
 const config: Config = {
   pipelines: [
