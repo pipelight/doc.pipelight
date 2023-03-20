@@ -75,7 +75,7 @@ const params = {
   }
 };
 
-const makeConfig = ({remote, local}) = > {
+const makeConfig = ({remote, local}) => {
   pipelines: [
     {
       name: "deploy",

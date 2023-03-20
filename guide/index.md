@@ -1,16 +1,12 @@
 # Getting Started
 
+## Install
+
 ::: tip Hardware requirements
 Pipelight is a very small software that has nearly no footprint, so it can run on any device.
 :::
-::: warning Software requirements
-Pipelight high performances are due to it being tightly coupled to Linux and Git.
-So it is only available on **Linux distributions** like [Arch Linux](https://wiki.archlinux.org/title/Installation_guide).
-:::
 
-## Install/Uninstall
-
-### With Arch Linux
+### With a package manager
 
 Install from the [AUR](https://aur.archlinux.org/packages?O=0&K=pipelight) with your favorite package manager.
 
@@ -18,20 +14,15 @@ Install from the [AUR](https://aur.archlinux.org/packages?O=0&K=pipelight) with 
 paru -S pipelight
 ```
 
-And uninstall.
+Debian
+Dowload package [pipelight.deb](/packages/debian/pipelight.deb)
 
 ```sh
-paru -Rcns pipelight
+curl https://doc.pipelight.areskul.com/packages/debian/pipelight.deb
+dpkg -i pipelight.deb
 ```
 
-Remove generated files
-
-```sh
-rm -rf /<my_git_repo>/.git/hooks/
-rm -rf /<my_git_repo>/.pipelight/
-```
-
-### From sources
+### From source
 
 First, install dependencies.
 
@@ -48,7 +39,20 @@ cargo build --release
 cp target/release/pipelight* /<my_bin_directory>/
 ```
 
+::: warning Software requirements
+Pipelight high performances are due to it being tightly coupled to Linux and Git.
+So it is only available on **Linux distributions** like [Arch Linux](https://wiki.archlinux.org/title/Installation_guide).
+:::
+
+## Uninstall
+
+```sh
+paru -Rcns pipelight
+```
+
 Uninstall by deleting binaries.
+
+### Sources
 
 ```sh
 rm /<my_bin_directory>/pipelight*
