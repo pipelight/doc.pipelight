@@ -163,6 +163,6 @@ commands: [
     --label='traefik.http.routers.default.rule=Host("${docker.container.dns}")' \
     --label='traefik.http.routers.default.tls=true' \
     -t ${docker.image.name} .vitepress/dist`,
-  `docker save ${docker.image.name} |ssh -C ${host} docker load`
+  `docker save ${docker.image.name} | ssh -C ${host} docker load`
 ];
 ```
