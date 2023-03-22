@@ -1,28 +1,35 @@
+<script setup>
+const debian = '/packages/debian/pipelight-0.4.23-any.deb';
+const archlinux = '/packages/archlinux/pipelight-0.4.23.pkg.tar.zst';
+</script>
+
 # Getting Started
 
 ## Install
 
-::: tip Hardware requirements
-Pipelight is a very small software that has nearly no footprint, so it can run on any device.
-:::
-
 ### With a package manager
 
-Install from the [AUR](https://aur.archlinux.org/packages?O=0&K=pipelight) with your favorite package manager.
+#### Arch Linux
 
 ```sh
 paru -S pipelight
 ```
 
-Debian
-Dowload package [pipelight.deb](/packages/debian/pipelight.deb)
+#### Fedora
 
 ```sh
-curl https://doc.pipelight.areskul.com/packages/debian/pipelight.deb
-dpkg -i pipelight.deb
+curl https://doc.pipelight.areskul.com/packages/fedora/pipelight-0.4.23-any.rpm
+yum install pipelight-0.4.23-any.rpm
 ```
 
-### From source
+#### Debian/Ubuntu
+
+```sh
+curl https://doc.pipelight.areskul.com/packages/debian/pipelight-0.4.23-any.deb
+dpkg -i pipelight-0.4.23-any.deb
+```
+
+### Or From source
 
 First, install dependencies.
 
@@ -38,6 +45,10 @@ cd pipelight
 cargo build --release
 cp target/release/pipelight* /<my_bin_directory>/
 ```
+
+::: tip Hardware requirements
+Pipelight is a very small software that has nearly no footprint, so it can run on any device.
+:::
 
 ::: warning Software requirements
 Pipelight high performances are due to it being tightly coupled to Linux and Git.
