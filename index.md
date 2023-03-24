@@ -6,7 +6,7 @@ hero:
     src: /images/pipelight.png
     alt: pipelight_logo
   text: A tiny automation tool
-  tagline: The quickest and least painful way to automate... after the shell script.
+  tagline: The quickest and least painful way to automate!
   actions:
     - theme: brand
       text: Get Started

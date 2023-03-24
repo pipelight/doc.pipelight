@@ -1,84 +1,45 @@
-<script setup>
-const debian = '/packages/debian/pipelight-0.4.23-any.deb';
-const archlinux = '/packages/archlinux/pipelight-0.4.23.pkg.tar.zst';
+<script lang="ts" setup>
+const debian = `pipelight-${import.meta.env.VITE_GIT_VERSION}-any.deb`;
+const archlinux = `pipelight-${import.meta.env.VITE_GIT_VERSION}-any.pkg.tar.zst`;
+const fedora = `pipelight-${import.meta.env.VITE_GIT_VERSION}-any.rpm`;
 </script>
 
 # Getting Started
 
-## Install
+## Install with a package manager
 
-### With a package manager
-
-#### Arch Linux
+Arch Linux (AUR)
 
 ```sh
 paru -S pipelight
 ```
 
-#### Fedora
+Fedora/CentOS and derivates
 
-```sh
-curl https://doc.pipelight.areskul.com/packages/fedora/pipelight-0.4.23-any.rpm
-yum install pipelight-0.4.23-any.rpm
+```sh-vue
+curl https://doc.pipelight.areskul.com/packages/fedora/{{ fedora }}
+yum install {{ fedora }}
 ```
 
-#### Debian/Ubuntu
+Debian/Ubuntu and derivates
 
-```sh
-curl https://doc.pipelight.areskul.com/packages/debian/pipelight-0.4.23-any.deb
-dpkg -i pipelight-0.4.23-any.deb
+```sh-vue
+curl https://doc.pipelight.areskul.com/packages/debian/{{ debian }}
+dpkg -i {{ debian }}
 ```
 
-### Or From source
+## Install with the installation script
 
-First, install dependencies.
-
-```sh
-apt-get install deno
-```
-
-Then clone and build source code.
+For any linux distribution
 
 ```sh
-git clone <this_repo>
-cd pipelight
-cargo build --release
-cp target/release/pipelight* /<my_bin_directory>/
+curl https://doc.pipelight.areskul.com/scripts/install.sh | sh
 ```
 
-::: tip Hardware requirements
-Pipelight is a very small software that has nearly no footprint, so it can run on any device.
-:::
-
-::: warning Software requirements
-Pipelight high performances are due to it being tightly coupled to Linux and Git.
-So it is only available on **Linux distributions** like [Arch Linux](https://wiki.archlinux.org/title/Installation_guide).
-:::
-
-## Uninstall
-
-```sh
-paru -Rcns pipelight
-```
-
-Uninstall by deleting binaries.
-
-### Sources
-
-```sh
-rm /<my_bin_directory>/pipelight*
-```
-
-Remove generated files
-
-```sh
-rm -rf /<my_git_repo>/.git/hooks/
-rm -rf /<my_git_repo>/.pipelight/
-```
-
-## Config file
+## Write a pipeline
 
 The only rule is to export a **Config object**.
+
 More details in the [in depth section](/guide/config).
 
 Importing the Config type from the npm package will give you a pleasant typing support.
@@ -108,7 +69,11 @@ const config: Config = {
 export default config;
 ```
 
-## Usage
+## Command line usage
+
+:::tip
+Use the commands in the same folder as your config file.
+:::
 
 It's a simple command line tool (CLI) that sticks to what you are accustomed to.
 

@@ -35,3 +35,6 @@ img {
     @apply my-4;
   }
 }
+.custom-block {
+  @apply bg-inherit !important;
+}

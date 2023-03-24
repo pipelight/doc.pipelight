@@ -1,7 +1,7 @@
 import type { DefaultTheme } from "@/config";
 
 export const sidebar: DefaultTheme.Config["sidebar"] = {
-  "/guide": [
+  "/": [
     {
       text: "Guide",
       items: [
@@ -26,27 +26,21 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           link: "/guide/logs"
         },
         {
-          text: "Cookbook",
-          link: "/cookbook/tips"
-        },
-        {
           text: "The story",
           link: "/guide/the_story"
         }
       ]
-    }
-  ],
-  "/cookbook": [
+    },
     {
-      text: "CookBook",
+      text: "Cookbook",
       items: [
-        {
-          text: "Usefull Tips",
-          link: "/cookbook/tips"
-        },
         {
           text: "Deployement Strategies",
           link: "/cookbook/strategies"
+        },
+        {
+          text: "Usefull Tips",
+          link: "/cookbook/tips"
         }
       ]
     }
