@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+const base = import.meta.env.BASE_URL;
 const debian = `pipelight-${import.meta.env.VITE_GIT_VERSION}-any.deb`;
 const archlinux = `pipelight-${import.meta.env.VITE_GIT_VERSION}-any.pkg.tar.zst`;
 const fedora = `pipelight-${import.meta.env.VITE_GIT_VERSION}-any.rpm`;
@@ -17,7 +18,7 @@ paru -S pipelight
 Fedora/CentOS and derivates
 
 ```sh-vue
-curl https://doc.pipelight.areskul.com/packages/fedora/{{ fedora }}
+curl {{ base }}{{ fedora }}
 yum install {{ fedora }}
 ```
 

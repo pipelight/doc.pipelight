@@ -38,6 +38,7 @@ const makeConfig = ({ host, version, docker }: any): Config => {
             name: `build docker image:${version}`,
             commands: [
               `docker build \
+                -f ./.pipelight/public/docker/Dockerfile \
                 --label='traefik.enable=true' \
                 --label='traefik.http.routers.default.rule=Host("${docker.container.dns}")' \
                 --label='traefik.http.routers.default.tls=true' \
