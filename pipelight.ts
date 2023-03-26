@@ -93,5 +93,4 @@ const makeConfig = ({ host, version, docker }: any): Config => {
 };
 
 const config = makeConfig(params);
-// console.log(JSON.stringify(config));
 export default config;
