@@ -18,7 +18,7 @@ paru -S pipelight
 Fedora/CentOS and derivates
 
 ```sh-vue
-curl {{ base }}{{ fedora }}
+curl {{ base }}packages/{{ fedora }}
 yum install {{ fedora }}
 ```
 
