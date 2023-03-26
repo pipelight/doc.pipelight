@@ -35,13 +35,13 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
       text: "Cookbook",
       items: [
         {
-          text: "Deployement Strategies",
-          link: "/cookbook/strategies"
-        },
-        {
           text: "Usefull Tips",
           link: "/cookbook/tips"
         }
+        {
+          text: "Deployement Strategies",
+          link: "/cookbook/strategies"
+        },
       ]
     }
   ]

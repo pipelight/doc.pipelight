@@ -69,7 +69,7 @@ const makeConfig = ({ host, version, docker }: any): Config => {
           {
             name: `update remote nginx configuration`,
             commands: [
-              `scp ./public/pipelight.nginx.conf ${host}:/etc/nginx/sites-enabled/pipelight.conf`,
+              `scp ./.pipelight/public/pipelight.nginx.conf ${host}:/etc/nginx/sites-enabled/pipelight.conf`,
               ssh({
                 host: host,
                 cmd: "sudo nginx -t"

@@ -6,4 +6,4 @@ areskul@areskul.com
 
 ## Telegram
 
-@Areskul
+[areskul](https://t.me/areskul)
