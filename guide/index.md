@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const base = import.meta.env.BASE_URL;
+const base = "https://pipelight.dev";
 const debian = `pipelight-${import.meta.env.VITE_GIT_VERSION}-any.deb`;
 const archlinux = `pipelight-${import.meta.env.VITE_GIT_VERSION}-any.pkg.tar.zst`;
 const fedora = `pipelight-${import.meta.env.VITE_GIT_VERSION}-any.rpm`;
@@ -18,14 +18,14 @@ paru -S pipelight
 Fedora/CentOS and derivates
 
 ```sh-vue
-curl {{ base }}packages/{{ fedora }}
+curl {{ base }}/packages/{{ fedora }}
 yum install {{ fedora }}
 ```
 
 Debian/Ubuntu and derivates
 
 ```sh-vue
-curl https://doc.pipelight.areskul.com/packages/debian/{{ debian }}
+curl {{ base }}/packages/{{ debian }}
 dpkg -i {{ debian }}
 ```
 
@@ -34,7 +34,7 @@ dpkg -i {{ debian }}
 For any linux distribution
 
 ```sh
-curl https://doc.pipelight.areskul.com/scripts/install.sh | sh
+curl {{ base }}/scripts/install.sh | sh
 ```
 
 ## Write a pipeline
@@ -60,10 +60,12 @@ const config: Config = {
           commands: ["pnpm install", "pnpm build"]
         }
       ],
-      trigger: {
-        branches: ["master", "dev"],
-        actions: ["pre-push", "pre-commit"]
-      }
+      triggers: [
+        {
+          branches: ["master", "dev"],
+          actions: ["pre-push", "pre-commit"]
+        }
+      ]
     }
   ]
 };
