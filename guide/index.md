@@ -33,7 +33,7 @@ dpkg -i {{ debian }}
 
 For any linux distribution
 
-```sh
+```sh-vue
 curl {{ base }}/scripts/install.sh | sh
 ```
 
