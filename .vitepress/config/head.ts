@@ -15,7 +15,7 @@ const head: HeadConfig[] = [
 
   ["meta", { name: "HandheldFriendly", content: "True" }],
   ["meta", { name: "MobileOptimized", content: "320" }],
-  ["meta", { name: "theme-color", content: "#f28fbc" }],
+  ["meta", { name: "theme-color", content: "#3f7739" }],
 
   ["meta", { name: "twitter:card", content: "/images/pipelight.png" }],
   ["meta", { name: "twitter:site", content: metaData.site }],
