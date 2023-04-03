@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 const base = "https://pipelight.dev";
-const debian = `pipelight-${import.meta.env.VITE_GIT_VERSION}-any.deb`;
-const archlinux = `pipelight-${import.meta.env.VITE_GIT_VERSION}-any.pkg.tar.zst`;
-const fedora = `pipelight-${import.meta.env.VITE_GIT_VERSION}-any.rpm`;
+const debian = `pipelight-${import.meta.env.VITE_GIT_VERSION}.deb`;
+const archlinux = `pipelight-${import.meta.env.VITE_GIT_VERSION}.pkg.tar.zst`;
+const fedora = `pipelight-${import.meta.env.VITE_GIT_VERSION}.rpm`;
 </script>
 
 # Getting Started
