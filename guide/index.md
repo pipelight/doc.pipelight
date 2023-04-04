@@ -18,14 +18,14 @@ paru -S pipelight
 Fedora/CentOS and derivates
 
 ```sh-vue
-curl {{ base }}/packages/{{ fedora }}
+curl {{ base }}/{{ fedora }}
 yum install {{ fedora }}
 ```
 
 Debian/Ubuntu and derivates
 
 ```sh-vue
-curl {{ base }}/packages/{{ debian }}
+curl {{ base }}/{{ debian }}
 dpkg -i {{ debian }}
 ```
 
