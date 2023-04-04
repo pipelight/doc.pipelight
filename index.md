@@ -38,6 +38,7 @@ const tailwind = ref({
 .lg {
   font-size: 25px;
   @apply px-6 py-1;
+  @apply text-center;
 }
 .space {
   @apply py-10;
