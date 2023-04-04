@@ -7,7 +7,7 @@ const fedora = `pipelight-${import.meta.env.VITE_GIT_VERSION}.rpm`;
 
 # Getting Started
 
-## Install with a package manager
+## Install with a your package manager
 
 Arch Linux (AUR)
 
@@ -18,14 +18,14 @@ paru -S pipelight
 Fedora/CentOS and derivates
 
 ```sh-vue
-curl {{ base }}/{{ fedora }}
+curl -O {{ base }}/{{ fedora }}
 yum install {{ fedora }}
 ```
 
 Debian/Ubuntu and derivates
 
 ```sh-vue
-curl {{ base }}/{{ debian }}
+curl -O {{ base }}/{{ debian }}
 dpkg -i {{ debian }}
 ```
 
