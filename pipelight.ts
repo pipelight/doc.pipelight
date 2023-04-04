@@ -11,8 +11,8 @@ const params = {
   docker: {
     network: "127.0.0.1",
     container: {
-      name: `${version}.doc.pipelight.com`,
-      dns: "doc.pipelight.areskul.com"
+      name: `${version}.pipelight.dev`,
+      dns: "pipelight.dev"
     },
     image: {
       name: `pipelight/doc:${version}`
