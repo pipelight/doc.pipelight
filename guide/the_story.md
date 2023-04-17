@@ -3,7 +3,7 @@
 People will usualy automate a process beginning with Bash, then python and install a Continuous Development tool.
 
 I made Pipelight because I needed more than shell script to deploy my software.
-But I couldn't find a cicd tool that suit my need.
+But I couldn't find a cicd tool that suit my needs.
 
 ## Why typescript over Bash or YAML/TOML for configuration
 

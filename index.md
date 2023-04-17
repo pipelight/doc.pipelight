@@ -5,8 +5,8 @@ hero:
   image:
     src: /images/pipelight.png
     alt: pipelight_logo
-  text: A tiny automation tool
-  tagline: The quickest and least painful way to automate!
+  text: Self-hosted automation pipelines
+  tagline: CI/CD now FOSS, fast, and easy!
   actions:
     - theme: brand
       text: Get Started
@@ -92,10 +92,14 @@ pwd;
 
 <Example>
 <h3>
-...gets Automation and Logging!
+...gets automatic triggers and pretty logs.
 </h3>
 
 <img class="sexy" src="/images/example_log_level_4.png" alt="example pretty verbose logs">
+
+<h4>
+(JSON logs avaiable too!)
+</h4>
 
 </Example>
 </Sheet>

@@ -4,21 +4,37 @@ import Features from '../.vitepress/theme/components/Features.vue';
 
 # Why using pipelight ?
 
-Pipelight ought to be the least painfull solution to set up if you seek automation.
+Pipelight ought to be the fastest and least painfull solution to set up if you seek to automate things.
+If you are a Bash guy, it will bring simplicity to your scripts.
+If you do DevOps stuffs, it will bring flexibility to your pipelines.
 
-## Bettern your shell scripts
+It will furthermore keep big techs out of your code, while creating basic to powerful automation scripts/pipelines.
+
+## The solution to the harsh automation path -> Bettern your shell scripts
 
 People usualy seek automation because they face repetitive thus painful tasks of varied nature.
 And they go down the road of automation:
+
+- 1: They edit a shell script (it is quick but lacks logging)
+- 2: Then they write a python,javascript or either perl script (but it is too specific, not reusable without many efforts)
+- 3: Finally they set up a CICD pipeline with its entire ecosystem (ressource and time consumming)
+
+On the automation road Pipelight comes
+write after the shell script in term of simplicity while still being the same kind of software used in the third step.
 
 - 1: edit a shell script (quick but lacks logging)
 - **Pipelight**
 - 2: make a python,javascript or either perl script (too specific, not reusable without effort)
 - 3: set up a cicd pipeline with its ecosystem (ressource and time consumming)
 
-Running a pipeline instead of a shell script will provide you logging features and automation.
-Writting a pipeline instead of a shell script will bring Typescript, Toml or Yaml syntax/abilities to your script.
-Basicaly it encapsulate your shell commands into another language.
+How it works?
+Basically it **encapsulates your shell commands into another language.**
+
+This encapsulation provides you logging features and automatic triggers.
+Moreover it adds easy programming language abilities by bringing Typescript (Toml and Yaml) syntax to your script.
+
+Why so easy to install?
+It doesn't need to be integrated into a larger ecosystem because the only dependencies it has are sh, git and deno.
 
 ## Software development and deployment (CICD)
 
@@ -47,22 +63,20 @@ Let's say:
 To execute pipelines server-side, you need to add another remote url to your git repository.
 This url must point to the repo clone hosted on your linux server.
 
-Generate automation scripts by using pipelight a first time on this repo with.
-
-```sh
-pipelight ls
-```
-
 ## Why using pipelight over other tools?
 
 <Features />
 
-## Typescript (Code as Configuration)
+## Typescript (Code as Configuration as Code)
 
 As a pipeline get complexe, you want to add variables, conditions, loops and more.
 Check the [Cookbook](/cookbook/tips) for examples.
 
-## Pretty Logs in terminal
+Where other tools are about Configuration as Code,
+Pipelight get on step further and allows you to code in your configuration file to create reusable configuration blocks (with Typescript).
+So it becomes Code as Configuration as Code.
+
+## Pretty Logs in terminal / Json logs in files
 
 Check the [Logs section](/guide/logs) for examples.
 
@@ -71,10 +85,10 @@ Check the [Logs section](/guide/logs) for examples.
 Pipelight is written in [Rust](https://www.rust-lang.org/), so it's fast!!
 
 It has the minimum required functions for a cicd tool
-and give up on features that should be run by specialized softwares.
+and give up on features that should be run by specialized softwares. (like git for software versionning)
 
 It doesn't reinvent the wheel by making cumbersom dockerized event listeners, secrets or plugins.
-It implements basic functionnality by beeing tightly coupled to Linux and [Git](https://git-scm.com/).
+It implements basic functionnalities by keeping it's source code tightly coupled to Linux and [Git](https://git-scm.com/).
 
 ## Quick Automation
 
@@ -93,7 +107,7 @@ triggers: [
 ## Terminal friendly
 
 Run a pipeline and check logs without living your terminal.
-Pipelight stays in the terminal, and is nothing more than a Command Line Tool.
+Pipelight stays in the terminal, and is finally nothing more than a Command Line Tool. (>12M binaries)
 
 ## Easy to install
 
