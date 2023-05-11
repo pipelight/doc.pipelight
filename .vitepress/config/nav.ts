@@ -16,7 +16,7 @@ export const nav: DefaultTheme.Config["nav"] = [
   {
     text: "Gitea",
     link: "https://gitea.com/pipelight/pipelight"
-  }
+  },
   {
     text: "Github",
     link: "https://github.com/pipelight/pipelight"
