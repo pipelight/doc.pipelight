@@ -1,44 +1,30 @@
-import type {
-  Config,
-  DockerParams
-} from "https://deno.land/x/pipelight@v0.1.2/mod.ts";
-import { Docker } from "https://deno.land/x/pipelight@v0.1.2/mod.ts";
-
+import type { Config } from "npm:pipelight";
 // SSh helper
 const ssh = ({ host, cmd }: any) => {
   const params = "ssh -o TCPKeepAlive=no -C";
   return `${params} ${host} "${cmd}"`;
 };
-
+const version = "production";
 const params = {
   host: "linode",
-  version: "production",
-  service: "doc",
-  dns: "pipelight.dev"
+  version: version,
+  docker: {
+    network: "127.0.0.1",
+    container: {
+      name: `${version}.pipelight.dev`,
+      dns: "pipelight.dev"
+    },
+    image: {
+      name: `pipelight/doc:${version}`
+    },
+    port: {
+      out: 9080,
+      in: 80
+    }
+  }
 };
 
-const makeDocker = ({ host, version, service, dns }: any): Docker => {
-  return new Docker({
-    containers: [
-      {
-        name: `${version}.${service}.${dns}`,
-        image: {
-          name: `${dns}/${service}:${version}`
-        },
-        ports: [
-          {
-            out: 9080,
-            in: 80
-          }
-        ]
-      }
-    ]
-  });
-};
-
-const makeConfig = (params: any): Config => {
-  const { host, version, service, dns } = params;
-  const docker: Docker = makeDocker(params);
+const makeConfig = ({ host, version, docker }: any): Config => {
   return {
     pipelines: [
       {
@@ -49,13 +35,35 @@ const makeConfig = (params: any): Config => {
             commands: ["pnpm install", "pnpm build"]
           },
           {
-            name: `docker build`,
-            commands: docker.to_commands()
+            name: `build docker image:${version}`,
+            commands: [
+              `docker build \
+                --label='traefik.enable=true' \
+                --label='traefik.http.routers.default.rule=Host("${docker.container.dns}")' \
+                --label='traefik.http.routers.default.tls=true' \
+                -t ${docker.image.name} .`,
+              `docker save ${docker.image.name} |ssh -C ${host} docker load`
+            ]
           },
           {
-            name: `build docker `,
+            name: `delete remote container:${version}`,
+            non_blocking: true,
             commands: [
-              `docker save ${docker.containers[0].image.name} |ssh -C ${host} docker load`
+              `ssh -C ${host} \
+            "
+              docker stop ${docker.container.name}; \
+              docker rm ${docker.container.name}
+            "`
+            ]
+          },
+          {
+            name: `recreate remote container:${version}`,
+            commands: [
+              ssh({
+                host: host,
+                cmd: `docker run -d -p ${docker.network}:${docker.port.out}:${docker.port.in} \
+                  --name=${docker.container.name} ${docker.image.name}`
+              })
             ]
           },
           {
@@ -76,7 +84,7 @@ const makeConfig = (params: any): Config => {
         triggers: [
           {
             branches: ["master", "main", "dev"],
-            actions: ["pre-push"]
+            actions: ["pre-push", "manual"]
           }
         ]
       }
