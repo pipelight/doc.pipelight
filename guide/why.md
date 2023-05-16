@@ -27,15 +27,6 @@ write after the shell script in term of simplicity while still being the same ki
 - 2: make a python,javascript or either perl script (too specific, not reusable without effort)
 - 3: set up a cicd pipeline with its ecosystem (ressource and time consumming)
 
-How it works?
-Basically it **encapsulates your shell commands into another language.**
-
-This encapsulation provides you logging features and automatic triggers.
-Moreover it adds easy programming language abilities by bringing Typescript (Toml and Yaml) syntax to your script.
-
-Why so easy to install?
-It doesn't need to be integrated into a larger ecosystem because the only dependencies it has are sh, git and deno.
-
 ## Software development and deployment (CICD)
 
 ### Client side

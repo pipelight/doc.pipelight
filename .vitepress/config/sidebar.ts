@@ -10,7 +10,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           link: "/guide/"
         },
         {
-          text: "Why Pipelight ?",
+          text: "Why using Pipelight ?",
           link: "/guide/why"
         },
         {
@@ -22,8 +22,12 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           link: "/guide/config"
         },
         {
-          text: "Logs and States",
+          text: "Raw and Pretty logs",
           link: "/guide/logs"
+        },
+        {
+          text: "How it works ?",
+          link: "/guide/internal"
         },
         {
           text: "The story",

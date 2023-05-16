@@ -2,11 +2,10 @@
 
 ## States
 
-While reading logs, you will encouter some colors which define a state.
-Each pipeline elements has a state which can be started, running, failed, aborted or succeedeed.
-The Pipeline state is the global state.
-Each of its steps have a state too.
-and each of them commands have an individual state too.
+While reading logs, you will encounter some colors which define a state.
+Each pipeline element has a state which can be None, "started", "running", "failed", "aborted" or "succeedeed".
+The Pipeline has a global state , each of its steps has a state,
+and each steps commands has an individual state too.
 
 ### States in JSON logs
 
