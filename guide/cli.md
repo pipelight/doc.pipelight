@@ -19,10 +19,22 @@ Inspect your pipeline
 pipelight ls <pipeline_name>
 ```
 
+or
+
+```sh
+pipelight inspect <pipeline_name>
+```
+
 Run it in background
 
 ```sh
 pipelight run <pipeline_name>
+```
+
+Or without any argument, you'll be able to browse your pipeline list.
+
+```sh
+pipelight run
 ```
 
 Abort pipeline execution

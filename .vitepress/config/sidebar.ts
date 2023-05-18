@@ -43,8 +43,29 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           link: "/cookbook/tips"
         },
         {
+          text: "Helpers",
+          link: "/cookbook/helpers"
+        },
+        {
           text: "Deployement Strategies",
           link: "/cookbook/strategies"
+        }
+      ]
+    },
+    {
+      text: "Next",
+      items: [
+        {
+          text: "Roadmap",
+          link: "/roadmap/index"
+        },
+        {
+          text: "Breaking Changes",
+          link: "/roadmap/breaking"
+        },
+        {
+          text: "Changelog",
+          link: "/roadmap/changelog"
         }
       ]
     }

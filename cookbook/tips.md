@@ -8,7 +8,7 @@ For easy debugging, import type definition from npm package.
 
 ```ts
 //pipelight.ts
-import { Config } from "npm:pipelight";
+import { Config } from "https://deno.land/x/pipelight/mod.ts";
 const config: Config = {
   pipelines: [
     {

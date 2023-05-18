@@ -160,7 +160,7 @@ Just put your commands into a Pipeline object.
 
 ```ts
 //pipelight.ts
-import { Config } from "npm:pipelight";
+import { Config } from "https://deno.land/x/pipelight/mod.ts";
 const config: Config = {
   pipelines: [
     {

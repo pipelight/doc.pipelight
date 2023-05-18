@@ -1,9 +1,21 @@
 # Contact me
 
-## Mail
+<VPTeamMembers size="small" :members="members" />
 
-areskul@areskul.com
+Send me an email at areskul@areskul.com
 
-## Telegram
+or DM me on Telegram [@Areskul](https://t.me/areskul)
 
-[areskul](https://t.me/areskul)
+<script setup> 
+import { VPTeamMembers } from 'vitepress/theme';
+const members = [
+{     
+    avatar: 'https://www.github.com/pipelight.png',     
+    name: "Areskul",
+    title: 'Creator',  
+    links: [    
+    { icon: 'github', link: 'https://github.com/pipelight' },
+    ],  
+},   
+];
+</script>

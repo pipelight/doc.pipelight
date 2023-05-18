@@ -29,6 +29,8 @@ write after the shell script in term of simplicity while still being the same ki
 
 ## Software development and deployment (CICD)
 
+You can define pipelines that will run client-side and/or server-side.
+
 ### Client side
 
 On your computer, you can enable client side automation by using specific triggers (on pre-push, pre-commit...).

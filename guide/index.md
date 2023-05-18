@@ -15,6 +15,12 @@ Arch Linux (AUR)
 paru -S pipelight
 ```
 
+or for latest updates
+
+```sh
+paru -S pipelight-git
+```
+
 Fedora/CentOS and derivates
 
 ```sh-vue
@@ -49,7 +55,7 @@ Add automatic triggers and have fun.
 
 ```ts
 //pipelight.ts
-import type { Config } from "npm:pipelight";
+import { Config } from "https://deno.land/x/pipelight/mod.ts";
 const config: Config = {
   pipelines: [
     {

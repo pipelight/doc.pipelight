@@ -19,14 +19,20 @@ It will first look for **typescript** file, then **toml** and then **yaml**.
 There is no best file format to write pipelines.
 But as you seek complexity, the strive for flexibility, simplicity and reusability will lead you to Typescript.
 
-## Typings
+## Typescript or Javascript ?
+
+If you are not at ease with Typescript, you can still write pipelines in Javascript in a .ts file.
+Typescript only supercharge normal Javascript syntax with optional type definition,
+so see it as something optional that you will add later to strenghten your pipelines definitions.
+
+### Typings
 
 Supports Typescript.
-Import type definition from npm package.
+Import type definition from the official deno package.
 
 ```ts
 //pipelight.ts
-import { Config } from "npm:pipelight";
+import { Config } from "https://deno.land/x/pipelight/mod.ts";
 const config: Config = {
   pipelines: [
     {
@@ -53,7 +59,8 @@ Here is the complete type definition.
 The question mark "?" means that a property is optional.
 
 ```ts
-//mod.ts from the npm package
+// Types definition from the official deno package
+
 type Config = {
   pipelines?: Pipeline[];
 };
@@ -61,6 +68,7 @@ type Pipeline = {
   name: string;
   steps: StepOrParallel[];
   triggers?: Trigger[];
+  on_started?: StepOrParallel[];
   on_failure?: StepOrParallel[];
   on_success?: StepOrParallel[];
   on_abortion?: StepOrParallel[];
@@ -68,15 +76,18 @@ type Pipeline = {
 
 type StepOrParallel = Step | Parallel;
 type Parallel = {
+  mode?: Mode;
   parallel: Step[];
+  on_started?: StepOrParallel[];
   on_failure?: StepOrParallel[];
   on_success?: StepOrParallel[];
   on_abortion?: StepOrParallel[];
 };
 type Step = {
-  non_blocking?: boolean;
+  mode?: Mode;
   name: string;
   commands: string[];
+  on_started?: StepOrParallel[];
   on_failure?: StepOrParallel[];
   on_success?: StepOrParallel[];
   on_abortion?: StepOrParallel[];
@@ -85,6 +96,7 @@ type Trigger = {
   branches?: string[];
   actions?: Action[];
 };
+type Mode = "stop" | "jump_next" | "continue";
 type Action =
   | "applypatch-msg"
   | "pre-applypatch"
@@ -104,16 +116,6 @@ type Action =
   | "post-rewrite"
   | "pre-push"
   | "manual";
-
-export type {
-  Config,
-  Pipeline,
-  StepOrParallel,
-  Step,
-  Parallel,
-  Action,
-  Trigger
-};
 ```
 
 ## Parallel steps execution
@@ -137,24 +139,34 @@ steps: [
 ];
 ```
 
-## Non Blocking step execution
+## Step execution modes
 
-A non_blocking step will not stop pipeline execution on failure.
+The step execution mode will define the pipeline or step behavior on failure.
 
-Here **second** step will always be executed even if **first** step fails.
+There is actually 3 step execution modes:
+
+- StopOnFailure (default)
+- JumpNextOnFailure
+- ContinueOnFailure
 
 ```ts{4}
-steps: [
-  {
-    name: "first",
-    non_blocking: true,
-    commands: [...my_commands]
-  },
-  {
-    name: "second",
-    commands: [...my_commands]
-  }
-];
+const defaultStep: Step = {
+  name "stop pipeline and run on_failure hooks on failure",
+  mode: "stop"
+};
+
+// Those modes will not stop execution flow
+// and allow next step to run.
+
+const nonBlocking: Step = {
+  name "jump to next step on failure",
+  mode: "jump_next"
+};
+
+const forcedStep: Step = {
+  name "execute next command on failure",
+  mode: "continue"
+};
 ```
 
 ## Triggers (git-hooks)
@@ -215,6 +227,7 @@ pipelines: [
 
 Pipelines and steps have special fallbacks:
 
+- on_started
 - on_failure
 - on_success
 - on_abortion
@@ -224,6 +237,7 @@ Pipelines and steps have special fallbacks:
 ```ts
 const pipeline = {
   name: "my_test",
+  on_started: [...steps],
   on_failure: [...steps],
   on_success: [...steps],
   on_abortion: [...steps],
@@ -248,6 +262,7 @@ const pipeline = {
   steps: [
     {
       name: "first",
+      on_started: [...steps],
       on_failure: [...steps],
       on_success: [...steps],
       on_abortion: [...steps],
