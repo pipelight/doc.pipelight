@@ -1,5 +1,15 @@
 # Helpers <Badge type="warning" text="beta" />
 
+::: tip
+
+To update helpers repo
+
+```sh
+deno cache --reload
+```
+
+:::
+
 ## Pipeline definition helpers
 
 These helpers are to Pipelight what composition API is to Vue.js

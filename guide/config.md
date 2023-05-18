@@ -58,6 +58,8 @@ export default config;
 Here is the complete type definition.
 The question mark "?" means that a property is optional.
 
+See https://deno.land/x/pipelight/mod.ts for complete types definition! 😌
+
 ```ts
 // Types definition from the official deno package
 
