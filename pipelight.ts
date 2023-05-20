@@ -69,7 +69,7 @@ const compositionPipe = pipeline(
     triggers: [
       {
         branches: ["master", "main", "dev"],
-        actions: ["pre-push"]
+        actions: ["pre-push", "manual"]
       }
     ]
   }

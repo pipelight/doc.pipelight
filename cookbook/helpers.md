@@ -5,7 +5,7 @@
 To update helpers repo
 
 ```sh
-deno cache --reload
+deno cache --reload pipelight.ts
 ```
 
 :::
