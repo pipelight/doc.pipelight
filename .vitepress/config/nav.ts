@@ -6,6 +6,10 @@ export const nav: DefaultTheme.Config["nav"] = [
     link: "/guide/"
   },
   {
+    text: "Helpers",
+    link: "/helpers/composition"
+  },
+  {
     text: "Cookbook",
     link: "/cookbook/tips"
   },

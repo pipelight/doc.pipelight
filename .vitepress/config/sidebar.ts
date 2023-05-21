@@ -22,11 +22,11 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           link: "/guide/config"
         },
         {
-          text: "Raw and Pretty logs",
+          text: "Raw and pretty logs",
           link: "/guide/logs"
         },
         {
-          text: "How it works ?",
+          text: "How it works",
           link: "/guide/internal"
         }
       ]
