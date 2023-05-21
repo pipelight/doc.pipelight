@@ -44,19 +44,19 @@ const nginxStep = {
 
 // Pipeline creation with Docker helpers
 const compositionPipe = pipeline(
-  "composition",
+  `deploy:${version}:${service}`,
   () => [
     step("build js files", () => ["pnpm install", "pnpm build"]),
     // Create images locally and send it to remotes
     step("build and send images", () => [
       ...docker.images.create(),
-      ...docker.images.send(["localhost"])
+      ...docker.images.send([host])
     ]),
     step(
       "replace containers",
       () =>
         ssh(
-          ["localhost"],
+          [host],
           [...docker.containers.remove(), ...docker.containers.create()]
         ),
       {

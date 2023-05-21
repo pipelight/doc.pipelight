@@ -1,38 +1,4 @@
-# Helpers <Badge type="warning" text="beta" />
-
-::: tip
-
-To update helpers repo
-
-```sh
-deno cache --reload pipelight.ts
-```
-
-:::
-
-## Pipeline definition helpers
-
-These helpers are to Pipelight what composition API is to Vue.js
-
-You've been told to use objects for pipeline definitions.
-Here we will use functions that will do some kind of heavy lift for use.
-
-```ts
-import type { Config, Pipeline } from "https://deno.land/x/pipelight/mod.ts";
-import { pipeline, step, ssh } from "https://deno.land/x/pipelight/mod.ts";
-```
-
-```ts
-const compositionPipe = pipeline("composition", () => [
-  step("create declaration files", () => ["tsc"]),
-  // Create images locally and send it to remotes
-  step("build and send images", () => [
-    ...docker.images.create(),
-    ...docker.images.send(["localhost"])
-  ]),
-```
-
-## Docker helpers
+# Docker helpers <Badge type="warning" text="beta" />
 
 If you often use containers, there will be times where you will often write the same things.
 
@@ -40,7 +6,7 @@ If you often use containers, there will be times where you will often write the 
 const steps = [
   {
     name: `delete remote container:${version}`,
-    non_blocking: true,
+    mode: ["jump_next"],
     commands: [
       `ssh -C ${host} \
         "

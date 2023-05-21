@@ -18,7 +18,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           link: "/guide/cli"
         },
         {
-          text: "Configuration in depth",
+          text: "Basic pipeline definition",
           link: "/guide/config"
         },
         {
@@ -28,10 +28,19 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
         {
           text: "How it works ?",
           link: "/guide/internal"
+        }
+      ]
+    },
+    {
+      text: "Helpers",
+      items: [
+        {
+          text: "Composition API",
+          link: "/helpers/composition"
         },
         {
-          text: "The story",
-          link: "/guide/the_story"
+          text: "Docker",
+          link: "/helpers/docker"
         }
       ]
     },
@@ -43,10 +52,6 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           link: "/cookbook/tips"
         },
         {
-          text: "Helpers",
-          link: "/cookbook/helpers"
-        },
-        {
           text: "Deployement Strategies",
           link: "/cookbook/strategies"
         }
@@ -55,6 +60,10 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
     {
       text: "Next",
       items: [
+        {
+          text: "Why another CICD tool ?",
+          link: "/roadmap/the_story"
+        },
         {
           text: "Roadmap",
           link: "/roadmap/index"

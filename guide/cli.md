@@ -5,8 +5,6 @@ So it is well self documented.
 
 ## Most useful commands
 
-These are the 3 commands you'll combine to speed up your pipeline development process.
-
 **Lint** and List pipelines from your Config file with
 
 ```sh
@@ -16,22 +14,20 @@ pipelight ls
 Inspect your pipeline
 
 ```sh
+pipelight inspect
+# or
+pipelight inspect <pipeline_name>
+# same as
 pipelight ls <pipeline_name>
 ```
 
-or
-
-```sh
-pipelight inspect <pipeline_name>
-```
-
-Run it in background
+Run it in background (default)
 
 ```sh
 pipelight run <pipeline_name>
 ```
 
-Or without any argument, you'll be able to browse your pipeline list.
+Or without any argument, you'll be able to browse through your pipeline list.
 
 ```sh
 pipelight run
@@ -51,18 +47,10 @@ pipelight logs -vvv
 
 ## Other commands
 
-Simulate the execution of a specified git-hook to trigger associated pipelines
+Simulate a specified git-hook triggering, to trigger associated pipelines
 
 ```sh
 pipelight trigger <git_hook_name>
-```
-
-Under the hood,
-every command checks if hooks are enabled.
-If git-hooks are not working on a fresh directory. At least run:
-
-```sh
-pipelight ls
 ```
 
 Print colorful raw json logs
@@ -71,7 +59,7 @@ Print colorful raw json logs
 pipelight logs --json | jq
 ```
 
-Filter logs on pipeline logs
+Filter logs on pipeline name
 
 ```sh
 pipelight logs <pipeline_name>

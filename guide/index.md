@@ -7,7 +7,7 @@ const fedora = `pipelight-${import.meta.env.VITE_GIT_VERSION}.rpm`;
 
 # Getting Started
 
-## Install with a your package manager
+## Install with your package manager
 
 Arch Linux (AUR)
 
@@ -45,11 +45,8 @@ curl {{ base }}/scripts/install.sh | sh
 
 ## Write a pipeline
 
-The only rule is to export a **Config object**.
+Importing the Config type from the deno package will give you a pleasant typing support.
 
-More details in the [in depth section](/guide/config).
-
-Importing the Config type from the npm package will give you a pleasant typing support.
 Create pipelines with steps and commands.
 Add automatic triggers and have fun.
 
@@ -78,13 +75,20 @@ const config: Config = {
 export default config;
 ```
 
-## Command line usage
+::: danger
 
-:::tip
-Use the commands in the same folder as your config file.
+Avoid `console.log()` statements inside your config file (only for debugging purpose).
+This will mislead the Config Object creation and prevent pipelight from running.
+
 :::
 
-It's a simple command line tool (CLI) that sticks to what you are accustomed to.
+## Command line usage
+
+::: info
+
+Use the commands in the same folder as your config file.
+
+:::
 
 ```sh
 # in your favorite shell
@@ -99,9 +103,21 @@ List available pipelines:
 pipelight ls
 ```
 
+Pretty print a pipeline definition on stdout:
+
+```sh
+# Display a selection prompt
+pipelight inspect
+# or
+pipelight inspect <pipeline_name>
+```
+
 Trigger a pipeline execution:
 
 ```sh
+# Display a selection prompt
+pipelight run
+# or
 pipelight run <pipeline_name>
 ```
 

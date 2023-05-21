@@ -1,4 +1,4 @@
-# Configuration and Pipelines in depth
+# Basic pipeline definition
 
 ## Configuration files
 
@@ -22,8 +22,8 @@ But as you seek complexity, the strive for flexibility, simplicity and reusabili
 ## Typescript or Javascript ?
 
 If you are not at ease with Typescript, you can still write pipelines in Javascript in a .ts file.
-Typescript only supercharge normal Javascript syntax with optional type definition,
-so see it as something optional that you will add later to strenghten your pipelines definitions.
+Typescript only supercharge normal Javascript syntax with optional type definition.
+It as something optional that you can still add later to strenghten your pipeline definition.
 
 ### Typings
 
@@ -55,13 +55,19 @@ export default config;
 
 ## Typescript types definition
 
-Here is the complete type definition.
-The question mark "?" means that a property is optional.
+Here is the base type definition in Typescript.
 
-See https://deno.land/x/pipelight/mod.ts for complete types definition! 😌
+::: tip
+
+[See the complete type definition on DenoLand](https://deno.land/x/pipelight/mod.ts)
+
+:::
 
 ```ts
 // Types definition from the official deno package
+
+// Newbie tip
+// The question mark "?" means that a property is optional.
 
 type Config = {
   pipelines?: Pipeline[];
@@ -151,12 +157,22 @@ There is actually 3 step execution modes:
 - JumpNextOnFailure
 - ContinueOnFailure
 
-```ts{4}
+### Stop on failure
+
+The default mode.
+
+```ts
 const defaultStep: Step = {
   name "stop pipeline and run on_failure hooks on failure",
-  mode: "stop"
+  // mode: "stop"
 };
+```
 
+If a command of the step fails. The whole step will fail and stop the Pipeline execution.
+
+### Jump next on failure
+
+```ts
 // Those modes will not stop execution flow
 // and allow next step to run.
 
@@ -164,12 +180,22 @@ const nonBlocking: Step = {
   name "jump to next step on failure",
   mode: "jump_next"
 };
+```
 
+If a command of the step fails. The step execution will stop without interupting the pipeline execution.
+The pipeline will simply jump to the next step.
+
+### Continue on failure
+
+```ts
 const forcedStep: Step = {
   name "execute next command on failure",
   mode: "continue"
 };
 ```
+
+If a command of the step fails. The next command will still be executed, and son on until the last command of the step.
+Then the next step will be executed.
 
 ## Triggers (git-hooks)
 
@@ -225,6 +251,18 @@ pipelines: [
 ];
 ```
 
+::: info
+
+Under the hood,
+every command checks if hooks are enabled.
+If git-hooks are not working on a fresh directory, at least run:
+
+```sh
+pipelight ls
+```
+
+:::
+
 ## Fallbacks
 
 Pipelines and steps have special fallbacks:
@@ -235,6 +273,12 @@ Pipelines and steps have special fallbacks:
 - on_abortion
 
 ### Pipeline fallbacks
+
+These are global fallbacks.
+They are steps that will be triggered whenever the pipeline starts, fails, succeeds or is aborted.
+
+It's not recommanded to overuse this pattern in pipeline definition for the sake of simplicity.
+But still it exists and can be use to add global notifications or reporting system.
 
 ```ts
 const pipeline = {
