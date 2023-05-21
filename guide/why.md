@@ -28,14 +28,25 @@ It allows me to stick to my provider **minimum server costs**.
 ### Server side
 
 Server side automation is achieved by using specific triggers too (on update, pre-receive...).
+Create a git server, install and enable pipelight server side.
 
-Let's say:
+## Made for efficency
 
-- you host your code on Gitea and have a pipelight config file on the root of this repo.
-- you run a linux server.
+Pipelight is written in [Rust](https://www.rust-lang.org/), so it's fast!!
 
-To execute pipelines server-side, you need to add another remote url to your git repository.
-This url must point to the repo clone hosted on your linux server.
+It has the minimum required functions for a cicd tool
+and delegate features to the already widely spread specialized softwares.
+
+- Git for software versionning
+- Linux for security qnd access rights
+
+It doesn't reinvent the wheel by making cumbersom dockerized event listeners, secrets or plugins.
+It implements basic functionnalities by keeping it's source code tightly coupled to Linux and [Git](https://git-scm.com/).
+
+## Terminal friendly
+
+Run a pipeline and check logs without living your terminal.
+Pipelight stays in the terminal, and is finally nothing more than a Command Line Tool. (>12M binaries)
 
 ## Typescript (Code as Configuration as Code)
 
@@ -43,22 +54,8 @@ As a pipeline get complexe, you want to add variables, conditions, loops and mor
 Check the [Cookbook](/cookbook/tips) for examples.
 
 Where other tools are about Configuration as Code,
-Pipelight get on step further and allows you to code in your configuration file to create reusable configuration blocks (with Typescript).
+Pipelight get one step further and allows you to code in your configuration file to create reusable configuration blocks (with Typescript).
 So it becomes Code as Configuration as Code.
-
-## Pretty Logs in terminal / Json logs in files
-
-Check the [Logs section](/guide/logs) for examples.
-
-## Made for efficency
-
-Pipelight is written in [Rust](https://www.rust-lang.org/), so it's fast!!
-
-It has the minimum required functions for a cicd tool
-and give up on features that should be run by specialized softwares. (like git for software versionning)
-
-It doesn't reinvent the wheel by making cumbersom dockerized event listeners, secrets or plugins.
-It implements basic functionnalities by keeping it's source code tightly coupled to Linux and [Git](https://git-scm.com/).
 
 ## Quick Automation
 
@@ -74,10 +71,9 @@ triggers: [
 ],
 ```
 
-## Terminal friendly
+## Pretty Logs in terminal / Json logs in files
 
-Run a pipeline and check logs without living your terminal.
-Pipelight stays in the terminal, and is finally nothing more than a Command Line Tool. (>12M binaries)
+Check the [Logs section](/guide/logs) for examples.
 
 ## Easy to install
 

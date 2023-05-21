@@ -6,7 +6,7 @@ Helpers are **Javascript/Typescript** functions that will do some heavy lift for
 
 This design pattern has been greatly inspired by the [Vue.js](https://vuejs.org/) framework.
 
-::: tip
+::: tip UPGRADE
 If needed, upgrade helpers to latest version.
 
 ```sh
@@ -14,6 +14,8 @@ deno cache --reload pipelight.ts
 ```
 
 :::
+
+## Pipeline definition helpers
 
 You can use a function instead of an object to define a pipeline
 
@@ -39,7 +41,7 @@ import type { Config, Pipeline } from "https://deno.land/x/pipelight/mod.ts";
 import { pipeline, step, ssh } from "https://deno.land/x/pipelight/mod.ts";
 ```
 
-::: tip
+::: tip TYPES
 
 [See the complete type definition on DenoLand](https://deno.land/x/pipelight/mod.ts)
 
@@ -56,4 +58,21 @@ const compositionPipe = pipeline("composition", () => [
   step("do something", () => my_commands),
   step("do something else", () => my_commands)
 ]);
+```
+
+## Remote operation helper
+
+Instead of prefixing every command with `ssh` like you will normaly do
+in bash. The ssh helpers wrap them for you.
+
+```ts
+const my_step = {
+  name: "remote actions",
+  commands: [`ssh -C ${host} "${command}"`, `ssh -C ${host} "${command}"`]
+};
+```
+
+```ts
+import { ssh } from "https://deno.land/x/pipelight/mod.ts";
+step("replace containers", () => ssh([host], [...my_commands]));
 ```

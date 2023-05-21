@@ -1,6 +1,9 @@
 # Docker helpers <Badge type="warning" text="beta" />
 
+## Small plugin, big improvments
+
 If you often use containers, there will be times where you will often write the same things.
+Stop container, Delete container, Create container...
 
 ```ts
 const steps = [
@@ -27,8 +30,11 @@ const steps = [
 ];
 ```
 
-It's flexible but way too verbose compare to other deployment software.
-This is where Typescript comes to the rescue.
+Pipelight is flexible but becomes way too verbose compare to other deployment software that implements specific plugins.
+This is where Typescript comes to the rescue with docker helpers.
+It will write the needed commands based on a simple but greatly customizable container definition.
+
+## Basic usage
 
 You may want to import helpers from the official deno repository.
 
@@ -44,13 +50,11 @@ Set global vars.
 
 ```ts
 // Global vars
-const version = "production";
-const service = "deno";
-const dns = "pipelight.dev";
-const params = {
+const globals = {
   host: "linode",
   dns: "pipelight.dev",
-  version: version
+  service: "deno",
+  version: production
 };
 ```
 
@@ -58,7 +62,7 @@ Create a docker object.
 
 ```ts
 // Docker object creation
-const docker = new Docker({
+const makeParams = ({ host, version, dns, service }): DockerParams => ({
   images: [
     {
       name: `pipelight/doc:${version}`
@@ -67,7 +71,6 @@ const docker = new Docker({
   containers: [
     {
       name: `${version}.${service}.${dns}`,
-      ip: "127.0.0.1",
       image: {
         name: `pipelight/doc:${version}`
       },
@@ -75,25 +78,24 @@ const docker = new Docker({
     }
   ]
 });
+const docker = new Docker(makeParams(globals));
 ```
 
 Use it in your pipeline definition.
-This example is combined with pipeline definition helpers.
 
 ```ts
 // Pipeline creation with Docker helpers
 const compositionPipe = pipeline("composition", () => [
-  step("create declaration files", () => ["tsc"]),
-  // Create images locally and send it to remotes
+  // Create images locally and send them to remotes
   step("build and send images", () => [
     ...docker.images.create(),
-    ...docker.images.send(["localhost"])
+    ...docker.images.send([host])
   ]),
   step(
     "replace containers",
     () =>
       ssh(
-        ["localhost"],
+        [host],
         [...docker.containers.remove(), ...docker.containers.create()]
       ),
     {
@@ -102,3 +104,9 @@ const compositionPipe = pipeline("composition", () => [
   )
 ]);
 ```
+
+::: tip TYPES
+
+[See the complete type definition on DenoLand](https://deno.land/x/pipelight/mod.ts)
+
+:::

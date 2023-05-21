@@ -21,14 +21,14 @@ const tailwind = ref({
 });
 const items = [
   {
-    title: "🫦 Pretty Logs",
-    details:
-      "Easily troubleshoot your scripts with pretty and verbose logs right in your terminal."
-  },
-  {
     title: "⚡ Light and Fast",
     details:
       "Written in Rust to be as low level as possible and stick to bare script performances."
+  },
+  {
+    title: "🫦 Pretty Logs",
+    details:
+      "Easily troubleshoot your scripts with pretty and verbose logs right in your terminal."
   },
   {
     title: "🚦 Automatic Triggers",

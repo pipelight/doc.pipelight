@@ -75,7 +75,7 @@ const config: Config = {
 export default config;
 ```
 
-::: danger
+::: danger Pitfall
 
 Avoid `console.log()` statements inside your config file (only for debugging purpose).
 This will mislead the Config Object creation and prevent pipelight from running.
