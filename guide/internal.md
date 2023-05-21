@@ -29,7 +29,7 @@ It's the same as running a command in the terminal.
 
 Which means you can use every local config env and files.
 
-For example, no need to set every arguments on a single command.
+For example, for ssh, no need to set every arguments on a single command.
 
 ```sh
 ssh [user]@[ip] -i [./ssh_secrets/id_rsa] -F [./my_config_file]

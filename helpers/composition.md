@@ -19,7 +19,7 @@ deno cache --reload pipelight.ts
 
 You can use a function instead of an object to define a pipeline
 
-You've been use to define objects with the option API.
+You've been accustomed to define objects with the option API.
 
 ```ts
 const my_pipeline = {
