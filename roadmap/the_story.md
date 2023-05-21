@@ -1,33 +1,79 @@
-# The Automation for newbies
+# Why another tool ?
 
-People will usualy automate a process beginning with Bash, then python and install a Continuous Development tool.
+## The Automation for everyone
 
-I made Pipelight because I needed more than shell script to deploy my software.
-But I couldn't find a cicd tool that suit my needs.
+Pipelight ought to be the fastest and least painfull solution to set up if you seek to automate things.
 
-## Why typescript over Bash or YAML/TOML for configuration
+If you are a bash guy, it will bring simplicity to your scripts.
+If you do devOps stuffs, it will bring flexibility to your pipelines.
 
-### Better than Bash
+Whatever ower skills in programming are, automation should be accessible.
+And for us to focus only on ower code, automation should be early implemented in projects.
 
-Bash is very appaeling when scripting simple tasks, but...
+## Bypass the classic harsh automation path
 
-```sh
-#deploy.sh
-vitest
-vite build
-rsync local_files to_my_remote_server
-```
+::: tip Spoiler
+The solution pipelight brings is to bettern existing shell scripts
+:::
 
-- Syntax isn't easy.
-- Lakes primitives/structures like Array, Object, Map...
-- Quickly becomes awefull.
+We usualy seek automation because we face repetitive thus painful tasks of varied nature.
+So we go down the automation road:
 
-### Better than YAML
+1. **Edite a shell script**
 
-Usual configuration optimised languages like YAML and TOML are not easy to tweak.
-The way to add variables, struct and loops is very tight to the automation tool you are using.
-So there is a different synthax for every tool.
-Pipelines are most of the time defnied in YAML
+   ```sh
+   #deploy.sh
+   vitest
+   vite build
+   rsync local_files to_my_remote_server
+   ```
+
+   [+]
+   Bash is quick to set up, and very appaeling when scripting simple tasks,
+
+   [-]
+   Syntax isn't easy.
+   It lakes primitives/structures like Array, Object, Map...
+   It uickly becomes unreadable as it get complex.
+
+2. **Then, write a python script**
+
+   [+]
+   More readable.
+
+   [-]
+   It is too specific - not reusable between projects without many efforts.
+
+3. **Finally, set up a CICD pipeline with its entire ecosystem**
+
+   [+]
+   It's easy to reuse pipelines. Has logging.
+
+   [-]
+   Ressource and time consuming.
+
+On the automation road, Pipelight comes
+right after the shell script(1) in term of simplicity,
+while doing the heavy lift of a CICD ecosystem(3)
+
+1. Shell script
+
+- **Pipelight**
+
+2. Python script
+3. CICD ecosystem
+
+## Why typescript over classic TOML/ YAML ?
+
+### Flexibility and reusability
+
+Usual configuration optimised languages (TOML/ YAML) are not easy to tweak.
+
+**Variables**, **structs** and **loops** does not exist natively in those languages.
+Consequently, those features depends on the automation tool implementing them resulting in different synthax for every tool.
+
+To create another version of this pipeline with slightly different env variables.
+The pipeline will need to be entirely cloned, going against reusability and comfort.
 
 ```yaml
 kind: pipeline
@@ -43,6 +89,9 @@ steps:
 
 ### Typescript to the rescue
 
+Pipelight is about executing strings.
+It needed good language for **string manipulation**, popular and with a simple as possible learning curve.
+
 Any application that can be written in Javascript, will eventually be written in Javascript.
 What can be more flexible as a config file, than a progrmmaing language.
 Tailwind, Vite and many other Web Frameworks have taken down this path.
@@ -50,7 +99,7 @@ And now some cli follow...
 
 ## Why only a cli ?
 
-Actual CICD tools steal are cumbersome in time and ressources.
+Actual CICD tools still are cumbersome in time and ressources.
 There is a whole ecosystem to install and troubleshoot before one can reach automation with most known tools.
 They try to be compatible with every OS, preaching when efficency and simplicity is needed.
 

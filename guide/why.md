@@ -4,28 +4,9 @@ import Features from '../.vitepress/theme/components/Features.vue';
 
 # Why using pipelight ?
 
-Pipelight ought to be the fastest and least painfull solution to set up if you seek to automate things.
-If you are a Bash guy, it will bring simplicity to your scripts.
-If you do DevOps stuffs, it will bring flexibility to your pipelines.
+## TL;DR
 
-It will furthermore keep big techs out of your code, while creating basic to powerful automation scripts/pipelines.
-
-## The solution to the harsh automation path -> Bettern your shell scripts
-
-People usualy seek automation because they face repetitive thus painful tasks of varied nature.
-And they go down the road of automation:
-
-- 1: They edit a shell script (it is quick but lacks logging)
-- 2: Then they write a python,javascript or either perl script (but it is too specific, not reusable without many efforts)
-- 3: Finally they set up a CICD pipeline with its entire ecosystem (ressource and time consumming)
-
-On the automation road Pipelight comes
-write after the shell script in term of simplicity while still being the same kind of software used in the third step.
-
-- 1: edit a shell script (quick but lacks logging)
-- **Pipelight**
-- 2: make a python,javascript or either perl script (too specific, not reusable without effort)
-- 3: set up a cicd pipeline with its ecosystem (ressource and time consumming)
+<Features />
 
 ## Software development and deployment (CICD)
 
@@ -55,10 +36,6 @@ Let's say:
 
 To execute pipelines server-side, you need to add another remote url to your git repository.
 This url must point to the repo clone hosted on your linux server.
-
-## Why using pipelight over other tools?
-
-<Features />
 
 ## Typescript (Code as Configuration as Code)
 

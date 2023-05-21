@@ -1,13 +1,13 @@
 # How it works ?
 
-### TL;DR
+## TL;DR
 
 Basically, it **encapsulates your shell commands into another language.**
 
 This encapsulation provides you logging features and automatic triggers.
 Moreover it adds easy programming language abilities by bringing Javascript/Typescript (Toml and Yaml) syntax to your script.
 
-## A simple representation
+## Delegate to the right tools
 
 Pipelight code base is made in Rust, see it as Ferris (rust mascot) making the heavy lift.
 On the first hand, it uses Javascript/Typescript to **manipulate bash strings**.
@@ -52,7 +52,3 @@ learn another tool specific storage for keys and credential (secret vault).
 
 You just have to store them as usual with dedicated softwares and the only thing you have to do is to delegate access right concerns to Linux.
 Finally, the ultimate way to secure your secrets is to use pipelight as a simple user with dedicated rights on needed files.
-
-## Why so easy to install?
-
-It doesn't need to be integrated into a larger ecosystem because the only dependencies it has are sh, git and deno.
