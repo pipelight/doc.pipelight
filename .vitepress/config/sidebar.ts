@@ -52,7 +52,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           link: "/cookbook/tips"
         },
         {
-          text: "Deployement Strategies",
+          text: "Deployment Strategies",
           link: "/cookbook/strategies"
         }
       ]

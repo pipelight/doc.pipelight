@@ -1,7 +1,10 @@
-# Deployment Stategies
+# Deployment Strategies
 
-Pipelight is all about deploying stuffs in the background as you write your code.
-Their is a moment where you need to set a deployement strategy that suit your needs.
+Pipelight is about deploying stuffs in the background as you write code.
+Their is a moment where you need to set a deployment strategy that suits your needs.
+
+If you are unfamilliar with such words,
+you can check the [Harness guide on deployment strategies](https://www.harness.io/blog/blue-green-canary-deployment-strategies)
 
 ## Dummy deployment (ssh/scp/rsync)
 
@@ -36,3 +39,10 @@ export default {
   ]
 };
 ```
+
+## Blue/Green deployment (ssh/docker)
+
+When you can not afford downtime, you will have multiple container of the same app running on your server.
+You will load balance between them with nginx.
+
+When a container is updated and goes off, the other one takes all the incoming traffic.
