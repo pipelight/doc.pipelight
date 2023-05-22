@@ -1,66 +1,40 @@
 # Docker helpers <Badge type="warning" text="beta" />
 
-## Small plugin, big improvments
+Pipelight is flexible but becomes way too verbose
+when implementing already wide spread automation methodes like docker testing and deployment.
 
-If you often use containers, there will be times where you will often write the same things.
-Stop container, Delete container, Create container...
-
-```ts
-const steps = [
-  {
-    name: `delete remote container:${version}`,
-    mode: ["jump_next"],
-    commands: [
-      `ssh -C ${host} \
-        "
-          docker stop ${docker.container.name}; \
-          docker rm ${docker.container.name}
-        "`
-    ]
-  },
-  {
-    name: `recreate remote container:${version}`,
-    commands: [
-      ssh([host],
-        [`docker run -d -p ${docker.network}:${docker.port.out}:${docker.port.in} \
-          --name=${docker.container.name} ${docker.image.name}`]
-      })
-    ]
-  }
-];
-```
-
-Pipelight is flexible but becomes way too verbose compare to other deployment software that implements specific plugins.
 This is where Typescript comes to the rescue with docker helpers.
-It will write the needed commands based on a simple but greatly customizable container definition.
+It will write the needed commands based on a Docker, Container, Network... Object definition.
 
 ## Basic usage
 
-You may want to import helpers from the official deno repository.
+Here is the core of your pipeline
 
 ```ts
+// import helpers from deno repository
 import {
   Docker,
-  Container,
-  Network
 } from "https://deno.land/x/pipelight/mod.ts";
+
+const docker = new Docker(params);
+
+step("build images and run containers", () => [
+    ...docker.images.create(),
+    ...docker.containers.create()
+]),
 ```
 
-Set global vars.
+But you first need to define a Docker Object instance.
 
 ```ts
-// Global vars
+// Set global vars
 const globals = {
   host: "linode",
   dns: "pipelight.dev",
   service: "deno",
   version: production
 };
-```
 
-Create a docker object.
-
-```ts
 // Docker object creation
 const makeParams = ({ host, version, dns, service }): DockerParams => ({
   images: [

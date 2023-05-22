@@ -26,20 +26,28 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           link: "/guide/logs"
         },
         {
-          text: "How it works",
-          link: "/guide/internal"
+          text: "Why another CICD tool ?",
+          link: "/guide/the_story"
         }
+        {
+          text: "How it works ?",
+          link: "/guide/internal"
+        },
       ]
     },
     {
       text: "Helpers",
       items: [
         {
-          text: "Composition API",
-          link: "/helpers/composition"
+          text: "Overview",
+          link: "/helpers/overview"
         },
         {
-          text: "Docker",
+          text: "Common helpers",
+          link: "/helpers/common"
+        },
+        {
+          text: "Docker helpers",
           link: "/helpers/docker"
         }
       ]
@@ -58,20 +66,8 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
       ]
     },
     {
-      text: "Next",
+      text: "For developers",
       items: [
-        {
-          text: "Why another CICD tool ?",
-          link: "/roadmap/the_story"
-        },
-        {
-          text: "Roadmap",
-          link: "/roadmap/index"
-        },
-        {
-          text: "Breaking Changes",
-          link: "/roadmap/breaking"
-        },
         {
           text: "Changelog",
           link: "/roadmap/changelog"

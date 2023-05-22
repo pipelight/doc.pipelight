@@ -24,7 +24,7 @@ Here is a partial json log with a step whose state can be seen as the **status**
 A state is rendered as a color when you display pretty logs.
 
 Here, some commands in the step are still running.
-The Running state is render as green.
+The Running state is rendered as green.
 
 <p align="center">
   <img class="terminal" src="/images/running_log_level_2.png" alt="pretty_verbose_logs_level_2_picture">
