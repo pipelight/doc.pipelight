@@ -8,7 +8,7 @@ It will write the needed commands based on a Docker, Container, Network... Objec
 
 ## Basic usage
 
-Here is the core of your pipeline
+Here is the core of a pipeline using docker helpers.
 
 ```ts
 // import helpers from deno repository
@@ -24,7 +24,10 @@ step("build images and run containers", () => [
 ]),
 ```
 
-But you first need to define a Docker Object instance.
+But you first need to define a Docker Object.
+
+Here we use a function to create the Docker Object based on the "production" global variables.
+It can be reused to create another Docker Object with "development" variables.
 
 ```ts
 // Set global vars
@@ -35,7 +38,7 @@ const globals = {
   version: production
 };
 
-// Docker object creation
+// Docker Object creation through a function
 const makeParams = ({ host, version, dns, service }): DockerParams => ({
   images: [
     {
