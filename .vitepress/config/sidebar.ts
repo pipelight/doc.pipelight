@@ -28,11 +28,11 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
         {
           text: "Why another CICD tool ?",
           link: "/guide/the_story"
-        }
+        },
         {
           text: "How it works ?",
           link: "/guide/internal"
-        },
+        }
       ]
     },
     {
