@@ -8,7 +8,11 @@ It will write the needed commands based on a Docker, Container, Network... Objec
 
 ## Basic usage
 
+### How it works ?
+
 Here is the core of a pipeline using docker helpers.
+Functions calls like `docker.images.create()` return an array of commands/strings
+like `["docker build..."]`.
 
 ```ts
 // import helpers from deno repository
@@ -24,7 +28,15 @@ step("build images and run containers", () => [
 ]),
 ```
 
-But you first need to define a Docker Object.
+::: tip TYPES
+
+[See the complete type definition on DenoLand](https://deno.land/x/pipelight/mod.ts)
+
+:::
+
+### Working example
+
+You first need to define a Docker Object.
 
 Here we use a function to create the Docker Object based on the "production" global variables.
 It can be reused to create another Docker Object with "development" variables.
@@ -82,8 +94,24 @@ const compositionPipe = pipeline("composition", () => [
 ]);
 ```
 
-::: tip TYPES
+## Networking (Security)
 
-[See the complete type definition on DenoLand](https://deno.land/x/pipelight/mod.ts)
+When you define a container and publish it.
+It is usually exposed to your localhost (127.0.0.1) and your public ip (0.0.0.0).
 
-:::
+By default, docker helpers only publishe to localhost
+to avoid undesired port exposure and reduce server attacking surface.
+
+```ts
+const container = {
+  name: `${version}.${service}.${dns}`,
+  image: {
+    name: `pipelight/doc:${version}`
+  },
+  ports: [{ out: 9080, in: 80 }]
+};
+```
+
+## Containers
+
+## Volumes

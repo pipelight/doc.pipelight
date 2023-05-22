@@ -21,7 +21,18 @@ deno cache --reload pipelight.ts
 
 :::
 
-## Concept and Syntax
+### Delicious Syntax 🤌
+
+Simply enjoy the syntax...
+
+```ts
+step("build images and run containers", () => [
+    ...docker.images.create(),
+    ...docker.containers.create()
+]),
+```
+
+### Concept
 
 Pipelight core features allow users to write pipelines in whichever manner is possible.
 
