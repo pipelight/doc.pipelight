@@ -56,7 +56,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
       text: "Cookbook",
       items: [
         {
-          text: "Usefull Tips",
+          text: "Writting Tips",
           link: "/cookbook/tips"
         },
         {

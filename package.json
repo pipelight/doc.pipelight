@@ -25,6 +25,8 @@
     "vitepress": "1.0.0-beta.1"
   },
   "dependencies": {
-    "@vueuse/core": "^10.1.2"
+    "@heroicons/vue": "^2.0.18",
+    "@vueuse/core": "^10.1.2",
+    "vue": "^3.3.4"
   }
 }

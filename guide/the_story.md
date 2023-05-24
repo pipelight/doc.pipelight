@@ -7,8 +7,8 @@ Pipelight ought to be the fastest and least painfull solution to set up if you s
 If you are a bash guy, it will bring simplicity to your scripts.
 If you do devOps stuffs, it will bring flexibility to your pipelines.
 
-Whatever ower skills in programming are, automation should be accessible.
-And for us to focus only on ower code, automation should be early implemented in projects.
+Whatever your skills in programming are, automation should be accessible.
+It would result in project early automation implemention for you to focus only on the code that matters.
 
 ## Bypass the classic harsh automation path
 
@@ -128,3 +128,19 @@ so I can decrease by two third the money i used to spend in Cloud ressources.
 When I need to deploy a machine, install and configure everything to deploy my apps in different envs..
 I use it with docker, ansible, vagrant and others.
 It becomes pretty simple to share variables/env between tools.
+
+## How is it different from...
+
+Following softwares an Pipelight aim to automate tasks but in different ways.
+
+### CircleCI
+
+Pipelight is born from Free and Open Source Softwares, it is meant to be self-hosted by organisations.
+Opposed to
+
+### Dagger.io
+
+Dagger runs commands in containers making it more ressource consuming than Pipelight
+who runs commands in a simple subprocess by default
+
+### Drone.io

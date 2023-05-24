@@ -1,7 +1,7 @@
 # Docker helpers <Badge type="warning" text="beta" />
 
 Pipelight is flexible but becomes way too verbose
-when implementing already wide spread automation methodes like docker testing and deployment.
+when implementing already wide spread automation methodes like **docker testing and deployment**.
 
 This is where Typescript comes to the rescue with docker helpers.
 It will write the needed commands based on a Docker, Container, Network... Object definition.

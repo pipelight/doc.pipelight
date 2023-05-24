@@ -78,7 +78,7 @@ pipeline inspect
 ## A thrilling example
 
 Aside from the boring Docker Object defintion.
-This is what the core of pipeline made with helpers looks like.
+This is what the core of a pipeline made with helpers looks like.
 
 Here we use the **pipeline**, **step**, **ssh**, and **docker** helpers.
 
