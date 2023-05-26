@@ -1,4 +1,19 @@
-# Helpers <Badge type="warning" text="beta" />
+# Helpers
+
+::: tip TYPES
+
+If something is missing, or if you seek deeper customization,
+[See the complete type definition on DenoLand](https://deno.land/x/pipelight/mod.ts)
+
+:::
+::: tip UPGRADE
+If needed, upgrade helpers to latest version.
+
+```sh
+deno cache --reload pipelight.ts
+```
+
+:::
 
 ## TL;DR
 
@@ -12,18 +27,15 @@ There is actually 2 helpers groups:
 - **common** helpers
 - **docker** helpers
 
-::: tip UPGRADE
-If needed, upgrade helpers to latest version.
-
-```sh
-deno cache --reload pipelight.ts
-```
-
-:::
-
 ### Delicious Syntax 🤌
 
-Simply enjoy the syntax...
+Import needed helpers from the deno repository.
+
+```ts
+import { helper_name } from "https://deno.land/x/pipelight/mod.ts";
+```
+
+Use them in your pipeline definition and enjoy the syntax.
 
 ```ts
 step("build images and run containers", () => [
@@ -32,16 +44,16 @@ step("build images and run containers", () => [
 ]),
 ```
 
-### Concept
+### A dire need of simplicity
 
 Pipelight core features allow users to write pipelines in whichever manner is possible.
 
 You surely have already built your own functions to generate pipelines.
 
-Helpers are here to standardize and **structurize pipeline definition**
+Helpers are here to **standardize** and **structurize pipeline definition**
 to finally ship great functions to **ease trivial pipeline writting**.
 
-For example, this helper will generate the docker commands for you.
+For example, this helper will generate bash docker commands so you don't have to.
 
 ```ts
 const docker = new Docker({
@@ -53,21 +65,21 @@ const docker = new Docker({
 const my_step = step(("build_images") => docker.images.create()),
 ```
 
-Instead of writting them "by hand" like in the block beneath.
+Instead of writting them explicitly, like in the block beneath.
 
 ```ts
 const my_step = {
-    name:"build_images"
-    commands: [
-        "docker build --tag image_name -f Dockerfile.example . "
-        // And so on for every images
-    ]
+  name:"build_images"
+  commands: [
+    "docker build --tag image_name -f Dockerfile.example . "
+    // And so on for every images
+  ]
 }
 ```
 
-::: info
+::: tip DEBUG
 
-You can still check auto-generated commands by inspecting the resulting pipeline.
+You can check auto-generated commands by inspecting the resulting pipeline.
 
 ```sh
 pipeline inspect

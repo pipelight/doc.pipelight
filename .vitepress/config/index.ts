@@ -9,7 +9,11 @@ const config: UserConfig<DefaultTheme.Config> = {
   description: metaData.description,
   lang: "en-US",
   head,
-  themeConfig
+  themeConfig,
+  markdown: {
+    // theme: "material-theme-palenight"
+  },
+  lastUpdated: true
 };
 
 export default config;

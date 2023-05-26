@@ -7,11 +7,7 @@ const themeConfig: DefaultTheme.Config = {
   docsBranch: "master",
   nav,
   sidebar,
-  appearance: false,
-  markdown: {
-    theme: "material-theme-palenight",
-    lineNumbers: true
-  }
+  appearance: false
 };
 
 export default themeConfig;
