@@ -1,5 +1,12 @@
 # Common helpers <Badge type="warning" text="beta" />
 
+::: info TYPES
+
+If something is missing, or if you seek deeper customization,
+[See the complete type definition on DenoLand](https://deno.land/x/pipelight/mod.ts)
+
+:::
+
 ## Pipeline definition helpers
 
 Pipeline definition helpers are syntaxic sugar for minimalists.
@@ -22,12 +29,6 @@ const my_pipeline: Pipeline = {
 };
 ```
 
-::: tip TYPES
-
-[See the complete type definition on DenoLand](https://deno.land/x/pipelight/mod.ts)
-
-:::
-
 Here is a complete working example using **pipeline** and **step** helpers.
 
 ```ts
@@ -41,7 +42,7 @@ const compositionPipe = pipeline("composition", () => [
 ]);
 ```
 
-## Remote operation helpers
+## Remote operations helper
 
 For when you execute commands on remote servers.
 
@@ -52,4 +53,21 @@ in bash, the **ssh** helper wrap them for you.
 import { ssh } from "https://deno.land/x/pipelight/mod.ts";
 
 step("replace containers", () => ssh([host], my_commands));
+```
+
+## Exec helper
+
+When you need to retrieve data **before** your pipeline execution.
+
+```ts
+import { exec } from "https://deno.land/x/pipelight/mod.ts";
+
+const res = await exec(my_command);
+```
+
+Can be used to retrieve git infos, like your latest tag and use it in your pipeline declaration.
+
+```ts
+const version = await exec("git describe --tags --abbrev=0 | sed s/v//");
+// version = "v0.8"
 ```

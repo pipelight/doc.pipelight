@@ -19,10 +19,10 @@ like `["docker build..."]`.
 import {
   Docker,
 } from "https://deno.land/x/pipelight/mod.ts";
-
 const docker = new Docker(params);
 
 step("build images and run containers", () => [
+    // generate commands
     ...docker.images.create(),
     ...docker.containers.create()
 ]),
@@ -38,25 +38,15 @@ step("build images and run containers", () => [
 
 You first need to define a Docker Object.
 
-Here we use a function to create the Docker Object based on the "production" global variables.
-It can be reused to create another Docker Object with "development" variables.
-
 ```ts
-// Set global vars
-const globals = {
-  host: "linode",
-  dns: "pipelight.dev",
-  service: "deno",
-  version: production
-};
-
-// Docker Object creation through a function
-const makeParams = ({ host, version, dns, service }): DockerParams => ({
+const docker = new Docker({
+  // Declare your images to be build
   images: [
     {
       name: `pipelight/doc:${version}`
     }
   ],
+  // Declare containers
   containers: [
     {
       name: `${version}.${service}.${dns}`,
@@ -67,16 +57,15 @@ const makeParams = ({ host, version, dns, service }): DockerParams => ({
     }
   ]
 });
-const docker = new Docker(makeParams(globals));
 ```
 
-Use it in your pipeline definition.
+And then use it in your pipeline definition.
 
 ```ts
-// Pipeline creation with Docker helpers
-const compositionPipe = pipeline("composition", () => [
+const my_pipeline = pipeline("composition", () => [
   // Create images locally and send them to remotes
   step("build and send images", () => [
+    // Generate bash commands
     ...docker.images.create(),
     ...docker.images.send([host])
   ]),
@@ -94,12 +83,60 @@ const compositionPipe = pipeline("composition", () => [
 ]);
 ```
 
-## Networking (Security)
+## Docker Object defintion
 
-When you define a container and publish it.
-It is usually exposed to your localhost (127.0.0.1) and your public ip (0.0.0.0).
+```ts
+interface DockerParams {
+  images?: ImageParams[];
+  volumes?: VolumeParams[];
+  networks?: NetworkParams[];
+  containers?: ContainerParams[];
+}
+```
 
-By default, docker helpers only publishe to localhost
+## Network
+
+### Network Object
+
+```ts
+const network = new Network({
+  name: "my_network"
+});
+
+// Return commands to create/update the network
+network.create();
+```
+
+```ts
+interface NetworkParams {
+  name: string;
+  subnet?: string;
+  // subnet: "172.20.4.0/16"
+  driver?: string;
+  // driver: "bridge";
+}
+```
+
+## Containers
+
+### Container Object
+
+```ts
+interface ContainerParams {
+  name: string;
+  image: Pick<ImageParams, "name">;
+  volumes?: MountVolumeParams[];
+  networks?: MountNetworkParams[];
+  ports?: Port[];
+}
+```
+
+### Nerwork Security
+
+When you define a container and publish it,
+it is usually exposed to your localhost (127.0.0.1) and your public ip (0.0.0.0).
+
+By default, docker helpers only publish to localhost
 to avoid undesired port exposure and reduce server attacking surface.
 
 ```ts
@@ -112,6 +149,43 @@ const container = {
 };
 ```
 
-## Containers
+This will expose your container:80 on localhost 127.0.0.1:9080
 
 ## Volumes
+
+::: info Opinionated
+
+For now, named volumes only!
+This helpers delegate volume gestion to docker to avoid users the burden of bind mount declaration.
+
+:::
+
+Volumes are mainely used to persist data outside of a container and retrieve them after an update (or for sharing between containers).
+Named volumes creation is simple.
+
+```ts
+const my_volume = {
+  name: "my_vol"
+};
+```
+
+```ts
+interface VolumeParams {
+  name: string;
+}
+```
+
+You will have to link it to a container
+
+```ts
+const container = {
+  name: `my_container`,
+  volume: {
+    name: `my_vol`
+    path:{
+        // The path inside the container to which the volume will be linked
+        inside: "/data"
+    }
+  },
+};
+```
