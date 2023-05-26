@@ -244,6 +244,8 @@ class Image implements ImageParams {
   create(): string[];
   // return commands to delete image
   remove(): string[];
+  // send image via ssh to a list of hosts
+  send(hosts: string[]): string[];
 }
 ```
 
@@ -297,7 +299,7 @@ class Container implements ContainerParams {
 
 ## Network
 
-### Network Interface definition
+### Network interface definition
 
 ```ts
 const params: NetworkParams = {
@@ -313,6 +315,21 @@ interface NetworkParams {
   subnet?: string;
   driver?: string;
 }
+```
+
+Link it to a container
+
+```ts
+const container: Container = {
+  name: `my_container`,
+  networks: [
+    {
+      name: `my_net`,
+      // Set container static ip on subnet
+      ip: "172.20.4.4"
+    }
+  ]
+};
 ```
 
 ### Network Class
@@ -339,6 +356,8 @@ This helpers delegate volume gestion to docker to avoid users the burden of bind
 Volumes are mainely used to persist data outside of a container and retrieve them after an update (or for sharing between containers).
 Named volumes creation is simple.
 
+### Volume interface definition
+
 ```ts
 const vol_params = {
   name: "my_vol"
@@ -351,19 +370,33 @@ interface VolumeParams {
 }
 ```
 
-You will have to link it to a container
+Link it to a container
 
 ```ts
 const container = {
   name: `my_container`,
-  volume: {
-    name: `my_vol`
-    path:{
+  volumes: [
+    {
+      name: `my_vol`,
+      path: {
         // The path inside the container to which the volume will be linked
         inside: "/data"
+      }
     }
-  },
+  ]
 };
+```
+
+### Volume Class
+
+```ts
+class Volume implements VolumeParams {
+...
+  // return commands to create volume
+  create(): string[];
+  // return commands to remove volume
+  remove(): string[];
+}
 ```
 
 ## Host network security

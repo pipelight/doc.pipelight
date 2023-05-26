@@ -6,7 +6,7 @@ hero:
     src: /images/pipelight.png
     alt: pipelight_logo
   text: Self-hosted automation pipelines
-  tagline: CI/CD now FOSS, fast, and easy!
+  tagline: From bash scripts to pipelines!
   actions:
     - theme: brand
       text: Get Started
@@ -172,6 +172,11 @@ pipelight logs -vvv
 </Sheet>
 
 <Sheet>
+<Example>
+<p align="center">
+  <img src="/images/ferris_playing_pipelight.png" alt="ferris_playing_with_cubes" class="sm">
+</p>
+</Example>
 <Example>
 <h4> 
 Rust based.
