@@ -34,6 +34,7 @@ name: "Areskul",
 links: [
 { icon: { svg: chat_svg.value } , link: 'https://t.me/areskul' },
 { icon: 'discord', link: 'https://discordapp.com/users/356774981897814017'}
+
 ],  
 }];
 
@@ -41,6 +42,7 @@ const community = [{
 avatar: 'https://www.github.com/pipelight.png',  
 name: "Pipelight",
 links: [
+{ icon: { svg: chat_svg.value } , link: 'https://t.me/+Qe-ISdEpa-pmMTFk' },
 { icon: 'github', link: 'https://github.com/pipelight' },
 { icon: 'discord', link: 'https://discord.gg/CYJpWf7S' },
 ],  
