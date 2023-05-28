@@ -25,7 +25,6 @@ const docker = new Docker({
   containers: [
     {
       name: `${version}.${service}.${dns}`,
-      ip: "127.0.0.1",
       image: {
         name: `pipelight/${service}:${version}`
       },
