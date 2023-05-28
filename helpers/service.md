@@ -2,36 +2,61 @@
 
 Made on top of **docker helpers** to ease deploying several copies of the same docker infrastructure in different environments.
 
-## Internal API overrview
+## Basic usage
 
-Here we use a function to create the Docker Object based on production global variables.
-It can be reused to create another Docker Object with "development" variables.
+Define a Service instance.
+
+It only takes global vars, and Containers definition.
+Every volume and network to which the container should be linked will be auto created or updated.
 
 ```ts
-// Set global vars
-const globals = {
-  host: "linode",
-  dns: "pipelight.dev",
-  service: "deno",
-  version: production
-};
-
-// Docker Object creation through a function
-const makeParams = ({ host, version, dns, service }): DockerParams => ({
-  images: [
-    {
-      name: `pipelight/doc:${version}`
-    }
-  ],
+const service = new Service({
+  globals: {
+    version: "production",
+    dns: "pipelight.dev"
+  },
   containers: [
     {
-      name: `${version}.${service}.${dns}`,
+      suffix: "api",
       image: {
-        name: `pipelight/doc:${version}`
+        suffix: "api"
       },
+      volumes: [
+        {
+          suffix: "save",
+          path: {
+            inner: "/patn/in/container"
+          }
+        }
+      ],
       ports: [{ out: 9080, in: 80 }]
     }
   ]
 });
-const docker = new Docker(makeParams(globals));
+```
+
+Generate the commands to build and deploy your containers.
+
+```ts
+step("bring_everything_up", () => service.up());
+```
+
+Or use the internal Docker Object to tweak the commands.
+For example if you want to build images locally.
+
+```ts
+step("create:images", ()=>
+service.docker.images.create()
+)
+step("send:images", ()=>
+    service.docker.images.send([host])
+)
+step("create:containers:on_remote", ()=>
+    ssh([host],[
+    ...service.docker.network.remove()
+    ...service.docker.network.create()
+    ...service.docker.volumes.create()
+    ...service.docker.containers.create()
+    ])
+)
 ```

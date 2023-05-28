@@ -1,3 +1,8 @@
+# Next
+
+- [ ]: Add branch globbing pattern
+- [ ]: Add git tags to triggers ({branch, action} | {tag, action})
+
 # Breaking changes
 
 ## v0.5.0

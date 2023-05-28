@@ -123,7 +123,7 @@ docker.volumes.create();
 docker.container.create();
 ```
 
-Extensively turning an Interface into its Class equivalent, will brings you functions capabilities.
+Extensively, turning an Interface into its Class equivalent, will provide you the associated functions.
 
 ```ts
 const container: Container = new Container(container_params);
@@ -418,3 +418,19 @@ const container = {
 ```
 
 This will expose your container:80 on localhost 127.0.0.1:9080
+
+If you want to expose your container to the outside world you will have to either:
+
+- use a **reverse proxy**,
+
+- or specify it in your container definition
+
+```ts
+  ports: [{ private: false, out: 9080, in: 80 }]
+};
+```
+
+```ts
+  ports: [{ private: env.PRODUCTION, out: 9080, in: 80 }]
+};
+```
