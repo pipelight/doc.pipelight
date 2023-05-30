@@ -18,7 +18,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           link: "/guide/cli"
         },
         {
-          text: "Basic pipeline definition",
+          text: "Pipeline definition",
           link: "/guide/config"
         },
         {

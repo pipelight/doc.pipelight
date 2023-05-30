@@ -27,8 +27,13 @@ It as something optional that you can still add later to strenghten your pipelin
 
 ### Typings
 
-Supports Typescript.
 Import type definition from the official deno package.
+
+::: tip TYPES
+
+[See the complete type definition on DenoLand](https://deno.land/x/pipelight/mod.ts)
+
+:::
 
 ```ts
 //pipelight.ts
@@ -51,79 +56,6 @@ const config: Config = {
   ]
 };
 export default config;
-```
-
-## Typescript types definition
-
-Here is the base type definition in Typescript.
-
-::: tip
-
-[See the complete type definition on DenoLand](https://deno.land/x/pipelight/mod.ts)
-
-:::
-
-```ts
-// Types definition from the official deno package
-
-// Newbie tip
-// The question mark "?" means that a property is optional.
-
-type Config = {
-  pipelines?: Pipeline[];
-};
-type Pipeline = {
-  name: string;
-  steps: StepOrParallel[];
-  triggers?: Trigger[];
-  on_started?: StepOrParallel[];
-  on_failure?: StepOrParallel[];
-  on_success?: StepOrParallel[];
-  on_abortion?: StepOrParallel[];
-};
-
-type StepOrParallel = Step | Parallel;
-type Parallel = {
-  mode?: Mode;
-  parallel: Step[];
-  on_started?: StepOrParallel[];
-  on_failure?: StepOrParallel[];
-  on_success?: StepOrParallel[];
-  on_abortion?: StepOrParallel[];
-};
-type Step = {
-  mode?: Mode;
-  name: string;
-  commands: string[];
-  on_started?: StepOrParallel[];
-  on_failure?: StepOrParallel[];
-  on_success?: StepOrParallel[];
-  on_abortion?: StepOrParallel[];
-};
-type Trigger = {
-  branches?: string[];
-  actions?: Action[];
-};
-type Mode = "stop" | "jump_next" | "continue";
-type Action =
-  | "applypatch-msg"
-  | "pre-applypatch"
-  | "post-apply-patch"
-  | "pre-commit"
-  | "prepare-commit-msg"
-  | "commit-msg"
-  | "post-commit"
-  | "pre-rebase"
-  | "post-checkout"
-  | "post-merge"
-  | "pre-receive"
-  | "update"
-  | "post-receive"
-  | "post-update"
-  | "pre-auto-gc"
-  | "post-rewrite"
-  | "pre-push"
-  | "manual";
 ```
 
 ## Parallel steps execution
@@ -197,18 +129,28 @@ const forcedStep: Step = {
 If a command of the step fails. The next command will still be executed, and son on until the last command of the step.
 Then the next step will be executed.
 
-## Triggers (git-hooks)
+## Triggers
 
 Here is the part you were waiting for!
 What is the point of writting pipelines if you still have to execute them by hand?
 
-::: warning
+::: warning BETTER IN A GIT REPO
 
 Only works in a Git repository.
 Be sure to initialize a repo if you want to take advantage of triggers.
 
 ```sh
 git init
+```
+
+:::
+
+::: info ENABLE TRIGGERS
+
+To enable triggers on a fresh directory, run at least one random pipelight command:
+
+```sh
+pipelight ls
 ```
 
 :::
@@ -224,11 +166,7 @@ triggers: [
 ];
 ```
 
-Actions are named according to [git-hooks](https://githooks.com/) names.
-And Branches are your git project branches names.
-
 Simply add triggers to your pipeline definition.
-Nothing more to do.
 
 ```ts{11}
 //pipelight.ts
@@ -251,17 +189,43 @@ pipelines: [
 ];
 ```
 
-::: info
+### Branch and Tags
 
-Under the hood,
-every command checks if hooks are enabled.
-If git-hooks are not working on a fresh directory, at least run:
+Branches are your git project branches names (see: `git branch`).
 
-```sh
-pipelight ls
+Tags are the tag you added the commits you want to release with `git tag -a "v0.8"` (see: `git tag`).
+
+You can set multiple branch and tag combinations with **globbing** patterns.
+
+```ts
+    triggers: [
+      {
+        branches: ["feature/*"],
+        actions: ["pre-push"]
+      }
+      {
+        tags: ["v*-dev"],
+        actions: ["pre-commit"]
+      }
+    ]
 ```
 
-:::
+### Actions (Git-hooks)
+
+Actions are named according to [git-hooks](https://githooks.com/) names.
+Plus some special flags like "manual".
+
+### Security (Manual Flag)
+
+When triggers are added to a pipeline, it will not be triggered util trigger requirements are met.
+Which mean you'll have to checkout to the allowed branches, tags, and execute the allowed actions.
+
+If you want to manually run a pipeline that has some triggers with `pipelight run`
+you wiil have to add the **special flag** "manual" .
+
+```ts
+actions: ["manual"];
+```
 
 ## Fallbacks
 
