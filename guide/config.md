@@ -166,7 +166,14 @@ triggers: [
 ];
 ```
 
-Simply add triggers to your pipeline definition.
+```ts
+type Trigger = TriggerBranch | TriggerTag;
+
+type TriggerBranch = { branches?: string[]; actions?: Action[] };
+type TriggerTag = { tags?: string[]; actions?: Action[] };
+```
+
+Then, add triggers to your pipeline definition.
 
 ```ts{11}
 //pipelight.ts
@@ -214,6 +221,28 @@ You can set multiple branch and tag combinations with **globbing** patterns.
 
 Actions are named according to [git-hooks](https://githooks.com/) names.
 Plus some special flags like "manual".
+
+```ts
+export type Action =
+  | "applypatch-msg"
+  | "pre-applypatch"
+  | "post-apply-patch"
+  | "pre-commit"
+  | "prepare-commit-msg"
+  | "commit-msg"
+  | "post-commit"
+  | "pre-rebase"
+  | "post-checkout"
+  | "post-merge"
+  | "pre-receive"
+  | "update"
+  | "post-receive"
+  | "post-update"
+  | "pre-auto-gc"
+  | "post-rewrite"
+  | "pre-push"
+  | "manual";
+```
 
 ### Security (Manual Flag)
 
