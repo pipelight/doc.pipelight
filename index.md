@@ -1,4 +1,5 @@
 ---
+title: Home
 layout: home
 hero:
   name: Pipelight
