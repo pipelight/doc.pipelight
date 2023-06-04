@@ -102,7 +102,7 @@ to finally run them.
 const docker = new Docker(params);
 
 // Pipeline creation using Docker helpers
-const my_pipeline = pipeline("composition", () => [
+const my_pipeline = pipeline("deploy_containers_to_remote", () => [
   // Create images locally and send them to remote
   step("build and send images", () => [
     ...docker.images.create(),
