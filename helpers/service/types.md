@@ -63,33 +63,42 @@ interface ContainerAutoParams {
 
 ### Images
 
-```ts
+If only a suffix is provided, by default,
+this helper will seak the **./docker/Dockerfile.<suffix>** to build the image.
+
+```ts{2,6}
 export interface ImageAutoParams {
   suffix: string;
   file?: string;
 }
-export interface ImageParams {
-  name: string;
-  file?: string;
-}
 ```
+
+It means that you can't create a container with an image name like "ubuntu:latest".
+Because it will look for a file at .docker/Dockerfile.ubuntu:latset.
+
+Instead it will force you to tidy your dockerfiles and create a .docker/Dockerfile.ubuntu
+
+```dockerfile
+FROM ubuntu:latest
+// Add users
+// Install stuffs
+
+```
+
+Like so, it is possible to have an idea of the deployment process only by looking into the .docker directory.
 
 ### Volumes
 
-```ts
+```ts{2,7}
 export interface MountVolumeParams {
   name: string;
-  path: {
-    // Inside container path
-    inside: string;
-  };
+  // Path inside container
+  target: string;
 }
 export interface MountVolumeAutoParams {
   suffix: string;
-  path: {
-    // Inside container path
-    inside: string;
-  };
+  // Path inside container
+  target: string;
 }
 ```
 

@@ -111,7 +111,7 @@ Reminder. The steps to build a container.
 Dockerfile -> Image -> Container
 
 Define the images you wich to build.
-If only the name is provided it will look for a Dockerfile in the root directory.
+If only the name is provided it will look for the **Dockerfile** in the root directory.
 
 ### ImageParams interface definition
 
