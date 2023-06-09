@@ -278,16 +278,28 @@ class Network implements NetworkParams {
 
 ## Volumes
 
+### VolumeParams interface definition
+
 ::: info Opinionated architecture
 
-To enforce infrasctructure maintability, only named volumes are handled.
+_I'm a strong advocate for "Docker for small projects" and not just huge, scaling behemoths and microservices._ - Cameron Spear
+
+To enforce infrasctructure maintability for the smallest projects,
+docker helpers perpetuate this philosophy by only handling named volumes...
+
+**However**, you can link a named volume to a custom path in host. (Bind mounts but cleaner)
+
+```ts
+const params = {
+  name: "my_vol"
+  source: "/host/directory/"
+};
+```
 
 :::
 
-### VolumeParams interface definition
-
 ```ts
-const params: VolumeParams = {
+const params VolumeParams | BindMountParams = {
   name: "my_vol"
 };
 ```
@@ -295,6 +307,12 @@ const params: VolumeParams = {
 ```ts
 interface VolumeParams {
   name: string;
+}
+
+interface BindMountParams {
+  name: string;
+  // path on host
+  source: string;
 }
 ```
 
@@ -306,10 +324,8 @@ const container = {
   volumes: [
     {
       name: `my_vol`,
-      path: {
-        // The path inside the container to which the volume will be linked
-        inside: "/data"
-      }
+      // The path inside the container to which the volume will be linked
+      target: "/data"
     }
   ]
 };

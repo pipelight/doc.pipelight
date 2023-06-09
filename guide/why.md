@@ -16,11 +16,11 @@ You can define pipelines that will run client-side and/or server-side.
 
 On your computer, you can enable client side automation by using specific triggers (on pre-push, pre-commit...).
 
-- To **enforce code quality**,
+- **Enforce code quality**,
 
   You can write pipelines to test your code before pushing it to production branches.
 
-- To **save cloud costs**,
+- **Save cloud costs**,
 
   Make the **heavy computation locally**,
   Build and only send the resulting archive or image to your remote servers.
@@ -29,15 +29,20 @@ On your computer, you can enable client side automation by using specific trigge
 
 Server side automation is achieved by using specific triggers too (on update, pre-receive...).
 
-- To **ease team work**,
+- **Ease team work**,
 
   Trigger pipelines directly on the remote once git has resolved.
   Same as using a conventional cicd in cloud provider.
 
+- **Better debugging**,
+
+  Pipelight logs are verbose and easy to access.
+  You won't ever miss a single byte of a pipeline execution (real commands, stdin, stdout and return statements).
+
 ## Made for efficency
 
 Pipelight is written in [Rust](https://www.rust-lang.org/).
-It is quite light when installed and uncompressed (>11M binaries).
+It is quite light when installed and uncompressed (~11Mb binaries).
 
 In consequence, it is blazing fast.
 
