@@ -1,9 +1,10 @@
 # Docker+ helpers <Badge type="danger" text="alpha" />
 
-It is **docker helpers**, with higher level parameters.
-This allows automatic twist of common docker infrastructures.
+Here soma automation has been added to **docker helpers**,
+resulting in higher level parameters, and opinionated automations.
 
-It eases deploying several copies of the same docker infrastructure in multiple environments (development, production...).
+Docker+ helpers allow automatic twist of common docker infrastructures
+and eases deploying several copies of the same docker infrastructure in multiple environments (development.
 
 ## Basic usage
 
@@ -95,3 +96,25 @@ This way, docker infrastructures are isolated one from another by entities names
 
 This **conceptual** separation is much lighter and cost effective than another nested level of **virtual** separation
 but still avoids collision between entities.
+
+Container images only accepts suffix nor name as parameters.
+
+```ts
+export interface ImageAutoParams {
+  suffix: string;
+  file?: string;
+}
+```
+
+By default, the helper automatically seaks a file in `.docker/Dockerfile.<suffix>`.
+to build the image.
+It enforces images to be declared as dockerfiles in a uniq and tidy directory.
+
+It is then possibe to make an idea on the deployment procedure just by having a glance to the `.docker` directory of your project.
+
+```sh
+.docker
+├── Dockerfile.api
+├── Dockerfile.db
+└── Dockerfile.front
+```

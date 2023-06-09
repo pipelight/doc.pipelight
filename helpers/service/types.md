@@ -63,8 +63,7 @@ interface ContainerAutoParams {
 
 ### Images
 
-If only a suffix is provided, by default,
-this helper will seak the **./docker/Dockerfile.<suffix>** to build the image.
+Images only accepts suffix nor name as parameters.
 
 ```ts{2,6}
 export interface ImageAutoParams {
@@ -73,19 +72,50 @@ export interface ImageAutoParams {
 }
 ```
 
-It means that you can't create a container with an image name like "ubuntu:latest".
-Because it will look for a file at .docker/Dockerfile.ubuntu:latset.
+By default, the helper automatically seaks a file in `.docker/Dockerfile.<suffix>`.
+to build the image.
+It enforces images to be declared as dockerfiles in a uniq and tidy directory.
 
-Instead it will force you to tidy your dockerfiles and create a .docker/Dockerfile.ubuntu
+It means that you can't create a container by declaring an image name like
+Because it will look for a file at .docker/Dockerfile.ubuntu:latset and won't find it.
+
+```ts
+const container: ContainerAutoParams = {
+  suffix: "api",
+  image: {
+    suffix: "ubuntu:latest" // [!code --]
+  }
+};
+```
+
+Instead create a dockerfile.
+
+```ts
+const container: ContainerAutoParams = {
+  suffix: "api",
+  image: {
+    suffix: "ubuntu" // [!code ++]
+  }
+};
+```
 
 ```dockerfile
-FROM ubuntu:latest
-// Add users
-// Install stuffs
+## Dockerfile.ubuntu // [!code ++]
+FROM ubuntu:latest // [!code ++]
+
+# Add users
+# Install stuffs
 
 ```
 
-Like so, it is possible to have an idea of the deployment process only by looking into the .docker directory.
+It is then possibe to make an idea on the deployment procedure just by having a glance to the `.docker` directory of your project.
+
+```sh
+.docker
+├── Dockerfile.api
+├── Dockerfile.db
+└── Dockerfile.front
+```
 
 ### Volumes
 
