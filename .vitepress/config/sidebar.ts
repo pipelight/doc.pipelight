@@ -99,7 +99,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           link: "/cookbook/environments"
         },
         {
-          text: "Medusa Deployment",
+          text: "Medusa (e-commerce)",
           link: "/cookbook/medusa"
         },
         {

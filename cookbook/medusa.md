@@ -1,4 +1,4 @@
-# Medusa <Badge type="danger" text="alpha" />
+# Medusa (e-commerce)<Badge type="danger" text="alpha" />
 
 The emerging e-commerce plateform [medusa](https://medusajs.com) actually lacks documentation
 when it comes to self-hosting.
