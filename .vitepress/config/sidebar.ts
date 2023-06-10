@@ -99,6 +99,10 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           link: "/cookbook/environments"
         },
         {
+          text: "Vite app",
+          link: "/cookbook/vite"
+        },
+        {
           text: "Medusa (e-commerce)",
           link: "/cookbook/medusa"
         },
