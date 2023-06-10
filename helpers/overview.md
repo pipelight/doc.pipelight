@@ -22,10 +22,13 @@ Helpers are functions that bulk generate bash commands!
 ## Overview
 
 Helpers are **Javascript/Typescript** functions that will do some heavy lift to easily define complex pipelines.
-There is actually 2 helpers groups:
+There is actually 3 helpers groups:
 
-- **common** helpers
-- **docker** helpers
+- **common** helpers (ease pipeline definition)
+- **docker** helpers (ease docker infrastructure management)
+- **template** helpers (customizable prebuilt pipelines)
+
+With each goup made on top of the previous one.
 
 ### Delicious Syntax 🤌
 

@@ -10,7 +10,7 @@ and eases deploying several copies of the same docker infrastructure in multiple
 
 ### How it works ?
 
-Here is the core of a pipeline using service helpers.
+Here is the core of a pipeline using docker+ helpers.
 
 ```ts
 let params: DockerAutoParams;

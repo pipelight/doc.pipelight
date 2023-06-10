@@ -71,6 +71,15 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
               link: "/helpers/service/types"
             }
           ]
+        },
+        {
+          text: "Template helpers",
+          items: [
+            {
+              text: "Overview",
+              link: "/helpers/template/overview"
+            }
+          ]
         }
       ]
     },

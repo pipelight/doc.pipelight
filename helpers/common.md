@@ -50,5 +50,5 @@ Can be used to retrieve git infos, like your latest tag and use it in your pipel
 
 ```ts
 const version = await exec("git describe --tags --abbrev=0 | sed s/v//");
-// version = "v0.8"
+// version = "0.8"
 ```

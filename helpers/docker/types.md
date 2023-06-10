@@ -288,6 +288,8 @@ To enforce infrasctructure maintability for the smallest projects,
 docker helpers perpetuate this philosophy by only handling named volumes...
 
 **However**, you can link a named volume to a custom path in host. (Bind mounts but cleaner)
+This way, `docker volume ls` outouts every binds. No need to `docker container inspect`
+every container to troobleshoot unexpected behavior related to bind mounts.
 
 ```ts
 const params = {
