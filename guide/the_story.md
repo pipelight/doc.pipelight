@@ -12,8 +12,10 @@ It would result in project early automation implemention for you to focus only o
 
 ## Bypass the classic harsh automation path
 
-::: tip Spoiler
-The solution pipelight brings is to bettern existing shell scripts
+::: tip SPOILER
+
+The solution Pipelight brings is to **bettern already existing shell scripts**.
+
 :::
 
 We usualy seek automation because we face repetitive thus painful tasks of varied nature.

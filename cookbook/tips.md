@@ -1,4 +1,4 @@
-# Usefull Tips
+# Pipeline writting tips
 
 ## Get the best out of Typescript
 

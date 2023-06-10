@@ -17,7 +17,7 @@ deno cache --reload pipelight.ts
 
 ## TL;DR
 
-Helpers are functions that bulk generate bash commands!
+**Helpers are functions that bulk generate bash commands!**
 
 ## Overview
 

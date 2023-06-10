@@ -1,16 +1,14 @@
 # Pipeline Template helpers <Badge type="danger" text="alpha" />
 
-Once you defined a Docker Object with **docker** or **docker+** helpers,
-you usually write your pipeline in a few lines.
-They often get repetitive, and that's where templating come in play.
-
-::: info
+::: info COMING NEXT
 
 Every previously introduced helpers provide users great convenience and modularity
-for small to medium pipelines generation.
+for small to medium pipelines definition.
 
-But the've all been made to support the top level helpers that are following,
-Aiming to ease:
+But the've all been made with a big picture in mind...
+
+To support the **top level helpers** that are coming.
+Aiming to reduce to a few line big tasks like:
 
 - Dig up complete docker infrastructures,
 - Virtual machine creation and provisionning,
@@ -21,6 +19,10 @@ Aiming to ease:
 ## Basic usage
 
 ### How it works ?
+
+Once you defined a Docker Object with **docker** or **docker+** helpers,
+you usually write your pipeline in a few lines.
+They often get repetitive, and that's where templating comes into play.
 
 Here is the core of a pipeline using template helpers.
 
@@ -36,6 +38,8 @@ const my_pipeline = deploy(docker);
 // Remote deployment
 const my_pipeline = deploy(docker, "linode");
 ```
+
+It simply creates or updates the docker items you defined in a Docker Object.
 
 ### Customize the pipeline
 

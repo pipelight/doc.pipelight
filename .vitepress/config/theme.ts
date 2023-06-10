@@ -7,7 +7,10 @@ const themeConfig: DefaultTheme.Config = {
   docsBranch: "master",
   nav,
   sidebar,
-  appearance: false
+  appearance: false,
+  search: {
+    provider: "local"
+  }
 };
 
 export default themeConfig;

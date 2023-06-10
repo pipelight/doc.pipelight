@@ -91,6 +91,18 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           link: "/cookbook/tips"
         },
         {
+          text: "Supercharge the cli",
+          link: "/cookbook/cli"
+        },
+        {
+          text: "Environment variables",
+          link: "/cookbook/environments"
+        },
+        {
+          text: "Medusa Deployment",
+          link: "/cookbook/medusa"
+        },
+        {
           text: "Deployment Strategies",
           link: "/cookbook/strategies"
         }
