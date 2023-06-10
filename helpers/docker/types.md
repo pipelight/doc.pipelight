@@ -51,9 +51,7 @@ const params: DockerParams = {
         {
           // persist api uploads into volume
           name: "my_vol_bucket",
-          path: {
-            inner: "/public/uploads"
-          }
+          target: "/public/uploads"
         }
       ]
     },
@@ -72,9 +70,7 @@ const params: DockerParams = {
         {
           // persist database data into volume
           name: "my_vol_bucket",
-          path: {
-            inner: "/var/bil/postgresql/data"
-          }
+          target: "/var/bil/postgresql/data"
         }
       ]
     }
@@ -162,9 +158,7 @@ const params: ContainerParams = {
   volumes: [
     {
       name: "my_vol",
-      path: {
-        inner: "/data"
-      }
+      target: "/data"
     }
   ],
   networks: [
@@ -192,6 +186,8 @@ class Container implements ContainerParams {
 ...
   // return commands to create container and run it
   create(): string[];
+  // return commands to backup volume
+  restart(): string[];
   // return commands to stop container and remove it
   remove(): string[];
   // wrap provided commands to execute them inside the container.
@@ -280,7 +276,7 @@ class Network implements NetworkParams {
 
 ### VolumeParams interface definition
 
-::: info Opinionated architecture
+::: info Opinionated docker architecture
 
 _I'm a strong advocate for "Docker for small projects" and not just huge, scaling behemoths and microservices._ - Cameron Spear
 
@@ -300,8 +296,10 @@ const params = {
 
 :::
 
+Declare your volume.
+
 ```ts
-const params VolumeParams | BindMountParams = {
+const params: VolumeParams = {
   name: "my_vol"
 };
 ```
@@ -309,16 +307,11 @@ const params VolumeParams | BindMountParams = {
 ```ts
 interface VolumeParams {
   name: string;
-}
-
-interface BindMountParams {
-  name: string;
-  // path on host
-  source: string;
+  source?: string; // path on host
 }
 ```
 
-Link it to a container
+Link it to a container.
 
 ```ts
 const container = {
@@ -342,5 +335,9 @@ class Volume implements VolumeParams {
   create(): string[];
   // return commands to remove volume
   remove(): string[];
+  // return commands to backup volume
+  backup(): string[];
+  // return commands to backup restore
+  restore(): string[];
 }
 ```

@@ -16,7 +16,7 @@ Fore the sake of readability, I recommand putting your docker object definition 
 Here we will define our docker infrastructure using the **docker+** helpers.
 
 ```ts
-// .pipelight/env/productions.ts
+// .pipelight/env/production.ts
 export const params: DockerAutoParams = {
   globals: {
     version: "production",
@@ -25,9 +25,6 @@ export const params: DockerAutoParams = {
   containers: [
     {
       suffix: "db",
-      image: {
-        suffix: "db"
-      },
       networks: [
         {
           suffix: "net",
@@ -44,9 +41,6 @@ export const params: DockerAutoParams = {
     },
     {
       suffix: "io",
-      image: {
-        suffix: "io"
-      },
       networks: [
         {
           suffix: "net",
@@ -67,9 +61,6 @@ export const params: DockerAutoParams = {
     },
     {
       suffix: "api",
-      image: {
-        suffix: "api"
-      },
       networks: [
         {
           suffix: "net",
@@ -85,7 +76,15 @@ export const params: DockerAutoParams = {
 You may want to define the outgoing ports and more in an env file.
 
 ```sh
+# .env.production
+# Medusa
 API_PORT=9282
+
+# Postgres
 DB_PORT=5436
+
+# Minio
 IO_PORT=9001
+MINIO_ACCESS_KEY=user
+MINIO_SECRET_KEY=secret
 ```

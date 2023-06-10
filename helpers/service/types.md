@@ -1,11 +1,11 @@
 # Docker+ helpers types
 
-Interfaces are transformed into Classes [Docker Helpers](/helpers/docker/types)
+Those interfaces are transformed into Classes described in [Docker Helpers](/helpers/docker/types)
 
 ## Docker
 
 ```ts
-const docker: DockerAutoParams ={
+const docker: DockerAutoParams = {
   globals: {
     version: "production",
     dns: "pipelight.dev"
@@ -13,21 +13,22 @@ const docker: DockerAutoParams ={
   containers: [
     {
       suffix: "api",
-      image: {
-        suffix: "api"
-      },
       volumes: [
         {
           suffix: "save",
-          path: {
-            inner: "/patn/in/container"
-          }
+          target: "/patn/in/container"
+        }
+      ],
+      networks: [
+        {
+          suffix: "net",
+          ip: "172.40.3.2"
         }
       ],
       ports: [{ out: 9080, in: 80 }]
     }
   ]
-});
+};
 ```
 
 ```ts
@@ -53,7 +54,7 @@ interface Globals {
 ```ts
 interface ContainerAutoParams {
   suffix: string;
-  image: ImageAutoParams;
+  image?: ImageAutoParams;
   volumes?: Array<MountVolumeAutoParams | MountVolumeParams>;
   networks?: Array<MountNetworkAutoParams | MountNetworkParams>;
   ports?: PortParams[];
@@ -88,19 +89,30 @@ const container: ContainerAutoParams = {
 };
 ```
 
-Instead create a dockerfile.
+Declaring a suffix is enough for the image to created and the dockerfile to be retrieved.
+
+```ts
+const container: ContainerAutoParams = {
+  suffix: "api" // [!code ++]
+};
+```
+
+Or, if needed, set the file and suffix yourself.
 
 ```ts
 const container: ContainerAutoParams = {
   suffix: "api",
   image: {
-    suffix: "ubuntu" // [!code ++]
+    suffix: "api", // [!code ++]
+    file: "./.docker/subdirectory/Dockerfile.api"
   }
 };
 ```
 
+Create the **required** dockerfile.
+
 ```dockerfile
-## Dockerfile.ubuntu // [!code ++]
+## ./docker/Dockerfile.api // [!code ++]
 FROM ubuntu:latest // [!code ++]
 
 # Add users
@@ -108,7 +120,8 @@ FROM ubuntu:latest // [!code ++]
 
 ```
 
-It is then possibe to make an idea on the deployment procedure just by having a glance to the `.docker` directory of your project.
+It is then possibe to make an idea on the deployment procedure
+just by having a glance at the `.docker` directory in your project.
 
 ```sh
 .docker
@@ -122,13 +135,13 @@ It is then possibe to make an idea on the deployment procedure just by having a 
 ```ts{2,7}
 export interface MountVolumeParams {
   name: string;
-  // Path inside container
-  target: string;
+  source?: string; // Path on host
+  target: string; // Path inside container
 }
 export interface MountVolumeAutoParams {
   suffix: string;
-  // Path inside container
-  target: string;
+  source?: string; // Path on host
+  target: string; // Path inside container
 }
 ```
 

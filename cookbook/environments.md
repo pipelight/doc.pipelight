@@ -15,10 +15,41 @@ USER_NAME=default
 USER_PASSWORD=secret
 ```
 
-Load env vars.
+## Loading strategies
+
+### Static
+
+You can statically load env vars from `.env.production` into a pipeline with
 
 ```ts
+// .pipelight/env/production
 import { load } from "https://deno.land/std/dotenv/mod.ts";
-
 const env = await load({ envPath: `./.env.production` });
+...
+const password = env.USER_PASSWORD
+```
+
+### Dynamic
+
+You can dynamicly load env vars from `.env.<something>` into a pipeline with
+
+```ts
+// .pipelight/env/template
+// Process flag
+import { parse } from "https://deno.land/std/flags/mod.ts";
+const flags = parse(Deno.args, {
+  string: ["env"]
+});
+
+// Import env file with dynamic path
+import { load } from "https://deno.land/std/dotenv/mod.ts";
+const env = await load({ envPath: flag.env ? `./.env.${flag.env}` : "./.env" });
+
+const password = env.USER_PASSWORD;
+```
+
+And add the necessary flags to the cli
+
+```sh
+pipelight run -- --env=production
 ```

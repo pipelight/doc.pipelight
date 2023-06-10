@@ -1,6 +1,6 @@
 # Docker+ helpers <Badge type="danger" text="alpha" />
 
-Here soma automation has been added to **docker helpers**,
+Here some automation has been added to **docker helpers**,
 resulting in higher level parameters, and opinionated automations.
 
 Docker+ helpers allow automatic twist of common docker infrastructures
@@ -49,15 +49,10 @@ const docker = new Docker({
   containers: [
     {
       suffix: "api",
-      image: {
-        suffix: "api"
-      },
       volumes: [
         {
           suffix: "save",
-          path: {
-            inner: "/patn/in/container"
-          }
+          target: "/patn/in/container"
         }
       ],
       ports: [{ out: 9080, in: 80 }]
@@ -90,12 +85,16 @@ step("create containers on remote", () => ssh([host], docker.upgrade()));
 ## Differences with docker helpers
 
 Takes mainly **suffixes instead of names** for docker entities definition(container, volume, image and network).
-Then names are generated based on the provided suffix and globals.
 
+Then names are auto-generated based on the provided suffix and globals.
 This way, docker infrastructures are isolated one from another by entities names.
 
-This **conceptual** separation is much lighter and cost effective than another nested level of **virtual** separation
-but still avoids collision between entities.
+::: tip Conceptual > Virtual
+
+This **conceptual** separation avoids collision between docker entities,
+and is much **lighter and cost effective** than another nested level of virtual separation
+
+:::
 
 Container images only accepts suffix nor name as parameters.
 
@@ -106,11 +105,13 @@ export interface ImageAutoParams {
 }
 ```
 
+::: info Opinionated dockerfile usage
+
 By default, the helper automatically seaks a file in `.docker/Dockerfile.<suffix>`.
 to build the image.
 It enforces images to be declared as dockerfiles in a uniq and tidy directory.
 
-It is then possibe to make an idea on the deployment procedure just by having a glance to the `.docker` directory of your project.
+It is then possible to make an idea on the deployment procedure just by having a glance at the `.docker` directory of your project.
 
 ```sh
 .docker
@@ -118,3 +119,5 @@ It is then possibe to make an idea on the deployment procedure just by having a 
 ├── Dockerfile.db
 └── Dockerfile.front
 ```
+
+:::
