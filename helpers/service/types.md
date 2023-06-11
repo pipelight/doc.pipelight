@@ -58,9 +58,22 @@ interface ContainerAutoParams {
   volumes?: Array<MountVolumeAutoParams | MountVolumeParams>;
   networks?: Array<MountNetworkAutoParams | MountNetworkParams>;
   ports?: PortParams[];
+  // handcraft
   envs?: string[];
+  args?: Record<string, string>[];
 }
 ```
+
+::: info
+
+```ts
+// Provide environment variables to the container.
+envs?: string[];
+// Add arguments for container creation.
+args?: Record<string, string>[];
+```
+
+:::
 
 ### Images
 

@@ -175,9 +175,23 @@ interface ContainerParams {
   image: Pick<ImageParams, "name">;
   volumes?: MountVolumeParams[];
   networks?: MountNetworkParams[];
-  ports?: Port[];
+  ports?: PortParams[];
+  // handcraft
+  envs?: string[];
+  args?: Record<string, string>[];
 }
 ```
+
+::: info
+
+```ts
+// Provide environment variables to the container.
+envs?: string[];
+// Add arguments for container creation.
+args?: Record<string, string>[];
+```
+
+:::
 
 ### Container Class
 
@@ -186,7 +200,7 @@ class Container implements ContainerParams {
 ...
   // return commands to create container and run it
   create(): string[];
-  // return commands to backup volume
+  // return commands to restart existing container
   restart(): string[];
   // return commands to stop container and remove it
   remove(): string[];
@@ -331,13 +345,13 @@ const container = {
 ```ts
 class Volume implements VolumeParams {
 ...
-  // return commands to create volume
+  // create volume
   create(): string[];
-  // return commands to remove volume
+  // remove volume
   remove(): string[];
-  // return commands to backup volume
+  // create a volume backup
   backup(): string[];
-  // return commands to backup restore
+  // restore volume from backup
   restore(): string[];
 }
 ```
