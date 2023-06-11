@@ -1,4 +1,4 @@
-# Docker+ helpers <Badge type="danger" text="alpha" />
+# Docker+ helpers <Badge type="warning" text="beta" />
 
 Here some automation has been added to **docker helpers**,
 resulting in higher level parameters, and opinionated automations.
@@ -106,6 +106,7 @@ and is much **lighter and cost effective** than another nested level of virtual 
 
 The example defines:
 
+- from an image (name: `<dns>/<suffix>:<version>` = `pipelight.dev/api:production`)
 - a single container (name: `<version>.<suffix>.<dns>` = `production.api.pipelight.dev`)
 - with a volume attached to it (name: `<version>_<container_suffix>_<dns>__<suffix>` = `production_api_pipelight.dev__save`)
 - attach to a network (name: `<version>_<dns>__<suffix>` = `production_pipelight.dev__net` with subnet `172.0.4.0/24`)
