@@ -1,11 +1,8 @@
-# Vite app
+# Javascript Frontend
 
-If you are into websites, you may be accustomed to javascript frameworks.
+Here we will deploy a javascript front-end using docker/docker+ helpers and pipeline template helpers.
 
-Here we will deploy a javascript/typescript front-end.
-First define a Docker Object with **docker** or **docker+** helpers,
-
-Create a dockerfile in the default directory.
+First, create a dockerfile in the default directory.
 
 ```sh
 .docker
@@ -54,18 +51,35 @@ export const params: DockerAutoParams = {
 };
 ```
 
-Edit the core of your pipeline.
+Create a docker Object with the previously defined parameters
+and use the pipeline deploy template.
 
 ```ts
 // pipelight.ts
-const { deploy } = useTemplate();
-
 // Create a Docker Object with docker or docker+
+import type { Docker } from "https://deno.land/x/pipelight/mod.ts";
+import { params } from "./.pipelight/env/production.ts";
 const docker = new Docker(params);
 
-// Local deployment
-const my_pipeline = deploy(docker);
+// Use the docker deployment template helper
+import { useTemplate } from "https://deno.land/x/pipelight/mod.ts";
+const { deploy } = useTemplate();
 
-// Remote deployment
-const my_pipeline = deploy(docker, "linode");
+const my_pipeline = deploy(docker);
+```
+
+The **build commands** might be different depending on the bundler or framework you use (vite build, pnpm build...).
+But the docker deployment stays the same wether you are using Vite, Turbopack or Webassembly and others.
+
+```ts
+// pipelight.ts
+// Create a step to build your js files
+// and add it on the top of the pipeline steps
+const build: Step = step("build_files", () => ["pnpm install", "vite build"]);
+my_pipeline.steps.unshift(build);
+
+const config = {
+  pipelines: [...my_pipeline]
+};
+export default config;
 ```

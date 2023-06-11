@@ -27,14 +27,12 @@ They often get repetitive, and that's where templating comes into play.
 Here is the core of a pipeline using template helpers.
 
 ```ts
-const { deploy } = useTemplate();
-
 // Create a Docker Object with docker or docker+
 const docker = new Docker(params);
 
+const { deploy } = useTemplate();
 // Local deployment
 const my_pipeline = deploy(docker);
-
 // Remote deployment
 const my_pipeline = deploy(docker, "linode");
 ```
@@ -57,39 +55,10 @@ my_pipeline.add_trigger!({
 });
 ```
 
-Create a dockerfile in the default directory.
-
-```sh
-.docker
-└── Dockerfile.front
-```
-
-Edit the dockerfile to copy built files inside container.
-
-```dockerfile
-# Dockerfile.front
-
-FROM archlinux:latest
-# Install dependencies
-RUN pacman -Sy
-RUN pacman -S --noconfirm npm
-RUN npm add -g serve
-
-# Create working dir
-RUN mkdir app
-WORKDIR /app
-COPY ./dist .
-
-# Serve and expose port
-EXPOSE 3000
-ENTRYPOINT ["serve"]
-
-```
-
 ## Test
 
-Run tests inside docker containers
+Run tests inside docker containers.
 
 ```ts
-const { deploy } = useTemplate();
+const { test } = useTemplate();
 ```

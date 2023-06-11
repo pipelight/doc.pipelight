@@ -1,4 +1,4 @@
-# Medusa (e-commerce)<Badge type="danger" text="alpha" />
+# Medusa backend (e-commerce)
 
 The emerging e-commerce plateform [medusa](https://medusajs.com) actually lacks documentation
 when it comes to self-hosting.
@@ -88,3 +88,5 @@ IO_PORT=9001
 MINIO_ACCESS_KEY=user
 MINIO_SECRET_KEY=secret
 ```
+
+Then seed the runnnig containers.

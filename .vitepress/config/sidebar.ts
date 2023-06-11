@@ -99,7 +99,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           link: "/cookbook/environments"
         },
         {
-          text: "Vite app",
+          text: "Javascript frontend",
           link: "/cookbook/vite"
         },
         {
