@@ -1,15 +1,18 @@
 # Deployment Strategies
 
 Pipelight is about deploying stuffs in the background as you write code.
-Their is a moment where you need to set a deployment strategy that suits your needs.
+There is a moment where you need to set a deployment strategy that suits your needs.
 
 If you are unfamilliar with such words,
 you can check the [Harness guide on deployment strategies](https://www.harness.io/blog/blue-green-canary-deployment-strategies)
 
 ## Dummy deployment (ssh/scp/rsync)
 
-A dummy deploy is just sending files on remote server.
-If you have a small website for example and doesn't car about being offline for a few seconds as files are replaced.
+A dummy deploy is just sending files on remote server and serving them (with Apach, Nginx...)
+Mainly used if you have a small website for example
+and don't care about being offline for a few seconds as files are replaced.
+
+Option API
 
 ```ts
 //pipelight.config.ts
@@ -38,6 +41,29 @@ export default {
     }
   ]
 };
+```
+
+Composition API
+
+```ts
+//pipelight.config.ts
+
+const my_pipeline = pipeline('default',()=>[
+step('build locally'()=>[
+"pnpm", "pnpm build"
+]),
+step("deploy to remote",()=>[
+        `ssh linode -t "rm -rf ${remoteFoler}/*"`,
+])
+    ]);
+my_pipeline.add_trigger({
+branches: ["master", "main"],
+actions: ["pre-push"]
+});
+
+export default configuration(()=>[
+my_pipeline
+])
 ```
 
 ## Blue/Green deployment (ssh/docker)

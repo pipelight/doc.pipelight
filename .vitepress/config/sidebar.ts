@@ -111,15 +111,6 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           link: "/cookbook/strategies"
         }
       ]
-    },
-    {
-      text: "For developers",
-      items: [
-        {
-          text: "Changelog",
-          link: "/roadmap/changelog"
-        }
-      ]
     }
   ]
 };
