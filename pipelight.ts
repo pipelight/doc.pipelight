@@ -43,7 +43,7 @@ const nginxStep = {
 
 // Pipeline creation with Docker helpers
 const compositionPipe = pipeline(
-  `deploy:${version}:${service}`,
+  `deploy_${version}_${service}`,
   () => [
     step("build js files", () => ["pnpm install", "pnpm build"]),
     // Create images locally and send it to remotes
@@ -67,7 +67,7 @@ const compositionPipe = pipeline(
   {
     triggers: [
       {
-        branches: ["master", "main", "dev"],
+        branches: ["master", "main"],
         actions: ["pre-push", "manual"]
       }
     ]

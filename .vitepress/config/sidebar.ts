@@ -3,12 +3,25 @@ import type { DefaultTheme } from "@/config";
 export const sidebar: DefaultTheme.Config["sidebar"] = {
   "/": [
     {
-      text: "Guide",
+      text: "Getting Started",
       items: [
         {
-          text: "Getting Started",
-          link: "/guide/"
+          text: "Install",
+          link: "/getting_started/install"
         },
+        {
+          text: "Write a Pipeline",
+          link: "/getting_started/write_pipeline"
+        },
+        {
+          text: "Command line usage",
+          link: "/getting_started/cli_usage"
+        }
+      ]
+    },
+    {
+      text: "Guide",
+      items: [
         {
           text: "Why using Pipelight ?",
           link: "/guide/why"

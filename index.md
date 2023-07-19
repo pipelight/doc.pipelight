@@ -11,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /guide/
+      link: /getting_started/install
 
     - theme: alt
       text: Why pipelight?
@@ -22,6 +22,7 @@ hero:
 import ".vitepress/theme/custom.css"
 import Example from '.vitepress/theme/components/Example.vue';
 import Sheet from '.vitepress/theme/components/Sheet.vue';
+import Demo from '.vitepress/theme/components/Demo.vue';
 import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
 import { ref } from "vue";
 const breakpoints = useBreakpoints(breakpointsTailwind);
@@ -159,16 +160,9 @@ Never leave your terminal
 ...cli feels like home 😌
 </p>
 </Example>
+
 <Example>
-
-```sh
-pipelight run simple_example
-```
-
-```sh
-pipelight logs -vvv
-```
-
+<Demo/>
 </Example>
 </Sheet>
 

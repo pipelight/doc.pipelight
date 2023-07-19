@@ -42,7 +42,8 @@ Server side automation is achieved by using specific triggers too (on update, pr
 ## Made for efficency
 
 Pipelight is written in [Rust](https://www.rust-lang.org/).
-It is quite light when installed and uncompressed (~11Mb binaries).
+It is quite light when installed and uncompressed.
+Binaries actually weights under 6Mb (decreased by 50% between v0.5.8 and v0.6.2).
 
 In consequence, it is blazing fast.
 
