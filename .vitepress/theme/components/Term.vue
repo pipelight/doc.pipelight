@@ -1,25 +1,30 @@
 <template lang="pug">
-div(ref="target")
+div
   .language-sh
-    pre.shiki.material-theme-palenight.whitespace-nowrap.w-64
+    pre.shiki.material-theme-palenight.whitespace-nowrap
       span.line.flex
-        p.prompt $
-        transition(
-          enter-active-class="fade-in-slow"
-          leave-active-class="fade-out"
-        )
-          .flex
-            p.cmd(
-              v-if="targetIsVisible"
-              ref="source"
-            ) {{ props.value }}
-            .cursor
+            slot
+            .flex
+              p.prompt $
+              transition(
+                enter-active-class="fade-in-slow"
+                leave-active-class="fade-out"
+                @before-enter="fadeIn"
+                @before-leave="fadeOut"
+                appear
+              )
+                p.cmd(
+                  v-if="!!props.value"
+                  :id="props.index"
+                ) {{ props.value }}
+              .cursor(
+                  v-if="!!props.value"
+              )
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref, useSlots, shallowRef, watchEffect } from "vue";
 import {
-  useElementVisibility,
   useTransition,
   useAnimate,
   TransitionPresets,
@@ -29,38 +34,20 @@ import type { MaybeElement } from "@vueuse/core";
 
 //Props
 const props = defineProps<{
-  value: string;
+  value?: string;
+  index?: number;
 }>();
 
-// Animation
-const target = ref();
-const targetIsVisible = useElementVisibility(target);
-
-const typing = ref([{ width: "0" }, { width: "100%" }]);
-const blink = [{ class: "full" }, { class: "empty" }];
-
-const source = shallowRef<MaybeElement>();
-const cursor = shallowRef<MaybeElement>();
-const { playState } = useAnimate(source, typing, {
-  duration: 1200,
-  easing: "steps(22,end)"
-});
-
-//Emits
+// Emits
 const emit = defineEmits<{
   (e: "finished", value: boolean): void;
 }>();
 
-watchThrottled(
-  playState,
-  () => emit("finished", playState.value == "finished"),
-  { throttle: 1600 }
-);
-
 const fadeIn = (el: any) => {
-  const n = 25 * Number(el.id);
+  const n = 2000 * Number(el.id);
   const delay = n + "ms";
   el.style.animationDelay = delay;
+  console.log(el.style);
 };
 const fadeOut = (el: any) => {
   el.style.animationDelay = "0ms";
@@ -77,14 +64,21 @@ p {
     @apply max-w-min;
     @apply whitespace-nowrap;
     overflow: hidden;
+    animation: typing 1200ms steps(22, end);
   }
 }
-div {
-  &.cursor {
-    @apply whitespace-nowrap inline;
-    @apply w-2 my-4;
-    @apply bg-gray-200;
-    /* animation: blink 800ms step-end infinite;*/
+.cursor {
+  @apply whitespace-nowrap inline;
+  @apply w-2 my-4;
+  @apply bg-gray-200;
+  /* animation: blink 800ms step-end infinite;*/
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
   }
 }
 @keyframes blink {
