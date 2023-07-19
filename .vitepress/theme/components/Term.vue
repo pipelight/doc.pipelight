@@ -1,25 +1,38 @@
 <template lang="pug">
 div
-  .language-sh
-    pre.shiki.material-theme-palenight.whitespace-nowrap
-      span.line.flex
-            slot
-            .flex
-              p.prompt $
-              transition(
-                enter-active-class="fade-in-slow"
-                leave-active-class="fade-out"
-                @before-enter="fadeIn"
-                @before-leave="fadeOut"
-                appear
-              )
-                p.cmd(
-                  v-if="!!props.value"
-                  :id="props.index"
-                ) {{ props.value }}
-              .cursor(
-                  v-if="!!props.value"
-              )
+  .flex
+    transition(
+      enter-active-class="fade-in-slow"
+      leave-active-class="fade-out"
+      appear
+    )
+      p.prompt(
+        v-if="!!props.value"
+      ) [g@ku ~] 
+
+    transition(
+      enter-active-class="fade-in-slow"
+      leave-active-class="fade-out"
+      @before-enter="fadeIn"
+      @before-leave="fadeOut"
+      appear
+    )
+      slot
+        p.cmd(
+        :id="!!props.value ? props.index + 1 : props.index"
+          v-if="!!props.value"
+        ) {{ props.value }}
+    transition(
+      enter-active-class="fade-in-slow"
+      leave-active-class="fade-out"
+      @before-enter="fadeIn"
+      @before-leave="fadeOut"
+      appear
+    )
+      .cursor(
+        :id="props.index + 1"
+        v-if="!!props.value"
+      )
 </template>
 
 <script setup lang="ts">
@@ -44,10 +57,9 @@ const emit = defineEmits<{
 }>();
 
 const fadeIn = (el: any) => {
-  const n = 2000 * Number(el.id);
+  const n = 800 * Number(el.id);
   const delay = n + "ms";
   el.style.animationDelay = delay;
-  console.log(el.style);
 };
 const fadeOut = (el: any) => {
   el.style.animationDelay = "0ms";
@@ -58,20 +70,25 @@ const fadeOut = (el: any) => {
 p {
   &.prompt {
     @apply whitespace-nowrap inline;
-    @apply px-2;
+    @apply pr-2;
+    @apply text-green-300 !important;
+    animation-fill-mode: both;
   }
   &.cmd {
     @apply max-w-min;
     @apply whitespace-nowrap;
     overflow: hidden;
-    animation: typing 1200ms steps(22, end);
+    animation: typing 1000ms steps(22, end);
+    animation-fill-mode: both;
   }
 }
-.cursor {
-  @apply whitespace-nowrap inline;
-  @apply w-2 my-4;
-  @apply bg-gray-200;
-  /* animation: blink 800ms step-end infinite;*/
+div {
+  .cursor {
+    @apply whitespace-nowrap inline;
+    @apply w-2 my-4;
+    animation: blink 1500ms step-end;
+    /* animation: blink 800ms step-end infinite;*/
+  }
 }
 @keyframes typing {
   from {

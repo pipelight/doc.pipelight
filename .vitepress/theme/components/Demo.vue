@@ -1,33 +1,32 @@
 <template lang="pug">
 div(ref="target")
-    transition-group(
-      enter-active-class="fade-in-slow"
-      leave-active-class="fade-out"
-      @beforeEnter="fadeIn",
-      @beforeLeave="fadeOut",
-    )
-      Term(
-        v-if="targetIsVisible"
-        v-for="(item,i) in items"
-        :key="i"
-        :id="i"
-        :index="i"
-        :value="item"
-      )
-      Term(
-        v-if="targetIsVisible"
-        :key="3"
-        :id="2"
-        :index="3"
-      )
-        component(:is="vnode")
+  .language-sh.terminal.px-8
+    pre.shiki.material-theme-palenight.whitespace-nowrap
+      span.line
+        transition-group(
+          enter-active-class="fade-in-slow"
+          leave-active-class="fade-out"
+          @beforeEnter="fadeIn",
+          @beforeLeave="fadeOut",
+        )
+          Term(
+            v-if="targetIsVisible"
+            v-for="(item,i) in items"
+            :key="i"
+            :id="i"
+            :index="i"
+            :value="item.cmd"
+          )
+            component(
+              v-if="!!item.vnode"
+              :is="item.vnode"
+            )
     
 </template>
 <script setup lang="ts">
 import { onMounted, ref, useSlots, shallowRef, watchEffect } from "vue";
 // Components
 import Term from "./Term.vue";
-const item = ["pipelight run my_thing", "pipelight logs"];
 
 // Animate
 import { useAnimate, watchThrottled, useElementVisibility } from "@vueuse/core";
@@ -43,7 +42,11 @@ let md = useMarkdown();
 const vnode = file.render();
 // let result = md.render(file);
 
-const items = ["pipelight run my", "pipelight logs"];
+const items = [
+  { cmd: "pipelight run my_test" },
+  { cmd: "pipelight logs" },
+  { vnode: vnode }
+];
 // Watcher
 // const n = ref(0);
 // const changeValue = (e: boolean) => {
@@ -63,7 +66,7 @@ const items = ["pipelight run my", "pipelight logs"];
 //   { throttle: 1600 }
 // );
 const fadeIn = (el: any) => {
-  const n = 2000 * Number(el.id);
+  const n = 1200 * Number(el.id);
   const delay = n + "ms";
   el.style.animationDelay = delay;
 };
@@ -93,8 +96,5 @@ p {
   50% {
     background-color: transparent;
   }
-}
-.fixed-size {
-  @apply w-full;
 }
 </style>

@@ -12,9 +12,25 @@
 .language-toml,
 .language-json {
   @apply rounded-lg;
+  @apply min-w-full;
   @apply bg-gray-800 !important;
   @apply dark:bg-gray-900 !important;
-  @apply min-w-full;
+}
+.language-sh {
+  &.terminal {
+    @apply rounded-lg;
+    @apply min-w-full;
+    @apply shadow-md;
+    @apply bg-white !important;
+    @apply dark:bg-gray-900 !important;
+    backdrop-filter: blur(9.7px);
+    -webkit-backdrop-filter: blur(9.7px);
+    p {
+      @apply text-gray-600;
+      @apply dark:text-gray-100;
+      text-shadow: 0 3px 5px rgba(0, 0, 0.2, 0.2);
+    }
+  }
 }
 .image {
   @apply h-96 lg:h-72 transition-all;
