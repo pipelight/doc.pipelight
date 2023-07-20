@@ -22,7 +22,9 @@ hero:
 import ".vitepress/theme/custom.css"
 import Example from '.vitepress/theme/components/Example.vue';
 import Sheet from '.vitepress/theme/components/Sheet.vue';
-import Demo from '.vitepress/theme/components/Demo.vue';
+import pretty_logs_demo from '@components/term/pretty_logs_demo.vue';
+import pretty_logs_demo2 from '@components/term/pretty_logs_demo2.vue';
+
 import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
 import { ref } from "vue";
 const breakpoints = useBreakpoints(breakpointsTailwind);
@@ -162,7 +164,21 @@ Never leave your terminal
 </Example>
 
 <Example>
-<Demo/>
+<pretty_logs_demo/>
+</Example>
+</Sheet>
+
+<Sheet>
+<Example>
+    <h4 class="lg"> 
+    Get abusivly verbose
+    </h4>
+    <p>
+    ...cli feels like home 😌
+    </p>
+</Example>
+<Example>
+    <pretty_logs_demo2/>
 </Example>
 </Sheet>
 

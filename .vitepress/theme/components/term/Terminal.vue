@@ -9,24 +9,32 @@ div(ref="target")
           @beforeEnter="fadeIn",
           @beforeLeave="fadeOut",
         )
-          Term(
+          Line(
             v-if="targetIsVisible"
-            v-for="(item,i) in items"
+            v-for="(line,i) in props.lines"
             :key="i"
             :id="i"
             :index="i"
-            :value="item.cmd"
+            :value="line.cmd"
           )
             component(
-              v-if="!!item.vnode"
-              :is="item.vnode"
+              v-if="!!line.vnode"
+              :is="line.vnode"
             )
     
 </template>
 <script setup lang="ts">
 import { onMounted, ref, useSlots, shallowRef, watchEffect } from "vue";
 // Components
-import Term from "./Term.vue";
+import Line from "./Line.vue";
+//Props
+interface line {
+  cmd?: string;
+  vnode?: string;
+}
+const props = defineProps<{
+  lines: line[];
+}>();
 
 // Animate
 import { useAnimate, watchThrottled, useElementVisibility } from "@vueuse/core";
@@ -35,18 +43,6 @@ import type { MaybeElement } from "@vueuse/core";
 const target = ref();
 const targetIsVisible = useElementVisibility(target);
 
-// Markdown
-import * as useMarkdown from "markdown-it";
-import file from "./logs/verbosity_level1.md";
-let md = useMarkdown();
-const vnode = file.render();
-// let result = md.render(file);
-
-const items = [
-  { cmd: "pipelight run my_test" },
-  { cmd: "pipelight logs" },
-  { vnode: vnode }
-];
 // Watcher
 // const n = ref(0);
 // const changeValue = (e: boolean) => {

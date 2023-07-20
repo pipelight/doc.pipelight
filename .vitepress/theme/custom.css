@@ -34,7 +34,7 @@
 }
 .image {
   @apply h-96 lg:h-72 transition-all;
-  @apply hover:scale-105;
+  /* @apply hover:scale-105; */
 }
 .VPImage {
   @apply h-56;

@@ -42,13 +42,23 @@ step("replace containers", () => ssh([host], my_commands));
 
 When you need to retrieve data **before** your pipeline execution.
 
+We don't do this anymore...
+
 ```ts
 const res = await exec(my_command);
+```
+
+The helper has been replace with the **DAX** module allowing more customisation and type safety.
+
+```ts
+import $ from "https://deno.land/x/dax/mod.ts";
+
+const res = await $`my_command`.text();
 ```
 
 Can be used to retrieve git infos, like your latest tag and use it in your pipeline declaration.
 
 ```ts
-const version = await exec("git describe --tags --abbrev=0 | sed s/v//");
+const version = await $`git describe --tags --abbrev=0 | sed s/v//`.text();
 // version = "0.8"
 ```

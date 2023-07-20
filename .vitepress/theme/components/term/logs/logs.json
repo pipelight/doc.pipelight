@@ -1,0 +1,319 @@
+{
+  "uuid": "d61e1644-0e62-4cf5-aff0-f7f06fe90de4",
+  "name": "deploy_to_single_host",
+  "event": {
+    "trigger": {
+      "TriggerBranch": {
+        "action": "Manual",
+        "branch": "dev"
+      }
+    },
+    "date": "2023-07-20 09:09:09.577084542 UTC",
+    "pid": 273691,
+    "pgid": 273635,
+    "sid": 66401
+  },
+  "status": "Failed",
+  "duration": {
+    "secs": 0,
+    "nanos": 43625129
+  },
+  "triggers": [
+    {
+      "TriggerBranch": {
+        "action": {
+          "Hook": "PrePush"
+        },
+        "branch": "master"
+      }
+    },
+    {
+      "TriggerBranch": {
+        "action": "Manual",
+        "branch": "master"
+      }
+    },
+    {
+      "TriggerBranch": {
+        "action": {
+          "Hook": "PrePush"
+        },
+        "branch": "main"
+      }
+    },
+    {
+      "TriggerBranch": {
+        "action": "Manual",
+        "branch": "main"
+      }
+    },
+    {
+      "TriggerBranch": {
+        "action": {
+          "Hook": "PrePush"
+        },
+        "branch": "dev"
+      }
+    },
+    {
+      "TriggerBranch": {
+        "action": "Manual",
+        "branch": "dev"
+      }
+    }
+  ],
+  "fallback": {
+    "on_started": null,
+    "on_failure": null,
+    "on_success": null,
+    "on_abortion": null
+  },
+  "steps": [
+    {
+      "Step": {
+        "name": "build_files",
+        "status": "Failed",
+        "duration": {
+          "secs": 0,
+          "nanos": 42663365
+        },
+        "commands": [
+          {
+            "duration": {
+              "secs": 0,
+              "nanos": 42489659
+            },
+            "process": {
+              "uuid": "18ff07b9-5406-48f7-972b-2e7630d2ca47",
+              "state": {
+                "status": "Failed",
+                "stdin": "pnpm install",
+                "stdout": "ERROR: This version of pnpm requires at least Node.js v16.14\nThe current version of Node.js is v12.22.12\nVisit https://r.pnpm.io/comp to see the list of past pnpm versions with respective Node.js version support.\n",
+                "stderr": ""
+              },
+              "os": {
+                "shell": "sh",
+                "pid": 273765,
+                "directory": "/var/log/pipelight",
+                "attached": true
+              }
+            }
+          },
+          {
+            "duration": null,
+            "process": {
+              "uuid": "c92b1bc1-5c6d-4c86-aa03-734ab49a1a82",
+              "state": {
+                "status": null,
+                "stdin": "vite build",
+                "stdout": null,
+                "stderr": null
+              },
+              "os": {
+                "shell": "sh",
+                "pid": null,
+                "directory": "/var/log/pipelight",
+                "attached": true
+              }
+            }
+          }
+        ],
+        "mode": null,
+        "fallback": {
+          "on_started": null,
+          "on_failure": null,
+          "on_success": null,
+          "on_abortion": null
+        }
+      }
+    },
+    {
+      "Parallel": {
+        "status": null,
+        "duration": null,
+        "steps": [
+          {
+            "name": "build image itsdizygote.com/front:production",
+            "status": null,
+            "duration": null,
+            "commands": [
+              {
+                "duration": null,
+                "process": {
+                  "uuid": "9a7334e4-207e-4fd7-9ffa-132e49ee2fd9",
+                  "state": {
+                    "status": null,
+                    "stdin": "docker build  --tag itsdizygote.com/front:production  --file .docker/Dockerfile.front   .",
+                    "stdout": null,
+                    "stderr": null
+                  },
+                  "os": {
+                    "shell": "sh",
+                    "pid": null,
+                    "directory": "/var/log/pipelight",
+                    "attached": true
+                  }
+                }
+              }
+            ],
+            "mode": null,
+            "fallback": {
+              "on_started": null,
+              "on_failure": null,
+              "on_success": null,
+              "on_abortion": null
+            }
+          }
+        ],
+        "mode": null,
+        "fallback": {
+          "on_started": null,
+          "on_failure": null,
+          "on_success": null,
+          "on_abortion": null
+        }
+      }
+    },
+    {
+      "Parallel": {
+        "status": null,
+        "duration": null,
+        "steps": [
+          {
+            "name": "send image itsdizygote.com/front:production to remote",
+            "status": null,
+            "duration": null,
+            "commands": [
+              {
+                "duration": null,
+                "process": {
+                  "uuid": "8449f886-d59d-49e8-873f-079c9bb8f9eb",
+                  "state": {
+                    "status": null,
+                    "stdin": "docker save itsdizygote.com/front:production | ssh -o TCPKeepAlive=no -C linode \"docker load\"",
+                    "stdout": null,
+                    "stderr": null
+                  },
+                  "os": {
+                    "shell": "sh",
+                    "pid": null,
+                    "directory": "/var/log/pipelight",
+                    "attached": true
+                  }
+                }
+              }
+            ],
+            "mode": null,
+            "fallback": {
+              "on_started": null,
+              "on_failure": null,
+              "on_success": null,
+              "on_abortion": null
+            }
+          }
+        ],
+        "mode": null,
+        "fallback": {
+          "on_started": null,
+          "on_failure": null,
+          "on_success": null,
+          "on_abortion": null
+        }
+      }
+    },
+    {
+      "Parallel": {
+        "status": null,
+        "duration": null,
+        "steps": [
+          {
+            "name": "clean containers production.front.itsdizygote.com",
+            "status": null,
+            "duration": null,
+            "commands": [
+              {
+                "duration": null,
+                "process": {
+                  "uuid": "eae08047-b78b-4df5-b189-30563d9169f4",
+                  "state": {
+                    "status": null,
+                    "stdin": "ssh -o TCPKeepAlive=no -C linode \"docker container stop production.front.itsdizygote.com && docker container rm production.front.itsdizygote.com\"",
+                    "stdout": null,
+                    "stderr": null
+                  },
+                  "os": {
+                    "shell": "sh",
+                    "pid": null,
+                    "directory": "/var/log/pipelight",
+                    "attached": true
+                  }
+                }
+              }
+            ],
+            "mode": null,
+            "fallback": {
+              "on_started": null,
+              "on_failure": null,
+              "on_success": null,
+              "on_abortion": null
+            }
+          }
+        ],
+        "mode": "JumpNextOnFailure",
+        "fallback": {
+          "on_started": null,
+          "on_failure": null,
+          "on_success": null,
+          "on_abortion": null
+        }
+      }
+    },
+    {
+      "Parallel": {
+        "status": null,
+        "duration": null,
+        "steps": [
+          {
+            "name": "run containers production.front.itsdizygote.com",
+            "status": null,
+            "duration": null,
+            "commands": [
+              {
+                "duration": null,
+                "process": {
+                  "uuid": "c02c3f54-017a-40fc-8e23-1756c8cdda31",
+                  "state": {
+                    "status": null,
+                    "stdin": "ssh -o TCPKeepAlive=no -C linode \"docker run  --detach  --publish 127.0.0.1:9280:3000  --name production.front.itsdizygote.com  itsdizygote.com/front:production\"",
+                    "stdout": null,
+                    "stderr": null
+                  },
+                  "os": {
+                    "shell": "sh",
+                    "pid": null,
+                    "directory": "/var/log/pipelight",
+                    "attached": true
+                  }
+                }
+              }
+            ],
+            "mode": null,
+            "fallback": {
+              "on_started": null,
+              "on_failure": null,
+              "on_success": null,
+              "on_abortion": null
+            }
+          }
+        ],
+        "mode": null,
+        "fallback": {
+          "on_started": null,
+          "on_failure": null,
+          "on_success": null,
+          "on_abortion": null
+        }
+      }
+    }
+  ]
+}
