@@ -1,36 +1,88 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer utilities {
+  .language-sh,
+  .language-ts,
+  .language-yml,
+  .language-toml,
+  .language-json {
+    @apply rounded-lg;
+    @apply min-w-full;
+    @apply bg-gray-800 !important;
+    @apply dark:bg-gray-900 !important;
+  }
+  .language-sh {
+    &.terminal {
+      @apply rounded-lg;
+      @apply min-w-full;
+      @apply shadow-md;
+      @apply bg-white;
+      @apply dark:bg-gray-900;
+      backdrop-filter: blur(9.7px);
+      -webkit-backdrop-filter: blur(9.7px);
+      p {
+        @apply text-gray-600;
+        @apply dark:text-gray-100;
+        text-shadow: 0 3px 5px rgba(0, 0, 0.2, 0.2);
+      }
+    }
+  }
+  .pipeline {
+    @apply whitespace-pre-line;
+    @apply relative;
+    & ul {
+      @apply relative;
+      @apply border-purple-500 border;
+      list-style: none;
+      &::before {
+        @apply absolute;
+        @apply border-gray-400;
+        @apply -left-4;
+        content: "";
+      }
+      &::before {
+        @apply h-full w-0;
+        @apply border-l-4;
+        @apply -top-4;
+      }
+      & li {
+        @apply relative;
+        &::before,
+        &::after {
+          @apply absolute;
+          @apply border-gray-400;
+          @apply -left-4;
+          content: "";
+        }
+        &::after {
+          @apply w-4;
+          @apply border-t-4;
+          @apply top-2;
+        }
+        &:last-child {
+          @apply bg-red-500;
+        }
+      }
+    }
+  }
+  & .secondary {
+    @apply text-gray-400;
+  }
+  & .running {
+    @apply text-green-300;
+  }
+  & .success {
+    @apply text-blue-300;
+  }
+  .header {
+    /* @apply pl-4; */
+  }
+}
 :root {
   --vp-c-text: auto;
   --vp-c-brand: #3f7739;
   --vp-button-brand-hover-bg: #69b361;
-}
-.language-sh,
-.language-ts,
-.language-yml,
-.language-toml,
-.language-json {
-  @apply rounded-lg;
-  @apply min-w-full;
-  @apply bg-gray-800 !important;
-  @apply dark:bg-gray-900 !important;
-}
-.language-sh {
-  &.terminal {
-    @apply rounded-lg;
-    @apply min-w-full;
-    @apply shadow-md;
-    @apply bg-white !important;
-    @apply dark:bg-gray-900 !important;
-    backdrop-filter: blur(9.7px);
-    -webkit-backdrop-filter: blur(9.7px);
-    p {
-      @apply text-gray-600;
-      @apply dark:text-gray-100;
-      text-shadow: 0 3px 5px rgba(0, 0, 0.2, 0.2);
-    }
-  }
 }
 .image {
   @apply h-96 lg:h-72 transition-all;
@@ -54,6 +106,6 @@ img {
     @apply my-4;
   }
 }
-.custom-block {
-  @apply bg-inherit !important;
-}
+/* .custom-block { */
+/*   @apply bg-inherit !important; */
+/* } */

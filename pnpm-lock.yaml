@@ -15,8 +15,8 @@ dependencies:
     specifier: ^13.0.1
     version: 13.0.1
   pipelight:
-    specifier: 0.6.0-4
-    version: 0.6.0-4
+    specifier: 0.6.69-2
+    version: 0.6.69-2
   vue:
     specifier: ^3.3.4
     version: 3.3.4
@@ -2468,8 +2468,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /pipelight@0.6.0-4:
-    resolution: {integrity: sha512-lTjkJgQOMqK3iWYKbAFKdUQSvfNRPSmBfZVA1okEq/5USuy5zCtN45iCejt05tMcV7PX1EZrXzd3kaESmVqGkQ==}
+  /pipelight@0.6.69-2:
+    resolution: {integrity: sha512-H8Y1EEYr6MZf6mCxBHisxriGCEcgffYOdfMYogYgkGYwubEeCuJjCu5dUjh8QIFJc2HTJag4lTMmZuF18OJYvw==}
     dev: false
 
   /pirates@4.0.6:

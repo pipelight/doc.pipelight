@@ -30,7 +30,7 @@
     "@heroicons/vue": "^2.0.18",
     "@vueuse/core": "^10.2.1",
     "markdown-it": "^13.0.1",
-    "pipelight": "0.6.0-4",
+    "pipelight": "0.6.69-2",
     "vue": "^3.3.4"
   }
 }
