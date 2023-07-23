@@ -42,6 +42,7 @@ const draw_header = (pipeline: Pipeline): VNode => {
   return node;
 };
 
+// List Tree
 const draw_pipeline = (pipeline: Pipeline): VNode => {
   const node = h("div", { class: "pipeline" }, [
     h("div", { innerHTML: `pipeline: ${pipeline.name}` }),
@@ -52,7 +53,7 @@ const draw_pipeline = (pipeline: Pipeline): VNode => {
 const draw_steps_or_parallels = (steps: StepOrParallel): VNode => {
   const nodes: VNode[] = [];
   for (let step of steps) {
-    nodes.push(h("li", draw_step_or_parallel(step)));
+    nodes.push(draw_step_or_parallel(step));
   }
   return h("ul", nodes);
 };
@@ -62,15 +63,15 @@ const draw_parallel = (parallel: Parallel): VNode => {
   for (let step of parallel.steps) {
     steps.push(draw_step(step));
   }
-  return h("div", [
-    h("li", { innerHTML: "parallel", id: "parallel_step" }),
+  return h("li", [
+    h("div", { innerHTML: "parallel", id: "parallel_step" }),
     [h("ul", { id: "pipeline_step" }, steps)]
   ]);
 };
 
 const draw_step = (step: Step): VNode => {
   return h(
-    "div",
+    "li",
     {
       id: "pipeline_command"
     },

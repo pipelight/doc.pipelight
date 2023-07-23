@@ -31,22 +31,11 @@
   .pipeline {
     @apply whitespace-pre-line;
     @apply relative;
-    & ul {
+    ul {
       @apply relative;
-      @apply border-purple-500 border;
+      /* @apply border-purple-500 border; */
       list-style: none;
-      &::before {
-        @apply absolute;
-        @apply border-gray-400;
-        @apply -left-4;
-        content: "";
-      }
-      &::before {
-        @apply h-full w-0;
-        @apply border-l-4;
-        @apply -top-4;
-      }
-      & li {
+      li {
         @apply relative;
         &::before,
         &::after {
@@ -55,6 +44,11 @@
           @apply -left-4;
           content: "";
         }
+        &::before {
+          @apply h-full w-0;
+          @apply border-l-4;
+          @apply -top-4;
+        }
         &::after {
           @apply w-4;
           @apply border-t-4;
@@ -62,6 +56,11 @@
         }
         &:last-child {
           @apply bg-red-500;
+          &::before {
+            @apply h-full w-0;
+            @apply border-0;
+            @apply -top-4;
+          }
         }
       }
     }
