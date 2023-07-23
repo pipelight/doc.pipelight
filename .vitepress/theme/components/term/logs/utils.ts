@@ -45,7 +45,7 @@ const draw_header = (pipeline: Pipeline): VNode => {
 // List Tree
 const draw_pipeline = (pipeline: Pipeline): VNode => {
   const node = h("div", { class: "pipeline" }, [
-    h("div", { innerHTML: `pipeline: ${pipeline.name}` }),
+    h("div", { class: "tag", innerHTML: `pipeline: ${pipeline.name}` }),
     h("div", draw_steps_or_parallels(pipeline.steps))
   ]);
   return node;
@@ -64,7 +64,7 @@ const draw_parallel = (parallel: Parallel): VNode => {
     steps.push(draw_step(step));
   }
   return h("li", [
-    h("div", { innerHTML: "parallel", id: "parallel_step" }),
+    h("div", { class: "tag", innerHTML: "parallel", id: "parallel_step" }),
     [h("ul", { id: "pipeline_step" }, steps)]
   ]);
 };
@@ -76,8 +76,8 @@ const draw_step = (step: Step): VNode => {
       id: "pipeline_command"
     },
     [
-      h("div", { innerHTML: `step: ${step.name}` }),
-      h("ul", draw_commands(step.commands))
+      h("div", { class: "tag", innerHTML: `step: ${step.name}` }),
+      h("div", draw_commands(step.commands))
     ]
   );
 };
@@ -92,7 +92,9 @@ const draw_step_or_parallel = (stepOrParallel: StepOrParallel): VNode => {
 const draw_commands = (commands: Command[]) => {
   const cmd_nodes: VNode[] = [];
   for (let command of commands) {
-    cmd_nodes.push(h("li", { innerHTML: command.process.state.stdin }));
+    cmd_nodes.push(
+      h("li", [h("div", { innerHTML: command.process.state.stdin })])
+    );
   }
   return h("ul", { id: "pipeline_command" }, cmd_nodes);
 };

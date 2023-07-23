@@ -29,14 +29,20 @@
     }
   }
   .pipeline {
+    .tag {
+      @apply relative z-10;
+      @apply mx-0;
+    }
     @apply whitespace-pre-line;
     @apply relative;
     ul {
       @apply relative;
-      /* @apply border-purple-500 border; */
+      @apply my-0 py-0 !important;
       list-style: none;
       li {
-        @apply relative;
+        /** Branch spacing **/
+        @apply relative my-3 pl-1;
+
         &::before,
         &::after {
           @apply absolute;
@@ -45,21 +51,23 @@
           content: "";
         }
         &::before {
-          @apply h-full w-0;
-          @apply border-l-4;
-          @apply -top-4;
+          @apply w-0 h-full;
+          @apply border-l-2;
+          @apply top-0;
         }
         &::after {
-          @apply w-4;
-          @apply border-t-4;
-          @apply top-2;
+          /** Branch length **/
+          @apply w-5 h-6;
+          @apply -top-3;
+          @apply border-b-2 border-l-2;
         }
         &:last-child {
-          @apply bg-red-500;
+          &::after {
+            @apply rounded-bl-md;
+          }
           &::before {
             @apply h-full w-0;
-            @apply border-0;
-            @apply -top-4;
+            @apply border-l-0;
           }
         }
       }
