@@ -12,26 +12,35 @@
     @apply bg-gray-800 !important;
     @apply dark:bg-gray-900 !important;
   }
-  .language-sh {
-    &.terminal {
-      @apply rounded-lg;
-      @apply min-w-full;
-      @apply shadow-md;
+  .terminal {
+    @apply md:max-w-3xl;
+    &.language-sh {
+      @apply rounded-lg shadow-md px-8 py-4;
+      @apply m-0 !important;
       @apply bg-white;
       @apply dark:bg-gray-900;
-      backdrop-filter: blur(9.7px);
-      -webkit-backdrop-filter: blur(9.7px);
       p {
         @apply text-gray-600;
         @apply dark:text-gray-100;
-        text-shadow: 0 3px 5px rgba(0, 0, 0.2, 0.2);
       }
     }
   }
   .pipeline {
     .tag {
       @apply relative z-10;
-      @apply mx-0;
+      @apply mx-0 pr-2;
+      &.secondary {
+        @apply text-gray-400;
+      }
+      &.running {
+        @apply text-green-300;
+      }
+      &.succeeded {
+        @apply text-blue-300;
+      }
+      &.failed {
+        @apply text-red-300;
+      }
     }
     @apply whitespace-pre-line;
     @apply relative;
@@ -73,18 +82,6 @@
       }
     }
   }
-  & .secondary {
-    @apply text-gray-400;
-  }
-  & .running {
-    @apply text-green-300;
-  }
-  & .success {
-    @apply text-blue-300;
-  }
-  .header {
-    /* @apply pl-4; */
-  }
 }
 :root {
   --vp-c-text: auto;
@@ -92,11 +89,11 @@
   --vp-button-brand-hover-bg: #69b361;
 }
 .image {
-  @apply h-96 lg:h-72 transition-all;
+  /* @apply h-96 lg:h-72 transition-all; */
   /* @apply hover:scale-105; */
 }
 .VPImage {
-  @apply h-56;
+  /* @apply h-56; */
 }
 img {
   &.sm {
@@ -104,6 +101,7 @@ img {
   }
   &.terminal {
     width: 100%;
+    @apply w-full;
     @apply rounded-lg border border-solid border-gray-700;
   }
   &.sexy {
@@ -113,6 +111,3 @@ img {
     @apply my-4;
   }
 }
-/* .custom-block { */
-/*   @apply bg-inherit !important; */
-/* } */

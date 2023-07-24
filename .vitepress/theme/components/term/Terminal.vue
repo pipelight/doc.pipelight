@@ -1,27 +1,37 @@
 <template lang="pug">
-div(ref="target")
-  .language-sh.terminal.px-8
-    pre.shiki.material-theme-palenight.whitespace-nowrap
-      span.line
-        transition-group(
-          enter-active-class="fade-in-slow"
-          leave-active-class="fade-out"
-          @beforeEnter="fadeIn",
-          @beforeLeave="fadeOut",
+.terminal.language-sh(ref="target")
+  pre.shiki.material-theme-palenight
+    .skeleton
+      Line(
+        v-for="(line,i) in props.lines"
+        :key="i"
+        :id="i"
+        :index="i"
+        :value="line.cmd"
+      )
+        component(
+          v-if="!!line.vnode"
+          :is="line.vnode"
         )
-          Line(
-            v-if="targetIsVisible"
-            v-for="(line,i) in props.lines"
-            :key="i"
-            :id="i"
-            :index="i"
-            :value="line.cmd"
+    .content
+      transition-group(
+        enter-active-class="fade-in-slow"
+        leave-active-class="fade-out"
+        @beforeEnter="fadeIn",
+        @beforeLeave="fadeOut",
+      )
+        Line(
+          v-if="targetIsVisible"
+          v-for="(line,i) in props.lines"
+          :key="i"
+          :id="i"
+          :index="i"
+          :value="line.cmd"
+        )
+          component(
+            v-if="!!line.vnode"
+            :is="line.vnode"
           )
-            component(
-              v-if="!!line.vnode"
-              :is="line.vnode"
-            )
-    
 </template>
 <script setup lang="ts">
 import { onMounted, ref, useSlots, shallowRef, watchEffect } from "vue";
@@ -75,7 +85,7 @@ p {
   &.cmd {
     @apply max-w-min;
     @apply whitespace-nowrap;
-    overflow: hidden;
+    /* overflow: hidden; */
   }
 }
 .cursor {
@@ -92,5 +102,15 @@ p {
   50% {
     background-color: transparent;
   }
+}
+.content {
+  @apply absolute top-0 z-10;
+  @apply w-full;
+}
+.skeleton {
+  @apply opacity-0 z-0;
+}
+pre {
+  @apply relative p-0 !important;
 }
 </style>
