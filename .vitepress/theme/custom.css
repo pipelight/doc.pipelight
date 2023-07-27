@@ -122,7 +122,7 @@
     @apply max-w-none w-full lg:text-6xl;
   }
   .main {
-    @apply lg:max-w-none grow !important;
+    @apply lg:max-w-none grow md:px-6 !important;
   }
   .image {
     @apply lg:max-w-sm lg:mx-0;

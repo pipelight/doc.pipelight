@@ -32,9 +32,14 @@ const config: Config = {
 export default config;
 ```
 
-::: danger Pitfall
+### Linting and Formatting
 
-Avoid `console.log()` statements inside your config file (only for debugging purpose).
-This will mislead the Config Object creation and prevent pipelight from running.
+You may have enabled **lsp** or wathever formatter/linter compatible with your file editor, but if you don't
+Pipelight use the deno built in linter and got you cover on every `pipelight <whatever_command>`.
 
-:::
+If `pipelight ls` doesn't yell any error. It's all good.
+
+### Troubleshoot
+
+Like for every javascript script, you can use `console.log()` statements inside your config file to troubleshoot it.
+Run it with `deno run -A ./pipeight.ts` to check the output.

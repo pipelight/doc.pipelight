@@ -6,7 +6,7 @@ hero:
   image:
     src: /images/pipelight.png
     alt: pipelight_logo
-  text: Automation pipelines but easier...
+  text: Automation pipelines but easier.
   tagline: A tiny tool to run pipelines written with languages you already know.
   actions:
     - theme: brand
@@ -68,7 +68,7 @@ Stay in the comfort of your terminal
 <Sheet>
 <Example>
 <h4 class="xl">
-Write readable and reusable blocks!
+Write readable and reusable blocks.
 </h4>
 </Example>
 </Sheet>
@@ -119,7 +119,7 @@ pwd;
 <Sheet>
 <Example>
 <h4 class="xl">
-Debug in a breeze!
+Troubleshoot the pipe in a breeze.
 </h4>
 </Example>
 </Sheet>
