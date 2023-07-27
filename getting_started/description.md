@@ -1,3 +1,30 @@
+<script setup>
+import Example from '@components/Example.vue';
+import Sheet from '@components/Sheet.vue';
+</script>
+
+# What is pipelight ?
+
+::: tip tl;dr
+
+It's a tiny executable that execute a list of tasks **you** provided.
+
+:::
+
+Those tasks are commands ordered in steps.
+It aims to do the same things as most known CI/CD softwares like Drone.io, Jenkins, GithubCICD.
+
+_\*CI/CD: Continuous Integration and Continuous Delivery_
+
+## The software nindo(philosophy)
+
+Pipelight follows some crucial guidelines:
+Beeing:
+
+- fast
+- open-source
+- and sovereign
+
 # Why another CICD tool ?
 
 ## The Automation for everyone
@@ -12,7 +39,7 @@ It would result in project early automation implemention for you to focus only o
 
 ## Bypass the classic harsh automation path
 
-::: tip SPOILER
+::: tip tl;dr
 
 The solution Pipelight brings is to **bettern already existing shell scripts**.
 
@@ -146,3 +173,56 @@ Dagger runs commands in containers making it more ressource consuming than Pipel
 who runs commands in a simple subprocess by default
 
 ### Drone.io
+
+## The Story
+
+### Chapter 1 - The harder the fall
+
+I needed something I can install quickly, and run as is with no further config or environnement set-up like `apt-get install pipelight` and `pipelight run`
+
+I have been using and tweaking the existing CI/CD tools but none of them was nearly good enough.
+
+- Did I really have to trade my privacy for simplicity?
+- The software transparency for simplicity?
+
+During my journey, I faced Bad GUI, Bad log files, network rules colision,
+exhausting GUI configuration, Heavy packages installation, slow execution, unflexible syntax.
+
+By the end of the month, the young adult that had been suck into software by the beauty of FOSS wasn't anymore.
+
+- Had they lost the will to ship good software?
+
+There was no one to look up to at this time.
+The cicd world has no [Torwald](https://en.wikipedia.org/wiki/Linus_Torvalds) nor [Evan You](https://en.wikipedia.org/wiki/Vue.js) yet.
+
+After the pain, the sadness, came the rage that pushed me forging my own tools in the dark.
+I was as desperate for better tools as disdainful towards what had been built for profit only.
+
+This fever pushed me to the work.
+
+### Chapter 2 - With great powers...
+
+**two years later**
+
+I use linux on a daily bases. I like to see what happens on my computer with full transparency.
+One day the
+
+So I am deeply again freemium, SaaS, and all the crap that swarms nowadays.
+
+That refuse to serve me but waste my time.
+Software need to be sovereign
+
+### The Unbearable
+
+### The ugly
+
+## What is pipelight
+
+### What it does
+
+Pipelight is a command line tool, to be used in the terminal.
+
+### What it is made of
+
+A small executable made in Rust.
+Made on top of Deno, and Rust most known crates.

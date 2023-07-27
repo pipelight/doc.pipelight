@@ -3,29 +3,22 @@ import type { DefaultTheme } from "@/config";
 export const sidebar: DefaultTheme.Config["sidebar"] = {
   "/": [
     {
-      text: "Getting Started",
+      text: "Introduction",
+      collapsed: false,
       items: [
         {
-          text: "Install",
-          link: "/getting_started/install"
+          text: "What is Pipelight?",
+          link: "/getting_started/description"
         },
         {
-          text: "Write a Pipeline",
+          text: "Getting started",
           link: "/getting_started/write_pipeline"
-        },
-        {
-          text: "Command line usage",
-          link: "/getting_started/cli_usage"
         }
       ]
     },
     {
       text: "Guide",
       items: [
-        {
-          text: "Why using Pipelight ?",
-          link: "/guide/why"
-        },
         {
           text: "Command line usage",
           link: "/guide/cli"
@@ -50,6 +43,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
     },
     {
       text: "Helpers",
+      collapsed: true,
       items: [
         {
           text: "Overview",
@@ -98,6 +92,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
     },
     {
       text: "Cookbook",
+      collapsed: true,
       items: [
         {
           text: "Writting Tips",

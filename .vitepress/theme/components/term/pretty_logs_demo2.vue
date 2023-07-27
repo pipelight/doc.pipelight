@@ -1,5 +1,5 @@
 <template lang="pug">
-Terminal(:lines="lines")
+Terminal(:lines="lines").sm
 </template>
 <script setup lang="ts">
 import Terminal from "./Terminal.vue";

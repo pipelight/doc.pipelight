@@ -1,6 +1,6 @@
 <template lang="pug">
 .terminal.language-sh(ref="target")
-  pre.shiki.material-theme-palenight
+  pre.shiki
     .skeleton
       Line(
         v-for="(line,i) in props.lines"
@@ -21,7 +21,7 @@
         @beforeLeave="fadeOut",
       )
         Line(
-          v-if="targetIsVisible"
+          v-if="ready"
           v-for="(line,i) in props.lines"
           :key="i"
           :id="i"
@@ -34,7 +34,14 @@
           )
 </template>
 <script setup lang="ts">
-import { onMounted, ref, useSlots, shallowRef, watchEffect } from "vue";
+import {
+  onMounted,
+  ref,
+  useSlots,
+  shallowRef,
+  watchEffect,
+  computed
+} from "vue";
 // Components
 import Line from "./Line.vue";
 //Props
@@ -47,11 +54,27 @@ const props = defineProps<{
 }>();
 
 // Animate
-import { useAnimate, watchThrottled, useElementVisibility } from "@vueuse/core";
+import { watchThrottled, useElementVisibility } from "@vueuse/core";
 import type { MaybeElement } from "@vueuse/core";
 // Begin animation only when element is visible
 const target = ref();
 const targetIsVisible = useElementVisibility(target);
+
+// Loop animation every intervall
+import { useIntervalFn, promiseTimeout, useTimeout } from "@vueuse/core";
+
+const ready = ref(true);
+const loopAnimation = async () => {
+  ready.value = true;
+  await promiseTimeout(6000);
+  ready.value = false;
+  await promiseTimeout(200);
+  await loopAnimation();
+};
+
+onMounted(async () => {
+  await loopAnimation();
+});
 
 // Watcher
 // const n = ref(0);

@@ -15,7 +15,7 @@ const tailwind = ref({
 });
 </script>
 
-<style lang="postcss">
+<style lang="postcss" scoped>
 .custom-code {
   @apply flex align-middle items-center;
   @apply flex flex-col align-middle;

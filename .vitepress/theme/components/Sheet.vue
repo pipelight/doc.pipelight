@@ -7,8 +7,9 @@
 
 <style lang="postcss" scoped>
 .layout {
-  @apply flex flex-col justify-center items-center gap-4;
+  @apply flex flex-col;
   @apply md:flex-row;
-  @apply px-4 py-32;
+  @apply justify-center items-center gap-4;
+  @apply px-4 py-24;
 }
 </style>

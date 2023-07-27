@@ -6,8 +6,8 @@ hero:
   image:
     src: /images/pipelight.png
     alt: pipelight_logo
-  text: Self-hosted automation pipelines
-  tagline: From bash scripts to pipelines!
+  text: Automation pipelines but easier...
+  tagline: A tiny tool to run pipelines written with languages you already know.
   actions:
     - theme: brand
       text: Get Started
@@ -19,7 +19,6 @@ hero:
 ---
 
 <script setup>
-import ".vitepress/theme/custom.css"
 import Example from '.vitepress/theme/components/Example.vue';
 import Sheet from '.vitepress/theme/components/Sheet.vue';
 import pretty_logs_demo from '@components/term/pretty_logs_demo.vue';
@@ -36,8 +35,11 @@ const tailwind = ref({
 });
 </script>
 <style lang="postcss" scoped>
-.xl {
+.2xl {
   font-size: 50px;
+}
+.xl {
+  font-size: 40px;
 }
 .lg {
   font-size: 25px;
@@ -50,10 +52,31 @@ const tailwind = ref({
 </style>
 
 <Sheet>
+<Example>
+<h4 class="lg"> 
+Command-line Interface
+</h4>
+<p>
+Stay in the comfort of your terminal
+</p>
+</Example>
+<Example>
+<pretty_logs_demo/>
+</Example>
+</Sheet>
 
+<Sheet>
+<Example>
+<h4 class="xl">
+Write readable and reusable blocks!
+</h4>
+</Example>
+</Sheet>
+
+<Sheet>
 <Example>
 <h3> 
-Your usual shell script...
+Your shell commands..
 </h3>
 
 ```sh{3,5}
@@ -71,7 +94,7 @@ pwd;
 
 <Example>
 <h3> 
-...rewrited into a Pipeline...
+..wrapped into Typescript
 </h3>
 
 ```ts{6,10}
@@ -91,31 +114,45 @@ pwd;
 ```
 
 </Example>
+</Sheet>
 
-<p class="xl">{{ tailwind.lg ? '⇢' : '⇣' }}</p>
-
+<Sheet>
 <Example>
-<h3>
-...gets automatic triggers and pretty logs.
-</h3>
-
-<img class="sexy" src="/images/example_log_level_4.png" alt="example pretty verbose logs">
-
-<h4>
-(JSON logs avaiable too!)
+<h4 class="xl">
+Debug in a breeze!
 </h4>
-
 </Example>
 </Sheet>
 
 <Sheet>
 <Example>
 <h4 class="lg"> 
-Write in your favorite
-file format
+Get aggressively verbose
+</h4>
+<p>
+...and more!
+</p>
+</Example>
+<Example>
+<pretty_logs_demo2/>
+</Example>
+</Sheet>
+
+<Sheet>
+<Example>
+<h4 class="xl">
+Trigger pipelines automatically!
+</h4>
+</Example>
+</Sheet>
+
+<Sheet>
+<Example>
+<h4 class="lg"> 
+Write in Old-school flavors
 </h4>
 <p> 
-...but Typescript is more fun 😈
+for the simplest tasks
 </p>
 </Example>
 
@@ -150,35 +187,6 @@ pipelines:
         name: get working directory
 ```
 
-</Example>
-</Sheet>
-
-<Sheet>
-<Example>
-<h4 class="lg"> 
-Never leave your terminal
-</h4>
-<p>
-...cli feels like home 😌
-</p>
-</Example>
-
-<Example>
-<pretty_logs_demo/>
-</Example>
-</Sheet>
-
-<Sheet>
-<Example>
-    <h4 class="lg"> 
-    Get abusivly verbose
-    </h4>
-    <p>
-    ...cli feels like home 😌
-    </p>
-</Example>
-<Example>
-    <pretty_logs_demo2/>
 </Example>
 </Sheet>
 

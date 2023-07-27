@@ -1,38 +1,37 @@
 <template lang="pug">
-div
-  .flex
-    transition(
-      enter-active-class="fade-in-slow"
-      leave-active-class="fade-out"
-      appear
-    )
-      p.prompt(
-        v-if="!!props.value"
-      ) [g@ku ~] 
+.line.flex
+  transition(
+    enter-active-class="fade-in-slow"
+    leave-active-class="fade-out"
+    appear
+  )
+    p.prompt.p-0(
+      v-if="!!props.value"
+    ) [g@ku ~] 
 
-    transition(
-      enter-active-class="fade-in-slow"
-      leave-active-class="fade-out"
-      @before-enter="fadeIn"
-      @before-leave="fadeOut"
-      appear
-    )
-      slot
-        p.cmd(
-        :id="!!props.value ? props.index + 1 : props.index"
-          v-if="!!props.value"
-        ) {{ props.value }}
-    transition(
-      enter-active-class="fade-in-slow"
-      leave-active-class="fade-out"
-      @before-enter="fadeIn"
-      @before-leave="fadeOut"
-      appear
-    )
-      .cursor(
-        :id="props.index + 1"
+  transition(
+    enter-active-class="fade-in-slow"
+    leave-active-class="fade-out"
+    @before-enter="fadeIn"
+    @before-leave="fadeOut"
+    appear
+  )
+    slot
+      p.cmd(
+      :id="!!props.value ? props.index + 1 : props.index"
         v-if="!!props.value"
-      )
+      ) {{ props.value }}
+  transition(
+    enter-active-class="fade-in-slow"
+    leave-active-class="fade-out"
+    @before-enter="fadeIn"
+    @before-leave="fadeOut"
+    appear
+  )
+    .cursor(
+      :id="props.index + 1"
+      v-if="!!props.value"
+    )
 </template>
 
 <script setup lang="ts">
