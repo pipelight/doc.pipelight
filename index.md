@@ -15,14 +15,14 @@ hero:
 
     - theme: alt
       text: Why pipelight?
-      link: /guide/why
+      link: /other_topics/why
 ---
 
 <script setup>
-import Example from '.vitepress/theme/components/Example.vue';
-import Sheet from '.vitepress/theme/components/Sheet.vue';
-import pretty_logs_demo from '@components/term/pretty_logs_demo.vue';
-import pretty_logs_demo2 from '@components/term/pretty_logs_demo2.vue';
+import Example from '@components/Example.vue';
+import Sheet from '@components/Sheet.vue';
+import  DemoLogs from '@demos/DemoLogs.vue';
+import  DemoLogsVVV from '@demos/DemoLogsVVV.vue';
 
 import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
 import { ref } from "vue";
@@ -34,11 +34,6 @@ const tailwind = ref({
   lg: breakpoints.greaterOrEqual("lg")
 });
 </script>
-<style lang="postcss" scoped>
-.space {
-  @apply py-10;
-}
-</style>
 
 <Sheet>
 <Example>
@@ -50,7 +45,7 @@ Stay in the comfort of your terminal
 </p>
 </Example>
 <Example>
-<pretty_logs_demo/>
+<DemoLogs/>
 </Example>
 </Sheet>
 
@@ -150,7 +145,7 @@ Get aggressively verbose
 </p>
 </Example>
 <Example>
-<pretty_logs_demo2/>
+<DemoLogsVVV/>
 </Example>
 </Sheet>
 

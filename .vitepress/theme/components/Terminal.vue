@@ -43,7 +43,7 @@ import {
   computed
 } from "vue";
 // Components
-import Line from "./Line.vue";
+import Line from "@components/Line.vue";
 //Props
 interface line {
   cmd?: string;
@@ -94,6 +94,7 @@ onMounted(async () => {
 //   },
 //   { throttle: 1600 }
 // );
+
 const fadeIn = (el: any) => {
   const n = 1200 * Number(el.id);
   const delay = n + "ms";

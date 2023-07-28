@@ -4,9 +4,7 @@ const site = isProd ? "https://pipelight.dev" : "http://localhost:5000";
 
 export const metaData = {
   title: "Pipelight",
-  description:
-    "Self hosted automation pipelines! \
-    From bash scripts to pipelines!",
+  description: "Automation pipelines but easier.",
   site,
   image: `${site}/images/pipelight.png`
 };

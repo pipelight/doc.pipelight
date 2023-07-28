@@ -5,7 +5,9 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": "/src",
-      "@components": "/.vitepress/theme/components"
+      "@components": "/.vitepress/theme/components",
+      "@demos": "/.vitepress/theme/components/demos",
+      "@logs": "/.vitepress/theme/logs"
     }
   }
 });

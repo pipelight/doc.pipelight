@@ -10,9 +10,6 @@ const config: UserConfig<DefaultTheme.Config> = {
   lang: "en-US",
   head,
   themeConfig,
-  markdown: {
-    // theme: "material-theme-palenight"
-  },
   lastUpdated: true
 };
 

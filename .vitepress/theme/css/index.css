@@ -1,0 +1,9 @@
+@import "./custom.css";
+@import "./animate.css";
+@import "./landing.css";
+@import "./terminal.css";
+@import "./pipeline.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

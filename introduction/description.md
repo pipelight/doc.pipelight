@@ -31,11 +31,18 @@ Beeing:
 
 Pipelight ought to be the fastest and least painfull solution to set up if you seek to automate things.
 
+Other CI/CD tools make usage of runners and multiple internal instances that interacts between them without you noticing, and can therefore
+lead to hard to find bugs.
+Pipelight chose to leverages bash, the every programmer common ground.
+By beeing a one and only executable and letting scaling decisions up to the user.
+
+Pipelight can integrate well with every tool.
+
 If you are a bash guy, it will bring simplicity to your scripts.
 If you do devOps stuffs, it will bring flexibility to your pipelines.
 
 Whatever your skills in programming are, automation should be accessible.
-It would result in project early automation implemention for you to focus only on the code that matters.
+It would result in project early automation implementation for you to focus only on the code that matters.
 
 ## Bypass the classic harsh automation path
 

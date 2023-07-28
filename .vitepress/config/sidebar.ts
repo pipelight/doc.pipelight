@@ -11,14 +11,27 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           link: "/getting_started/description"
         },
         {
-          text: "Getting started",
-          link: "/getting_started/write_pipeline"
+          text: "Getting Started",
+          items: [
+            {
+              text: "Install",
+              link: "/getting_started/install"
+            },
+            {
+              text: "Your first pipeline",
+              link: "/getting_started/write_pipeline"
+            }
+          ]
         }
       ]
     },
     {
       text: "Guide",
       items: [
+        {
+          text: "Configuration file",
+          link: "/guide/config"
+        },
         {
           text: "Command line usage",
           link: "/guide/cli"
@@ -28,15 +41,19 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           link: "/guide/config"
         },
         {
-          text: "Raw and pretty logs",
+          text: "Parallelism",
+          link: "/guide/config"
+        },
+        {
+          text: "Triggers (Automation)",
+          link: "/guide/config"
+        },
+        {
+          text: "Logs",
           link: "/guide/logs"
         },
         {
-          text: "Why another CICD tool ?",
-          link: "/guide/the_story"
-        },
-        {
-          text: "How it works ?",
+          text: "Internal API",
           link: "/guide/internal"
         }
       ]
@@ -46,7 +63,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
       collapsed: true,
       items: [
         {
-          text: "Overview",
+          text: "What is it?",
           link: "/helpers/overview"
         },
         {
@@ -116,6 +133,19 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
         },
         {
           text: "Deployment Strategies",
+          link: "/cookbook/strategies"
+        }
+      ]
+    },
+    {
+      text: "Extra Topics",
+      items: [
+        {
+          text: "Why another CICD Tool?",
+          link: "/cookbook/strategies"
+        },
+        {
+          text: "Pipelight Vs Others",
           link: "/cookbook/strategies"
         }
       ]

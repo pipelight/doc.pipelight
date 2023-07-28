@@ -2,14 +2,15 @@ import { Pipeline, Step, StepOrParallel, Verbosity } from "pipelight";
 import { h } from "vue";
 import { VNode } from "vue/types";
 
-export const json_to_html = (
-  pipeline: Pipeline,
-  verbosity: Verbosity
-): VNode => {
+export const useDraw = () => ({
+  draw_pipeline
+});
+
+const draw_pipeline = (pipeline: Pipeline, verbosity: Verbosity): VNode => {
   return h("div", { class: "pipeline", id: "pipeline" }, [
     draw_status(pipeline),
     draw_header(pipeline),
-    draw_pipeline(pipeline)
+    draw_tree(pipeline)
   ]);
 };
 
@@ -43,14 +44,14 @@ const draw_header = (pipeline: Pipeline): VNode => {
   return node;
 };
 
-// List Tree
-const draw_pipeline = (pipeline: Pipeline): VNode => {
+const draw_tree = (pipeline: Pipeline): VNode => {
   const node = h("div", { class: "pipeline" }, [
     h("div", { class: "tag", innerHTML: `pipeline: ${pipeline.name}` }),
     h("div", draw_steps_or_parallels(pipeline.steps))
   ]);
   return node;
 };
+
 const draw_steps_or_parallels = (steps: StepOrParallel): VNode => {
   const nodes: VNode[] = [];
   for (let step of steps) {

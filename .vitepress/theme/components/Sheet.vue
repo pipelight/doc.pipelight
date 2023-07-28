@@ -3,8 +3,6 @@
   slot
 </template>
 
-<script setup></script>
-
 <style lang="postcss" scoped>
 .layout {
   @apply flex flex-col;
