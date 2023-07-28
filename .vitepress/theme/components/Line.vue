@@ -1,11 +1,11 @@
 <template lang="pug">
-.line.flex
+.flex(:class="{ line : !!props.value}")
   transition(
     enter-active-class="fade-in-slow"
     leave-active-class="fade-out"
     appear
   )
-    p.prompt.p-0(
+    p.prompt(
       v-if="!!props.value"
     ) [g@ku ~] 
 
@@ -84,7 +84,7 @@ p {
 div {
   .cursor {
     @apply whitespace-nowrap inline;
-    @apply w-2 my-4;
+    @apply w-2 h-6;
     animation: blink 1500ms step-end;
     /* animation: blink 800ms step-end infinite;*/
   }

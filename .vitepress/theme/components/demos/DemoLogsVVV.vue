@@ -5,12 +5,13 @@ Terminal(:lines="lines").sm
 import Terminal from "@components/Terminal.vue";
 // Markdown
 import * as useMarkdown from "markdown-it";
-import json from "@logs/logs.json";
 import { Verbosity } from "pipelight";
 
 import { useDraw } from "@components/Draw.ts";
 const { draw_pipeline } = useDraw();
-const vnode = draw_pipeline(json, Verbosity.Info);
+
+import json from "@logs/logs_deploy_docker.json";
+const vnode = draw_pipeline(json, Verbosity.Debug);
 
 const lines = [
   { cmd: "pipelight run my_test" },

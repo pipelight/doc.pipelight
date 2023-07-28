@@ -34,7 +34,6 @@ const tailwind = ref({
   lg: breakpoints.greaterOrEqual("lg")
 });
 </script>
-
 <Sheet>
 <Example>
 <h4 class="lg"> 

@@ -8,16 +8,21 @@
 }
 .terminal {
   @apply md:max-w-3xl;
+  p {
+    @apply m-0;
+  }
+  &.md {
+    .line {
+      @apply py-4;
+    }
+  }
   &.sm {
     @apply text-xs;
     .cursor {
-      @apply my-2;
+      @apply w-2 h-6;
     }
     .line {
       @apply py-2;
-    }
-    p {
-      @apply py-0 my-auto !important;
     }
   }
   &.language-sh {

@@ -21,6 +21,15 @@ pipelight inspect <pipeline_name>
 pipelight ls <pipeline_name>
 ```
 
+Iteractive prompt
+
+```sh
+> deploy_to_host
+  tests_mini
+  tests_heavy
+
+```
+
 Run it in background (default)
 
 ```sh
@@ -31,6 +40,15 @@ Or without any argument, you'll be able to browse through your pipeline list.
 
 ```sh
 pipelight run
+```
+
+Iteractive prompt
+
+```sh
+> deploy_to_host
+  tests_mini
+  tests_heavy
+
 ```
 
 Abort pipeline execution
