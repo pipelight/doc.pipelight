@@ -35,17 +35,6 @@ const tailwind = ref({
 });
 </script>
 <style lang="postcss" scoped>
-.2xl {
-  font-size: 50px;
-}
-.xl {
-  font-size: 40px;
-}
-.lg {
-  font-size: 25px;
-  @apply px-6 py-1;
-  @apply text-center;
-}
 .space {
   @apply py-10;
 }
@@ -67,7 +56,7 @@ Stay in the comfort of your terminal
 
 <Sheet>
 <Example>
-<h4 class="xl">
+<h4 class="xl gradient">
 Write readable and reusable blocks.
 </h4>
 </Example>
@@ -94,7 +83,7 @@ pwd;
 
 <Example>
 <h3> 
-..wrapped into Typescript
+..wrapped into Json (Typescript)
 </h3>
 
 ```ts{6,10}
@@ -118,7 +107,34 @@ pwd;
 
 <Sheet>
 <Example>
-<h4 class="xl">
+<h4 class="xl gradient">
+Use predefined blocks.
+</h4>
+</Example>
+</Sheet>
+
+<Sheet>
+<Example>
+<h4 class="lg">
+Define complex operations with less code.
+</h4>
+with the Typescript helper functions
+</Example>
+
+<Example>
+
+```ts
+step("build images and run containers", () => [
+    ...docker.images.create(),
+    ...docker.containers.create()
+]),
+```
+
+</Example>
+</Sheet>
+<Sheet>
+<Example>
+<h4 class="xl gradient">
 Troubleshoot the pipe in a breeze.
 </h4>
 </Example>
@@ -140,7 +156,7 @@ Get aggressively verbose
 
 <Sheet>
 <Example>
-<h4 class="xl">
+<h4 class="xl gradient">
 Trigger pipelines automatically!
 </h4>
 </Example>
@@ -149,10 +165,64 @@ Trigger pipelines automatically!
 <Sheet>
 <Example>
 <h4 class="lg"> 
-Write in Old-school flavors
+On file change
+</h4>
+
+```ts
+// When saving/deleting/modifying a file
+// on branch dev and feature/<something>
+{
+    actions: ["watch"],
+    branches: ["dev", "feature/*"]
+}
+```
+
+```sh
+# Using vim (saves changes)
+:w
+
+```
+
+</Example>
+
+<Example>
+<h4 class="lg"> 
+On git hooks
+</h4>
+
+```ts
+// When on tag v<something> and pushing to remote
+{
+    actions: ["pre-push"],
+    tags: ["v*"]
+}
+```
+
+```sh
+git tag -a v0.1
+#or
+git checkout v0.1
+git push
+```
+
+</Example>
+</Sheet>
+
+<Sheet>
+<Example>
+<h4 class="xl gradient">
+Write small pipelines for atomic tasks.
+</h4>
+</Example>
+</Sheet>
+
+<Sheet>
+<Example>
+<h4 class="lg"> 
+Use minimal configuration formats
 </h4>
 <p> 
-for the simplest tasks
+Old-school flavors
 </p>
 </Example>
 
@@ -179,12 +249,12 @@ commands = ["pwd"]
 pipelines:
   - name: simple_example
     steps:
-      - commands:
+      - name: list directory
+        commands:
           - ls
-        name: list directory
-      - commands:
+      - name: get working directory
+        commands:
           - pwd
-        name: get working directory
 ```
 
 </Example>
