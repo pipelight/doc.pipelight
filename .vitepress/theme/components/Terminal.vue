@@ -63,7 +63,8 @@ const targetIsVisible = useElementVisibility(target);
 // Loop animation every intervall
 import { useIntervalFn, promiseTimeout, useTimeout } from "@vueuse/core";
 
-const ready = ref(false);
+const ready = ref(true);
+// const ready = ref(false);
 const loopAnimation = async () => {
   ready.value = true;
   await promiseTimeout(6000);
@@ -73,7 +74,7 @@ const loopAnimation = async () => {
 };
 
 onMounted(async () => {
-  await loopAnimation();
+  // await loopAnimation();
 });
 
 // Watcher
@@ -111,12 +112,6 @@ p {
     @apply whitespace-nowrap;
     /* overflow: hidden; */
   }
-}
-.cursor {
-  @apply whitespace-nowrap inline;
-  @apply w-2 my-4;
-  @apply bg-gray-200;
-  /* animation: blink 800ms step-end infinite;*/
 }
 @keyframes blink {
   from,

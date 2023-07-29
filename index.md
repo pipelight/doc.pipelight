@@ -51,7 +51,9 @@ Stay in the comfort of your terminal
 <Sheet>
 <Example>
 <h4 class="xl gradient">
+<span>
 Write readable and reusable blocks.
+</span>
 </h4>
 </Example>
 </Sheet>
@@ -102,7 +104,9 @@ pwd;
 <Sheet>
 <Example>
 <h4 class="xl gradient">
+<span>
 Use predefined blocks.
+</span>
 </h4>
 </Example>
 </Sheet>
@@ -129,7 +133,9 @@ step("build images and run containers", () => [
 <Sheet>
 <Example>
 <h4 class="xl gradient">
+<span>
 Troubleshoot the pipe in a breeze.
+</span>
 </h4>
 </Example>
 </Sheet>
@@ -139,10 +145,8 @@ Troubleshoot the pipe in a breeze.
 <h4 class="lg"> 
 Get aggressively verbose
 </h4>
-<p>
-...and more!
-</p>
 </Example>
+
 <Example>
 <DemoLogsVVV/>
 </Example>
@@ -151,7 +155,9 @@ Get aggressively verbose
 <Sheet>
 <Example>
 <h4 class="xl gradient">
+<span>
 Trigger pipelines automatically!
+</span>
 </h4>
 </Example>
 </Sheet>
@@ -205,7 +211,9 @@ git push
 <Sheet>
 <Example>
 <h4 class="xl gradient">
+<span>
 Write small pipelines for atomic tasks.
+</span>
 </h4>
 </Example>
 </Sheet>

@@ -14,10 +14,13 @@ p {
     @apply text-center;
   }
   &.gradient {
-    background: -webkit-linear-gradient(91deg, #64ee14, #ffffff 50%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    span {
+      box-decoration-break: clone;
+      background-image: -webkit-linear-gradient(91deg, #64ee14, #ffffff 50%);
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
   }
 }
 .VPHero {
