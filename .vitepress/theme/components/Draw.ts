@@ -1,5 +1,6 @@
 import { Pipeline, Step, StepOrParallel, Verbosity } from "pipelight";
 import { h, ref } from "vue";
+import { parse } from "date-fns";
 
 export const useDraw = () => ({
   draw_pipeline,
@@ -22,13 +23,17 @@ const draw_pipeline = (pipeline: Pipeline, verbosity: Verbosity) => {
 };
 
 const draw_status = (pipeline: Pipeline) => {
+  let radical = pipeline.event.date.replace("UTC", "");
+  radical = radical.split(".").shift();
+  const date = parse(radical, "yyyy-MM-dd HH:mm:ss", new Date());
+  // const date_str = format();
   const node = h("div", { class: "flex status", id: "pipeline_header" }, [
     h("div", {
       class: `inline capitalize tag ${pipeline.status}`,
       innerHTML: `● ${pipeline.status}`
     }),
     h("div", { class: "tag secondary", innerHTML: `-` }),
-    h("div", { class: "tag secondary", innerHTML: `${pipeline.event.date}` })
+    h("div", { class: "tag secondary", innerHTML: date })
   ]);
   return node;
 };
@@ -152,13 +157,13 @@ const draw_out = (command: Command, verbosity: Verbosity) => {
     const children = [];
     return h("ul", [
       h("li", {
-        class: `tag ${command.process.state.status}`,
+        class: `tag wrapped ${command.process.state.status}`,
         innerHTML: `stdout: ${
           !!command.process.state.stdout ? command.process.state.stdout : ""
         }`
       }),
       h("li", {
-        class: `tag ${command.process.state.status}`,
+        class: `tag wrapped ${command.process.state.status}`,
         innerHTML: `stderr: ${
           !!command.process.state.stderr ? command.process.state.stderr : ""
         }`
@@ -178,7 +183,7 @@ const draw_out = (command: Command, verbosity: Verbosity) => {
     if (!!out) {
       return h("ul", { id: "pipeline_command" }, [
         h("li", {
-          class: `tag ${command.process.state.status}`,
+          class: `tag wrapped ${command.process.state.status}`,
           innerHTML: out
         })
       ]);

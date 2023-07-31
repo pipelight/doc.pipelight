@@ -29,6 +29,7 @@
   "dependencies": {
     "@heroicons/vue": "^2.0.18",
     "@vueuse/core": "^10.2.1",
+    "date-fns": "^2.30.0",
     "markdown-it": "^13.0.1",
     "pipelight": "0.6.69-2",
     "vue": "^3.3.4"

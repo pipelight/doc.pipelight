@@ -5,19 +5,27 @@
 .language-json {
   @apply rounded-lg;
   @apply min-w-full;
+  .line {
+    @apply whitespace-pre-wrap break-normal;
+  }
 }
 .terminal {
   @apply md:max-w-3xl;
-  p {
-    @apply m-0;
+  &.language-sh {
+    @apply rounded-lg shadow-md;
+    @apply m-0 !important;
+    @apply text-gray-100;
   }
   &.md {
+    @apply px-6 py-2;
+    @apply text-sm md:text-base;
     .line {
       @apply py-4;
     }
   }
   &.sm {
     @apply text-xs;
+    @apply px-4 md:px-6 py-4;
     .cursor {
       @apply w-2 h-6;
     }
@@ -25,9 +33,10 @@
       @apply py-2;
     }
   }
-  &.language-sh {
-    @apply rounded-lg shadow-md px-8 py-4;
-    @apply m-0 !important;
-    @apply text-gray-100;
+  .line {
+    @apply whitespace-nowrap break-keep;
+  }
+  p {
+    @apply m-0;
   }
 }

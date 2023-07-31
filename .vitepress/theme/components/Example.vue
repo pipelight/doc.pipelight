@@ -1,5 +1,5 @@
 <template lang="pug">
-.vp-doc.custom-code
+.vp-doc
   slot
 </template>
 

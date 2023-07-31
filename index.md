@@ -11,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /getting_started/install
+      link: /introduction/install
 
     - theme: alt
       text: Why pipelight?
@@ -34,6 +34,7 @@ const tailwind = ref({
   lg: breakpoints.greaterOrEqual("lg")
 });
 </script>
+<div class="landing">
 <Sheet>
 <Example>
 <h4 class="lg"> 
@@ -116,7 +117,9 @@ Use predefined blocks.
 <h4 class="lg">
 Define complex operations with less code.
 </h4>
+<p>
 with the Typescript helper functions
+</p>
 </Example>
 
 <Example>
@@ -264,9 +267,9 @@ pipelines:
 
 <Sheet>
 <Example>
-<p align="center">
-  <img src="/images/ferris_playing_pipelight.png" alt="ferris_playing_with_cubes" class="sm">
-</p>
+<div class="flex justify-center">
+<img src="/images/ferris_playing_pipelight.png" alt="ferris_playing_with_cubes" class="sm">
+</div>
 </Example>
 <Example>
 <h4> 
@@ -280,3 +283,4 @@ for conscientious programmers.
 </h4>
 </Example>
 </Sheet>
+</div>

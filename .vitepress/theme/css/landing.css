@@ -1,25 +1,30 @@
-h4,
-h5,
-p {
-  @apply leading-normal;
-  &.2xl {
-    font-size: 50px;
-  }
-  &.xl {
-    font-size: 40px;
-  }
-  &.lg {
-    font-size: 25px;
-    @apply px-6 py-1;
+.landing {
+  @apply container mx-auto;
+  h3,
+  h4,
+  h5,
+  p {
+    @apply leading-normal;
     @apply text-center;
-  }
-  &.gradient {
-    span {
-      box-decoration-break: clone;
-      background-image: -webkit-linear-gradient(91deg, #64ee14, #ffffff 50%);
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      -webkit-background-clip: text;
+    &.2xl {
+      font-size: 50px;
+    }
+    &.xl {
+      font-size: 40px;
+    }
+    &.lg {
+      font-size: 25px;
+      @apply px-6 py-1;
+      @apply text-center;
+    }
+    &.gradient {
+      span {
+        box-decoration-break: clone;
+        background-image: -webkit-linear-gradient(91deg, #64ee14, #ffffff 50%);
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+      }
     }
   }
 }

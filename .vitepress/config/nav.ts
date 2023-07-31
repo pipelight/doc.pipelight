@@ -3,7 +3,7 @@ import type { DefaultTheme } from "@/config";
 export const nav: DefaultTheme.Config["nav"] = [
   {
     text: "Guide",
-    link: "/getting_started/write_pipeline"
+    link: "/introduction/write_pipeline"
   },
   {
     text: "Helpers",

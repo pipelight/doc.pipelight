@@ -75,7 +75,7 @@ p {
   }
   &.cmd {
     @apply max-w-min;
-    @apply whitespace-nowrap;
+    @apply break-all;
     overflow: hidden;
     animation: typing 1000ms steps(22, end);
     animation-fill-mode: both;
