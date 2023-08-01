@@ -148,6 +148,9 @@ Troubleshoot the pipe in a breeze.
 <h4 class="lg"> 
 Get aggressively verbose
 </h4>
+<p>
+Gather every process outputs.
+</p>
 </Example>
 
 <Example>

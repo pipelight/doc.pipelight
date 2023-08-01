@@ -1,5 +1,8 @@
 <template lang="pug">
-Terminal(:lines="lines").sm
+Terminal(
+  :lines="lines",
+  :animate="false"
+).sm
 </template>
 <script setup lang="ts">
 import Terminal from "@components/Terminal.vue";
@@ -15,7 +18,7 @@ const vnode = draw_pipeline(json, Verbosity.Trace);
 
 const lines = [
   { cmd: "pipelight run my_test" },
-  { cmd: "pipelight logs -vv" },
+  { cmd: "pipelight logs -vvvv" },
   { vnode: vnode }
 ];
 </script>

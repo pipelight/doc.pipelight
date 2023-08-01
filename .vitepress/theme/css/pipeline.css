@@ -1,12 +1,16 @@
 .pipeline {
   .tag {
-    &.wrapped {
-      @apply break-all;
-    }
     @apply whitespace-pre-line;
     @apply relative;
     @apply relative z-10;
     @apply mx-0 pr-2;
+    &.wrapped {
+      @apply break-all;
+    }
+    &.unwrapped {
+      @apply whitespace-nowrap;
+      @apply break-keep;
+    }
     &.secondary {
       @apply text-gray-400;
     }

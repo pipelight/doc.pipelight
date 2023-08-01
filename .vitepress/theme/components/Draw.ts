@@ -1,11 +1,24 @@
 import { Pipeline, Step, StepOrParallel, Verbosity } from "pipelight";
 import { h, ref } from "vue";
-import { parse } from "date-fns";
+import { parse, format, parseISO, formatRFC3339 } from "date-fns";
 
 export const useDraw = () => ({
   draw_pipeline,
   draw_pipelines
 });
+
+const parse_date = (iso: string): Date => {
+  // Date serialized format: "%Y-%m-%d %H:%M:%S%.9f %z",
+  // To "%Y-%m-%dT%H:%M:%SZ%z",
+  const [date, time, time_zone, ...rest] = iso.split(" ");
+  const [human_time, milliseconds, ...rest2] = time.split(".");
+  const simple_iso = `${date}T${human_time}Z${time_zone}`;
+  return parseISO(simple_iso);
+};
+const format_date = (date: Date): string => {
+  const rfc = format(date, "eee, i MMM yyyy HH:mm:ss xx");
+  return rfc;
+};
 
 const draw_pipelines = (pipelines: Pipeline[], verbosity: Verbosity) => {
   const children = [];
@@ -23,17 +36,14 @@ const draw_pipeline = (pipeline: Pipeline, verbosity: Verbosity) => {
 };
 
 const draw_status = (pipeline: Pipeline) => {
-  let radical = pipeline.event.date.replace("UTC", "");
-  radical = radical.split(".").shift();
-  const date = parse(radical, "yyyy-MM-dd HH:mm:ss", new Date());
-  // const date_str = format();
+  const date = format_date(parse_date(pipeline.event.date));
   const node = h("div", { class: "flex status", id: "pipeline_header" }, [
-    h("div", {
-      class: `inline capitalize tag ${pipeline.status}`,
+    h("span", {
+      class: `capitalize tag unwrapped ${pipeline.status}`,
       innerHTML: `● ${pipeline.status}`
     }),
-    h("div", { class: "tag secondary", innerHTML: `-` }),
-    h("div", { class: "tag secondary", innerHTML: date })
+    h("span", { class: "tag secondary", innerHTML: `-` }),
+    h("span", { class: "tag secondary", innerHTML: date })
   ]);
   return node;
 };

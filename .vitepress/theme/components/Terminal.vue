@@ -49,9 +49,13 @@ interface line {
   cmd?: string;
   vnode?: string;
 }
-const props = defineProps<{
+interface Props {
   lines: line[];
-}>();
+  animate?: boolean;
+}
+const props = withDefaults(defineProps<Props>(), {
+  animate: true
+});
 
 // Animate
 import { watchThrottled, useElementVisibility } from "@vueuse/core";
@@ -63,18 +67,23 @@ const targetIsVisible = useElementVisibility(target);
 // Loop animation every intervall
 import { useIntervalFn, promiseTimeout, useTimeout } from "@vueuse/core";
 
-// const ready = ref(true);
 const ready = ref(false);
-const loopAnimation = async () => {
-  ready.value = true;
-  await promiseTimeout(6000);
-  ready.value = false;
-  await promiseTimeout(200);
-  await loopAnimation();
-};
 
 onMounted(async () => {
-  await loopAnimation();
+  if (props.animate) {
+    ready.value = false;
+    const loopAnimation = async () => {
+      ready.value = true;
+      await promiseTimeout(6000);
+      ready.value = false;
+      await promiseTimeout(200);
+      await loopAnimation();
+    };
+    await loopAnimation();
+  } else {
+    ready.value = true;
+    return;
+  }
 });
 
 // Watcher
