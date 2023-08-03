@@ -1,14 +1,17 @@
-<script setup>
-import Features from '../.vitepress/theme/components/Features.vue';
-</script>
-
 # Why using pipelight ?
 
-## TL;DR
+For every nerd that seeks fast and simple automation.
 
-<Features />
+But simple doesn't mean simplistic.
+Complexe pipelines and behavior can still be achived in easy ways.
 
-## Software development and deployment (CICD)
+## Random task automation and parallelism
+
+Can be used to automate everyday tasks.
+
+## Software development
+
+### Continuous deployment (CD)
 
 You can define pipelines that will run client-side and/or server-side.
 
@@ -38,6 +41,10 @@ Server side automation is achieved by using specific triggers too (on update, pr
 
   Pipelight logs are verbose and easy to access.
   You won't ever miss a single byte of a pipeline execution (real commands, stdin, stdout and return statements).
+
+## Server provisionning
+
+Can be used to wrap ansible or to replace it.
 
 ## Made for efficency
 

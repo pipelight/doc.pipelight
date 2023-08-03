@@ -15,7 +15,7 @@ hero:
 
     - theme: alt
       text: Why pipelight?
-      link: /other_topics/why
+      link: /introduction/why
 ---
 
 <script setup>

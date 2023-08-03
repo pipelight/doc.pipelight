@@ -7,6 +7,12 @@ const fedora = `pipelight-${import.meta.env.VITE_GIT_VERSION}.rpm`;
 
 # Getting Started
 
+::: tip Software size
+
+Pipelight is a very **lightweight** binary that wheighs around **6Mb**.
+
+:::
+
 ## Install with your package manager
 
 Arch Linux (AUR)
@@ -35,7 +41,7 @@ curl -O {{ base }}/{{ debian }}
 dpkg -i {{ debian }}
 ```
 
-## Install with the installation script
+## Install with the installation script <Badge type="warning" text="beta" />
 
 For any linux distribution
 

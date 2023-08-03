@@ -8,18 +8,22 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
       items: [
         {
           text: "What is Pipelight?",
-          link: "/getting_started/description"
+          link: "/introduction/description"
+        },
+        {
+          text: "For what usage?",
+          link: "/introduction/why"
         },
         {
           text: "Getting Started",
           items: [
             {
               text: "Install",
-              link: "/getting_started/install"
+              link: "/introduction/install"
             },
             {
               text: "Your first pipeline",
-              link: "/getting_started/write_pipeline"
+              link: "/introduction/write_pipeline"
             }
           ]
         }
@@ -42,11 +46,19 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
         },
         {
           text: "Parallelism",
-          link: "/guide/config"
+          link: "/guide/parallelism"
         },
         {
           text: "Triggers (Automation)",
-          link: "/guide/config"
+          link: "/guide/triggers"
+        },
+        {
+          text: "Fallbacks",
+          link: "/guide/fallbacks"
+        },
+        {
+          text: "Execution modes",
+          link: "/guide/modes"
         },
         {
           text: "Logs",
@@ -54,7 +66,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
         },
         {
           text: "Internal API",
-          link: "/guide/internal"
+          link: "https://gitea.com/pipelight/pipelight/src/branch/master/INTERNALS.md"
         }
       ]
     },
@@ -142,11 +154,19 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
       items: [
         {
           text: "Why another CICD Tool?",
-          link: "/cookbook/strategies"
+          link: "/other_topics/why_detailed"
         },
         {
           text: "Pipelight Vs Others",
-          link: "/cookbook/strategies"
+          link: "/other_topics/comparision"
+        },
+        {
+          text: "CHANGELOG",
+          link: "https://gitea.com/pipelight/pipelight/src/branch/master/CHANGELOG.md"
+        },
+        {
+          text: "ROADMAP",
+          link: "https://gitea.com/pipelight/pipelight/src/branch/master/ROADMAP.md"
         }
       ]
     }

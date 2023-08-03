@@ -20,7 +20,11 @@
     &.gradient {
       span {
         box-decoration-break: clone;
-        background-image: -webkit-linear-gradient(91deg, #64ee14, #ffffff 50%);
+        background-image: -webkit-linear-gradient(
+          91deg,
+          #64ee14,
+          var(--vp-c-text-2) 50%
+        );
         -webkit-text-fill-color: transparent;
         background-clip: text;
         -webkit-background-clip: text;
