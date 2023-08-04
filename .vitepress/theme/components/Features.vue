@@ -45,25 +45,20 @@ const items = [
 
 <style lang="postcss" scoped>
 .my-container {
-  @apply flex flex-wrap flex-col sm:flex-row align-middle;
-  @apply py-4;
+  /* layout */
+  @apply flex flex-row flex-wrap justify-center gap-3 py-10;
+  @apply transition-all;
 }
 .feature {
-  &.big {
-    @apply justify-center;
-    min-width: 90%;
-    max-width: 90%;
-  }
-  &.small {
-    min-width: 40%;
-    max-width: 40%;
-  }
-  @apply flex flex-col justify-center align-middle transition-all;
-  @apply rounded-lg drop-shadow-md p-3 m-2 w-1/2 border border-solid;
+  @apply rounded-lg drop-shadow-md border border-solid;
   @apply bg-white text-gray-800 border-gray-300;
   @apply dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700;
-
+  /* layout */
+  @apply flex flex-col;
+  @apply p-3 max-w-min;
+  min-width: 17rem;
   .title {
+    @apply whitespace-nowrap;
     @apply font-bold;
     @apply text-xl;
   }

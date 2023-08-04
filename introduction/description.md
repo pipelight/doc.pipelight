@@ -44,5 +44,3 @@ triggers: [
   },
 ],
 ```
-
-<Features />

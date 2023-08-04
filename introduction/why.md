@@ -1,11 +1,21 @@
-# For what tasks using Pipelight ?
+<script setup lang="ts">
+import Features from "@components/Features.vue";
+</script>
+
+# Why using Pipelight ?
+
+<Features/>
+
+## Who is it for?
 
 For every nerd that seeks fast and simple automation.
 
 But simple doesn't mean simplistic.
 Complexe pipelines and behavior can still be achived in easy ways.
 
-## Random task automation and parallelism
+## For which tasks?
+
+### Random task automation and parallelism
 
 Can be used to automate everyday tasks.
 

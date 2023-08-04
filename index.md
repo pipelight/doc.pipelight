@@ -12,17 +12,17 @@ hero:
     - theme: brand
       text: Get Started
       link: /introduction/install
-
     - theme: alt
       text: Why pipelight?
       link: /introduction/why
 ---
 
-<script setup>
-import Example from '@components/Example.vue';
-import Sheet from '@components/Sheet.vue';
-import  DemoLogs from '@demos/DemoLogs.vue';
-import  DemoLogsVVV from '@demos/DemoLogsVVV.vue';
+<script setup lang="ts">
+import Features from "@components/Features.vue";
+import Example from "@components/Example.vue";
+import Sheet from "@components/Sheet.vue";
+import DemoLogs from "@demos/DemoLogs.vue";
+import DemoLogsVVV from "@demos/DemoLogsVVV.vue";
 
 import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
 import { ref } from "vue";
@@ -34,7 +34,9 @@ const tailwind = ref({
   lg: breakpoints.greaterOrEqual("lg")
 });
 </script>
+
 <div class="landing">
+
 <Sheet>
 <Example>
 <h4 class="lg"> 
@@ -269,6 +271,12 @@ pipelines:
 </Sheet>
 
 <Sheet>
+<Example>
+<Features />
+</Example>
+</Sheet>
+<Sheet>
+
 <Example>
 <div class="flex justify-center">
 <img src="/images/ferris_playing_pipelight.png" alt="ferris_playing_with_cubes" class="sm">
