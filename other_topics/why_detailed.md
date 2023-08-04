@@ -8,7 +8,6 @@ Beeing:
 - fast
 - open-source
 - and sovereign
-  **two years later**
 
 ## The Automation for everyone
 
@@ -113,6 +112,20 @@ Tailwind, Vite and many other web frameworks have already taken down this path.
 
 Pipelight is about **executing strings** so, it needed a popular, language for **string manipulation**,
 with an appaeling syntax and an as simple as possible learning curve.
+
+## Made for efficency
+
+Pipelight is written in [Rust](https://www.rust-lang.org/).
+It is quite light when installed and uncompressed.
+Binaries actually weights under 6Mb (decreased by 50% between v0.5.8 and v0.6.2).
+
+In consequence, it is blazing fast.
+
+It has the minimum required functions for a cicd tool
+and delegate features to the already widely spread specialized softwares.
+
+- Git for software versioning and event detection
+- Linux for security and access rights
 
 ## Why is it only a cli ?
 
