@@ -12,12 +12,12 @@ import { Verbosity } from "pipelight";
 import { useDraw } from "@components/Draw.ts";
 const { draw_pipelines } = useDraw();
 
-import json_docker from "@logs/logs_deploy_docker.json";
 import json_test from "@logs/logs_test.json";
-const vnode = draw_pipelines([json_test, json_docker], Verbosity.Error);
+import json_my from "@logs/logs_my_pipeline.json";
+const vnode = draw_pipelines([json_test, json_my], Verbosity.Error);
 
 const lines = [
-  { cmd: "pipelight run my_test" },
+  { cmd: "pipelight run my_pipe" },
   { cmd: "pipelight logs" },
   { vnode: vnode }
 ];

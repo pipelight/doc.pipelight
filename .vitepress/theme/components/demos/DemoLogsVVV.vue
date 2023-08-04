@@ -17,7 +17,7 @@ import json from "@logs/logs_deploy_docker.json";
 const vnode = draw_pipeline(json, Verbosity.Trace);
 
 const lines = [
-  { cmd: "pipelight run my_test" },
+  { cmd: "pipelight run deploy_to_host" },
   { cmd: "pipelight logs -vvvv" },
   { vnode: vnode }
 ];

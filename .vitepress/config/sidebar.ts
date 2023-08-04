@@ -140,6 +140,10 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           link: "/cookbook/environments"
         },
         {
+          text: "Read files",
+          link: "/cookbook/cli"
+        },
+        {
           text: "Javascript frontend",
           link: "/cookbook/vite"
         },

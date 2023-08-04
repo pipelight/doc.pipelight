@@ -1,13 +1,13 @@
 {
   "uuid": "981f58fe-ec09-4384-88ea-1c80a7449a36",
-  "name": "deploy_to_host",
+  "name": "my_pipe",
   "event": {
     "trigger": {
       "action": "manual",
-      "branch": "dev",
+      "branch": "master",
       "tag": null
     },
-    "date": "2023-07-21 14:52:58.285059847 +0200",
+    "date": "2023-07-21 15:20:58.285059847 +0200",
     "pid": 131134,
     "pgid": 131057,
     "sid": 3954
@@ -95,7 +95,7 @@
             "state": {
               "status": "succeeded",
               "stdin": "vite build",
-              "stdout": "vite v4.3.1 building for production...\ntransforming...\n\n🌼 daisyUI 3.0.20 \n ✓ 669 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                                  0.45 kB │ gzip:  0.30 kB\ndist/assets/product-bbe8489e.css               0.36 kB │ gzip:  0.17 kB\ndist/assets/collection-c3ae63aa.css              0.36 kB │ gzip:  0.17 kB\ndist/assets/index-dc1b6ad3.js                  58.72 kB │ gzip: 10.54 kB\n                161.97 kB │ gzip: 60.82 kB\n✓ built in 3.24s\n",
+              "stdout": "vite v4.3.1 building for production...\ntransforming...\n\n🌼 daisyUI 3.0.20\nhttps://daisyui.com\n╰╮\n ╰─ themes are enabled. You can add more themes or make your own theme:\n      https://daisyui.com/docs/themes\n\n\u001b[32m    ❤︎ Support daisyUI\u001b[0m: https://opencollective.com/daisyui\u001b[0m\n\n✓ 669 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                                  0.45 kB │ gzip:  0.30 kB\ndist/assets/product-bbe8489e.css                 0.33 kB │ gzip:  0.20 kB\ndist/assets/products-4aa53b00.css                0.36 kB │ gzip:  0.17 kB\ndist/assets/collection-c3ae63aa.css              0.36 kB │ gzip:  0.17 kB\ndist/assets/index-dc1b6ad3.css                  58.72 kB │ gzip: 10.54 kB\ndist/assets/dynamic-import-helper-be004503.js    0.25 kB │ gzip:  0.20 kB\ndist/assets/home-cf9929fe.js                     0.33 kB │ gzip:  0.24 kB\ndist/assets/products-3c507332.js                 0.59 kB │ gzip:  0.38 kB\ndist/assets/about-354f315b.js                    0.71 kB │ gzip:  0.38 kB\ndist/assets/legal-8c08ca70.js                    0.71 kB │ gzip:  0.39 kB\ndist/assets/collection-862590ba.js               0.71 kB │ gzip:  0.45 kB\ndist/assets/product-67ba29c0.js                  1.44 kB │ gzip:  0.74 kB\ndist/assets/about.en-4feec2fd.js                 1.48 kB │ gzip:  0.86 kB\ndist/assets/about.fr-fe09bafb.js                 1.60 kB │ gzip:  0.98 kB\ndist/assets/legal.en-b572a7b4.js                11.36 kB │ gzip:  4.33 kB\ndist/assets/legal.fr-64c64e93.js                12.28 kB │ gzip:  4.78 kB\ndist/assets/index-0b68c6ef.js                  161.97 kB │ gzip: 60.82 kB\n✓ built in 3.24s\n",
               "stderr": ""
             },
             "os": {
@@ -141,7 +141,7 @@
                   "status": "succeeded",
                   "stdin": "docker build  --tag itsdizygote.com/front:production  --file .docker/Dockerfile.front   .",
                   "stdout": "",
-                  "stderr": "#0 building with \"default\" instance using docker driver\n\n#1 [internal] load .dockerignore\n#1 transferring context: 2B done\n#1 DONE 0.0s\n\n#2 [internal] load build definition from Dockerfile.front\n#2 transferring dockerfile: 277B done\n#2 DONE 0.0s\n\n#3 [internal] load metadata for docker.io/library/archlinux:latest\n#3 DONE 1.2s\n\n#12 exporting layers done\n#12 writing image sha256:f0547343647bb06a2489c4d25cb44592d992dcada04a7e3566fee95190259fa4 done\n#12 naming to itsdizygote.com/front:production done\n#12 DONE 0.0s\n"
+                  "stderr": "#0 building with \"default\" instance using docker driver\n\n#1 [internal] load .dockerignore\n#1 transferring context: 2B done\n#1 DONE 0.0s\n\n#2 [internal] load build definition from Dockerfile.front\n#2 transferring dockerfile: 277B done\n#2 DONE 0.0s\n\n#3 [internal] load metadata for docker.io/library/archlinux:latest\n#3 DONE 1.2s\n\n#4 [1/7] FROM docker.io/library/archlinux:latest@sha256:fe6b55ecfcfe638aa13560cdc66eb2ad9bd6c4f6684d27d0d2a3816cf2882a11\n#4 DONE 0.0s\n\n#5 [internal] load build context\n#5 transferring context: 5.68MB 0.0s done\n#5 DONE 0.0s\n\n#6 [2/7] RUN pacman -Sy\n#6 CACHED\n\n#7 [4/7] RUN npm add -g serve\n#7 CACHED\n\n#8 [3/7] RUN pacman -S --noconfirm npm\n#8 CACHED\n\n#9 [5/7] RUN mkdir app\n#9 CACHED\n\n#10 [6/7] WORKDIR /app\n#10 CACHED\n\n#11 [7/7] COPY ./dist .\n#11 CACHED\n\n#12 exporting to image\n#12 exporting layers done\n#12 writing image sha256:f0547343647bb06a2489c4d25cb44592d992dcada04a7e3566fee95190259fa4 done\n#12 naming to itsdizygote.com/front:production done\n#12 DONE 0.0s\n"
                 },
                 "os": {
                   "shell": "sh",

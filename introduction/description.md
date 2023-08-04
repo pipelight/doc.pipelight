@@ -1,7 +1,6 @@
 <script setup>
 import Example from '@components/Example.vue';
 import Sheet from '@components/Sheet.vue';
-import Features from '../.vitepress/theme/components/Features.vue';
 </script>
 
 # What is pipelight ?
