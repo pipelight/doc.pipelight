@@ -43,7 +43,7 @@ const draw_status = (pipeline: Pipeline) => {
       innerHTML: `● ${pipeline.status}`
     }),
     h("span", { class: "tag secondary", innerHTML: `-` }),
-    h("span", { class: "tag secondary", innerHTML: date })
+    h("span", { class: "tag secondary unwrapped", innerHTML: date })
   ]);
   return node;
 };

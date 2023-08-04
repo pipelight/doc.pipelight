@@ -8,6 +8,7 @@
   @apply flex flex-col;
   @apply md:flex-row;
   @apply justify-center items-center gap-4;
-  @apply px-4 py-24;
+  @apply py-24;
+  @apply min-w-full;
 }
 </style>

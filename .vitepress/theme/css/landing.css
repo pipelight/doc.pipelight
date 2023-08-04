@@ -31,6 +31,10 @@
       }
     }
   }
+  .vp-doc {
+    @apply m-0;
+    @apply min-w-full sm:min-w-min;
+  }
 }
 .VPHero {
   .container {

@@ -4,7 +4,7 @@
 .language-toml,
 .language-json {
   @apply rounded-lg;
-  @apply min-w-full;
+  @apply mx-0 !important;
   .line {
     @apply whitespace-pre-wrap break-normal;
   }
@@ -13,19 +13,21 @@
   @apply md:max-w-3xl;
   &.language-sh {
     @apply rounded-lg shadow-md;
-    @apply m-0 !important;
+    /* @apply m-0 !important; */
     @apply text-gray-100;
   }
   &.md {
-    @apply px-6 py-2;
-    @apply text-sm md:text-base;
+    @apply text-xs sm:text-base;
+    @apply px-4 md:px-6;
+    @apply py-4;
     .line {
-      @apply py-4;
+      @apply py-2 sm:py-4;
     }
   }
   &.sm {
     @apply text-xs;
-    @apply px-4 md:px-6 py-4;
+    @apply px-4 md:px-6;
+    @apply py-4;
     .cursor {
       @apply w-2 h-6;
     }
