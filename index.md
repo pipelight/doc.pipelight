@@ -275,13 +275,8 @@ pipelines:
 <Features />
 </Example>
 </Sheet>
-<Sheet>
 
-<Example>
-<div class="flex justify-center">
-<img src="/images/ferris_playing_pipelight.png" alt="ferris_playing_with_cubes" class="sm">
-</div>
-</Example>
+<Sheet>
 <Example>
 <h4> 
 Rust based.
@@ -294,4 +289,5 @@ for conscientious programmers.
 </h4>
 </Example>
 </Sheet>
+
 </div>

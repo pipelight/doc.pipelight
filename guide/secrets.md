@@ -1,24 +1,7 @@
-# How it works ?
+# Secrets
 
-## TL;DR
-
-Basically, it **encapsulates your shell commands into another language.**
-
-This encapsulation provides you logging features and automatic triggers.
-Moreover it adds easy programming language abilities by bringing Javascript/Typescript (Toml and Yaml) syntax to your script.
-
-## Delegate to the right tools
-
-Pipelight code base is made in Rust, see it as Ferris (rust mascot) making the heavy lift.
-On the first hand, it uses Javascript/Typescript to **manipulate bash strings**.
-And on the other it uses Git as an **event detector**.
-
-<p align="center">
-  <img src="/images/ferris_playing_pipelight.png" alt="ferris_playing_with_cubes">
-</p>
-
-Your config file return an **Object** containing bash strings.
-Those will be "run" by Pipelight.
+There is no secret or vault plugin in Pipelight.
+You can use what you want.
 
 ## Environment and Security
 
@@ -50,5 +33,5 @@ const steps = [
 Consequences are, if you care about security, you don't need to
 learn another tool specific storage for keys and credential (secret vault).
 
-You just have to store them as usual with dedicated softwares and the only thing you have to do is to delegate access right concerns to Linux.
+You just have to store them as usual with dedicated softwares and the only thing you have to do is to delegate access right concerns to **Linux**.
 Finally, the ultimate way to secure your secrets is to use pipelight as a simple user with dedicated rights on needed files.

@@ -18,7 +18,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           text: "Getting Started",
           items: [
             {
-              text: "Install",
+              text: "Install the cli",
               link: "/introduction/install"
             },
             {
@@ -63,6 +63,10 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
         {
           text: "Execution modes",
           link: "/guide/modes"
+        },
+        {
+          text: "Secrets",
+          link: "/guide/secrets"
         },
         {
           text: "Logs",
