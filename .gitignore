@@ -27,3 +27,6 @@ pnpm-debug.log*
 *.sw?
 #*.lock
 *lock.json
+
+#pipelight logs
+.pipelight/logs/*
