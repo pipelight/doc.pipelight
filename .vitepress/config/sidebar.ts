@@ -22,8 +22,12 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
               link: "/introduction/install"
             },
             {
-              text: "Your first pipeline",
+              text: "Write your first pipeline",
               link: "/introduction/write_pipeline"
+            },
+            {
+              text: "Troubleshoot a pipeline",
+              link: "/introduction/troubleshoot"
             }
           ]
         }

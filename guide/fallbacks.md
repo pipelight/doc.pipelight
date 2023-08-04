@@ -78,7 +78,9 @@ for ressource exceeding reasons or else, the `on_abortion` fallback can't be exe
 ::: info Developper note
 A way to trigger the `on_abortion` fallback after a hard kill would be:
 
-- When cli is used after process abortion
+- When cli is used after a pipeline abortion
 - First sanitize log file
 - Seek pipelines that have status running and compare to running processes
 - Update logs and run the on_abortion hooks if any.
+
+:::

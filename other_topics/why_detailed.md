@@ -1,3 +1,5 @@
+# Why another CICD tool ?
+
 ## The software nindo(philosophy)
 
 Pipelight follows some crucial guidelines:
@@ -6,8 +8,7 @@ Beeing:
 - fast
 - open-source
 - and sovereign
-
-# Why another CICD tool ?
+  **two years later**
 
 ## The Automation for everyone
 
@@ -139,7 +140,7 @@ If you come from devOps, see it as Code as Config as Code.
 I've been working with quite small servers, that struggle to build docker images, forget about kubernetes, graphana and so on.
 But I have powerful local computers.
 Pipelight allows me to git-push from a machine, build on another, and send the result on my tiny server,
-so I can decrease by two third the money i used to spend in Cloud ressources.
+so I can decrease by two third the money I used to spend in Cloud ressources.
 
 ### Heavy workers
 
@@ -151,9 +152,19 @@ It becomes pretty simple to share variables/env between tools.
 
 ### Chapter 1 - The harder the fall
 
-I needed something I can install quickly, and run as is with no further config or environnement set-up like `apt-get install pipelight` and `pipelight run`
+#### My Requirements
 
-I have been using and tweaking the existing CI/CD tools but none of them was nearly good enough.
+I needed something I can install quickly as typing `pacman -S tool` and play with it with `tool run`
+with no further environment configuration.
+
+I like to see what happens on my computer with full transparency, so I needed a tool that runs a good reporting system.
+If a VM or a container is twisted I need to know it. If a network is brought up I want to know.
+
+And something fast that runs as close to the kernel as possible.
+
+#### The state of automation in 2023
+
+I have been using and tweaking the existing CI/CD and automation tools but faced difficulties.
 
 - Did I really have to trade my privacy for simplicity?
 - The software transparency for simplicity?
@@ -161,41 +172,19 @@ I have been using and tweaking the existing CI/CD tools but none of them was nea
 During my journey, I faced Bad GUI, Bad log files, network rules colision,
 exhausting GUI configuration, Heavy packages installation, slow execution, unflexible syntax.
 
+But I can't blame the author of those software.
+Automation was like the far west of those last years.
+Some where corporate software and this world isn't always rational.
+
+#### My Motivations
+
 By the end of the month, the young adult that had been suck into software by the beauty of FOSS wasn't anymore.
 
-- Had they lost the will to ship good software?
+- Had they lost their will to ship good software?
 
 There was no one to look up to at this time.
-The cicd world has no [Torwald](https://en.wikipedia.org/wiki/Linus_Torvalds) nor [Evan You](https://en.wikipedia.org/wiki/Vue.js) yet.
 
 After the pain, the sadness, came the rage that pushed me forging my own tools in the dark.
-I was as desperate for better tools as disdainful towards what had been built for profit only.
+I was as desperate for better tools as disdainful towards what had been built before.
 
 This fever pushed me to the work.
-
-### Chapter 2 - With great powers...
-
-**two years later**
-
-I use linux on a daily bases. I like to see what happens on my computer with full transparency.
-One day the
-
-So I am deeply again freemium, SaaS, and all the crap that swarms nowadays.
-
-That refuse to serve me but waste my time.
-Software need to be sovereign
-
-### The Unbearable
-
-### The ugly
-
-## What is pipelight
-
-### What it does
-
-Pipelight is a command line tool, to be used in the terminal.
-
-### What it is made of
-
-A small executable made in Rust.
-Made on top of Deno, and Rust most known crates.

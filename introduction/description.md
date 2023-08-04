@@ -6,15 +6,13 @@ import Features from '../.vitepress/theme/components/Features.vue';
 
 # What is pipelight ?
 
-::: tip tl;dr
-
-It's a tiny executable that execute a list of tasks **you** provided.
-
-:::
+**It's a tiny command line tool that executes a list of tasks you provided in a configuration file.**
 
 Those tasks are commands ordered in steps.
-It aims to do the same things as most known CI/CD softwares like Drone.io, Jenkins, GithubCICD.
 
-_\*CI/CD: Continuous Integration and Continuous Delivery_
+## What is it made of ?
+
+It is mainly made in Rust.
+Made on top of Deno, and Rust most known crates (std, serde, rustix, watchexec, miette...)
 
 <Features />
