@@ -1,6 +1,7 @@
 <script setup>
 import Example from '@components/Example.vue';
 import Sheet from '@components/Sheet.vue';
+import Schema from '@components/Schema.vue';
 </script>
 
 # What is pipelight ?
@@ -81,6 +82,8 @@ and what to do on the few possible exit status.
 
 Your config file whatever language it is written in, only have to return an **Object** of type Pipeline.
 And this Object will be handled by Pipelight.
+
+<Schema/>
 
 ### Delegate to the old fashioned tools
 
