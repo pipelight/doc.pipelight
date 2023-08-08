@@ -14,8 +14,8 @@
   },
   "status": "running",
   "duration": {
-    "secs": 6,
-    "nanos": 198275764
+    "started_at": "2023-07-21 15:20:58.285059847 +0200",
+    "computed": "PT6.31882012S"
   },
   "triggers": [
     {
