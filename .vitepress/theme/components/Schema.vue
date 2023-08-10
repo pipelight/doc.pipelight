@@ -2,6 +2,7 @@
 .container.max-w-min.mx-auto.py-10
   .flex.flex-row.gap-20.items-center
     .flex.relative
+     p.absolute.title.w-26.-top-16 read config file and parse pipelines
      .card.exec.relative
         img.icon(src="/images/pipelight.png")
      .card.config.ontop 
@@ -21,10 +22,9 @@
         .line.short
   .flex.flex-row.pt-8
     .flex.flex-col
-      .flex.h-full.items-center
-        div.h-24.py-2
-          p.title.pl-6 write logs
-          p.arrow 🠓
+      .flex.h-24.py-2.items-center
+        p.arrow 🠓
+        p.title write logs
   .flex.flex-row.pt-6
     .flex.flex-col
      .card.logs
@@ -57,7 +57,7 @@
     @apply bg-green-400 dark:bg-green-400;
     @apply h-12;
     .line {
-      @apply bg-gray-300 dark:bg-gray-300;
+      @apply bg-gray-200 dark:bg-gray-300;
     }
   }
   &.config {
@@ -80,9 +80,10 @@ p {
     @apply block;
   }
   &.title {
+    @apply text-center;
     font-size: 12px;
     line-height: 12px;
-    @apply py-2;
+    @apply py-4;
   }
 }
 </style>

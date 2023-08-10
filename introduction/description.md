@@ -12,7 +12,7 @@ import Schema from '@components/Schema.vue';
 
 Tasks are grouped by steps which together result in a pipeline, as represented in the following pseudo-code.
 
-```rs
+```pseudo-rs
 // This is a pipeline in Pseudo code
 Pipeline {
     Step {
@@ -35,12 +35,13 @@ Mainly build on top of Deno and Rust most known crates (std, serde, rustix, watc
 
 ## Best features
 
-### Code as Configuration as Code
+### Code in your config file
 
 As a pipeline get complex, you want to add variables, conditions, loops and more.
 
 While other tools are about Configuration as Code,
 Pipelight gets one step further and allows you to **code in your configuration file** to create reusable configuration blocks (with Typescript).
+You may call it as Code as Configuration as Code 🥴.
 
 ### Terminal friendly (CLI)
 
@@ -81,7 +82,25 @@ The truth about the core of the tool is that it is absurdly simple.
 and what to do on the few possible exit status.
 
 Your config file whatever language it is written in, only have to return an **Object** of type Pipeline.
-And this Object will be handled by Pipelight.
+And this Object will be handled by the Pipelight executable.
+The Pipeline object in pseudo code.
+
+```pseudo-rs
+// A pipeline in pseudo code
+Pipeline {
+    Step {
+        Command
+    }
+}
+```
+
+So when you run a pipeline,
+
+- First, Pipelight read the config file.
+  Typescript is executed and return a JSON pipeline definition.
+
+- Then, only it processes the pipeline definition.
+  Pipelight spawns the commands into subprocesses while writting the outputs into log files.
 
 <Schema/>
 
@@ -103,3 +122,5 @@ See the core of Pipelight as Ferris (rust mascot) making the heavy lift.
 <div class="flex justify-center">
     <img src="/images/ferris_playing_pipelight.png" alt="ferris_playing_with_cubes" class="sm">
 </div>
+
+### Show me the code!
