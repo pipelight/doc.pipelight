@@ -59,6 +59,6 @@ const res = await $`my_command`.text();
 Can be used to retrieve git infos, like your latest tag and use it in your pipeline declaration.
 
 ```ts
-const version = await $`git describe --tags --abbrev=0 | sed s/v//`.text();
+const version = await $`git describe --tags --abbrev=0`.text().replace("v", "");
 // version = "0.8"
 ```

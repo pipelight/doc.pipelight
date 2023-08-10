@@ -1,11 +1,47 @@
-import { Pipeline, Step, StepOrParallel, Verbosity } from "pipelight";
+import { Pipeline, Step, StepOrParallel, Verbosity, Duration } from "pipelight";
 import { h, ref } from "vue";
 import { parse, format, parseISO, formatRFC3339 } from "date-fns";
+import moment from "moment";
 
 export const useDraw = () => ({
   draw_pipeline,
   draw_pipelines
 });
+
+const parse_duration = (pipeline_duration: Duration): any => {
+  //Guard
+  if (!pipeline_duration) {
+    return;
+  }
+  if (!!pipeline_duration.computed) {
+    const e = moment.duration(pipeline_duration.computed);
+    return e;
+  } else {
+    return;
+    // Compute duration
+  }
+};
+const format_duration = (moment_duration: any): string => {
+  //Guard
+  if (!moment_duration) {
+    return;
+  }
+  let res = "";
+  const minutes = moment_duration.minutes();
+  if (!!minutes) {
+    res += `${minutes}m`;
+  }
+  const seconds = moment_duration.seconds();
+  if (!!seconds) {
+    res += `${seconds}s`;
+  }
+  const milliseconds = Math.round(moment_duration.milliseconds());
+
+  if (!!milliseconds & !minutes) {
+    res += `${milliseconds}ms`;
+  }
+  return res;
+};
 
 const parse_date = (iso: string): Date => {
   // Date serialized format: "%Y-%m-%d %H:%M:%S%.9f %z",
@@ -76,8 +112,25 @@ const draw_header = (pipeline: Pipeline) => {
 };
 
 const draw_tree = (pipeline: Pipeline, verbosity: Verbosity) => {
+  const duration = format_duration(parse_duration(pipeline.duration));
+
   const children = [
-    h("div", { class: "tag", innerHTML: `pipeline: ${pipeline.name}` })
+    h(
+      "div",
+      {
+        class: "flex"
+      },
+      [
+        h("span", {
+          class: "tag unwrapped",
+          innerHTML: `pipeline: ${pipeline.name}`
+        }),
+        h("span", {
+          class: "tag unwrapped secondary",
+          innerHTML: `(${duration})`
+        })
+      ]
+    )
   ];
   if (verbosity >= Verbosity.Error)
     children.push(h("div", draw_steps_or_parallels(pipeline.steps, verbosity)));
@@ -124,11 +177,26 @@ const draw_parallel = (parallel: Parallel, verbosity: Verbosity) => {
 };
 
 const draw_step = (step: Step, verbosity: Verbosity) => {
+  const duration = format_duration(parse_duration(step.duration));
   const children = [
-    h("div", {
-      class: `tag ${step.status}`,
-      innerHTML: `step: ${step.name}`
-    })
+    h(
+      "div",
+      {
+        class: `flex`
+      },
+      [
+        h("span", {
+          class: `tag unwrapped  ${step.status}`,
+          innerHTML: `step: ${step.name}`
+        }),
+        !!step.duration
+          ? h("span", {
+              class: "tag unwrapped secondary",
+              innerHTML: `(${duration})`
+            })
+          : undefined
+      ]
+    )
   ];
   if (verbosity >= Verbosity.Info)
     children.push(h("div", draw_commands(step.commands, verbosity)));
@@ -151,12 +219,22 @@ const draw_commands = (commands: Command[], verbosity: Verbosity) => {
 };
 
 const draw_command = (command: Command, verbosity: Verbosity) => {
+  const duration = format_duration(parse_duration(command.duration));
   const children = [
-    h("div", {
-      class: `tag ${command.process.state.status}`,
-      innerHTML: command.process.state.stdin
-    })
+    h("span", { class: `tag` }, [
+      h("span", {
+        class: `tag ${command.process.state.status}`,
+        innerHTML: command.process.state.stdin
+      }),
+      !!command.duration
+        ? h("span", {
+            class: "tag unwrapped secondary",
+            innerHTML: `(${duration})`
+          })
+        : undefined
+    ])
   ];
+
   if (verbosity >= Verbosity.Debug)
     children.push(h("div", draw_out(command, verbosity)));
   return h("li", children);

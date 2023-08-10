@@ -31,6 +31,7 @@
     "@vueuse/core": "^10.3.0",
     "date-fns": "^2.30.0",
     "markdown-it": "^13.0.1",
+    "moment": "^2.29.4",
     "pipelight": "0.6.69-2",
     "vue": "^3.3.4"
   }

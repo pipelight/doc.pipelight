@@ -14,8 +14,8 @@
   },
   "status": "succeeded",
   "duration": {
-    "secs": 6,
-    "nanos": 198275764
+    "started_at": "2023-07-21 15:20:58.285059847 +0200",
+    "computed": "PT6.21882012S"
   },
   "triggers": [
     {
@@ -60,14 +60,14 @@
       "name": "build_files",
       "status": "succeeded",
       "duration": {
-        "secs": 4,
-        "nanos": 743066580
+        "started_at": "2023-07-21 15:20:58.285059847 +0200",
+        "computed": "PT4.71882012S"
       },
       "commands": [
         {
           "duration": {
-            "secs": 0,
-            "nanos": 982869709
+            "started_at": "2023-07-21 15:20:58.285059847 +0200",
+            "computed": "PT0.98882012S"
           },
           "process": {
             "uuid": "a2390e31-c162-43c2-be49-3eeeb5c04d9f",
@@ -87,8 +87,8 @@
         },
         {
           "duration": {
-            "secs": 3,
-            "nanos": 759976996
+            "started_at": "2023-07-21 15:20:58.285059847 +0200",
+            "computed": "PT3.88882012S"
           },
           "process": {
             "uuid": "798ab04c-9b65-4e13-b18b-6bfd12dc2974",
@@ -118,22 +118,22 @@
     {
       "status": "succeeded",
       "duration": {
-        "secs": 1,
-        "nanos": 454393825
+        "started_at": "2023-07-21 15:20:58.285059847 +0200",
+        "computed": "PT1.48882012S"
       },
       "steps": [
         {
           "name": "build image itsdizygote.com/front:production",
           "status": "succeeded",
           "duration": {
-            "secs": 1,
-            "nanos": 453126173
+            "started_at": "2023-07-21 15:20:58.285059847 +0200",
+            "computed": "PT1.48882012S"
           },
           "commands": [
             {
               "duration": {
-                "secs": 1,
-                "nanos": 452999541
+                "started_at": "2023-07-21 15:20:58.285059847 +0200",
+                "computed": "PT1.48882012S"
               },
               "process": {
                 "uuid": "a2eabec8-7c3d-487e-8288-3ec64ba2c97e",

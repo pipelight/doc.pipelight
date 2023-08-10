@@ -7,7 +7,7 @@ hero:
     src: /images/pipelight.png
     alt: pipelight_logo
   text: Automation pipelines but easier.
-  tagline: A tiny tool to run pipelines written with languages you already know.
+  tagline: Elevate your bash scripts to generic, debuggable and auto-triggered pipelines.
   actions:
     - theme: brand
       text: Get Started
