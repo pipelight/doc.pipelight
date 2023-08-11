@@ -179,35 +179,22 @@ const draw_parallel = (parallel: Parallel, verbosity: Verbosity) => {
 const draw_step = (step: Step, verbosity: Verbosity) => {
   const duration = format_duration(parse_duration(step.duration));
   const children = [
-    h(
-      "div",
-      {
-        class: `flex`
-      },
-      [
-        h("span", {
-          class: `tag unwrapped  ${step.status}`,
-          innerHTML: `step: ${step.name}`
-        }),
-        !!step.duration
-          ? h("span", {
-              class: "tag unwrapped secondary",
-              innerHTML: `(${duration})`
-            })
-          : undefined
-      ]
-    )
+    h("span", { class: `tag` }, [
+      h("span", {
+        class: `tag ${step.status}`,
+        innerHTML: `step: ${step.name}`
+      }),
+      !!step.duration
+        ? h("span", {
+            class: "tag unwrapped secondary",
+            innerHTML: `(${duration})`
+          })
+        : undefined
+    ])
   ];
   if (verbosity >= Verbosity.Info)
     children.push(h("div", draw_commands(step.commands, verbosity)));
-  const node = h(
-    "li",
-    {
-      id: "pipeline_command"
-    },
-    children
-  );
-  return node;
+  return h("li", children);
 };
 
 const draw_commands = (commands: Command[], verbosity: Verbosity) => {
