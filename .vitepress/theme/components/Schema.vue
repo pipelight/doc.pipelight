@@ -1,38 +1,41 @@
 <template lang="pug">
-.container.max-w-min.mx-auto.py-10
-  .flex.flex-row.gap-20.items-center
-    .flex.relative
-     p.absolute.title.w-26.-top-16 read config file and parse pipelines
+.downsize.pt-20.mx-auto
+  .grid.grid-cols-3.justify-items-center.gap-4
+    .relative
+     p.title.absolute.-top-16 read config file and parse pipelines
      .card.exec.relative
         img.icon(src="/images/pipelight.png")
      .card.config.ontop 
         .line(v-for="i in 3" :key="i")
         .line.short
-    .flex.flex-row.items-center
-      div
-        div.py-2
-          p.title spawn subprocess
-          p.arrow 🠒
-        div.py-2
-          p.title read from subprocess
-          p.arrow 🠐 
-    .flex.flex-col.relative.gap-2
+    .grid.grid-rows-2.gap-2
+      .relative
+        p.title.absolute.-inset-6 spawn subprocess
+        ArrowRight.arrow
+      .relative
+        p.title.absolute.-inset-6 read from subprocess
+        ArrowLeft.arrow
+    .grid.grid-rows-3.gap-2.relative
      .card.process(v-for="i in 3" :key="i")
         .line
         .line.short
-  .flex.flex-row.pt-8
-    .flex.flex-col
-      .flex.h-24.py-2.items-center
-        p.arrow 🠓
-        p.title write logs
-  .flex.flex-row.pt-6
-    .flex.flex-col
-     .card.logs
-       .line(v-for="i in 4" :key="i")
-       .line.short
+  .grid.grid-cols-3.justify-items-center
+    .relative.py-2
+      ArrowDown.arrow
+      p.title write logs
+  .grid.grid-cols-3.justify-items-center
+   .card.logs
+     .line(v-for="i in 4" :key="i")
+     .line.short
 
 </template>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import {
+  ArrowLongRightIcon as ArrowRight,
+  ArrowLongLeftIcon as ArrowLeft,
+  ArrowLongDownIcon as ArrowDown
+} from "@heroicons/vue/24/solid";
+</script>
 <style lang="postcss" scoped>
 .card {
   @apply rounded-lg h-24 w-20;
@@ -72,18 +75,17 @@
     }
   }
 }
+.arrow {
+  @apply w-12 sm:w-16;
+}
 p {
   @apply m-0;
-  &.arrow {
-    font-size: 100px;
-    line-height: 2px;
-    @apply block;
-  }
   &.title {
     @apply text-center;
-    font-size: 12px;
-    line-height: 12px;
-    @apply py-4;
+    @apply text-xs;
   }
+}
+.downsize {
+  @apply md:w-2/3;
 }
 </style>
