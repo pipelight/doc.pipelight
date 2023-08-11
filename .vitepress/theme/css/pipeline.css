@@ -3,7 +3,7 @@
     @apply whitespace-pre-line;
     @apply relative;
     @apply relative z-10;
-    @apply mx-0 pr-2;
+    @apply mx-0;
     &.wrapped {
       @apply break-all;
     }
@@ -22,6 +22,9 @@
     }
     &.failed {
       @apply text-red-300;
+    }
+    &.duration {
+      @apply pl-2;
     }
   }
   ul {
