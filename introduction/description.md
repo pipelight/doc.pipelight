@@ -122,5 +122,3 @@ See the core of Pipelight as Ferris (rust mascot) making the heavy lift.
 <div class="flex justify-center">
     <img src="/images/ferris_playing_pipelight.png" alt="ferris_playing_with_cubes" class="sm">
 </div>
-
-### Show me the code!

@@ -78,7 +78,7 @@ const draw_status = (pipeline: Pipeline) => {
       class: `capitalize tag unwrapped ${pipeline.status}`,
       innerHTML: `● ${pipeline.status}`
     }),
-    h("span", { class: "tag secondary", innerHTML: `-` }),
+    h("span", { class: "tag secondary px-1", innerHTML: `-` }),
     h("span", { class: "tag secondary unwrapped", innerHTML: date })
   ]);
   return node;

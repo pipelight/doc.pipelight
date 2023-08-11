@@ -48,7 +48,7 @@ deno cache --reload pipelight.ts
 
 It's the same syntax as Typescript bu t you don't benefit from Types linting.
 
-No error will be shown on the linter level if you for example write `title: "test"` instead of `name; "test"`
+No error will be shown on the linter level if you write ,for example `title: "test"` instead of `name; "test"`
 to set the pipeline name.
 You will get an error on a deeper level telling that you messed up somwhere in your javascript.
 
