@@ -14,7 +14,7 @@ hero:
       link: /introduction/install
     - theme: alt
       text: Why pipelight?
-      link: /introduction/why
+      link: /introduction/description
 ---
 
 <script setup lang="ts">
@@ -167,6 +167,11 @@ Gather every process outputs.
 Trigger pipelines automatically!
 </span>
 </h4>
+
+<p>
+A single file for Client side AND Server side.
+</p>
+
 </Example>
 </Sheet>
 

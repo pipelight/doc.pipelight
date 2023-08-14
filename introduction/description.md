@@ -2,38 +2,152 @@
 import Example from '@components/Example.vue';
 import Sheet from '@components/Sheet.vue';
 import Schema from '@components/Schema.vue';
+import Features from "@components/Features.vue";
 </script>
 
-# What is pipelight ?
+# Introduction
 
-## In a few words
+## What is pipelight ?
 
 **It's a tiny command line tool that executes a list of tasks you provided in a configuration file.**
 
-Tasks are grouped by steps which together result in a pipeline, as represented in the following pseudo-code.
+Written in Rust (90%) and Typescript (10%)
 
-```pseudo-rs
-// This is a pipeline in Pseudo code
+Perfect for:
+
+- Small repetitive task automation,
+- CICD (Continuous Integration & Continuous Deployment),
+- Machine provisionning
+- Infrastructure creation.
+
+## The core concept
+
+The truth about the core of the tool is that it is absurdly simple.
+**Pipelight only defines an execution worklow**, which is the order in which the commands will be executed
+and what to do on the few possible exit status.
+
+Basically, it **encapsulates your shell commands into another language.** (Typescript, Javascript, Toml and Yaml)
+Commands are put inside a Pipeline and grouped by Steps.
+
+```rs
+// A pipeline in pseudo code
 Pipeline {
     Step {
-        Command {"echo test" },
-        Command { "cat .gitignore" }
-    }
-    Step {
-        Command {"other bash command" }
+        Command
     }
 }
 ```
 
+This encapsulation brings you:
+
+- verbose logging,
+- automatic triggers,
+- easy programming language abilities
+
+So when you run a pipeline,
+
+1. First, Pipelight read the config file.
+   Typescript is executed and return a JSON pipeline definition.
+
+2. Then only, it processes the pipeline definition.
+   Pipelight spawns the commands into subprocesses while writting the outputs into log files.
+
+<Schema/>
+
 The pipeline is by default executed in the background and
 you can check its state by printing the logs in your terminal.
 
-### It's a rust based cli
+## Delegate to the old fashioned tools
 
-It is made in Rust.
-Mainly build on top of Deno and Rust most known crates (std, serde, rustix, watchexec, miette...)
+Pipelight is fast because it only implements basic functionnalities by beeing tightly coupled to Linux kernel,
+and remains lightweight by delegating crucial functionnalities
+to the appropriate specialized tools such as Git, Watchexec and Deno (Javascript engine),
+
+<div class="flex justify-center">
+    <img src="/images/ferris_playing_pipelight.png" alt="ferris_playing_with_cubes" class="sm">
+</div>
+
+See the core of Pipelight as Ferris (rust mascot) making the heavy lift.
+
+- On the first hand, it uses Javascript/Typescript to **manipulate bash strings**.
+- And on the other it uses Git as an **event detector**.
+
+For every others subsidiary tasks, pipelight heavily relays on popular rust crates (std, serde, rustix, watchexec, miette...)
+
+## Who is it for ?
+
+For every nerd that seeks fast and simple automation.
+
+But simple doesn't mean simplistic.
+Complexe pipelines and behavior can still be achived in easy ways
+with Pipelight.
+
+### Lazy programmers
+
+Config is written in Javascript/Typescript to allow variables, loops and functions usage.
+to end the struggle with CICD pipelines written in configuration optimised languages (YAML/TOML).
+If you come from devOps, see it as Code as Config as Code.
+
+### Frugal Power User
+
+I've been working with quite small servers, that struggle to build docker images, forget about kubernetes, graphana and so on.
+But I have powerful local computers.
+Pipelight allows me to git-push from a machine, build on another, and send the result on my tiny server,
+so I can decrease by two third the money I used to spend in Cloud ressources.
+
+### Heavy workers
+
+When I need to deploy a machine, install and configure everything to deploy my apps in different envs..
+I use it with docker, ansible, vagrant and others.
+It becomes pretty simple to share variables/env between tools.
+
+## Why using Pipelight ?
+
+### Random task automation and parallelism
+
+Can be used to automate everyday tasks.
+
+### Software development
+
+#### Continuous deployment (CD)
+
+With a **single file** in your root directory, you can define pipelines that will run either
+**client-side, server-side or both.**
+
+#### Client side
+
+On your computer, you can enable client side automation by using specific triggers (on pre-push, pre-commit...).
+
+- **Enforce code quality**,
+
+  You can write pipelines to test your code before pushing it to production branches.
+
+- **Save cloud costs**,
+
+  Make the **heavy computation locally**,
+  Build and only send the resulting archive or image to your remote servers.
+
+#### Server side
+
+Server side automation is achieved by using specific triggers too (on update, pre-receive...).
+
+- **Ease team work**,
+
+  Trigger pipelines directly on the remote once git has resolved.
+  Same as using a conventional cicd in cloud provider.
+
+- **Better debugging**,
+
+  Pipelight logs are verbose and easy to access.
+  You won't ever miss a single byte of a pipeline execution (real commands, stdin, stdout and return statements).
+
+### Server provisionning
+
+Can be used to wrap ansible or to replace it.
 
 ## Best features
+
+<Features/>
 
 ### Code in your config file
 
@@ -65,60 +179,3 @@ triggers: [
   },
 ],
 ```
-
-## How it works ?
-
-### TL;DR
-
-Basically, it **encapsulates your shell commands into another language.**
-
-This encapsulation provides you logging features and automatic triggers.
-Moreover it adds easy programming language abilities by bringing Javascript/Typescript (Toml and Yaml) syntax to your script.
-
-### The core concept
-
-The truth about the core of the tool is that it is absurdly simple.
-**Pipelight only defines an execution worklow**, which is the order in which the commands will be executed
-and what to do on the few possible exit status.
-
-Your config file whatever language it is written in, only have to return an **Object** of type Pipeline.
-And this Object will be handled by the Pipelight executable.
-The Pipeline object in pseudo code.
-
-```pseudo-rs
-// A pipeline in pseudo code
-Pipeline {
-    Step {
-        Command
-    }
-}
-```
-
-So when you run a pipeline,
-
-- First, Pipelight read the config file.
-  Typescript is executed and return a JSON pipeline definition.
-
-- Then, only it processes the pipeline definition.
-  Pipelight spawns the commands into subprocesses while writting the outputs into log files.
-
-<Schema/>
-
-### Delegate to the old fashioned tools
-
-Things like event listening, code linting, process spawning, logging and so on isn't really handled by pipelight.
-It heavily rely on old well known preexisting tools.
-If Pipelight is only a framework to glue commands together, it's code isn't much different.
-It is good old fashioned commands glued together by a few lines of code.
-It brings nothing new exept the way it uses those tools together.
-
-To summarize:
-
-See the core of Pipelight as Ferris (rust mascot) making the heavy lift.
-
-- On the first hand, it uses Javascript/Typescript to **manipulate bash strings**.
-- And on the other it uses Git as an **event detector**.
-
-<div class="flex justify-center">
-    <img src="/images/ferris_playing_pipelight.png" alt="ferris_playing_with_cubes" class="sm">
-</div>

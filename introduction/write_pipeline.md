@@ -14,7 +14,7 @@ Add automatic triggers and have fun.
 
 ```ts
 //pipelight.ts
-import { Config } from "https://deno.land/x/pipelight/mod.ts";
+import type { Config } from "https://deno.land/x/pipelight/mod.ts";
 
 const config: Config = {
   pipelines: [

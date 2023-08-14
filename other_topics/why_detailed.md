@@ -3,10 +3,11 @@
 ## The software nindo(philosophy)
 
 Pipelight follows some crucial guidelines:
-Beeing:
 
-- fast
-- open-source
+- keep execution fast
+- distribute lightweight binaries
+- transparent in its logs and error messages
+- beeing open-source
 - and sovereign
 
 ## The Automation for everyone
@@ -113,91 +114,15 @@ Tailwind, Vite and many other web frameworks have already taken down this path.
 Pipelight is about **executing strings** so, it needed a popular, language for **string manipulation**,
 with an appaeling syntax and an as simple as possible learning curve.
 
-## Made for efficency
+## Why only a cli ?
 
-Pipelight is written in [Rust](https://www.rust-lang.org/).
-It is quite light when installed and uncompressed.
-Binaries actually weights under 6Mb (decreased by 50% between v0.5.8 and v0.6.2).
+Pipelight is made for efficency.
+As of today it's a single executable that weighs under 6Mb.
 
 In consequence, it is blazing fast.
 
 It has the minimum required functions for a cicd tool
-and delegate features to the already widely spread specialized softwares.
+and delegate features to the already widely spread specialized softwares:
 
 - Git for software versioning and event detection
 - Linux for security and access rights
-
-## Why is it only a cli ?
-
-Actual CICD tools still are cumbersome in time and ressources.
-
-There is a whole ecosystem to install and troubleshoot before one can reach automation with most known tools.
-They try to be compatible with every OS, preaching when efficency and simplicity is needed.
-
-Pipelight sticks to the basics.
-
-It is written in Rust, so it's fast!
-It doesn't reinvent the wheel by making cumbersom dockerized event listeners, secrets or plugins.
-It implements basic functionnality by beeing tightly coupled to Linux and Git.
-
-## Who is it for ?
-
-### Lazy programmers
-
-Config is written in Javascript/Typescript to allow variables, loops and functions usage.
-to end the struggle with CICD pipelines written in configuration optimised languages (YAML/TOML).
-If you come from devOps, see it as Code as Config as Code.
-
-### Frugal Power User
-
-I've been working with quite small servers, that struggle to build docker images, forget about kubernetes, graphana and so on.
-But I have powerful local computers.
-Pipelight allows me to git-push from a machine, build on another, and send the result on my tiny server,
-so I can decrease by two third the money I used to spend in Cloud ressources.
-
-### Heavy workers
-
-When I need to deploy a machine, install and configure everything to deploy my apps in different envs..
-I use it with docker, ansible, vagrant and others.
-It becomes pretty simple to share variables/env between tools.
-
-## The Story
-
-### Chapter 1 - The harder the fall
-
-#### My Requirements
-
-I needed something I can install quickly as typing `pacman -S tool` and play with it with `tool run`
-with no further environment configuration.
-
-I like to see what happens on my computer with full transparency, so I needed a tool that runs a good reporting system.
-If a VM or a container is twisted I need to know it. If a network is brought up I want to know.
-
-And something fast that runs as close to the kernel as possible.
-
-#### The state of automation in 2023
-
-I have been using and tweaking the existing CI/CD and automation tools but faced difficulties.
-
-- Did I really have to trade my privacy for simplicity?
-- The software transparency for simplicity?
-
-During my journey, I faced Bad GUI, Bad log files, network rules colision,
-exhausting GUI configuration, Heavy packages installation, slow execution, unflexible syntax.
-
-But I can't blame the author of those software.
-Automation was like the far west of those last years.
-Some where corporate software and this world isn't always rational.
-
-#### My Motivations
-
-By the end of the month, the young adult that had been suck into software by the beauty of FOSS wasn't anymore.
-
-- Had they lost their will to ship good software?
-
-There was no one to look up to at this time.
-
-After the pain, the sadness, came the rage that pushed me forging my own tools in the dark.
-I was as desperate for better tools as disdainful towards what had been built before.
-
-This fever pushed me to the work.

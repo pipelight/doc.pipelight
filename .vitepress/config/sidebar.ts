@@ -11,10 +11,6 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           link: "/introduction/description"
         },
         {
-          text: "For what usage?",
-          link: "/introduction/why"
-        },
-        {
           text: "Getting Started",
           items: [
             {
@@ -26,7 +22,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
               link: "/introduction/write_pipeline"
             },
             {
-              text: "Troubleshoot a pipeline",
+              text: "Troubleshoot the pipeline",
               link: "/introduction/troubleshoot"
             }
           ]
@@ -46,7 +42,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
         },
         {
           text: "Pipeline definition",
-          link: "/guide/config"
+          link: "/guide/pipeline_definition"
         },
         {
           text: "Parallelism",
