@@ -22,11 +22,13 @@ Perfect for:
 
 ## The core concept
 
+Pipelight ultimate goal is to automate your most boring tasks by enhancing **your** favorite tools.
+
 The truth about the core of the tool is that it is absurdly simple.
 **Pipelight only defines an execution worklow**, which is the order in which the commands will be executed
 and what to do on the few possible exit status.
 
-Basically, it **encapsulates your shell commands into another language.** (Typescript, Javascript, Toml and Yaml)
+Basically, it **encapsulates your shell commands into another language** (Typescript, Javascript, Toml and Yaml).
 Commands are put inside a Pipeline and grouped by Steps.
 
 ```rs
@@ -40,11 +42,11 @@ Pipeline {
 
 This encapsulation brings you:
 
-- verbose logging,
+- easy programming language abilities,
 - automatic triggers,
-- easy programming language abilities
+- verbose logging
 
-So when you run a pipeline,
+So when you run a pipeline:
 
 1. First, Pipelight read the config file.
    Typescript is executed and return a JSON pipeline definition.
@@ -76,40 +78,39 @@ For every others subsidiary tasks, pipelight heavily relays on popular rust crat
 
 ## Who is it for ?
 
-For every nerd that seeks fast and simple automation.
+**For every nerd that seeks fast and simple automation that can keep up to their needs and adapt quick**
 
-But simple doesn't mean simplistic.
-Complexe pipelines and behavior can still be achived in easy ways
-with Pipelight.
+But, here, simple doesn't mean simplistic.
+It means that complex and avant-gardist pipeline behaviors can be achived with a minimal overhead.
 
-### Lazy programmers
+### Pragmatic Programmers
 
-Config is written in Javascript/Typescript to allow variables, loops and functions usage.
-to end the struggle with CICD pipelines written in configuration optimised languages (YAML/TOML).
-If you come from devOps, see it as Code as Config as Code.
+It end the struggle with configuration optimised languages (YAML/TOML).
+
+Instead of combining multiple keywords and flags, the pipeline logic can be written in Javascript/Typescript.
+You van then define pipelines with concepts you are already comfortable with like variables, loops and functions.
 
 ### Frugal Power User
 
-I've been working with quite small servers, that struggle to build docker images, forget about kubernetes, graphana and so on.
-But I have powerful local computers.
-Pipelight allows me to git-push from a machine, build on another, and send the result on my tiny server,
-so I can decrease by two third the money I used to spend in Cloud ressources.
+Decrease by two third the money spent in the Cloud by using local computing ressources.
 
-### Heavy workers
+You can push code from a machine, build on another,
+and send the resulting archive on hosting servers.
+It allows you to use the latent computing power where it resides
+and drastically diminish cloud computing costs.
 
-When I need to deploy a machine, install and configure everything to deploy my apps in different envs..
-I use it with docker, ansible, vagrant and others.
-It becomes pretty simple to share variables/env between tools.
+### Manianimous Builders
 
-## Why using Pipelight ?
+Glue your synergetic tools together within a pipeline (Libvirt, Docker, Ansible, pure Bash...).
+It then becomes pretty simple to share variables and environments between them.
 
-### Random task automation and parallelism
+The result is you can dig out of the ground complete infrastructures,
+deploy multiple virtual machines, containers, and provision them with different environments
+with a uniq and on the fly configurable pipeline.
 
-Can be used to automate everyday tasks.
+## For which tasks using Pipelight ?
 
 ### Software development
-
-#### Continuous deployment (CD)
 
 With a **single file** in your root directory, you can define pipelines that will run either
 **client-side, server-side or both.**
@@ -129,7 +130,7 @@ On your computer, you can enable client side automation by using specific trigge
 
 #### Server side
 
-Server side automation is achieved by using specific triggers too (on update, pre-receive...).
+Server side automation can be achieved by using server-side triggers (on update, pre-receive...).
 
 - **Ease team work**,
 
@@ -141,13 +142,13 @@ Server side automation is achieved by using specific triggers too (on update, pr
   Pipelight logs are verbose and easy to access.
   You won't ever miss a single byte of a pipeline execution (real commands, stdin, stdout and return statements).
 
-### Server provisionning
+### Others
 
-Can be used to wrap ansible or to replace it.
+- Everyday tasks automation,
+- Server provisionning,
+- Run heavy workloads, parallelize tasks on your servers
 
 ## Best features
-
-<Features/>
 
 ### Code in your config file
 
@@ -157,13 +158,17 @@ While other tools are about Configuration as Code,
 Pipelight gets one step further and allows you to **code in your configuration file** to create reusable configuration blocks (with Typescript).
 You may call it as Code as Configuration as Code 🥴.
 
-### Terminal friendly (CLI)
+### Terminal friendly (CLI) & Pretty logs
 
 Run a pipeline and check logs without living your terminal.
 Pipelight stays in the terminal, and is finally nothing more than a Command Line Tool/Interface.
 
 ```sh
 pipelight run
+```
+
+```sh
+pipelight logs
 ```
 
 ### Quick Automation
