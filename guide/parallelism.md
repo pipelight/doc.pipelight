@@ -65,17 +65,17 @@ You just need to `--attach` them to the main pipeline.
 The main pipeline will wait until both pipelines execution is completed
 and then continue its execution.
 
-```ts{3-10}
+```ts
 steps: [
   {
     parallel: [
       {
-        name: "first",
-        commands: ["pipelight run pipeline1 --attach"]
+        name: "first", // [!code focus]
+        commands: ["pipelight run pipeline1 --attach"] // [!code focus]
       },
       {
-        name: "second",
-        commands: ["pipelight run pipeline2 --attach"]
+        name: "second", // [!code focus]
+        commands: ["pipelight run pipeline2 --attach"] // [!code focus]
       }
     ]
   }
