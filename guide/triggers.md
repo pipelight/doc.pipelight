@@ -3,24 +3,25 @@
 Here is the part you were waiting for!
 What is the point of writting pipelines if you still have to execute them by hand?
 
-::: warning BETTER IN A GIT REPO
+## Enable
 
-Only works in a Git repository.
-Be sure to initialize a repo if you want to take advantage of triggers.
+Most of triggers only work inside a Git repository.
+Be sure to initialize a repo if you want to take advantage of them all.
 
 ```sh
 git init
 ```
 
-:::
-
-::: info ENABLE TRIGGERS
-
-To enable triggers on a fresh directory, run at least one random pipelight command:
+To enable git triggers on a fresh directory, run at least one random pipelight command.
 
 ```sh
 pipelight ls
 ```
+
+::: warning
+
+For now, this operation overwrite the .git/hooks folder.
+Be sure to move your manually defined hooks elsewhere before enabling pipelight hooks
 
 :::
 
