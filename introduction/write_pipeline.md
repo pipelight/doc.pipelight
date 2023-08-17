@@ -46,9 +46,9 @@ deno cache --reload pipelight.ts
 
 ### Javascript
 
-It's the same syntax as Typescript bu t you don't benefit from Types linting.
+It's the same syntax as Typescript but you don't benefit from Types linting.
 
-No error will be shown on the linter level if you write ,for example `title: "test"` instead of `name; "test"`
+No error will be shown on the linter level if you write ,for example `title: "test"` instead of `name: "test"`
 to set the pipeline name.
 You will get an error on a deeper level telling that you messed up somwhere in your javascript.
 
@@ -82,7 +82,7 @@ export default config;
 Configuration languages have proven to be great to define
 small and unflexible pipelines.
 
-They can replace the simplest bash scripts.
+Those pipelines can replace the simplest bash scripts.
 
 ### Toml
 

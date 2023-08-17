@@ -14,7 +14,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           text: "Getting Started",
           items: [
             {
-              text: "Install the cli",
+              text: "Install the CLI",
               link: "/introduction/install"
             },
             {
@@ -33,12 +33,12 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
       text: "Guide",
       items: [
         {
-          text: "Configuration file",
-          link: "/guide/config"
-        },
-        {
           text: "Command line usage",
           link: "/guide/cli"
+        },
+        {
+          text: "Configuration file",
+          link: "/guide/config"
         },
         {
           text: "Pipeline definition",

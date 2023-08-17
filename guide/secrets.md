@@ -1,9 +1,23 @@
 # Secrets
 
 There is no secret or vault plugin in Pipelight.
-You can use what you want.
+You can use whatever you want to store crucial informations.
 
-## Environment and Security
+However here are some guidelines.
+
+## Security
+
+### User rights (default)
+
+The first level of security is provided by Linux access rights and user priviledges.
+To ensure a first guard, you may want to run pipelines as a specific user with dedicated rights on needed files.
+
+### Vaults
+
+Concerning your secrets,
+You can store them as usual with your favorites dedicated softwares or in simple env files.
+
+## Running process environment
 
 Commands can directly use the user environment.
 Bash commands are run in a separate spawned process running in the background.
@@ -32,6 +46,3 @@ const steps = [
 
 Consequences are, if you care about security, you don't need to
 learn another tool specific storage for keys and credential (secret vault).
-
-You just have to store them as usual with dedicated softwares and the only thing you have to do is to delegate access right concerns to **Linux**.
-Finally, the ultimate way to secure your secrets is to use pipelight as a simple user with dedicated rights on needed files.

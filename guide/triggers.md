@@ -74,16 +74,16 @@ Tags are the tag you added the commits you want to release with `git tag -a "v0.
 You can set multiple branch and tag combinations with **globbing** patterns.
 
 ```ts
-    triggers: [
-      {
-        branches: ["feature/*"],
-        actions: ["pre-push"]
-      }
-      {
-        tags: ["v*-dev"],
-        actions: ["pre-commit"]
-      }
-    ]
+triggers: [
+  {
+    branches: ["feature/*"],
+    actions: ["pre-push"]
+  },
+  {
+    tags: ["v*-dev"],
+    actions: ["pre-commit"]
+  }
+];
 ```
 
 ## Actions (Git-hooks)

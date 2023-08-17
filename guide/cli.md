@@ -3,67 +3,72 @@
 The cli is made on top of [clap](https://docs.rs/clap/latest/clap/).
 So it is well self documented.
 
-## Most useful commands
+## Most used commands
 
-**Lint** and List pipelines from your Config file with
+List pipelines from your config file.
+(debug: You can use this command to lint your config file)
 
 ```sh
 pipelight ls
+# or
+pipelight ls -vvv
 ```
 
-Inspect your pipeline
+Inspect your pipeline definitions.
+
+```sh
+pipelight inspect <pipeline_name>
+# same as
+pipelight ls -vvv <pipeline_name>
+```
+
+Without an argument `inspect` shows an intercative prompt
+with your pipeline names
 
 ```sh
 pipelight inspect
-# or
-pipelight inspect <pipeline_name>
-# same as
-pipelight ls <pipeline_name>
 ```
-
-Iteractive prompt
 
 ```sh
 > deploy_to_host
-  tests_mini
-  tests_heavy
-
+  tests
+  build
 ```
 
-Run it in background (default)
+Run a pipeline in the background (default)
 
 ```sh
 pipelight run <pipeline_name>
 ```
 
-Or without any argument, you'll be able to browse through your pipeline list.
+Without an argument `run` shows an intercative prompt
+with your pipeline names
 
 ```sh
 pipelight run
 ```
 
-Iteractive prompt
-
 ```sh
 > deploy_to_host
-  tests_mini
-  tests_heavy
-
+  tests
+  build
 ```
 
-Abort pipeline execution
+Check pipelines execution states, and produced outputs.
+
+```sh
+pipelight logs
+# or
+pipelight logs -vvv
+```
+
+Abort a pipeline execution
 
 ```sh
 pipelight stop <pipeline_name>
 ```
 
-Check logs
-
-```sh
-pipelight logs -vvv
-```
-
-## Other commands
+## Other useful commands
 
 Simulate a specified git-hook triggering, to trigger associated pipelines
 
@@ -71,10 +76,10 @@ Simulate a specified git-hook triggering, to trigger associated pipelines
 pipelight trigger <git_hook_name>
 ```
 
-Print colorful raw json logs
+Print colorful raw json logs and page.
 
 ```sh
-pipelight logs --json | jq
+pipelight logs --json | jq -C | less
 ```
 
 Filter logs on pipeline name
@@ -93,4 +98,10 @@ can be used on subcommands too.
 
 ```sh
 pipelight run --help
+```
+
+Update typescript helpers to the latest version.
+
+```sh
+deno cache --reload pipelight.ts
 ```

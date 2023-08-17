@@ -1,57 +1,61 @@
-# Parallelism
+# Parallel tasks execution
 
 Pipelight allows you to launch parallel tasks in one uniq way
 that can be declined to your needs.
 
-## Parallel steps execution
+## Parallel steps
 
 Parallel step execution by declaring a Parallel object
 which is an array of multiple Steps.
 
-Here first and second steps will run simultaneously.
+1. At start, first and second steps will run simultaneously.
 
-```ts{3-10}
+```ts
 steps: [
   {
     parallel: [
       {
-        name: "first",
-        commands: [...my_commands]
+        name: "first", // [!code focus]
+        commands: [...my_commands] // [!code focus]
       },
       {
-        name: "second",
-        commands: [...my_commands]
-      }
-    ]
-  }
-];
-```
-
-The third step will run once the whole parallel object has resolved.
-Which means, when the first and second steps have both resolved.
-
-```ts{14-17}
-steps: [
-  {
-    parallel: [
-      {
-        name: "first",
-        commands: [...my_commands]
-      },
-      {
-        name: "second",
-        commands: [...my_commands]
+        name: "second", // [!code focus]
+        commands: [...my_commands] // [!code focus]
       }
     ]
   },
   {
     name: "third",
     commands: [...my_commands]
-  },
+  }
 ];
 ```
 
-## Parallel pipelines execution
+2. Then, the third step will run once the whole parallel object has resolved.
+   Which means, when the first and second steps have both resolved.
+
+```ts
+steps: [
+  {
+    parallel: [
+      {
+        name: "first",
+        commands: [...my_commands]
+      },
+      {
+        name: "second",
+        commands: [...my_commands]
+      }
+    ]
+  },
+  {
+    name: "third", // [!code focus]
+    commands: [...my_commands] // [!code focus]
+  }
+];
+```
+
+## Parallel pipelines
 
 ### Attached subprocess
 
