@@ -1,10 +1,13 @@
 <template lang="pug">
-.layout
+.container
   slot
 </template>
 
 <style lang="postcss" scoped>
-.layout {
+.container {
+  &.sm {
+    @apply py-10;
+  }
   @apply flex flex-col;
   @apply md:flex-row;
   @apply justify-center items-center gap-4;

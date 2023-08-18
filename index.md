@@ -24,15 +24,7 @@ import Sheet from "@components/Sheet.vue";
 import DemoLogs from "@demos/DemoLogs.vue";
 import DemoLogsVVV from "@demos/DemoLogsVVV.vue";
 
-import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
-import { ref } from "vue";
-const breakpoints = useBreakpoints(breakpointsTailwind);
-const tailwind = ref({
-  xs: breakpoints.smaller("sm"),
-  sm: breakpoints.greaterOrEqual("sm"),
-  md: breakpoints.greaterOrEqual("md"),
-  lg: breakpoints.greaterOrEqual("lg")
-});
+import { tailwind } from "@utils/breakpoints.ts";
 </script>
 
 <div class="landing">
@@ -78,7 +70,7 @@ pwd;
 
 </Example>
 
-<p class="xl">{{ tailwind.lg ? '⇢' : '⇣' }}</p>
+<p class="xl">{{ tailwind.md ? '⇢' : '⇣' }}</p>
 
 <Example>
 <h3> 

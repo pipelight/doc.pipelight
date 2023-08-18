@@ -1,4 +1,4 @@
-# Fallbacks
+# Fallbacks (Conditionnal hooks)
 
 Fallbacks are steps to be executed on specific cases.
 

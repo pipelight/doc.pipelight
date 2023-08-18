@@ -6,6 +6,7 @@ export default defineConfig({
     alias: {
       "@": "/src",
       "@components": "/.vitepress/theme/components",
+      "@utils": "/.vitepress/theme/utils",
       "@demos": "/.vitepress/theme/components/demos",
       "@logs": "/.vitepress/theme/logs"
     }

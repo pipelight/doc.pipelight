@@ -8,7 +8,7 @@ Everything else that happens inside this script is up to you.
 With such a wide rule, the pipeline definition process gives way to creativity and imagination.
 
 Where this freedom can be really enjoyable, it might sometimes be frustrating.
-That is why you are provided with some empirical **guidelines**, **patterns** and **helpers** to speed up your pipeline creation.
+That is why you are provided with some empirical **guidelines**, **patterns** and [**helpers**](/helpers/overview) to speed up your pipeline creation.
 
 Thus you remain free in your creation process, but you are not helpless.
 
@@ -40,11 +40,14 @@ Explore the complete type definition on [DenoLand](https://deno.land/x/pipelight
 You can either use an Object declaration or a less verbose syntax with the provided helpers functions.
 Those easy on the eye syntaxes have been greatly inspired by [Vue](https://vuejs.org/) Option and Composition APIs.
 
-They are meant to be use together to improve readability where it is needed.
+They are meant to be use **together** to improve readability where it is needed.
 
-### Option API
+### Option API <Badge type="tip" text="stable" />
 
-Import the Config interface for fast type-checking.
+The Option API is unlikely to change in minor updates, so it is concidered as stable.
+Define your pieline in an object sythax.
+
+Simply import the `Config interface` for fast type-checking.
 
 ```ts
 //pipelight.ts
@@ -74,7 +77,13 @@ export default config;
 
 ### Composition API <Badge type="warning" text="beta" />
 
-Import the provided common helper functions.
+The Composition API is built on top of the Option API.
+It is a group of functions, class and methods that
+
+- shorten the pipeline definition
+- enable fine-grained modularity
+
+Simply import the provided common helper functions.
 
 ```ts
 //pipelight.ts
