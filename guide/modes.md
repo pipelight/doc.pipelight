@@ -8,9 +8,7 @@ There is actually 3 step execution modes:
 - JumpNextOnFailure
 - ContinueOnFailure
 
-## Stop on failure
-
-The default mode.
+## Stop on failure (default)
 
 ```ts
 const defaultStep: Step = {
@@ -45,5 +43,5 @@ const forcedStep: Step = {
 };
 ```
 
-If a command of the step fails. The next command will still be executed, and son on until the last command of the step.
-Then the next step will be executed.
+If a command of the step fails. The next command will still be executed, and so on until the last command of the step.
+Then the following step is executed.

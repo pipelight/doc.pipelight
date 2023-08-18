@@ -1,145 +1,125 @@
-# Logs and States
+<script setup lang="ts">
+import LogsMulti from "@demos/LogsMulti.vue";
+import Logs from "@demos/Logs.vue";
+import LogsV from "@demos/LogsV.vue";
+import LogsVV from "@demos/LogsVV.vue";
+import LogsVVV from "@demos/LogsVVV.vue";
+import LogsVVVV from "@demos/LogsVVVV.vue";
+</script>
 
-## States
+# The pipeline logs
 
-While reading logs, you will encounter some colors which define a state.
-Each pipeline element has a state which can be None, "started", "running", "failed", "aborted" or "succeedeed".
-The Pipeline has a global state , each of its steps has a state,
-and each steps commands has an individual state too.
+## Pipeline status
 
-### States in JSON logs
+**A pipeline can be either running, succeeded, failed or aborted.**
 
-Here is a partial json log with a step whose state can be seen as the **status** key:
+Other existing status are for internal purpopse and are only discussed in the source code.
 
-```json{3}
-{
-  "name": "update remote nginx configuration",
-  "status": "Succeeded",
-  "duration": { "secs": 3, "nanos": 55221486 }
-}
-```
+<LogsMulti/>
 
-### States in pretty logs
+**Running** status is when a pipeline execution isn't finished yet.
 
-A state is rendered as a color when you display pretty logs.
+**Succeeded** status is when a command of the pipeline normally succeeded with an exit status.
 
-Here, some commands in the step are still running.
-The Running state is rendered as green.
+**Failed** status is when a command of the pipeline normally failed with an exit status (as opposed to aborted).
 
-<p align="center">
-  <img class="terminal" src="/images/running_log_level_2.png" alt="pretty_verbose_logs_level_2_picture">
-</p>
+**Aborted** status means that something unexpected interupted the pipeline execution.
 
-Here, one of the commands of the step failed.
-With no surprise the failed state is rendered in red.
+It can be due to:
 
-<p align="center">
-  <img class="terminal" src="/images/failed_log_level_2.png" alt="pretty_verbose_logs_level_2_picture">
-</p>
+- a ressource outage.
+- a linux signal like SIGKILL or SIGTERM.
+- a Ctrl-C on a running attached pipeline.
+- litteraly everything that can abrubtly stop a process execution (coffee on keyboard, angry mother...)
 
-The Aborted state means that something stopped the pipeline execution.
-It is eather a linux signal like SIGKILL or SIGTERM or a Ctrl-C on an attached pipeline running.
-It's rendered in yellow.
+## Verbosity levels
 
-<p align="center">
-  <img class="terminal" src="/images/aborted_log_level_2.png" alt="pretty_verbose_logs_level_2_picture">
-</p>
+A pipeline has **5** verbosity levels.
 
-Finnaly if everything goes well, succeeded state is rendered in blue.
-Here every command of every step has succeeded.
+### Error level (default)
 
-<p align="center">
-  <img class="terminal" src="/images/log_level_2.png" alt="pretty_verbose_logs_level_2_picture">
-</p>
+The first level displays global informations.
 
-## Log Files
+- pipeline status
+- date it was triggered at
+- environment in which it was triggered, which includes:
+  - [action](triggers#actions-git-hooks) that triggered the pipeline execution
+  - branch, or tag name if the project has a git repository.
+- pipeline name
+- execution time
 
-### Display logs
+<Logs/>
 
-You can either display **raw json logs** for further exploitation,
+### Warn level (-v)
 
-```sh
-pipelight logs --json
-```
+The second level shows additional informations about the inside of the pipeline.
+it adds:
 
-```json
-{
-  "name": "update remote nginx configuration",
-  "status": "Succeeded",
-  "duration": { "secs": 3, "nanos": 55221486 },
-  "commands": [
-    {
-      "status": "Succeeded",
-      "duration": { "secs": 1, "nanos": 260966718 },
-      "stdin": "scp ./public/pipelight.nginx.conf linode:/etc/nginx/sites-enabled/pipelight.conf",
-      "output": {
-        "status": "Succeeded",
-        "stdout": null,
-        "stderr": null
-      }
-    }
-  ]
-}
-```
+- steps names
+- steps execution time
 
-or display **pretty logs** which is the command default behavior.
+<LogsV/>
 
-```sh
-pipelight logs
-```
+### Info level (-vv)
 
-You get every last "RUN" every time you check logs.
+Adds:
 
-<p align="center">
-  <img class="terminal" src="/images/log_level_1.png" alt="pretty_verbose_logs_level_1_picture">
-</p>
+- command list (process stdin)
+- command execution time
 
-You can then increase verbosity to get your desired level of details.
-Get steps state
+<LogsVV/>
 
-```sh
-pipelight logs -v
-```
+### Debug level (-vvv)
 
-<p align="center">
-  <img class="terminal" src="/images/log_level_2.png" alt="pretty_verbose_logs_level_2_picture">
-</p>
+Diplay the command output
 
-Get steps state and their commands state
+- stdout on success
+
+  or
+
+- stderr on failure
+
+<LogsVVV/>
+
+### Trace level (-vvvv)
+
+Displays every command output.
+
+- stdout
+- stderr
+
+Some processes default output on stderr, and doesn't display much on success.
+This log level is practical if you want to see what happenned or what happens:
+
+- when you run tests (cargo run tests)
+- when you linte files (deno lint)
+- on a docker command (docker build)
+
+<LogsVVVV/>
+
+## Raw logs
+
+Logs are stored in your project root directory `.pipelight/logs` in JSON format.
+You can checkout raw logs with
 
 ```sh
-pipelight logs -vv
+pipelight logs --json | jq
 ```
 
-<p align="center">
-  <img class="terminal" src="/images/log_level_3.png" alt="pretty verbose logs picture">
-</p>
+or directly by inspecting the generated files.
 
-Get steps state, their commands state, and commands output.
+## Other commands
 
-```sh
-pipelight logs -vvv
-```
-
-<p align="center">
-  <img class="terminal" src="/images/log_level_4.png" alt="pretty verbose logs picture">
-</p>
-
-You can inspect logs by pipeline
+You can inspect logs by pipeline name
 
 ```sh
 pipelight logs <pipeline_name>
 ```
 
-And delete old logs with
+As of today, no log rotation or log sanitizing has been implemented.
+The best way to remove corrupted logs or to clean the log directory
+is with the following command.
 
 ```sh
 pipelight logs rm
 ```
-
-### Generated files
-
-Pipeline execution generates log files.
-Located in .pipelight/logs/<pipeline_uuid>.json
-Those are not meant to be used as is.
-Prefer reading logs with the available commands.

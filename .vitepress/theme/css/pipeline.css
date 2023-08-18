@@ -23,6 +23,9 @@
     &.failed {
       @apply text-red-300;
     }
+    &.aborted {
+      @apply text-yellow-300;
+    }
     &.duration {
       @apply pl-2;
     }

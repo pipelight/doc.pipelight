@@ -1,16 +1,10 @@
 # Why another CICD tool ?
 
-## The software nindo(philosophy)
+Going through the software philosophy will for sur help you understand the technical choices involved.
 
-Pipelight follows some crucial guidelines:
+## The nindo (philosophy)
 
-- keep execution fast
-- distribute lightweight binaries
-- transparent in its logs and error messages
-- beeing open-source
-- and sovereign
-
-## The Automation for everyone
+### The Automation for everyone
 
 Pipelight ought to be the fastest and least painfull solution to set up if you seek to automate things.
 
@@ -27,7 +21,7 @@ If you do devOps stuffs, it will bring flexibility to your pipelines.
 Whatever your skills in programming are, automation should be accessible.
 It would result in project early automation implementation for you to focus only on the code that matters.
 
-## Bypass the classic harsh automation path
+### Bypass the classic harsh automation path
 
 ::: tip tl;dr
 
@@ -82,9 +76,34 @@ while doing the heavy lift of a CICD ecosystem(3)
 2. Python script
 3. CICD ecosystem
 
-## Why typescript over classic TOML/ YAML ?
+### Deeper convictions
 
-### Flexibility and reusability
+#### Telos (The ultimate purpose)
+
+We have seen some open source and free softwares becoming closed sources and payant after years of being community driven.
+But those tools weren't community owned.
+
+#### Logos (The software reasonning)
+
+Pipelight follows some crucial guidelines:
+
+- keep execution fast
+- distribute lightweight binaries
+- transparent in its logs and error messages
+- beeing open-source
+- and sovereign
+
+## Technical choices
+
+Here after we'll discuss some technical choices and development decisions.
+
+### Why typescript over classic TOML/ YAML ?
+
+::: tip tl;dr
+
+for flexibility and reusability
+
+:::
 
 Usual configuration optimised languages (TOML/ YAML) are not easy to tweak.
 
@@ -106,15 +125,21 @@ steps:
 To create another version of this pipeline with slightly different env variables.
 The pipeline will need to be entirely cloned, going against reusability and comfort.
 
-### Typescript to the rescue
+**Typescript to the rescue**
 
-The most flexible way to write a config file is finally to write it in a programming language.
+The most flexible way to write a configuration file is finally to write it in a programming language.
 Tailwind, Vite and many other web frameworks have already taken down this path.
 
-Pipelight is about **executing strings** so, it needed a popular, language for **string manipulation**,
+Pipelight is about **executing bash strings** so, it needed a popular, language for **string manipulation**,
 with an appaeling syntax and an as simple as possible learning curve.
 
 ## Why only a cli ?
+
+::: tip tl;dr
+
+lightweight
+
+:::
 
 Pipelight is made for efficency.
 As of today it's a single executable that weighs under 6Mb.

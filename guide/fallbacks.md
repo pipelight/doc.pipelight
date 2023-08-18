@@ -1,6 +1,6 @@
 # Fallbacks
 
-Fallbacks are array of steps to be executed on specific cases.
+Fallbacks are steps to be executed on specific cases.
 
 - `on_started`: when the pipeline/step starts and before any command is executed.
 - `on_failure`: when the pipeline/step is finished and have failed.
