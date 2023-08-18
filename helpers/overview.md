@@ -91,11 +91,15 @@ steps: [
 steps: [
   {
     name: "build_images",
-    commands: docker.images.create() // [!code focus]
+    commands: [
+      ...docker.images.create() // [!code focus]
+    ]
   },
   {
     name: "build_images",
-    commands: docker.containers.build() // [!code focus]
+    commands: [
+      ...docker.containers.build() // [!code focus]
+    ]
   }
 ];
 ```
@@ -133,18 +137,22 @@ Then, on the remote, it replaces the old existing containers with the new genera
 to finally run them.
 
 ```ts
+// Docker object with previously defined params
 const docker = new Docker(params);
 
-// Pipeline creation using Docker helpers
-const my_pipeline = pipeline("deploy_containers_to_remote", () => [
+pipeline("deploy_containers_to_remote", () => [
   // Create images locally and send them to remote
   step("build and send images", () => [
     ...docker.images.create(),
-    ...docker.images.send([host])
+    ...docker.images.send(host)
   ]),
+
   // Build containers on remote and run them
   step("update containers", () =>
-    ssh([host], [...docker.containers.remove(), ...docker.containers.create()])
+    ssh(host, () => [
+      ...docker.containers.remove(),
+      ...docker.containers.create()
+    ])
   )
 ]);
 ```

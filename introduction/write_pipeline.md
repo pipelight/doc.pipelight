@@ -1,16 +1,16 @@
 # Write your first pipeline
 
-Here we will write the **same pipeline in different formats**
-and discuss the advantages and drawbacks.
-
 ## Pipelines in programming languages
+
+Writting pipelines in programming languages allows you the usage of variable, loops and functions.
+A short file can then generate a base pipeline with its multiple declinations.
 
 ### Typescript
 
-Importing the Config type from the deno package will give you a pleasant typing support.
-
 Create pipelines with steps and commands.
 Add automatic triggers and have fun.
+
+Importing the types from the deno package will give you a pleasant linting support.
 
 ```ts
 //pipelight.ts
@@ -36,12 +36,6 @@ const config: Config = {
   ]
 };
 export default config;
-```
-
-Don't forget to update the deno library.
-
-```sh
-deno cache --reload pipelight.ts
 ```
 
 ### Javascript
@@ -79,10 +73,8 @@ export default config;
 
 ## Pipelines in configuration languages
 
-Configuration languages have proven to be great to define
-small and unflexible pipelines.
-
-Those pipelines can replace the simplest bash scripts.
+Configuration languages have proven to be great to define small pipelines in a blink.
+Those pipelines can replace the simplest bash scripts for atomic (small) and repetitive tasks.
 
 ### Toml
 
