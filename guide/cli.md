@@ -70,24 +70,6 @@ pipelight stop <pipeline_name>
 
 ## Other useful commands
 
-Simulate a specified git-hook triggering, to trigger associated pipelines
-
-```sh
-pipelight trigger <git_hook_name>
-```
-
-Print colorful raw json logs and page.
-
-```sh
-pipelight logs --json | jq -C | less
-```
-
-Filter logs on pipeline name
-
-```sh
-pipelight logs <pipeline_name>
-```
-
 Discover some options by using the help flag.
 
 ```sh
@@ -98,10 +80,4 @@ can be used on subcommands too.
 
 ```sh
 pipelight run --help
-```
-
-Update typescript helpers to the latest version.
-
-```sh
-deno cache --reload pipelight.ts
 ```

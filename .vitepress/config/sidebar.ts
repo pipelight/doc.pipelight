@@ -165,10 +165,6 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           link: "/other_topics/why_detailed"
         },
         {
-          text: "Pipelight Vs Others",
-          link: "/other_topics/comparision"
-        },
-        {
           text: "CHANGELOG",
           link: "https://gitea.com/pipelight/pipelight/src/branch/master/CHANGELOG.md"
         },

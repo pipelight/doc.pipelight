@@ -3,7 +3,7 @@
 Here is the part you were waiting for!
 What is the point of writting pipelines if you still have to execute them by hand?
 
-## Enable
+## Enable git hooks
 
 Most of triggers only work inside a Git repository.
 Be sure to initialize a repo if you want to take advantage of them all.
@@ -158,3 +158,20 @@ Which mean you'll have to checkout to the allowed branches, tags, and execute th
 
 If you want to manually run a pipeline that has some triggers with `pipelight run`
 you wiil have to add the **special flag** "manual" .
+
+### Forced flags
+
+Simulate a specific action to trigger associated pipelines.
+
+```sh
+pipelight trigger <action>
+```
+
+Or trigger a pipeline by simulating the appropriate action.
+
+```sh
+pipelight run --flag <action>
+```
+
+You can use it for debugging purpose
+or simply as a way to create unconventionnal pipelines.

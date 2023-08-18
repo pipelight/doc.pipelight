@@ -104,17 +104,32 @@ You can checkout raw logs with
 
 ```sh
 pipelight logs --json | jq
+pipelight logs --json | jq -C | less
 ```
 
 or directly by inspecting the generated files.
 
 ## Other commands
 
-You can inspect logs by pipeline name
+You can inspect logs by pipeline name.
 
 ```sh
 pipelight logs <pipeline_name>
 ```
+
+Keep a colorful output in pagers.
+
+```sh
+pipelight logs --color always | less
+```
+
+Print colorful raw json logs in pagers (debugging)
+
+```sh
+pipelight logs --json | jq -C | less
+```
+
+Prune logs
 
 As of today, no log rotation or log sanitizing has been implemented.
 The best way to remove corrupted logs or to clean the log directory

@@ -33,7 +33,6 @@ const config: Config = {};
 ```
 
 Typescript only supercharge Javascript syntax with optional type definition.
-
 Explore the complete type definition on [DenoLand](https://deno.land/x/pipelight/mod.ts)
 
 ## Syntax flavors
