@@ -76,7 +76,6 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
     },
     {
       text: "Helpers",
-      collapsed: true,
       items: [
         {
           text: "What is it?",
@@ -88,6 +87,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
         },
         {
           text: "Docker helpers",
+          collapsed: true,
           items: [
             {
               text: "Overview",
@@ -101,6 +101,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
         },
         {
           text: "Docker+ helpers",
+          collapsed: true,
           items: [
             {
               text: "Overview",
@@ -114,6 +115,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
         },
         {
           text: "Template helpers",
+          collapsed: true,
           items: [
             {
               text: "Overview",

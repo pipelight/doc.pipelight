@@ -4,16 +4,34 @@ Going through the software philosophy will for sur help you understand the techn
 
 ## The nindo (philosophy)
 
+### Deeper convictions
+
+#### Telos (The ultimate purpose)
+
+Pipelight ultimate goal is to be a community owned ubiquitary solution for automation.
+
+#### Logos (The software reasonning)
+
+Pipelight follows some crucial guidelines:
+
+- keep execution fast
+- distribute lightweight binaries
+- transparent in its logs and error messages
+- beeing open-source
+- community driven
+- and sovereign
+
 ### The Automation for everyone
 
 Pipelight ought to be the fastest and least painfull solution to set up if you seek to automate things.
 
 Other CI/CD tools make usage of runners and multiple internal instances that interacts between them without you noticing, and can therefore
 lead to hard to find bugs.
+
 Pipelight chose to leverages bash, the every programmer common ground.
 By beeing a one and only executable and letting scaling decisions up to the user.
 
-Pipelight can integrate well with every tool.
+Therefore, Pipelight integrates well with every existing tools.
 
 If you are a bash guy, it will bring simplicity to your scripts.
 If you do devOps stuffs, it will bring flexibility to your pipelines.
@@ -75,23 +93,6 @@ while doing the heavy lift of a CICD ecosystem(3)
 
 2. Python script
 3. CICD ecosystem
-
-### Deeper convictions
-
-#### Telos (The ultimate purpose)
-
-We have seen some open source and free softwares becoming closed sources and payant after years of being community driven.
-But those tools weren't community owned.
-
-#### Logos (The software reasonning)
-
-Pipelight follows some crucial guidelines:
-
-- keep execution fast
-- distribute lightweight binaries
-- transparent in its logs and error messages
-- beeing open-source
-- and sovereign
 
 ## Technical choices
 

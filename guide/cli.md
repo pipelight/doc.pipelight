@@ -1,8 +1,5 @@
 # Command line usage
 
-The cli is made on top of [clap](https://docs.rs/clap/latest/clap/).
-So it is well self documented.
-
 ## Most used commands
 
 List pipelines from your config file.
