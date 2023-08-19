@@ -1,6 +1,6 @@
 # Pipeline execution modes
 
-The step execution mode will define the pipeline or step behavior on failure.
+The step execution mode defines the pipeline or step behavior on failure.
 
 There is actually 3 step execution modes:
 
@@ -10,31 +10,38 @@ There is actually 3 step execution modes:
 
 ## Stop on failure (default)
 
+If a command of the step fails.
+The whole step fails and stop the pipeline execution.
+
 ```ts
 const defaultStep: Step = {
-  name "stop pipeline and run on_failure hooks on failure",
+  name "stop the pipeline and run on_failure hooks on pipeline failure",
   // mode: "stop"
 };
 ```
 
-If a command of the step fails. The whole step will fail and stop the Pipeline execution.
-
 ## Jump next on failure
 
-```ts
-// Those modes will not stop execution flow
-// and allow next step to run.
+**This mode doesn't stop the execution flow and allows the next step to run.**
 
+If a command of the step fails.
+The step execution stops without interupting the pipeline execution.
+Then the following step is executed (the execution jumps to the next step).
+
+```ts
 const nonBlocking: Step = {
   name "jump to next step on failure",
   mode: "jump_next"
 };
 ```
 
-If a command of the step fails. The step execution will stop without interupting the pipeline execution.
-The pipeline will simply jump to the next step.
-
 ## Continue on failure
+
+**This mode doesn't stop the execution flow and allows the next step to run.**
+
+If a command of the step fails.
+The next command is still executed, and so on until the last command of the step.
+Then the following step is executed.
 
 ```ts
 const forcedStep: Step = {
@@ -42,6 +49,3 @@ const forcedStep: Step = {
   mode: "continue"
 };
 ```
-
-If a command of the step fails. The next command will still be executed, and so on until the last command of the step.
-Then the following step is executed.

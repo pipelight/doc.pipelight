@@ -3,7 +3,9 @@
 Here is the part you were waiting for!
 What is the point of writting pipelines if you still have to execute them by hand?
 
-## Enable git hooks
+## Prerequesits
+
+### Enable git hooks (Optional)
 
 Most of triggers only work inside a Git repository.
 Be sure to initialize a repo if you want to take advantage of them all.
@@ -25,7 +27,14 @@ Be sure to move your manually defined hooks elsewhere before enabling pipelight 
 
 :::
 
-Make a combination of branches and actions for which to trigger the pipeline.
+## Define pipeline triggers
+
+**Make a combination of branches and actions for which to trigger the pipeline.**
+
+When triggers are added to a pipeline, the pipeline is not triggered until triggering requirements are met.
+Which means you need to checkout to the allowed branches or tags, and execute the allowed actions for the pipeline to run.
+
+(debug): _When verbosity is increased, the CLI tells you what to do if requirements are not met._
 
 ```ts
 triggers: [
@@ -66,13 +75,14 @@ pipelines: [
 ];
 ```
 
-## Branch and Tags
+### Branch and Tags
 
 Branches are your git project branches names (see: `git branch`).
+Tags are the commits you made with `git tag -a "v0.8"` (see: `git tag`).
 
-Tags are the tag you added the commits you want to release with `git tag -a "v0.8"` (see: `git tag`).
+_It has become common to do stuffs like tests and build on new `tag` when releasing software._
 
-You can set multiple branch and tag combinations with **globbing** patterns.
+Branch and Tag combinations are enhanced by **globbing**.
 
 ```ts
 triggers: [
@@ -87,10 +97,10 @@ triggers: [
 ];
 ```
 
-## Actions (Git-hooks)
+### Actions (Git-hooks)
 
 Actions are named according to [git-hooks](https://githooks.com/) names,
-plus special flags "manual" and "watch".
+plus special flags like `manual` and `watch`.
 
 ```ts
 export enum Action {
@@ -134,32 +144,36 @@ export enum Action {
 }
 ```
 
-### On file change (Watch Flag)
+#### On file change (Watch Flag)
 
 ```ts
 actions: ["watch"];
 ```
 
 Trigger pipelines on file change.
-Whether a file is created, deleted or modified the pipeline will be triggered.
-You can ignore folders or files by putting them in the .gitignore file.
+Whether a file is created, deleted or modified the pipeline is triggered.
+
+::: warning Ignore files
+
+As of today, you can ignore folders or files by writting their names inside the `.gitignore`,
+but this will also prevent git from saving changes made to those files.
+
+:::
 
 This flag rely on **[watchexec](https://github.com/watchexec/watchexec)**
 So for further tweaking see the cli tool documentation.
 
-### Security (Manual Flag)
+#### Security (Manual Flag)
 
 ```ts
 actions: ["manual"];
 ```
 
-When triggers are added to a pipeline, it will not be triggered until trigger requirements are met.
-Which mean you'll have to checkout to the allowed branches, tags, and execute the allowed actions.
+If you want to manually run a pipeline that has non-empty triggers, with the command `pipelight run`
+you need to add the **special flag** `manual` to the pipeline trigger's actions.
+This **avoids unintentionnal manual triggering** aspecialy on critical production branches.
 
-If you want to manually run a pipeline that has some triggers with `pipelight run`
-you wiil have to add the **special flag** "manual" .
-
-### Forced flags
+## Forced flags
 
 Simulate a specific action to trigger associated pipelines.
 
@@ -173,5 +187,4 @@ Or trigger a pipeline by simulating the appropriate action.
 pipelight run --flag <action>
 ```
 
-You can use it for debugging purpose
-or simply as a way to create unconventionnal pipelines.
+You can use it for debugging purpose or simply as a way to create unconventionnal pipelines.

@@ -32,6 +32,22 @@ It can be due to:
 - a Ctrl-C on a running attached pipeline.
 - litteraly everything that can abrubtly stop a process execution (coffee on keyboard, angry mother...)
 
+::: warning Corrupted logs
+
+Corrupted logs are rare but can occur on unsanitized aborted pipelines log files
+or on a concurrent Read and Write operation.
+
+They prevent the CLI from pretty printing every logs.
+
+As of today, no log rotation or log sanitizing function has been implemented.
+The fastest way to bypass this issue is to clean the log directory.
+
+```sh
+pipelight logs rm
+```
+
+:::
+
 ## Verbosity levels
 
 A pipeline has **5** verbosity levels.
@@ -99,15 +115,13 @@ This log level is practical if you want to see what happenned or what happens:
 
 ## Raw logs
 
-Logs are stored in your project root directory `.pipelight/logs` in JSON format.
-You can checkout raw logs with
+Logs are stored in your project root directory in the `.pipelight/logs` folder in JSON format.
+You can checkout raw logs directly by inspecting the generated files or with the following commands:
 
 ```sh
 pipelight logs --json | jq
 pipelight logs --json | jq -C | less
 ```
-
-or directly by inspecting the generated files.
 
 ## Other commands
 
@@ -129,11 +143,7 @@ Print colorful raw json logs in pagers (debugging)
 pipelight logs --json | jq -C | less
 ```
 
-Prune logs
-
-As of today, no log rotation or log sanitizing has been implemented.
-The best way to remove corrupted logs or to clean the log directory
-is with the following command.
+Prune/Remove logs
 
 ```sh
 pipelight logs rm

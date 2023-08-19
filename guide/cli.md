@@ -3,15 +3,16 @@
 ## Most used commands
 
 List pipelines from your config file.
-(debug: You can use this command to lint your config file)
+
+(debug): _You can use this command to lint your config file._
 
 ```sh
 pipelight ls
-# or
-pipelight ls -vvv
+# to
+pipelight ls -vvvv
 ```
 
-Inspect your pipeline definitions.
+Inspect and pretty print your pipeline definitions.
 
 ```sh
 pipelight inspect <pipeline_name>
@@ -20,7 +21,7 @@ pipelight ls -vvv <pipeline_name>
 ```
 
 Without an argument `inspect` shows an intercative prompt
-with your pipeline names
+with your pipeline names.
 
 ```sh
 pipelight inspect
@@ -32,14 +33,14 @@ pipelight inspect
   build
 ```
 
-Run a pipeline in the background (default)
+Run a pipeline in the background (default).
 
 ```sh
 pipelight run <pipeline_name>
 ```
 
 Without an argument `run` shows an intercative prompt
-with your pipeline names
+with your pipeline names.
 
 ```sh
 pipelight run
@@ -51,7 +52,7 @@ pipelight run
   build
 ```
 
-Check pipelines execution states, and produced outputs.
+Compulsively check pipelines execution states, and produced outputs.
 
 ```sh
 pipelight logs
@@ -59,7 +60,13 @@ pipelight logs
 pipelight logs -vvv
 ```
 
-Abort a pipeline execution
+Clean log folder. Remove logs.
+
+```sh
+pipelight logs rm
+```
+
+Abort a pipeline execution.
 
 ```sh
 pipelight stop <pipeline_name>
@@ -73,7 +80,7 @@ Discover some options by using the help flag.
 pipelight --help
 ```
 
-can be used on subcommands too.
+Can be used on subcommands too.
 
 ```sh
 pipelight run --help

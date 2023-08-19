@@ -18,7 +18,7 @@ const my_pipeline: Pipeline = {
 };
 ```
 
-Here is a complete working example using **pipeline** and **step** helpers.
+Here is a complete example using **pipeline** and **step** helpers.
 
 ```ts
 const compositionPipe = pipeline("composition", () => [
@@ -35,20 +35,13 @@ Instead of prefixing every command with `ssh -C` like you will normaly do
 in bash, the **ssh** helper wrap them for you.
 
 ```ts
-step("replace containers", () => ssh([host], my_commands));
+step("replace containers", () => ssh(host, my_commands));
 ```
 
 ## Early execution helper
 
 When you need to retrieve data **before** your pipeline execution.
-
-We don't do this anymore...
-
-```ts
-const res = await exec(my_command);
-```
-
-The helper has been replace with the **DAX** module allowing more customisation and type safety.
+The helper has been replace with the [**DAX**](https://deno.land/x/dax@0.34.0) module allowing more customisation and type safety.
 
 ```ts
 import $ from "https://deno.land/x/dax/mod.ts";

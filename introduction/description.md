@@ -11,13 +11,13 @@ import Features from "@components/Features.vue";
 
 **It's a tiny command line tool that executes a list of tasks you provided in a configuration file.**
 
-Written in Rust (90%) and Typescript (10%)
+Written in Rust (90%) and Typescript (10%).
 
 Perfect for:
 
-- Small repetitive task automation,
-- CICD (Continuous Integration & Continuous Deployment),
-- Machine provisionning
+- Small repetitive task automation;
+- CICD (Continuous Integration & Continuous Deployment);
+- Machine provisionning;
 - Infrastructure creation.
 
 ## The core concept
@@ -28,42 +28,48 @@ The truth about the core of the tool is that it is absurdly simple.
 **Pipelight only defines an execution worklow**, which is the order in which the commands will be executed
 and what to do on the few possible exit status.
 
-Basically, it **encapsulates your shell commands into another language** (Typescript, Javascript, Toml and Yaml).
+Basically, it **encapsulates your shell commands into another language** (Typescript, Javascript, Toml and Yaml)
+and executes them in the given order.
+
 Commands are put inside a Pipeline and grouped by Steps.
 
 ```rs
 // A pipeline in pseudo code
 Pipeline {
     Step {
-        Command
+        Command {
+            // Bash string
+            echo $PWD
+        }
     }
 }
 ```
 
-This encapsulation brings you:
+Encapsulating bash commands into a programming language brings you:
 
-- easy programming language abilities,
-- automatic triggers,
-- verbose logging
+- easy programming language abilities;
+- automatic triggers;
+- and verbose logging.
 
-So when you run a pipeline:
+So what internally happens when you run a pipeline ?
 
-1. First, Pipelight read the config file.
-   Typescript is executed and return a JSON pipeline definition.
+1. First, the software reads the config file.
 
-2. Then only, it processes the pipeline definition.
-   Pipelight spawns the commands into subprocesses while writting the outputs into log files.
+   -> Typescript is executed and return a JSON pipeline definition.
+
+2. Then only, it processes the parsed pipeline definition.
+
+   -> Pipelight spawns the commands into subprocesses while writting the outputs into log files.
 
 <Schema/>
 
 The pipeline is by default executed in the background and
-you can check its state by printing the logs in your terminal.
+you can check its status by printing the logs in your terminal.
 
-## Delegate to the old fashioned tools
+## Delegate to the old fashioned tools.
 
-Pipelight is fast because it only implements basic functionnalities by beeing tightly coupled to Linux kernel,
-and remains lightweight by delegating crucial functionnalities
-to the appropriate specialized tools such as Git, Watchexec and Deno (Javascript engine),
+Pipelight is light because it only implements basic functionnalities by delegating crucial functionnalities
+to the appropriate specialized tools such as Git, Watchexec and Deno (typescript/javascript runtime).
 
 <div class="flex justify-center">
     <img src="/images/ferris_playing_pipelight.png" alt="ferris_playing_with_cubes" class="sm">
@@ -74,21 +80,30 @@ See the core of Pipelight as Ferris (rust mascot) making the heavy lift.
 - On the first hand, it uses Javascript/Typescript to **manipulate bash strings**.
 - And on the other it uses Git as an **event detector**.
 
-For every others subsidiary tasks, pipelight heavily relays on popular rust crates (std, serde, rustix, watchexec, miette...)
+For every others subsidiary tasks, pipelight relays on popular rust crates (std, serde, rustix, watchexec, miette...).
+
+## As close to the kernel as possible.
+
+Pipelight uses the provided **kernel functions for process management**.
+
+Beeing this tightly coupled to the Linux kernel allows us to have very few software internal code that could
+disrupt processes execution without reporting.
+
+Resulting in the most **highly verbose** and **transparent logs** achievable.
 
 ## Who is it for ?
 
-**For every nerd that seeks fast and simple automation that can keep up to their needs and adapt quick**
+**It is for every programmer that seeks fast and simple automation that can keep up to his needs and adapt quick**.
 
-But, here, simple doesn't mean simplistic.
-It means that complex and avant-gardist pipeline behaviors can be achived with a minimal overhead.
+Beware! Simple doesn't mean simplistic.
+It means that even complex and avant-gardist pipeline behaviors can be achived with a minimal overhead.
 
 ### Pragmatic Programmers
 
-It end the struggle with configuration optimised languages (YAML/TOML).
+Pipelight ends the struggle with configuration optimised languages (YAML/TOML).
 
 Instead of combining multiple keywords and flags, the pipeline logic can be written in Javascript/Typescript.
-You van then define pipelines with concepts you are already comfortable with like variables, loops and functions.
+You can then define pipelines with concepts you are already comfortable with like variables, loops and functions.
 
 ### Frugal Power User
 
@@ -117,7 +132,7 @@ With a **single file** in your root directory, you can define pipelines that wil
 
 #### Client side
 
-On your computer, you can enable client side automation by using specific triggers (on pre-push, pre-commit...).
+On your computer, you can enable client side automation by using specific triggers (on `pre-push`, `pre-commit`...).
 
 - **Enforce code quality**,
 
@@ -126,7 +141,7 @@ On your computer, you can enable client side automation by using specific trigge
 - **Save cloud costs**,
 
   Make the **heavy computation locally**,
-  Build and only send the resulting archive or image to your remote servers.
+  Build and only send the resulting archive or image to your remote hosts.
 
 #### Server side
 
@@ -139,42 +154,42 @@ Server side automation can be achieved by using server-side triggers (on update,
 
 - **Better debugging**,
 
-  Pipelight logs are verbose and easy to access.
-  You won't ever miss a single byte of a pipeline execution (real commands, stdin, stdout and return statements).
+  Pipelight logs are verbose and easy to read.
+  You won't ever miss a single byte of a pipeline execution.
 
-### Others
+  It displays the real commands as they are executed without suboptimal wrapper (the **good old stdin, stdout, stderr** and return statements).
 
-- Everyday tasks automation,
-- Server provisionning,
-- Run heavy workloads, parallelize tasks on your servers
+### Other trivial usages
 
-## Best features
+- Everyday tasks automation;
+- Server provisionning;
+- Run **heavy workloads, parallelize tasks** on your servers.
 
-### Code in your config file
+## Best features!
 
-As a pipeline get complex, you want to add variables, conditions, loops and more.
+### Code in your config file.
 
-While other tools are about Configuration as Code,
+As a pipeline gets complex, you want to add variables, conditions, loops and more.
+
+While other tools are about static Configuration as Code,
 Pipelight gets one step further and allows you to **code in your configuration file** to create reusable configuration blocks (with Typescript).
-You may call it as Code as Configuration as Code 🥴.
+We may call it as Code as Configuration as Code 🥴.
 
 ### Terminal friendly (CLI) & Pretty logs
 
-Run a pipeline and check logs without living your terminal.
+Run a pipeline and check logs **without living your terminal**.
 Pipelight stays in the terminal, and is finally nothing more than a Command Line Tool/Interface.
 
 ```sh
+# CLI feels like home
 pipelight run
-```
-
-```sh
 pipelight logs
 ```
 
 ### Quick Automation
 
 Add triggers to your pipeline definition.
-It will automatically run in the background on matching event and git branch.
+The pipeline will automatically run in the background on matching event (a triggering action and/or a git branch or tag).
 
 ```ts
 triggers: [

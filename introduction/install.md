@@ -13,41 +13,45 @@ Pipelight is a very **lightweight** binary that wheighs around **6Mb**.
 
 :::
 
-## Install with your package manager
+## Install with your favorite package manager
 
 ### Arch Linux
 
-Install the binary from the AUR
+Install the binary from the AUR.
 
 ```sh
+#yay
 paru -S pipelight
 ```
 
-or compile from the source code for latest updates
+Or directly compile the source code for latest updates.
 
 ```sh
+#yay
 paru -S pipelight-git
 ```
 
 ### Other Linux
 
-The software being quite young, it can't be found in the big distros repository yet.
-You will have to install it manually.
+The software being quite young, it can't be found in the bigest linux distribution repositories yet.
+You have to install it manually.
 
-First install dependencies:
+First, you need to install dependencies:
 
-- Deno, javascript runtime (optionnal)
-- Git, software version manager (optionnal)
-- Watchexex, listen for file modification (optionnal)
+- Deno, typescript/javascript runtime (optionnal);
+- Git, software version manager (optionnal);
+- Watchexex, listen for file modification (optionnal).
 
-Fedora/CentOS and derivates
+Then, install the package from binaries.
+
+Fedora/CentOS and derivates:
 
 ```sh-vue
 curl -O {{ base }}/{{ fedora }}
 yum install {{ fedora }}
 ```
 
-Debian/Ubuntu and derivates
+Debian/Ubuntu and derivates:
 
 ```sh-vue
 curl -O {{ base }}/{{ debian }}
@@ -57,6 +61,9 @@ dpkg -i {{ debian }}
 ## Install with the installation script <Badge type="warning" text="beta" />
 
 For any other linux distribution.
+
+This script downloads dependencies and downloads the source code.
+Then, it compiles the source code and moves the resulting binary to `/usr/bin/`.
 
 ```sh-vue
 curl {{ base }}/scripts/install.sh | sh

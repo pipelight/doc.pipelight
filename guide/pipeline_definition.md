@@ -2,7 +2,15 @@
 
 ## The only rule
 
-Pipelight only restricting rule is that a configuration file has to default export an Object of [`type Config`](https://deno.land/x/pipelight/mod.ts?s=Config).
+Pipelight only restricting rule is that a configuration file has to default export
+an Object of [`type Config`](https://deno.land/x/pipelight/mod.ts?s=Config).
+In other words, your config file must contain a line like this:
+
+```ts
+//pipelight.ts
+export default config: Config;
+```
+
 Everything else that happens inside this script is up to you.
 
 With such a wide rule, the pipeline definition process gives way to creativity and imagination.
@@ -17,23 +25,24 @@ Thus you remain free in your creation process, but you are not helpless.
 Keep in mind that types are something optional
 that you can still add later to strenghten your pipeline definition.
 
-If you are not at ease with Typescript, you can still write pipelines in Javascript in a .ts file
-
-```js
-//pipelight.js
-const config = {};
-```
-
+If you are not at ease with Typescript, you can still write pipelines in Javascript in a `.ts` file
 and use types later.
 
 ```ts
 //pipelight.ts
+// No type usage
+const config = {};
+```
+
+```ts
+//pipelight.ts
+// Type usage
 import { Config } from "https://deno.land/x/pipelight/mod.ts";
 const config: Config = {};
 ```
 
 Typescript only supercharge Javascript syntax with optional type definition.
-Explore the complete type definition on [DenoLand](https://deno.land/x/pipelight/mod.ts)
+Explore the complete type definition on [DenoLand](https://deno.land/x/pipelight/mod.ts).
 
 ## Syntax flavors
 
@@ -78,10 +87,12 @@ export default config;
 ### Composition API <Badge type="warning" text="beta" />
 
 The Composition API is built on top of the Option API.
-It is a group of functions, class and methods that
+It is a group of functions, class and methods that:
 
-- shorten the pipeline definition
-- enable fine-grained modularity
+- shorten the pipeline definition;
+- enable fine-grained modularity.
+
+This syntax is the result of [**helpers**](/helpers/overview) adoption.
 
 Simply import the provided common helper functions.
 

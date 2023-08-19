@@ -1,4 +1,4 @@
-# Docker helpers <Badge type="tip" text="stable" />
+# Docker helpers <Badge type="warning" text="beta" />
 
 Pipelight is flexible but becomes way too verbose
 when implementing already wide spread automation methodes like **docker testing and deployment**.
