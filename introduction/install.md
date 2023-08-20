@@ -13,7 +13,52 @@ Pipelight is a very **lightweight** binary that wheighs around **6Mb**.
 
 :::
 
-## Install with your favorite package manager
+## Install from sources
+
+### Arch Linux
+
+```sh
+#yay
+paru -S pipelight-git
+```
+
+### Other Linux distributions
+
+First, you need to install build-dependencies,
+
+- Cargo, the Rust package manager.
+
+and dependencies:
+
+- Deno, typescript/javascript runtime (optionnal);
+- Git, software version manager (optionnal);
+- Watchexex, listen for file modification (optionnal).
+
+Then, clone the git repository.
+
+```sh
+git clone git@gitea.com:pipelight/pipelight.git
+```
+
+Checkout to the latest tag.
+
+```sh
+tag=$(git describe --tags --abbrev=0)
+git checkout $tag
+```
+
+Build the binary
+
+```sh
+cd pipelight
+cargo build --release
+```
+
+The resulting binary can be found in `target/release/pipelight`.
+
+Move it to `/usr/bin/` or add it to your `$PATH`.
+
+## Install the binary with your favorite package manager
 
 ### Arch Linux
 
@@ -24,14 +69,7 @@ Install the binary from the AUR.
 paru -S pipelight
 ```
 
-Or directly compile the source code for latest updates.
-
-```sh
-#yay
-paru -S pipelight-git
-```
-
-### Other Linux
+### Other Linux distributions
 
 The software being quite young, it can't be found in the bigest linux distribution repositories yet.
 You have to install it manually.
@@ -58,7 +96,7 @@ curl -O {{ base }}/{{ debian }}
 dpkg -i {{ debian }}
 ```
 
-## Install with the installation script <Badge type="warning" text="beta" />
+## Install with the installation script <Badge type="danger" text="alpha" />
 
 For any other linux distribution.
 

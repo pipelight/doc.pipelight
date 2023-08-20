@@ -20,6 +20,15 @@ Perfect for:
 - Machine provisionning;
 - Infrastructure creation.
 
+::: warning
+
+Pipelight is a relatively young software,
+therefore it has some early features flaged as beta(yelow) and alpha(red).
+Its few caveats are discussed into warning(yellow) and danger(red) containers
+like this one.
+
+:::
+
 ## The core concept
 
 Pipelight ultimate goal is to automate your most boring tasks by enhancing **your** favorite tools.
