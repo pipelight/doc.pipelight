@@ -1,5 +1,7 @@
 # Environment variables
 
+For further documentation checkout the [Deno documentation](https://deno.land/manual/basics/env_variables).
+
 ## Create env files
 
 You may want to use env files for credential storage.

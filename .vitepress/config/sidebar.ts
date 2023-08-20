@@ -53,25 +53,25 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           link: "/guide/triggers"
         },
         {
-          text: "Fallbacks",
+          text: "Fallbacks (Conditionnal Hooks)",
           link: "/guide/fallbacks"
         },
         {
-          text: "Execution modes",
+          text: "Execution modes (Behavior)",
           link: "/guide/modes"
         },
         {
-          text: "Secrets",
+          text: "Secrets storage",
           link: "/guide/secrets"
         },
         {
           text: "Logs",
           link: "/guide/logs"
-        },
-        {
-          text: "Internal API",
-          link: "https://gitea.com/pipelight/pipelight/src/branch/master/INTERNALS.md"
         }
+        // {
+        //   text: "Internal API",
+        //   link: "https://gitea.com/pipelight/pipelight/src/branch/master/INTERNALS.md"
+        // }
       ]
     },
     {

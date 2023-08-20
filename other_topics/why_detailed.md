@@ -1,10 +1,16 @@
 # Why another CICD tool ?
 
-Going through the software philosophy will for sur help you understand the technical choices involved.
-
 ## The nindo (philosophy)
 
 ### Deeper convictions
+
+knowing in which philosophy the software was built will for sure
+help you understand many architectural choices.
+
+Born from the following philosohies:
+
+- [The Anti Mediocracy Manifesto for Software Development](https://gist.github.com/mathiasrw/cb3b15630a418f5cff3035463a048a59)
+- [The LunarDAO manifesto](https://lunardao.net/manifesto.html)
 
 #### Telos (The ultimate purpose)
 
@@ -14,7 +20,7 @@ Pipelight ultimate goal is to be a community owned ubiquitary solution for autom
 
 Pipelight follows some crucial guidelines:
 
-- keep execution fast
+- keep execution fast by remaining minimal
 - distribute lightweight binaries
 - transparent in its logs and error messages
 - beeing open-source
