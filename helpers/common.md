@@ -3,12 +3,8 @@
 ## Pipeline definition helpers
 
 Pipeline definition helpers are syntaxic sugar for minimalists.
-Here, both code blocks **do exactly the same thing**.
 
-```ts
-// With helper
-const my_pipeline = pipeline("example", () => my_steps);
-```
+Here, both code blocks **do exactly the same thing**.
 
 ```ts
 // Without helper
@@ -18,13 +14,44 @@ const my_pipeline: Pipeline = {
 };
 ```
 
-Here is a complete example using **pipeline** and **step** helpers.
+```ts
+// With helper
+const my_pipeline = pipeline("example", () => my_steps);
+```
+
+Here is a complete example using [**pipeline**](https://deno.land/x/pipelight/mod.ts?s=pipeline)
+and [**step**](https://deno.land/x/pipelight/mod.ts?s=pipeline) helpers.
 
 ```ts
-const compositionPipe = pipeline("composition", () => [
+const my_pipe = pipeline("composition", () => [
   step("do something", () => my_commands),
   step("do something else", () => my_commands)
 ]);
+```
+
+### Pipeline methods
+
+Add a trigger to the `Pipeline`.
+
+```ts
+const my_pipe = pipeline("composition", () => [
+  step("do something", () => my_commands)
+])
+  // add a trigger
+  .trigger({
+    branches: [],
+    actions: []
+  });
+```
+
+### Step methods
+
+Set the `Step` execution mode.
+
+```ts
+step("do something", () => my_commands)
+  // set the step execution mode
+  .mode("continue");
 ```
 
 ## Remote operations helper
@@ -51,7 +78,11 @@ const res = await $`my_command`.text();
 
 Can be used to retrieve git infos, like your latest tag and use it in your pipeline declaration.
 
-```ts
-const version = await $`git describe --tags --abbrev=0`.text().replace("v", "");
-// version = "0.8"
+```ts-vue
+const version = await $`git describe --tags --abbrev=0`.text()
+// version = "{{ version }}"
 ```
+
+<script lang="ts" setup>
+const version = `v${import.meta.env.VITE_GIT_VERSION}`;
+</script>

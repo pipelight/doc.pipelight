@@ -86,7 +86,7 @@ export interface ImageAutoParams {
 }
 ```
 
-By default, the helper automatically seaks a file in `.docker/Dockerfile.<suffix>`.
+By default, the helper automatically seeks a file in `.docker/Dockerfile.<suffix>`.
 to build the image.
 It enforces images to be declared as dockerfiles in a uniq and tidy directory.
 

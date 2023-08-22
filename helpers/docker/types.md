@@ -1,4 +1,4 @@
-# Docker helpers types
+# Docker helpers types <Badge type="warning" text="beta" />
 
 ## Docker
 
@@ -22,9 +22,6 @@ const params: DockerParams = {
   volumes: [
     {
       name: "my_vol_bucket"
-    },
-    {
-      name: "my_vol_db_save"
     }
   ],
   // declare networks to create

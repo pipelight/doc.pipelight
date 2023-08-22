@@ -94,22 +94,12 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
               link: "/helpers/docker/overview"
             },
             {
-              text: "Types",
-              link: "/helpers/docker/types"
-            }
-          ]
-        },
-        {
-          text: "Docker+ helpers",
-          collapsed: true,
-          items: [
-            {
-              text: "Overview",
-              link: "/helpers/service/overview"
+              text: "Loose (High level)",
+              link: "/helpers/docker/loose"
             },
             {
-              text: "Types",
-              link: "/helpers/service/types"
+              text: "Strict (Low level)",
+              link: "/helpers/docker/strict"
             }
           ]
         },
