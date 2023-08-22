@@ -38,7 +38,7 @@ const my_pipe = pipeline("composition", () => [
   step("do something", () => my_commands)
 ])
   // add a trigger
-  .trigger({
+  .add_trigger({
     branches: [],
     actions: []
   });
@@ -51,7 +51,7 @@ Set the `Step` execution mode.
 ```ts
 step("do something", () => my_commands)
   // set the step execution mode
-  .mode("continue");
+  .set_mode("continue");
 ```
 
 ## Remote operations helper

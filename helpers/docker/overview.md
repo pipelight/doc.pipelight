@@ -1,19 +1,113 @@
-<script setup lang="ts">
-</script>
-
 # Docker helpers <Badge type="warning" text="beta" />
 
-Pipelight by nature allows a great flexibility,
-But implementing generics and already wide spread automation methods that require loads of commands,
-like **docker testing and deployment**, is quite cumbersome.
+Pipelight by nature allows a great flexibility.
+But implementing generics and already wide spread automation methods that require loads of commands is quite cumbersome.
 
 You could write your own functions but Pipelight got you covered with the docker helpers.
+You are all set for docker testing and deployment.
 
-Docker helpers provide the needed functions to manipulate docker components based on a single docker architecture object definition.
+Docker helpers provide the needed **functions to manipulate docker components** based on a single docker architecture object definition.
+
+## The quickest showcase
+
+Define your docker components into a [Docker](https://deno.land/x/pipelight/mod.ts?s=Docker) instance.
+
+```ts
+const docker = new Docker({
+  containers: [
+    {
+      name: `my_container`,
+      image: {
+        name: "debian:latest"
+      },
+      volumes: [
+        {
+          name: `my_vol`,
+          target: "/data"
+        }
+      ],
+      ports: [{ in: 80, out: 8080 }]
+    }
+  ]
+});
+```
+
+Use the internal methods to manipulate docker components.
+
+```ts
+docker.containers.create();
+```
+
+This example only scratches the surface.
+You can define images, volumes and containers as well as their **intercations through networks**.
+
+## Comes in two mixable flavors 🍦
+
+::: tip
+
+[Loose declaration](/helpers/docker/loose) highly recommanded!
+
+:::
+
+To take the most out of this helpers you would want to use the docker [Loose declaration](/helpers/docker/loose)
+which is the most **simple and automated** (and opinionated).
+If this declaration does not suit your style, head towards the lower level helpers it is **based upon**.
+Use the docker [Strict declaration](/helpers/docker/loose) for a more personnalized docker architecture definition.
+
+## Understand the internal functionning
+
+You first have to define your docker components (images, containers, volumes and networks)
+according to the [DockerAutoParams](https://deno.land/x/pipelight/mod.ts?s=DockerParams)
+or the [DockerParams](https://deno.land/x/pipelight/mod.ts?s=DockerParams) type.
+
+```ts
+const params: DockerAutoParams | DockerParams = {};
+```
+
+```ts
+// Loose declaration
+interface DockerAutoParams {
+  globals: Globals;
+  containers: ContainerAutoParams[];
+}
+```
+
+```ts
+// Strict declaration
+interface DockerParams {
+  images?: ImageParams[];
+  volumes?: VolumeParams[];
+  networks?: NetworkParams[];
+  containers?: ContainerParams[];
+}
+```
+
+Attempting to use methods on Typescript types and interfaces returns an error.
+
+```ts
+params.containers.create(); // returns an error // [!code --]
+```
+
+You have to transform the
+[DockerAutoParams](https://deno.land/x/pipelight/mod.ts?s=DockerParams)
+or [DockerParams](https://deno.land/x/pipelight/mod.ts?s=DockerParams) interface instance
+into a [Docker](https://deno.land/x/pipelight/mod.ts?s=Docker) object instance.
+
+Then, **every deep inner Typescript Interface is transformed in its Javascript Class equivalent.**
+allowing the usage of Classes **methods**.
+
+```ts
+// enable methods
+const docker: Docker = new Docker(params); // [!code ++]
+// create every defined containers
+docker.container.create(); // [!code ++]
+// create every defined volumes
+docker.volumes.create();
+```
 
 ## Opinionated docker architecture
 
-::: warning Simplifying docker
+::: warning
 
 _"I'm a strong advocate for "docker for small projects" and not just huge, scaling behemoths and microservices."_
 ([docker local-persist plugin author](https://github.com/MatchbookLab/local-persist))
@@ -24,13 +118,16 @@ to the smallest teams (>=1 member).
 
 :::
 
-The docker helpers brings some optimisation on the table:
+The helpers add an abstraction layer on docker to build big, in a few lines while keeping things tweakable,
+to the point it has become a sort of **alternative to docker-compose**.
 
-- enforce pipeline readability :
+The docker helpers bring some optimisation on the table.
+
+- enhance pipeline readability;
 
   We need to understand a command at a glance when debugging so we favor long options over short options (`--volume` over `-v`)
 
-- enforce docker architecture maintainability:
+- enhance docker architecture maintainability;
 
   Docker has the practical [bind-mounts](https://docs.docker.com/storage/bind-mounts/)
   which is the ability to link a filesystem path `/home/mystuffs` into a docker container `/path/into/container`.
@@ -43,55 +140,12 @@ The docker helpers brings some optimisation on the table:
   This way, `docker volume ls` outputs every volumes **and every binds**.
   No need to `docker container inspect` every one of your containers anymore.
 
-## Understand the Inner lifecycle
+- enhance deployment related files storage;
 
-First define your docker components such as images, containers, volumes and networks
-according to the [DockerParams](https://deno.land/x/pipelight/mod.ts?s=DockerParams) type.
+  Force tidying your dockerfile for autoretrieve by the helper
+  (**mandatory in Loose declaration**).
 
-```ts
-const params: DockerParams = {};
-```
-
-```ts
-interface DockerParams {
-  images?: ImageParams[];
-  volumes?: VolumeParams[];
-  networks?: NetworkParams[];
-  containers?: ContainerParams[];
-}
-```
-
-Attempting to use methods on interfaces returns an error.
-
-```ts
-// Returns an error like "create() doesn't exists on type ContainerParams[]"
-params.containers.create(); // [!code --]
-```
-
-You first have to transform this
-[**DockerParams Interface**](https://deno.land/x/pipelight/mod.ts?s=DockerParams) instance
-into a [**Docker Class**](https://deno.land/x/pipelight/mod.ts?s=Docker) instance.
-Then, **every deep inner Interface is transformed in its Class equivalent.**
-allowing the usage of Classes **methods**.
-
-```ts
-// Enables methods
-const docker: Docker = new Docker(params); // [!code ++]
-docker.container.create(); // [!code ++]
-```
-
-```ts
-// returns commands to create every defined volumes
-docker.volumes.create();
-// return commands to create every defined containers
-docker.containers.create();
-```
-
-Extensively, turning every Interface into its Class equivalent, brings up the associated methods.
-
-```ts
-const params: ContainerParams;
-const container: Container = new Container(params);
-// generate commands
-container.create();
-```
+  ```sh
+  .docker
+  └── Dockerfile.test
+  ```
