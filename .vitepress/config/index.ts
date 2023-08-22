@@ -10,7 +10,13 @@ const config: UserConfig<DefaultTheme.Config> = {
   lang: "en-US",
   head,
   themeConfig,
-  lastUpdated: true
+  lastUpdated: true,
+  markdown: {
+    theme: {
+      light: "material-theme-lighter",
+      dark: "material-theme-darker"
+    }
+  }
 };
 
 export default config;

@@ -12,13 +12,16 @@
       @apply break-keep;
     }
     &.secondary {
-      @apply text-gray-400;
+      @apply text-gray-500;
+      @apply dark:text-gray-400;
     }
     &.running {
-      @apply text-green-300;
+      @apply text-green-400;
+      @apply dark:text-green-300;
     }
     &.succeeded {
-      @apply text-blue-300;
+      @apply text-sky-500;
+      @apply dark:text-blue-300;
     }
     &.failed {
       @apply text-red-300;

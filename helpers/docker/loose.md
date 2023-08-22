@@ -81,6 +81,10 @@ Define a
 based on the
 [DockerAutoParams](https://deno.land/x/pipelight/mod.ts?s=Docker) type.
 
+Here you only define containers.
+
+Image, volumes and networks are induced by the container definiton.
+
 ```ts
 const docker = new Docker({
   globals: {
@@ -117,12 +121,18 @@ interface DockerAutoParams {
 
 The example defines:
 
-- a single container (name: `<version>.<suffix>.<dns>` = `production.api.pipelight.dev`)
-- built from an image (name: `<dns>/<suffix>:<version>` = `pipelight.dev/api:production`)
-- with a volume attached to it (name: `<version>_<container_suffix>_<dns>__<suffix>` = `production_api_pipelight.dev__save`)
-- attach to a network (name: `<version>_<dns>__<suffix>` = `production_pipelight.dev__net` with subnet `172.0.4.0/24`)
+- a single container
 
-**Auto induce docker component declaration.**
+  `production.api.pipelight.dev`
 
-Linked images, networks and volumes in the Container definiton are auto-generated
-and therefor doesn't need to be explicitly written.
+- built from the image
+
+  `pipelight.dev/api:production`
+
+- attach a volume to the container
+
+  `production_api_pipelight.dev__save`
+
+- attach the containner to the network:
+
+  `production_pipelight.dev__net` with subnet `172.0.4.0/24`

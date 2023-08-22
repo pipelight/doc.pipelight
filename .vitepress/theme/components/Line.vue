@@ -70,7 +70,8 @@ p {
   &.prompt {
     @apply whitespace-nowrap inline;
     @apply pr-2;
-    @apply text-green-300 !important;
+    @apply text-green-400;
+    @apply dark:text-green-300;
     animation-fill-mode: both;
   }
   &.cmd {

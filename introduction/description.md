@@ -7,7 +7,7 @@ import Features from "@components/Features.vue";
 
 # Introduction
 
-## What is pipelight ?
+## What is Pipelight ?
 
 **It's a tiny command line tool that executes a list of tasks you provided in a configuration file.**
 

@@ -1,5 +1,5 @@
 <template lang="pug">
-.terminal.language-sh(ref="target")
+.terminal.vp-adaptative-theme(ref="target")
   pre.shiki
     .skeleton
       Line(

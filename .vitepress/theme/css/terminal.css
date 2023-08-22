@@ -13,11 +13,7 @@
 }
 .terminal {
   @apply md:max-w-3xl;
-  &.language-sh {
-    @apply rounded-lg shadow-md;
-    /* @apply m-0 !important; */
-    @apply text-gray-100;
-  }
+  @apply rounded-lg shadow-md;
   &.md {
     @apply text-xs sm:text-base;
     @apply px-4 md:px-6;
