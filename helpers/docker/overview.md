@@ -5,7 +5,8 @@
 Pipelight by nature allows a great flexibility.
 But implementing generics and already wide spread automation methods that require loads of commands is quite cumbersome.
 
-You could write your own functions but Pipelight got you covered with the docker helpers.
+Concerning [docker](https://docs.docker.com/get-started/) usage,
+you could write your own functions but Pipelight got you covered with the docker helpers.
 You are all set for docker testing and deployment.
 
 Docker helpers provide the needed **functions to manipulate docker components** based on a single docker architecture object definition.

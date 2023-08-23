@@ -6,7 +6,8 @@ import { pipeline, step, ssh } from "https://deno.land/x/pipelight/mod.ts";
 import {
   Docker,
   Container,
-  Network
+  Network,
+  Mode
 } from "https://deno.land/x/pipelight/mod.ts";
 
 // Global vars
@@ -33,13 +34,10 @@ const docker = new Docker({
   ]
 });
 
-const nginxStep = {
-  name: `update remote nginx configuration`,
-  commands: [
-    `scp ./.pipelight/public/pipelight.nginx.conf ${host}:/etc/nginx/sites-enabled/pipelight.conf`,
-    ...ssh([host], ["sudo nginx -t", "sudo systemctl restart nginx"])
-  ]
-};
+const nginxStep = step(`update remote nginx configuration`, () => [
+  `scp ./.pipelight/public/pipelight.nginx.conf ${host}:/etc/nginx/sites-enabled/pipelight.conf`,
+  ...ssh(host, () => ["sudo nginx -t", "sudo systemctl restart nginx"])
+]);
 
 // Pipeline creation with Docker helpers
 const compositionPipe = pipeline(
@@ -49,19 +47,14 @@ const compositionPipe = pipeline(
     // Create images locally and send it to remotes
     step("build and send images", () => [
       ...docker.images.create(),
-      ...docker.images.send([host])
+      ...docker.images.send(host)
     ]),
-    step(
-      "replace containers",
-      () =>
-        ssh(
-          [host],
-          [...docker.containers.remove(), ...docker.containers.create()]
-        ),
-      {
-        mode: "continue"
-      }
-    ),
+    step("replace containers", () =>
+      ssh(host, () => [
+        ...docker.containers.remove(),
+        ...docker.containers.create()
+      ])
+    ).set_mode(Mode.ContinueOnFailure),
     nginxStep
   ],
   {
