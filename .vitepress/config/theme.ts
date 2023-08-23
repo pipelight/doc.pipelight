@@ -7,13 +7,7 @@ const themeConfig: DefaultTheme.Config = {
   docsBranch: "master",
   nav,
   sidebar,
-  // appearance: false,
-  markdown: {
-    theme: {
-      light: "github-light",
-      dark: "github-dark"
-    }
-  },
+  // appearance: true,
   search: {
     provider: "local"
   }

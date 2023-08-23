@@ -38,25 +38,22 @@ Consequently, the helper automatically seaks the file at `.docker/Dockerfile.<su
 
 ```ts
 const container: ContainerAutoParams = {
-  suffix: "api",
-  image: {
-    suffix: "api", // [!code ++]
-    file: "./.docker/subdirectory/Dockerfile.api"
-  }
+  suffix: "api" // [!code ++]
 };
 ```
 
 ```ts
 export interface ImageAutoParams {
   suffix: string;
-  file?: string;
+  file?: string; // set another file path
 }
 ```
 
 This enforces images to be declared in a `Dockerfile` and folded into a tidy directory.
+at `.docker/Dockerfile.<suffix>`.
 
 ```dockerfile
-# ./docker/Dockerfile.api // [!code ++]
+# .docker/Dockerfile.api
 FROM ubuntu:latest // [!code ++]
 
 # Add users
@@ -79,11 +76,23 @@ just by having a glance at the `.docker` directory of your project.
 Define a
 [Docker](https://deno.land/x/pipelight/mod.ts?s=Docker) instance
 based on the
-[DockerAutoParams](https://deno.land/x/pipelight/mod.ts?s=Docker) type.
+[DockerAutoParams](https://deno.land/x/pipelight/mod.ts?s=DockerAutoParams) type.
 
-Here you only define containers.
+Here, you only define:
 
-Image, volumes and networks are induced by the container definiton.
+- Globals (global variables)
+- and Containers
+
+```ts
+interface DockerAutoParams {
+  globals: Globals;
+  containers: ContainerAutoParams[];
+}
+```
+
+Components (images, volumes, and networks) linked to the container **are
+auto-generated** and thus doesn't need to be declared as in the
+[Strict declaration](/helpers/docker/strict).
 
 ```ts
 const docker = new Docker({
@@ -113,26 +122,16 @@ const docker = new Docker({
 ```
 
 ```ts
-interface DockerAutoParams {
-  globals: Globals;
-  containers: ContainerAutoParams[];
-}
+docker.images.create();
+docker.volumes.create();
+docker.containers.create();
 ```
 
-The example defines:
-
-- a single container
-
-  `production.api.pipelight.dev`
-
-- built from the image
-
-  `pipelight.dev/api:production`
-
-- attach a volume to the container
-
-  `production_api_pipelight.dev__save`
-
-- attach the containner to the network:
-
-  `production_pipelight.dev__net` with subnet `172.0.4.0/24`
+Here, we created a single container
+`production.api.pipelight.dev`,
+built from the image
+`pipelight.dev/api:production`.
+It attaches a volume
+`production_api_pipelight.dev__save`
+and has ip `172.0.4.12` on the network
+`production_pipelight.dev__net` with subnet `172.0.4.0/24`.

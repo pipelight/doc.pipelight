@@ -1,9 +1,3 @@
-# Docker+ helpers types
-
-Those interfaces are transformed into Classes described in [Docker Helpers](/helpers/docker/types)
-
-## Docker
-
 ```ts
 const docker: DockerAutoParams = {
   globals: {
@@ -85,13 +79,6 @@ export interface ImageAutoParams {
   file?: string;
 }
 ```
-
-By default, the helper automatically seeks a file in `.docker/Dockerfile.<suffix>`.
-to build the image.
-It enforces images to be declared as dockerfiles in a uniq and tidy directory.
-
-It means that you can't create a container by declaring an image name like
-Because it will look for a file at .docker/Dockerfile.ubuntu:latset and won't find it.
 
 ```ts
 const container: ContainerAutoParams = {

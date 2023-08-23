@@ -1,5 +1,7 @@
 # Docker helpers <Badge type="warning" text="beta" />
 
+# Overview
+
 Pipelight by nature allows a great flexibility.
 But implementing generics and already wide spread automation methods that require loads of commands is quite cumbersome.
 
@@ -8,7 +10,7 @@ You are all set for docker testing and deployment.
 
 Docker helpers provide the needed **functions to manipulate docker components** based on a single docker architecture object definition.
 
-## The quickest showcase
+## The quickest showcase!
 
 Define your docker components into a [Docker](https://deno.land/x/pipelight/mod.ts?s=Docker) instance.
 
@@ -20,12 +22,6 @@ const docker = new Docker({
       image: {
         name: "debian:latest"
       },
-      volumes: [
-        {
-          name: `my_vol`,
-          target: "/data"
-        }
-      ],
       ports: [{ in: 80, out: 8080 }]
     }
   ]
@@ -41,11 +37,13 @@ docker.containers.create();
 This example only scratches the surface.
 You can define images, volumes and containers as well as their **intercations through networks**.
 
-## Comes in two mixable flavors 🍦
+## Comes in two flavors 🍦
 
-::: tip
+::: tip Author's note
 
-[Loose declaration](/helpers/docker/loose) highly recommanded!
+The strict declaration is good to build small test suits.
+Whereas the loose declaration is better suited to build pipelines that deploys applications(front/api/db...)
+to multiple environnements(dev/prod...).
 
 :::
 

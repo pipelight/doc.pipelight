@@ -94,12 +94,16 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
               link: "/helpers/docker/overview"
             },
             {
-              text: "Loose (High level)",
+              text: "Loose declaration",
               link: "/helpers/docker/loose"
             },
             {
-              text: "Strict (Low level)",
+              text: "Strict declaration",
               link: "/helpers/docker/strict"
+            },
+            {
+              text: "Usage",
+              link: "/helpers/docker/usage"
             }
           ]
         },

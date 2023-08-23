@@ -23,4 +23,7 @@
     #3f7739 40%
   );
   --vp-home-hero-image-filter: blur(66px);
+  --vp-custom-block-tip-text: var(--vue-green);
+  --vp-custom-block-tip-border: var(--vue-green);
+  --vue-green: #42b883;
 }
