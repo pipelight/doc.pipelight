@@ -1,4 +1,4 @@
-# Troubleshoot a pipeline
+# Troubleshoot a pipeline (tips)
 
 ## Code debugging
 

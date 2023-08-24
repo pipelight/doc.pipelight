@@ -38,7 +38,7 @@ const items = [
   {
     title: "🤌 Typescript { Bash }",
     details:
-      "Enjoy wrapping your Bash with Typescript delicious and simple synthax. Uses Deno for its quick Typechecking."
+      "Enjoy wrapping your Bash with Typescript delicious and simple syntax. Uses Deno for its quick Typechecking."
   }
 ];
 </script>

@@ -19,13 +19,24 @@ const my_pipeline: Pipeline = {
 const my_pipeline = pipeline("example", () => my_steps);
 ```
 
-Here is a complete example using [**pipeline**](https://deno.land/x/pipelight/mod.ts?s=pipeline)
-and [**step**](https://deno.land/x/pipelight/mod.ts?s=pipeline) helpers.
+Use [**pipeline**](https://deno.land/x/pipelight/mod.ts?s=pipeline)
+and [**step**](https://deno.land/x/pipelight/mod.ts?s=step) helpers.
 
 ```ts
 const my_pipe = pipeline("composition", () => [
   step("do something", () => my_commands),
   step("do something else", () => my_commands)
+]);
+```
+
+Use the [**parallel**](https://deno.land/x/pipelight/mod.ts?s=parallel) helper as well.
+
+```ts
+const my_pipe = pipeline("composition", () => [
+  parallel(() => [
+    step("do something", () => my_commands),
+    step("do something else", () => my_commands)
+  ])
 ]);
 ```
 
@@ -62,7 +73,11 @@ Instead of prefixing every command with `ssh -C` like you will normaly do
 in bash, the **ssh** helper wrap them for you.
 
 ```ts
-step("replace containers", () => ssh(host, my_commands));
+ssh(host, my_commands))
+```
+
+```ts
+step("do things on remote", ssh(host, my_commands));
 ```
 
 ## Early execution helper

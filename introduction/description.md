@@ -3,6 +3,7 @@ import Example from '@components/Example.vue';
 import Sheet from '@components/Sheet.vue';
 import Schema from '@components/Schema.vue';
 import Features from "@components/Features.vue";
+import Logs from "@demos/Logs.vue";
 </script>
 
 # Introduction
@@ -184,7 +185,7 @@ While other tools are about static Configuration as Code,
 Pipelight gets one step further and allows you to **code in your configuration file** to create reusable configuration blocks (with Typescript).
 We may call it as Code as Configuration as Code 🥴.
 
-### Terminal friendly (CLI) & Pretty logs
+### Terminal friendly (CLI)
 
 Run a pipeline and check logs **without living your terminal**.
 Pipelight stays in the terminal, and is finally nothing more than a Command Line Tool/Interface.
@@ -192,8 +193,17 @@ Pipelight stays in the terminal, and is finally nothing more than a Command Line
 ```sh
 # CLI feels like home
 pipelight run
+```
+
+### Pretty logs
+
+```sh
 pipelight logs
 ```
+
+<Logs/>
+
+You also can increase verbosity and get an exhaustive tree view of the pipeline.
 
 ### Quick Automation
 

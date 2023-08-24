@@ -115,7 +115,7 @@ for flexibility and reusability
 Usual configuration optimised languages (TOML/ YAML) are not easy to tweak.
 
 **Variables**, **structs** and **loops** does not exist natively in those languages.
-Consequently, those features depends on the automation tool implementing them resulting in different synthax for every tool.
+Consequently, those features depends on the automation tool implementing them resulting in different syntax for every tool.
 
 ```yaml
 kind: pipeline

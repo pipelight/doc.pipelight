@@ -1,16 +1,28 @@
-# Write your first pipeline
+# Write and Run your first pipeline
 
-## Pipelines in programming languages
+## Write in programming languages
 
 Writting pipelines in programming languages allows you the usage of variable, loops and functions.
 A short file can then generate a base pipeline with its multiple declinations.
 
+### Javascript (discourage)
+
+::: danger
+
+Javascript is a **weakly typed** language, and so **highly prone to errors**.
+It is **greatly recommanded to use Typescript** instead,
+to take full advantage of **types linting**.
+
+:::
+
+Typescript only supercharges Javascript syntax with optional type definition.
+
+If you are not at ease with Typescript, you can still write pipelines in Javascript in a `.ts` file
+and **use types later** to strenghten your pipeline definition.
+
 ### Typescript
 
-Create pipelines with steps and commands.
-Add automatic triggers and have fun.
-
-Importing the types from the deno package will give you a pleasant linting support.
+Importing the types from the deno package will give you a **pleasant linting support**.
 
 ```ts
 //pipelight.ts
@@ -38,43 +50,10 @@ const config: Config = {
 export default config;
 ```
 
-### Javascript
-
-It's the same syntax as Typescript but you don't benefit from Types linting.
-
-No error will be shown on the linter level if you write ,for example `title: "test"` instead of `name: "test"`
-to set the pipeline name.
-You will get an error on a deeper level telling that you messed up somwhere in your javascript.
-
-```ts
-//pipelight.js
-
-const config = {
-  pipelines: [
-    {
-      name: "test",
-      steps: [
-        {
-          name: "build",
-          commands: ["pnpm install", "pnpm build"]
-        }
-      ],
-      triggers: [
-        {
-          branches: ["master", "dev"],
-          actions: ["pre-push", "pre-commit"]
-        }
-      ]
-    }
-  ]
-};
-export default config;
-```
-
-## Pipelines in configuration languages
+## Write in configuration languages
 
 Configuration languages have proven to be great to define small pipelines in a blink.
-Those pipelines can replace the simplest bash scripts for atomic (small) and repetitive tasks.
+Those pipelines can replace the simplest bash scripts for atomic (small) and highly repetitive tasks.
 
 ### Toml
 
@@ -110,4 +89,18 @@ pipelines:
         actions:
           - pre-push
           - pre-commit
+```
+
+## Run your pipeline
+
+Run it from the terminal.
+
+```sh
+pipelight run test
+```
+
+Read the logs.
+
+```sh
+pipelight logs -vvv
 ```

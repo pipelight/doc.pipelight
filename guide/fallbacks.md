@@ -1,6 +1,7 @@
 # Fallbacks (Conditionnal hooks)
 
 Fallbacks are steps to be executed on specific cases.
+They provide are **out of the flow** step execution.
 
 - `on_started`: when the pipeline/step starts and before any command is executed.
 - `on_failure`: when the pipeline/step is finished and have failed.

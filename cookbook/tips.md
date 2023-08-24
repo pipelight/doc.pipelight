@@ -99,7 +99,7 @@ export default config;
 ### ..Split your config
 
 Split your config into multiple files and separate concerns.
-Overuse string interpolation, parameter destructuring and import/export ESM synthax.
+Overuse string interpolation, parameter destructuring and import/export ESM syntax.
 
 Export here
 
