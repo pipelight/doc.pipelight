@@ -54,11 +54,13 @@ to finally ship great functions to **ease trivial pipeline writting**.
 
 For example, the following pipeline creates a docker images and run the containers based on those images.
 
-**You don't need to know what is docker to understand what helpers bring on the table
-in the the following example.**
+::: ino
+You don't need to know what is docker to understand what helpers bring on the table
+in the the following example.
+:::
 
 Instead of writting your commands explicitly,
-the helper will generate the appropriate bash commands so you don't have to.
+the helper generates the appropriate bash commands so you don't have to.
 
 <div class="landing">
 <Sheet class="sm">
