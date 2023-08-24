@@ -1,4 +1,4 @@
-# Common helpers <Badge type="warning" text="beta" />
+# Common helpers <Badge type="tip" text="stable" />
 
 ## Pipeline definition helpers
 
