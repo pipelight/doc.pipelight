@@ -73,7 +73,7 @@ Instead of prefixing every command with `ssh -C` like you will normaly do
 in bash, the **ssh** helper wrap them for you.
 
 ```ts
-ssh(host, ()=> [...my_commands]))
+ssh(host, () => [...my_commands]);
 ```
 
 ```ts
