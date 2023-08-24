@@ -73,11 +73,14 @@ Instead of prefixing every command with `ssh -C` like you will normaly do
 in bash, the **ssh** helper wrap them for you.
 
 ```ts
-ssh(host, my_commands))
+ssh(host, ()=> [...my_commands]))
 ```
 
 ```ts
-step("do things on remote", ssh(host, my_commands));
+step(
+  "do things on remote",
+  ssh(host, () => [...my_commands])
+);
 ```
 
 ## Early execution helper

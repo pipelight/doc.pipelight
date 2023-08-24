@@ -22,7 +22,7 @@ pipelight ls
 
 ::: warning
 
-For now, this operation overwrite the .git/hooks folder.
+For now, this operation overwrites the .git/hooks folder.
 Be sure to move your manually defined hooks elsewhere before enabling pipelight hooks
 
 :::

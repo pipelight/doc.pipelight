@@ -3,6 +3,41 @@
 Pipelight allows you to launch parallel tasks in one uniq way
 that can be declined to your needs.
 
+## Usage
+
+### Option API
+
+```ts
+const my_pipeline = {
+  name: "test",
+  steps: [
+    {
+      parallel: [
+        {
+          name: "first",
+          commands: [...my_commands]
+        },
+        {
+          name: "second",
+          commands: [...my_commands]
+        }
+      ]
+    }
+  ]
+};
+```
+
+### Composition API
+
+```ts
+const my_pipeline = pipeline("test", () => [
+  parallel(() => [
+    step("first", () => [...my_commands]),
+    step("second", () => [...my_commands])
+  ])
+]);
+```
+
 ## Parallel steps
 
 Parallel step execution by declaring a Parallel object
