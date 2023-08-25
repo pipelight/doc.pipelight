@@ -66,7 +66,7 @@ const password = env.USER_PASSWORD;
 
 You can create multiple dotenv for different environments
 like nightly, test and production and load them on the matching cases.
-See the cookbook [environment variables](/cookbook/environments) section,
+See the use [environment variables](/guide/tips/environments) section,
 and go further with the [Deno documentation](https://deno.land/manual/basics/env_variables).
 
 ## Third party vaults
