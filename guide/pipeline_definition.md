@@ -1,25 +1,5 @@
 # Define a pipeline (Typescript)
 
-## The only rule
-
-Pipelight only restricting rule is that a configuration file has to default export
-an Object of [`type Config`](https://deno.land/x/pipelight/mod.ts?s=Config).
-In other words, your config file must contain a line like this:
-
-```ts
-//pipelight.ts
-export default config: Config;
-```
-
-Everything else that happens inside this script is up to you.
-
-With such a wide rule, the pipeline definition process gives way to creativity and imagination.
-
-Where this freedom can be really enjoyable, it might sometimes be frustrating.
-That is why you are provided with some empirical **guidelines**, **patterns** and [**helpers**](/helpers/overview) to speed up your pipeline creation.
-
-Thus you remain **free** in your creation process, but you are **not helpless**.
-
 ## Syntax flavors 🍦
 
 You can either use an Object declaration or a less verbose syntax with the provided helpers functions.
@@ -99,9 +79,29 @@ export default {
 };
 ```
 
+## The only rule
+
+Pipelight only restricting rule is that a configuration file has to default export
+an Object of [`type Config`](https://deno.land/x/pipelight/mod.ts?s=Config).
+In other words, your config file must contain a line like this:
+
+```ts
+//pipelight.ts
+export default config: Config;
+```
+
+Everything else that happens inside this script is up to you.
+
+With such a wide rule, the pipeline definition process gives way to creativity and imagination.
+
+Where this freedom can be really enjoyable, it might sometimes be frustrating.
+That is why you are provided with some empirical **guidelines**, **patterns** and [**helpers**](/helpers/overview) to speed up your pipeline creation.
+
+Thus you remain **free** in your creation process, but you are **not helpless**.
+
 ## Types in depth
 
-A pipeline is an object that has an array of steps,
+A **pipeline** is an object that has an **array of steps**,
 optionnal [triggers](/guide/triggers) for automatique execution,
 and optionnal global [fallbacks](/guide/fallbacks)
 for out of the flow step execution.
@@ -117,4 +117,22 @@ export interface Pipeline {
   on_success?: StepOrParallel[];
   on_abortion?: StepOrParallel[];
 }
+```
+
+A **step** is an object that has an **array of commands**,
+an optional [execution](/guide/modes) mode
+and optionnal [fallbacks](/guide/fallbacks)
+for more specific out of the flow step execution.
+
+```ts
+export type Step = {
+  name: string;
+  commands: string[];
+  mode?: Mode | string;
+  // Fallbacks
+  on_started?: StepOrParallel[];
+  on_failure?: StepOrParallel[];
+  on_success?: StepOrParallel[];
+  on_abortion?: StepOrParallel[];
+};
 ```

@@ -33,45 +33,59 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
       text: "Guide",
       items: [
         {
-          text: "Command line usage",
-          link: "/guide/cli"
+          text: "Commande line (cli)",
+          items: [
+            {
+              text: "Configuration file",
+              link: "/guide/config"
+            },
+            {
+              text: "Usage",
+              link: "/guide/cli"
+            },
+            {
+              text: "Display Logs",
+              link: "/guide/logs"
+            }
+          ]
         },
         {
-          text: "Configuration file",
-          link: "/guide/config"
-        },
-        {
-          text: "Pipeline definition",
-          link: "/guide/pipeline_definition"
-        },
-        {
-          text: "Parallelism",
-          link: "/guide/parallelism"
-        },
-        {
-          text: "Triggers (Automation)",
-          link: "/guide/triggers"
-        },
-        {
-          text: "Fallbacks (Conditionnal Hooks)",
-          link: "/guide/fallbacks"
-        },
-        {
-          text: "Execution modes (Behavior)",
-          link: "/guide/modes"
-        },
-        {
-          text: "Secrets storage",
-          link: "/guide/secrets"
-        },
-        {
-          text: "Logs",
-          link: "/guide/logs"
+          text: "Pipelines",
+          items: [
+            {
+              text: "Which language?",
+              link: "/guide/which_lang"
+            },
+            {
+              text: "Base syntax",
+              link: "/guide/pipeline_definition"
+            },
+            {
+              text: "Task Parallelism",
+              link: "/guide/parallelism"
+            },
+            {
+              text: "Triggers (Automation)",
+              link: "/guide/triggers"
+            },
+            {
+              text: "Fallbacks (Conditionnal Hooks)",
+              link: "/guide/fallbacks"
+            },
+            {
+              text: "Execution modes (Behavior)",
+              link: "/guide/modes"
+            },
+            {
+              text: "Secrets storage",
+              link: "/guide/secrets"
+            },
+            {
+              text: "Powerful writting tips!",
+              link: "/guide/tips"
+            }
+          ]
         }
-        // {
-        //   text: "Internal API",
-        //   link: "https://gitea.com/pipelight/pipelight/src/branch/master/INTERNALS.md"
-        // }
       ]
     },
     {
@@ -123,10 +137,6 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
       text: "Cookbook",
       collapsed: true,
       items: [
-        {
-          text: "Writting Tips",
-          link: "/cookbook/tips"
-        },
         {
           text: "Supercharge the cli",
           link: "/cookbook/cli"

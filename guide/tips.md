@@ -1,4 +1,15 @@
-# Pipeline writting tips
+# Powerfull pipeline writting tips
+
+Until now the configuration was only about writting an object.
+But this is not the point of using a programming language in your configuration file.
+
+Here, we will showcase Typescript modularity into a config file.
+
+::: tip
+
+The helpers have been built using these methods!
+
+:::
 
 ## Get the best out of Typescript
 

@@ -7,7 +7,7 @@ const fedora = `pipelight-${import.meta.env.VITE_GIT_VERSION}.rpm`;
 
 # Getting Started
 
-::: tip Software size
+::: tip Software
 
 Pipelight is a very **lightweight** binary that wheighs around **6Mb**.
 
@@ -106,3 +106,7 @@ Then, it compiles the source code and moves the resulting binary to `/usr/bin/`.
 ```sh-vue
 curl {{ base }}/scripts/install.sh | sh
 ```
+
+## Special Notes
+
+Pipelight can be used alongside every other CICD software.

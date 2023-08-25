@@ -37,14 +37,8 @@ It can be due to:
 Corrupted logs are rare but can occur on unsanitized aborted pipelines log files
 or on a concurrent Read and Write operation.
 
-They prevent the CLI from pretty printing every logs.
-
-As of today, no log rotation or log sanitizing function has been implemented.
-The fastest way to bypass this issue is to clean the log directory.
-
-```sh
-pipelight logs rm
-```
+They are actually removed from the log output (with a discrete warning message).
+I am working on a way to recover them when possible and flag them as `corrupted`.
 
 :::
 
