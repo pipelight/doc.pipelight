@@ -1,4 +1,6 @@
-# Powerfull pipeline writting tips
+# Pipeline doping ⚡
+
+## Powerfull pipeline writting tips
 
 Until now the configuration was only about writting an object.
 But this is not the point of using a programming language in your configuration file.
@@ -38,38 +40,6 @@ export default config;
 
 For the sake of reusability and when you need to deploy in multiple evironnements.
 Here are some pattern that I personnaly use.
-
-### Overuse string interpolation!..
-
-```ts{20}
-//pipelight.ts
-const params = {
-  remote: {
-    domain: "myserver.com",
-    path: "/remote/directory"
-  },
-  local: {
-    path: "/my/build/directory"
-  }
-};
-
-const config = {
-  pipelines: [
-    {
-      name: "deploy",
-      steps: [
-        {
-          name: "send files to server",
-          commands: [
-            `scp -r ${params.local.path} ${params.remote.domain}@${params.remote.path}`
-          ]
-        }
-      ]
-    }
-  ]
-};
-export default config;
-```
 
 ### ..Add Parameter destructuring..
 
@@ -162,18 +132,3 @@ export default config;
 
 You may want to store files under .pipelight/config
 and import them in your main pipelight.config.ts
-
-## Multiline strings
-
-To write multiline strings use the trailing slash.
-
-```ts
-commands: [
-  `docker build \
-    --label='traefik.enable=true' \
-    --label='traefik.http.routers.default.rule=Host("${docker.container.dns}")' \
-    --label='traefik.http.routers.default.tls=true' \
-    -t ${docker.image.name} .vitepress/dist`,
-  `docker save ${docker.image.name} | ssh -C ${host} docker load`
-];
-```

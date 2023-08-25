@@ -7,7 +7,7 @@ export const nav: DefaultTheme.Config["nav"] = [
   },
   {
     text: "Helpers",
-    link: "/helpers/overview"
+    link: "/helpers/common"
   },
   {
     text: "Contacts",

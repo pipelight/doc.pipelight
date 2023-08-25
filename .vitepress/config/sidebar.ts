@@ -50,7 +50,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           ]
         },
         {
-          text: "Pipelines",
+          text: "Pipeline definition",
           items: [
             {
               text: "Which language?",
@@ -79,10 +79,27 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
             {
               text: "Secrets storage",
               link: "/guide/secrets"
+            }
+          ]
+        },
+        {
+          text: "Pipeline doping ⚡",
+          items: [
+            {
+              text: "String manipulation",
+              link: "/guide/tips/strings"
             },
             {
-              text: "Powerful writting tips!",
-              link: "/guide/tips"
+              text: "Split code blocks",
+              link: "/guide/tips/split"
+            },
+            {
+              text: "Supercharge the cli",
+              link: "/guide/tips/supercli"
+            },
+            {
+              text: "Show off",
+              link: "/guide/tips/supercli"
             }
           ]
         }
@@ -137,10 +154,6 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
       text: "Cookbook",
       collapsed: true,
       items: [
-        {
-          text: "Supercharge the cli",
-          link: "/cookbook/cli"
-        },
         {
           text: "Environment variables",
           link: "/cookbook/environments"

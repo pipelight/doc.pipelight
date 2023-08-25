@@ -1,6 +1,6 @@
-# Supercharge the CLI
+# Pipeline doping ⚡
 
-## Overview
+## Supercharge the cli
 
 Pipelight cli accepts a few options and arguments, see `pipelight --help`.
 But you can add more like `--host`,`--docker`, `--env`...

@@ -1,7 +1,10 @@
 # Triggers (Automation)
 
-Here is the part you were waiting for!
-What is the point of writting pipelines if you still have to execute them by hand?
+::: tip tl;dr
+
+Triggers are a **set of conditions** that can **instantly launch multiple pipelines** when they are met.
+
+:::
 
 ## Prerequesits
 
@@ -22,8 +25,8 @@ pipelight ls
 
 ::: warning
 
-For now, this operation overwrites the .git/hooks folder.
-Be sure to move your manually defined hooks elsewhere before enabling pipelight hooks
+For now, this operation overwrites the `.git/hooks` folder.
+Be sure to move your manually defined hooks elsewhere before enabling pipelight hooks.
 
 :::
 
