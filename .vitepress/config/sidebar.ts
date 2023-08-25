@@ -86,6 +86,10 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           text: "Pipeline doping ⚡",
           items: [
             {
+              text: "Overview",
+              link: "/guide/tips/overview"
+            },
+            {
               text: "String manipulation",
               link: "/guide/tips/strings"
             },
@@ -98,9 +102,13 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
               link: "/guide/tips/supercli"
             },
             {
-              text: "Show off",
-              link: "/guide/tips/supercli"
+              text: "Environment variables",
+              link: "/guide/tips/environments"
             }
+            // {
+            //   text: "Show off",
+            //   link: "/guide/tips/showcase"
+            // }
           ]
         }
       ]
@@ -154,10 +162,6 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
       text: "Cookbook",
       collapsed: true,
       items: [
-        {
-          text: "Environment variables",
-          link: "/cookbook/environments"
-        },
         {
           text: "Read files",
           link: "/cookbook/cli"

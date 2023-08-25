@@ -9,7 +9,15 @@ import LogsVVVV from "@demos/LogsVVVV.vue";
 
 # The pipeline logs
 
-## Pipeline status
+::: tip Json support
+
+For purist, there is a **Json** output avaiilable with `pipelight logs --json`.
+
+:::
+
+The default log output is the following **pretty tree** output.
+
+## Pipeline status (global status)
 
 **A pipeline can be either running, succeeded, failed or aborted.**
 
@@ -107,7 +115,7 @@ This log level is practical if you want to see what happenned or what happens:
 
 <LogsVVVV/>
 
-## Raw logs
+## Raw logs (Json)
 
 Logs are stored in your project root directory in the `.pipelight/logs` folder in JSON format.
 You can checkout raw logs directly by inspecting the generated files or with the following commands:
