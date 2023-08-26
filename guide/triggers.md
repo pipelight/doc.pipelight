@@ -1,3 +1,8 @@
+<script setup>
+import Sync from '@components/Sync.vue';
+import ASync from '@components/ASync.vue';
+</script>
+
 # Triggers (Automation)
 
 ::: tip tl;dr
@@ -78,6 +83,8 @@ pipelines: [
 ];
 ```
 
+## Git environment (optional)
+
 ### Branch and Tags
 
 Branches are your git project branches names (see: `git branch`).
@@ -100,10 +107,13 @@ triggers: [
 ];
 ```
 
-### Actions (Git-hooks)
+::: warning
 
-Actions are named according to [git-hooks](https://githooks.com/) names,
-plus special flags like `manual` and `watch`.
+A pipeline whoes trigger has a branch alone without specified action can't be triggered.
+
+:::
+
+## Actions
 
 ```ts
 export enum Action {
@@ -144,8 +154,22 @@ export enum Action {
   // special flags
   Manual = "manual",
   Watch = "watch"
+  Blank = "blank"
 }
 ```
+
+### Git actions (Git-hooks)
+
+Actions are named according to [git-hooks](https://githooks.com/) names,
+plus special flags like `blank`,`manual` and `watch`.
+
+::: warning
+
+A pipeline whoes trigger has an action alone without specified branch is triggered for every branches.
+
+:::
+
+### Special actions
 
 #### On file change (Watch Flag)
 
@@ -176,7 +200,54 @@ If you want to manually run a pipeline that has non-empty triggers, with the com
 you need to add the **special flag** `manual` to the pipeline trigger's actions.
 This **avoids unintentionnal manual triggering** aspecialy on critical production branches.
 
-## Forced flags
+#### Client-Server synchronisation (Blank Flag)
+
+```ts
+actions: ["blank"];
+```
+
+When you have pipelight installed **client and server side**.
+A push to the (git)server triggers both client and server side pipelines simultaneously.
+
+<Sync/>
+
+What if you want to trigger a server side pipeline only **once a client side pipeline has resolved**?
+
+The workaround is to send an ssh command to the server at some point in your pipeline.
+`pipelight run <pipeline_name> --flag blank`
+or `pipelight trigger --flag blank`
+
+Add the required trigger to the pipeline to be executed server-side.
+
+```ts
+// pipelight.ts
+server_pipeline.add_trigger({
+  action: ["blank"]
+});
+```
+
+Emit the **trigger signal** from the client-side pipeline.
+Whether it be from a fallback or from a regular pipeline step.
+
+```ts
+// pipelight.ts
+pipeline.on_success = step(() => [
+  ...ssh((host) => [`pipelight trigger run server_side_pipeline --flag blank`])
+]);
+```
+
+and voilà, you have synced your pipelines.
+
+<ASync/>
+
+::: tip
+
+This can be applied for client/server pipelines as well as for syncing pipelines
+on the client or server only.
+
+:::
+
+## Forced flags (Manually set trigger action)
 
 Simulate a specific action to trigger associated pipelines.
 

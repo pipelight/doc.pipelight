@@ -13,7 +13,7 @@
     "@typescript-eslint/eslint-plugin": "^6.4.1",
     "@typescript-eslint/parser": "^6.4.1",
     "autoprefixer": "^10.4.15",
-    "eslint": "^8.47.0",
+    "eslint": "^8.48.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-vue": "^9.17.0",
@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@heroicons/vue": "^2.0.18",
-    "@vueuse/core": "^10.3.0",
+    "@vueuse/core": "^10.4.0",
     "date-fns": "^2.30.0",
     "markdown-it": "^13.0.1",
     "moment": "^2.29.4",
