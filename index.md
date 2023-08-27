@@ -74,7 +74,7 @@ pwd;
 
 <Example>
 <h3> 
-..wrapped into Json (Typescript)
+..wrapped into Typescript
 </h3>
 
 ```ts{6,10}

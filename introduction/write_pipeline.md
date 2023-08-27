@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import { api } from "@utils/preferences.ts";
+</script>
+
 # Write and Run your first pipeline
 
 ## Write in programming languages
@@ -24,6 +28,27 @@ and **use types later** to strenghten your pipeline definition.
 
 Importing the types from the deno package will give you a **pleasant linting support**.
 
+<div v-if="api.compositions">
+
+```ts
+//pipelight.ts
+import type { pipeline, step } from "https://deno.land/x/pipelight/mod.ts";
+
+const my_pipe = pipeline("test", () => [
+  step("build", () => ["pnpm install", "pnpm build"])
+]).add_trigger({
+  branches: ["master", "dev"],
+  actions: ["pre-push", "pre-commit"]
+});
+
+export default {
+  pipelines: my_pipe
+};
+```
+
+</div>
+<div v-else>
+
 ```ts
 //pipelight.ts
 import type { Config } from "https://deno.land/x/pipelight/mod.ts";
@@ -49,6 +74,8 @@ const config: Config = {
 };
 export default config;
 ```
+
+</div>
 
 ## Write in configuration languages
 
