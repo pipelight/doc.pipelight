@@ -1,3 +1,9 @@
+<script lang="ts" setup>
+import { api } from "@utils/preferences.ts";
+import { inject } from "vue";
+const Badge = inject("Badge");
+</script>
+
 # Secrets storage
 
 Pipelight doe not come with a secret/vault plugin.
@@ -73,3 +79,92 @@ and go further with the [Deno documentation](https://deno.land/manual/basics/env
 
 You can still store your secrets in your favorite third party dedicated softwares
 and make an API call to the vault from your `pipelight.ts` file.
+
+If you seak to plug your vault more simply, [Novops](https://pierrebeucher.github.io/novops/intro.html) is the way to go.
+
+## Novops - The allmighty Vault aggregator. <Badge type="warning" text="beta" />
+
+### Install
+
+#### Arch Linux
+
+Install from the AUR
+
+```sh
+paru -S novops-git
+```
+
+#### Other distros
+
+Get distro specific instructions on [Novops](https://pierrebeucher.github.io/novops/install.html)
+official documentation.
+
+### Usage
+
+Using the vault aggregator [Novops](https://pierrebeucher.github.io/novops/install.html)
+you can bridge your every password managers to pipelight pretty easily.
+
+First define a unique env file `novops.yml`
+
+```yml
+# .novops.yml
+environments:
+  dev:
+    # Environment variables for dev environment
+    variables:
+      # Fetch Hashicorp Vault secrets
+      - name: DATABASE_PASSWORD
+        value:
+          hvault_kv2:
+            path: crafteo/app/dev
+            key: db_password
+      # Plain string are also supported
+      - name: DATABASE_USER
+        value: root
+
+    # Generate temporary AWS credentials for IAM Role
+    # Provide environment variables:
+    # - AWS_ACCESS_KEY_ID
+    # - AWS_SECRET_ACCESS_KEY
+    # - AWS_SESSION_TOKEN
+    aws:
+      assume_role:
+        role_arn: arn:aws:iam::12345678910:role/dev_deploy
+```
+
+Then load every secrets as shell environnment variables
+
+```sh
+novops load
+
+```
+
+Now coupling it with Pipelight.
+
+<div v-if="api.compositions">
+
+```ts
+const my_pipeline = pipeline("test", () => [
+  step("provide environnment", () => [
+    // Provide your commands with the novops env vars
+    novops(() => [...my_commands])
+  ])
+]);
+```
+
+</div>
+<div v-else>
+
+```ts
+const my_pipeline = {
+  name: "test",
+  steps: [
+    {
+      name: "provide environnment",
+      commands: ["novops run -- <my_command>"]
+    }
+  ]
+};
+```
+
+</div>
