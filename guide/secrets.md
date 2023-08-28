@@ -84,6 +84,12 @@ If you seak to plug your vault more simply, [Novops](https://pierrebeucher.githu
 
 ## Novops - The allmighty Vault aggregator. <Badge type="warning" text="beta" />
 
+::: danger Not tested
+
+The tests concerning novops integration havn't been written yet.
+
+:::
+
 ### Install
 
 #### Arch Linux
