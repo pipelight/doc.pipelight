@@ -1,42 +1,44 @@
 <template lang="pug">
 .preference-container
-  h2.text.font-bold API Preference
+  h2.text.font-bold.cursor-pointer(
+    @click="router.go(link)"
+  ) API Preference
   .switch-container
     label(
       :class="[ api.compositions ? 'secondary' : 'primary']"
       @click="toggleCompositionAPI(false)"
     ) Objects
-    input.daisy-toggle.daisy-toggle-success(
-      type="checkbox"
+    VPSwitch.VPSwitchAppearance(
+      title:="toggle compositions"
       aria-label="prefer composition api"
       :aria-checked="api.compositions"
       @click="toggleCompositionAPI()"
     )
+      div
+      div
     label(
       :class="[ api.compositions ? 'primary' : 'secondary']"
       @click="toggleCompositionAPI(true)"
     ) Helpers
-    a.switch-link(
-      title="About API preference"
-      href="/guide/"
-      @click="closeSideBar"
-    ) ?
 </template>
 <script setup lang="ts">
-import { useRoute } from "vitepress";
+import { useRouter } from "vitepress";
 import { ref, computed, inject } from "vue";
 import { api } from "@utils/preferences.ts";
-
-const closeSideBar = inject("close-sidebar") as () => void;
+import { useDark } from "@vueuse/core";
+//vitepress Components
+const VPSwitch = inject("VPSwitch");
 
 const toggleCompositionAPI = (bool?: boolean) => {
   if (bool === undefined) {
     api.value.compositions = !api.value.compositions;
   } else {
-    console.debug(api.value.compositions);
     api.value.compositions = bool;
   }
 };
+
+const router = useRouter();
+const link = "/guide/pipeline_definition";
 </script>
 <style lang="postcss" scoped>
 .preference-container {
@@ -51,9 +53,10 @@ const toggleCompositionAPI = (bool?: boolean) => {
   @apply flex flex-row items-center justify-around;
   @apply py-4;
 }
-input {
-  &.daisy-toggle {
-    @apply border-solid;
-  }
+
+.VPSwitchAppearance[aria-checked="true"] :deep(.check) {
+  /*rtl:ignore*/
+  transform: translateX(18px);
+  background-color: var(--vp-c-brand-1);
 }
 </style>

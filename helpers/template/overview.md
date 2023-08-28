@@ -1,3 +1,8 @@
+<script lang="ts" setup>
+import { inject } from "vue";
+const Badge = inject("Badge");
+</script>
+
 # Pipeline Template helpers <Badge type="danger" text="alpha" />
 
 ::: info COMING NEXT

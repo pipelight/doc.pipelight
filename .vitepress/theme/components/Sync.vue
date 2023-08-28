@@ -105,44 +105,6 @@ const fadeOut = (el: any) => {
 };
 </script>
 <style lang="postcss" scoped>
-.card {
-  @apply rounded-lg h-24 w-20;
-  @apply relative;
-  @apply flex flex-col py-3 pl-2 gap-1;
-  .icon {
-    @apply absolute inset-0 h-10 rounded-lg;
-  }
-  &.ontop {
-    @apply absolute inset-8;
-  }
-  &.exec {
-    background-color: var(--vp-c-brand);
-  }
-  &.logs {
-    @apply border border-gray-300 dark:border-gray-500;
-    .line {
-      @apply bg-gray-300 dark:bg-gray-500;
-    }
-  }
-  &.process {
-    @apply bg-green-400 dark:bg-green-400;
-    @apply h-12;
-    .line {
-      @apply bg-gray-200 dark:bg-gray-300;
-    }
-  }
-  &.config {
-    @apply bg-gray-600 dark:bg-white;
-  }
-  .line {
-    @apply rounded-lg w-16;
-    @apply bg-gray-300 dark:bg-gray-400;
-    height: 6px;
-    &.short {
-      @apply w-10 self-start;
-    }
-  }
-}
 .arrow {
   @apply w-12 sm:w-16;
 }

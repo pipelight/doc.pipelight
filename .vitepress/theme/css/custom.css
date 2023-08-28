@@ -1,6 +1,18 @@
 :root {
+  --pipelight-green: #3f7739;
+
+  --vue-green: #42b883;
+  --vue-green-soft: #42b88346;
+
+  --vue-green-light: var(--pipelight-green);
+
   --vp-c-text: auto;
-  --vp-c-brand: #3f7739;
+  --vp-c-brand: var(--vue-green);
+  --vp-c-brand-1: var(--pipelight-green);
+  --vp-c-brand-2: var(--pipelight-green);
+  --vp-c-brand-3: var(--pipelight-green);
+
+  --vp-c-brand-soft: var(--vue-green-soft);
 
   --vp-c-brand-dark: var(--vp-c-brand);
   --vp-c-brand-darker: var(--vp-c-brand);
@@ -23,7 +35,57 @@
     #3f7739 40%
   );
   --vp-home-hero-image-filter: blur(66px);
-  --vp-custom-block-tip-text: var(--vue-green);
-  --vp-custom-block-tip-border: var(--vue-green);
-  --vue-green: #42b883;
+
+  --vp-badge-tip-text: var(--vue-green);
+  --vp-custom-block-tip-bg: var(--vue-green-soft);
+  --vp-custom-block-tip-code-text: var(--vue-green);
+}
+
+.dark {
+  --vue-green-light: #80ff83;
+}
+
+.custom-block.tip {
+  code {
+    color: var(--vue-green-light);
+  }
+}
+
+.card {
+  @apply rounded-lg h-24 w-20;
+  @apply relative;
+  @apply flex flex-col py-3 pl-2 gap-1;
+  .icon {
+    @apply absolute inset-0 h-10 rounded-lg;
+  }
+  &.ontop {
+    @apply absolute inset-8;
+  }
+  &.exec {
+    background-color: var(--pipelight-green);
+  }
+  &.logs {
+    @apply border border-gray-300 dark:border-gray-500;
+    .line {
+      @apply bg-gray-300 dark:bg-gray-500;
+    }
+  }
+  &.process {
+    @apply bg-green-400 dark:bg-green-400;
+    @apply h-12;
+    .line {
+      @apply bg-gray-200 dark:bg-gray-300;
+    }
+  }
+  &.config {
+    @apply bg-gray-600 dark:bg-white;
+  }
+  .line {
+    @apply rounded-lg w-16;
+    @apply bg-gray-300 dark:bg-gray-400;
+    height: 6px;
+    &.short {
+      @apply w-10 self-start;
+    }
+  }
 }

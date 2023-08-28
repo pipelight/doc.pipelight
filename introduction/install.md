@@ -3,6 +3,8 @@ const base = "https://packages.pipelight.dev";
 const debian = `pipelight-${import.meta.env.VITE_GIT_VERSION}.deb`;
 const archlinux = `pipelight-${import.meta.env.VITE_GIT_VERSION}.pkg.tar.zst`;
 const fedora = `pipelight-${import.meta.env.VITE_GIT_VERSION}.rpm`;
+import { inject } from "vue";
+const Badge = inject("Badge");
 </script>
 
 # Getting Started

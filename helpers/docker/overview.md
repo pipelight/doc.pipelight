@@ -1,3 +1,8 @@
+<script lang="ts" setup>
+import { inject } from "vue";
+const Badge = inject("Badge");
+</script>
+
 # Docker helpers <Badge type="warning" text="beta" />
 
 # Overview

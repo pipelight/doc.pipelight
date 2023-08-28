@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import { api } from "@utils/preferences.ts";
+</script>
+
 # Parallel tasks execution
 
 Pipelight allows you to launch parallel tasks in one uniq way
@@ -5,7 +9,19 @@ that can be declined to your needs.
 
 ## Usage
 
-### Option API
+<div v-if="api.compositions">
+
+```ts
+const my_pipeline = pipeline("test", () => [
+  parallel(() => [
+    step("first", () => [...my_commands]),
+    step("second", () => [...my_commands])
+  ])
+]);
+```
+
+</div>
+<div v-else>
 
 ```ts
 const my_pipeline = {
@@ -27,16 +43,7 @@ const my_pipeline = {
 };
 ```
 
-### Composition API
-
-```ts
-const my_pipeline = pipeline("test", () => [
-  parallel(() => [
-    step("first", () => [...my_commands]),
-    step("second", () => [...my_commands])
-  ])
-]);
-```
+</div>
 
 ## Parallel steps
 
@@ -45,29 +52,64 @@ which is an array of multiple Steps.
 
 1. At start, first and second steps will run simultaneously.
 
+<div v-if="api.compositions">
+
 ```ts
-steps: [
-  {
-    parallel: [
-      {
-        name: "first", // [!code focus]
-        commands: [...my_commands] // [!code focus]
-      },
-      {
-        name: "second", // [!code focus]
-        commands: [...my_commands] // [!code focus]
-      }
-    ]
-  },
-  {
-    name: "third",
-    commands: [...my_commands]
-  }
-];
+const my_pipeline = pipeline("test", ()=> [
+    parallel(()=>[
+        step("first", ()=> [...my_commands]) // [!code focus]
+        step("second", ()=> [...my_commands]) // [!code focus]
+    ]),
+    step("third", ()=> [...my_commands])
+])
 ```
+
+</div>
+<div v-else>
+
+```ts
+const my_pipeline = {
+  name: "test",
+  steps: [
+    {
+      parallel: [
+        {
+          name: "first", // [!code focus]
+          commands: [...my_commands] // [!code focus]
+        },
+        {
+          name: "second", // [!code focus]
+          commands: [...my_commands] // [!code focus]
+        }
+      ]
+    },
+    {
+      name: "third",
+      commands: [...my_commands]
+    }
+  ]
+};
+```
+
+</div>
 
 2. Then, the third step will run once the whole parallel object has resolved.
    Which means, when the first and second steps have both resolved.
+
+<div v-if="api.compositions">
+
+```ts
+const my_pipeline = pipeline("test", () => [
+  parallel(() => [
+    step("first", () => [...my_commands]),
+    step("second", () => [...my_commands])
+  ]),
+  step("third", () => [...my_commands]) // [!code focus]
+]);
+```
+
+</div>
+<div v-else>
 
 ```ts
 steps: [
@@ -90,6 +132,8 @@ steps: [
 ];
 ```
 
+</div>
+
 ## Parallel pipelines
 
 ### Attached subprocess
@@ -100,7 +144,23 @@ You just need to `--attach` them to the main pipeline.
 The main pipeline will wait until both pipelines execution is completed
 and then continue its execution.
 
+<div v-if="api.compositions">
+
 ```ts
+const my_pipeline = pipeline("test", () => [
+  parallel(() => [
+    step("first", () => ["pipelight run pipeline_1 --attach"]), // [!code focus]
+    step("second", () => ["pipelight run pipeline_2 --attach"]) // [!code focus]
+  ])
+]);
+```
+
+</div>
+<div v-else>
+
+```ts
+const my_pipeline = {
+name: "test",
 steps: [
   {
     parallel: [
@@ -115,7 +175,10 @@ steps: [
     ]
   }
 ];
+}
 ```
+
+</div>
 
 ### Detached subprocess
 

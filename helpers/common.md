@@ -1,3 +1,9 @@
+<script lang="ts" setup>
+const version = `v${import.meta.env.VITE_GIT_VERSION}`;
+import { inject } from "vue";
+const Badge = inject("Badge");
+</script>
+
 # Common helpers <Badge type="tip" text="stable" />
 
 ## Pipeline definition helpers
@@ -100,7 +106,3 @@ Can be used to retrieve git infos, like your latest tag and use it in your pipel
 const version = await $`git describe --tags --abbrev=0`.text()
 // version = "{{ version }}"
 ```
-
-<script lang="ts" setup>
-const version = `v${import.meta.env.VITE_GIT_VERSION}`;
-</script>

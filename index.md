@@ -25,6 +25,7 @@ import DemoLogs from "@demos/DemoLogs.vue";
 import DemoLogsVVV from "@demos/DemoLogsVVV.vue";
 
 import { tailwind } from "@utils/breakpoints.ts";
+
 </script>
 
 <div class="landing">
@@ -70,11 +71,11 @@ pwd;
 
 </Example>
 
-<p class="xl">{{ tailwind.md ? '⇢' : '⇣' }}</p>
+<p class="xl">{{ tailwind.lg ? '⇢' : '⇣' }}</p>
 
 <Example>
 <h3> 
-..wrapped into Typescript
+..wrapped into Typescript..
 </h3>
 
 ```ts{6,10}
@@ -86,11 +87,27 @@ pwd;
       commands: ["ls"]
     },
     {
-      name: "get working directory",
+      name: "get directory",
       commands: ["pwd"]
     }
   ]
 }
+```
+
+</Example>
+
+<p class="xl">{{ tailwind.lg ? '⇢' : '⇣' }}</p>
+
+<Example>
+<h3> 
+..boosted with syntaxic sugar
+</h3>
+
+```ts{2,3}
+pipeline("simple_example", () => [
+  step("list files",() => ["ls"]),
+  step("get directory", () => ["pwd"])
+]);
 ```
 
 </Example>
@@ -100,9 +117,37 @@ pwd;
 <Example>
 <h4 class="xl gradient">
 <span>
-Use predefined blocks.
+Code in your config file.
 </span>
 </h4>
+</Example>
+</Sheet>
+
+<Sheet>
+<Example>
+
+```ts
+import { makeDeployPipe } from "./template/deploy.ts";
+
+const env = await load({ envPath: `./.env.production` });
+
+const params = {
+  remote: {
+    domain: "myserver.com",
+    path: "/remote/directory"
+  },
+  local: {
+    path: "/my/build/directory"
+  }
+};
+
+const deploy_pip = makeDeployPipe(params, env);
+
+export default {
+  pipelines: [deploy_pipe]
+};
+```
+
 </Example>
 </Sheet>
 
@@ -112,17 +157,21 @@ Use predefined blocks.
 Define complex operations with less code.
 </h4>
 <p>
-with the Typescript helper functions
+with the Pipelight Helpers
 </p>
 </Example>
+</Sheet>
 
+<Sheet>
 <Example>
 
 ```ts
-step("build images and run containers", () => [
+pipeline("docker_deploy", () => [
+  step("build images and run containers", () => [
     ...docker.images.create(),
     ...docker.containers.create()
-]),
+  ])
+]);
 ```
 
 </Example>
@@ -146,7 +195,9 @@ Get aggressively verbose
 Gather every process outputs.
 </p>
 </Example>
+</Sheet>
 
+<Sheet>
 <Example>
 <DemoLogsVVV/>
 </Example>
@@ -156,13 +207,9 @@ Gather every process outputs.
 <Example>
 <h4 class="xl gradient">
 <span>
-Trigger pipelines automatically!
+Trigger pipelines automatically.
 </span>
 </h4>
-
-<p>
-A single file for Client side AND Server side.
-</p>
 
 </Example>
 </Sheet>
@@ -232,7 +279,9 @@ Use minimal configuration formats
 Old-school flavors
 </p>
 </Example>
+</Sheet>
 
+<Sheet>
 <Example>
 
 ```toml
@@ -264,6 +313,16 @@ pipelines:
           - pwd
 ```
 
+</Example>
+</Sheet>
+
+<Sheet>
+<Example>
+<h4 class="xl gradient">
+<span>
+tl;dr
+</span>
+</h4>
 </Example>
 </Sheet>
 

@@ -1,3 +1,8 @@
+<script lang="ts" setup>
+import { inject } from "vue";
+const Badge = inject("Badge");
+</script>
+
 # Define a pipeline (Typescript)
 
 ## Syntax flavors 🍦

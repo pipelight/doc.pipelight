@@ -1,4 +1,5 @@
-<script setup>
+<script setup lang="ts">
+import { api } from "@utils/preferences.ts";
 import Sync from '@components/Sync.vue';
 import ASync from '@components/ASync.vue';
 </script>
@@ -44,14 +45,28 @@ Which means you need to checkout to the allowed branches or tags, and execute th
 
 (debug): _When verbosity is increased, the CLI tells you what to do if requirements are not met._
 
+<div v-if="api.compositions">
+
 ```ts
-triggers: [
+pipeline.add_trigger({
+  branches: ["main"],
+  actions: ["pre-push"]
+});
+```
+
+</div>
+<div v-else>
+
+```ts
+pipeline.triggers =
   {
     branches: ["main"],
     actions: ["pre-push"]
   }
 ];
 ```
+
+</div>
 
 ```ts
 type Trigger = TriggerBranch | TriggerTag;
@@ -62,7 +77,22 @@ type TriggerTag = { tags?: string[]; actions?: Action[] };
 
 Then, add triggers to your pipeline definition.
 
-```ts{11}
+<div v-if="api.compositions">
+
+```ts
+//pipelight.ts
+const my_pipeline = pipeline("test", () => [
+  step("build", () => ["yarn install", "yarn build"])
+]).add_trigger({
+  branches: ["main"],
+  actions: ["pre-push"]
+});
+```
+
+</div>
+<div v-else>
+
+```ts
 //pipelight.ts
 pipelines: [
   {
@@ -83,6 +113,8 @@ pipelines: [
 ];
 ```
 
+</div>
+
 ## Git environment (optional)
 
 ### Branch and Tags
@@ -93,6 +125,23 @@ Tags are the commits you made with `git tag -a "v0.8"` (see: `git tag`).
 _It has become common to do stuffs like tests and build on new `tag` when releasing software._
 
 Branch and Tag combinations are enhanced by **globbing**.
+
+<div v-if="api.compositions">
+
+```ts
+my_pipeline
+  .add_trigger({
+    branches: ["feature/*"],
+    actions: ["pre-push"]
+  })
+  .add_trigger({
+    tags: ["v*-dev"],
+    actions: ["pre-commit"]
+  });
+```
+
+</div>
+<div v-else>
 
 ```ts
 triggers: [
@@ -106,6 +155,8 @@ triggers: [
   }
 ];
 ```
+
+</div>
 
 ::: warning
 
@@ -219,6 +270,8 @@ or `pipelight trigger --flag blank`
 
 Add the required trigger to the pipeline to be executed server-side.
 
+<div v-if="api.compositions">
+
 ```ts
 // pipelight.ts
 server_pipeline.add_trigger({
@@ -226,15 +279,42 @@ server_pipeline.add_trigger({
 });
 ```
 
-Emit the **trigger signal** from the client-side pipeline.
-Whether it be from a fallback or from a regular pipeline step.
+</div>
+<div v-else>
 
 ```ts
 // pipelight.ts
-pipeline.on_success = step(() => [
-  ...ssh((host) => [`pipelight trigger run server_side_pipeline --flag blank`])
+server_pipeline.triggers.push({
+  action: ["blank"]
+});
+```
+
+</div>
+
+Emit the **trigger signal** from the client-side pipeline.
+Whether it be from a fallback or from a regular pipeline step.
+
+<div v-if="api.compositions">
+
+```ts
+// pipelight.ts
+pipeline.on_success = step("sync", () => [
+  ...ssh((host) => ["pipelight run server_side_pipeline --flag blank"])
 ]);
 ```
+
+</div>
+<div v-else>
+
+```ts
+// pipelight.ts
+pipeline.on_success = {
+  name: "sync",
+  commands: `ssh ${host} -C "pipelight run server_side_pipeline --flag blank"`
+};
+```
+
+</div>
 
 and voilà, you have synced your pipelines.
 
