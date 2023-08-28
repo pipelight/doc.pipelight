@@ -1,5 +1,8 @@
 import { ref } from "vue";
+import { useStorage } from "@vueuse/core";
+
 const api = ref({
-  compositions: false
+  compositions: useStorage("compositions", false)
 });
+
 export { api };

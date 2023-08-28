@@ -1,3 +1,53 @@
+<script setup lang="ts">
+import { h, ref } from "vue";
+// Components
+import Terminal from "@components/Terminal.vue";
+
+const vnode_inspect = h("div", [
+    h("div", {
+      innerHTML: "> deploy_to_host"
+    }),
+    h("div", {
+      class: "indented",
+      innerHTML: "test"
+    }),
+    h("div", {
+      class: "indented",
+      innerHTML: "build"
+    })
+]);
+const lines_inspect = [
+  { cmd: "pipelight inspect" },
+  { vnode: vnode_inspect }
+];
+
+const vnode_run = h("div", [
+    h("div", {
+      innerHTML: "> deploy_to_host"
+    }),
+    h("div", {
+      class: "indented",
+      innerHTML: "test"
+    }),
+    h("div", {
+      class: "indented",
+      innerHTML: "build"
+    })
+]);
+const lines_run = [
+  { cmd: "pipelight run" },
+  { vnode: vnode_run }
+];
+</script>
+
+<style lang="postcss">
+.terminal {
+    .indented {
+        @apply pl-4;
+    }
+}
+</style>
+
 # Command line usage
 
 ## Most used commands
@@ -23,15 +73,11 @@ pipelight ls -vvv <pipeline_name>
 Without an argument `inspect` shows an intercative prompt
 with your pipeline names.
 
-```sh
-pipelight inspect
-```
-
-```sh
-> deploy_to_host
-  tests
-  build
-```
+<Terminal
+class="sm"
+:animate=false
+:lines="lines_inspect"
+/>
 
 Run a pipeline in the background (default).
 
@@ -42,15 +88,11 @@ pipelight run <pipeline_name>
 Without an argument `run` shows an intercative prompt
 with your pipeline names.
 
-```sh
-pipelight run
-```
-
-```sh
-> deploy_to_host
-  tests
-  build
-```
+<Terminal
+class="sm"
+:animate=false
+:lines="lines_run"
+/>
 
 Compulsively check pipelines execution states, and produced outputs.
 
