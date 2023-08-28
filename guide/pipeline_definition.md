@@ -12,7 +12,7 @@ Those easy on the eye syntaxes have been greatly inspired by [Vue](https://vuejs
 
 They are meant to be used **together** to improve readability where it is needed.
 
-### Option API <Badge type="tip" text="stable" />
+### Object API <Badge type="tip" text="stable" />
 
 ::: tip
 
@@ -56,7 +56,7 @@ export type Config = {
 };
 ```
 
-### Composition API <Badge type="warning" text="beta" />
+### Helpers API <Badge type="tip" text="stable" />
 
 The Composition API is built on top of the Option API.
 It is a group of functions, class and methods that:
