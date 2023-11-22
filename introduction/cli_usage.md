@@ -2,9 +2,9 @@
 
 ## Command line usage
 
-::: info
+::: info 
 
-Use the commands in the same folder as your config file.
+Pipelight seeks the nearest configuration file
 
 :::
 
