@@ -18,6 +18,14 @@ It is by design only compatible with linux.
 
 ### Nixos (flake)
 
+Try it in an isolated shell.
+
+```nix
+nix shell github:pipelight/pipelight
+```
+
+Install it on your system.
+
 ```nix
 {
   description = "NixOS configuration for crocuda development";
@@ -66,7 +74,6 @@ First install dependencies:
 
 - Deno, javascript runtime (optionnal)
 - Git, software version manager (optionnal)
-- Watchexex, listen for file modification (optionnal)
 
 ```sh-vue
 curl -O {{ base }}/{{ debian }}
@@ -82,7 +89,6 @@ First install dependencies:
 
 - Deno, javascript runtime (optionnal)
 - Git, software version manager (optionnal)
-- Watchexex, listen for file modification (optionnal)
 
 ```sh-vue
 curl -O {{ base }}/{{ fedora }}
