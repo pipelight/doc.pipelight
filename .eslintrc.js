@@ -14,7 +14,9 @@ module.exports = {
     // "plugin:vue-pug-sfc/recommended",
     "plugin:prettier/recommended",
     "prettier",
-    "@vue/prettier"
+    // eslint -plugin-pug
+    "pug"
+    // "@vue/prettier"
   ],
   plugins: [
     // "vue",

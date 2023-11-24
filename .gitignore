@@ -1,8 +1,8 @@
 .DS_Store
 node_modules
 /dist
-.vitepress/build
-.vitepress/dist
+.vitepress/build/
+.vitepress/dist/
 .vitepress/cache
 public/packages/**/*
 
@@ -15,7 +15,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-.pipelight/logs/*
 
 # Editor directories and files
 .idea

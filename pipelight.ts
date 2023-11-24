@@ -1,13 +1,17 @@
 import type {
   Config,
-  DockerParams
+  DockerParams,
 } from "https://deno.land/x/pipelight/mod.ts";
-import { pipeline, step, ssh } from "https://deno.land/x/pipelight/mod.ts";
 import {
-  Docker,
+  pipeline,
+  ssh,
+  step,
+} from "https://deno.land/x/pipelight/mod.ts";
+import {
   Container,
   Network,
-  Mode
+  Mode,
+  Docker,
 } from "https://deno.land/x/pipelight/mod.ts";
 
 // Global vars
@@ -20,23 +24,27 @@ const host = "linode";
 const docker = new Docker({
   images: [
     {
-      name: `pipelight/${service}:${version}`
-    }
+      name: `pipelight/${service}:${version}`,
+    },
   ],
   containers: [
     {
       name: `${version}.${service}.${dns}`,
       image: {
-        name: `pipelight/${service}:${version}`
+        name: `pipelight/${service}:${version}`,
       },
-      ports: [{ out: 9080, in: 80 }]
-    }
-  ]
+      ports: [{ out: 9080, in: 80 }],
+    },
+  ],
 });
 
 const nginxStep = step(`update remote nginx configuration`, () => [
   `scp ./.pipelight/public/pipelight.nginx.conf ${host}:/etc/nginx/sites-enabled/pipelight.conf`,
   ...ssh(host, () => ["sudo nginx -t", "sudo systemctl restart nginx"])
+]);
+
+const nginxUnitStep = step(`update remote nginx-unit configuration`, () => [
+  ...ssh(host, () => ["sudo systemctl restart nginx"]),
 ]);
 
 // Pipeline creation with Docker helpers
@@ -61,14 +69,14 @@ const compositionPipe = pipeline(
     triggers: [
       {
         branches: ["master", "main"],
-        actions: ["pre-push", "manual"]
-      }
-    ]
-  }
+        actions: ["pre-push", "manual"],
+      },
+    ],
+  },
 );
 
 const config: Config = {
-  pipelines: [compositionPipe]
+  pipelines: [compositionPipe],
 };
 
 export default config;

@@ -3,112 +3,107 @@ const base = "https://packages.pipelight.dev";
 const debian = `pipelight-${import.meta.env.VITE_GIT_VERSION}.deb`;
 const archlinux = `pipelight-${import.meta.env.VITE_GIT_VERSION}.pkg.tar.zst`;
 const fedora = `pipelight-${import.meta.env.VITE_GIT_VERSION}.rpm`;
-import { inject } from "vue";
-const Badge = inject("Badge");
 </script>
 
 # Getting Started
 
-::: tip Software
+::: tip Software size
 
-Pipelight is a very **lightweight** binary that wheighs around **6Mb**.
+Pipelight is a relatively **lightweight** binary that wheighs around **13Mb**.
+It is by design only compatible with linux.
 
 :::
 
-## Install from sources
+## Install with your package manager
 
-### Arch Linux
+### Nixos (flake)
 
-```sh
-#yay
-paru -S pipelight-git
+```nix
+{
+  description = "NixOS configuration for crocuda development";
+
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    pipelight.url = "github:pipelight/pipelight";
+  };
+
+  outputs = {
+    nixpkgs,
+    pipelight,
+  }: {
+
+    # Put this somewhere in your
+    # environment system packages
+    # user packages
+    # or
+    # home manager packages
+    pipelight.packages.${system}.default
+
+  }
+}
 ```
 
-### Other Linux distributions
+### Arch Linux (and derivates)
 
-First, you need to install build-dependencies,
-
-- Cargo, the Rust package manager.
-
-and dependencies:
-
-- Deno, typescript/javascript runtime (optionnal);
-- Git, software version manager (optionnal);
-- Watchexex, listen for file modification (optionnal).
-
-Then, clone the git repository.
+Install the binary from the AUR
 
 ```sh
-git clone git@gitea.com:pipelight/pipelight.git
-```
-
-Checkout to the latest tag.
-
-```sh
-tag=$(git describe --tags --abbrev=0)
-git checkout $tag
-```
-
-Build the binary
-
-```sh
-cd pipelight
-cargo build --release
-```
-
-The resulting binary can be found in `target/release/pipelight`.
-
-Move it to `/usr/bin/` or add it to your `$PATH`.
-
-## Install the binary with your favorite package manager
-
-### Arch Linux
-
-Install the binary from the AUR.
-
-```sh
-#yay
 paru -S pipelight
 ```
 
-### Other Linux distributions
+or compile from the source code for latest updates
 
-The software being quite young, it can't be found in the bigest linux distribution repositories yet.
-You have to install it manually.
-
-First, you need to install dependencies:
-
-- Deno, typescript/javascript runtime (optionnal);
-- Git, software version manager (optionnal);
-- Watchexex, listen for file modification (optionnal).
-
-Then, install the package from binaries.
-
-Fedora/CentOS and derivates:
-
-```sh-vue
-curl -O {{ base }}/{{ fedora }}
-yum install {{ fedora }}
+```sh
+paru -S pipelight-git
 ```
 
-Debian/Ubuntu and derivates:
+### Debian based Linux (debian, ubuntu and derivated)
+
+The software being quite young, it can't be found in the big distros repository
+yet. You will have to install it manually.
+
+First install dependencies:
+
+- Deno, javascript runtime (optionnal)
+- Git, software version manager (optionnal)
+- Watchexex, listen for file modification (optionnal)
 
 ```sh-vue
 curl -O {{ base }}/{{ debian }}
 dpkg -i {{ debian }}
 ```
 
+### Fedora Linux (fedora, centos and derivates)
+
+The software being quite young, it can't be found in the big distros repository
+yet. You will have to install it manually.
+
+First install dependencies:
+
+- Deno, javascript runtime (optionnal)
+- Git, software version manager (optionnal)
+- Watchexex, listen for file modification (optionnal)
+
+```sh-vue
+curl -O {{ base }}/{{ fedora }}
+yum install {{ fedora }}
+```
+
+## Install from source
+
+Clone the repo. Build binaries. Move binaries to your bin directory.
+
+```sh
+git clone https://github.com/pipelight/pipelight.git
+cd pipelight
+cargo build --release
+cp target/release/pipelight /usr/bin/
+```
+
 ## Install with the installation script <Badge type="danger" text="alpha" />
 
 For any other linux distribution.
 
-This script downloads dependencies and downloads the source code.
-Then, it compiles the source code and moves the resulting binary to `/usr/bin/`.
-
 ```sh-vue
 curl {{ base }}/scripts/install.sh | sh
 ```
-
-## Special Notes
-
-Pipelight can be used alongside every other CICD software.

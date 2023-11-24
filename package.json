@@ -17,6 +17,7 @@
     "eslint": "^8.48.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-pug": "^1.2.5",
     "eslint-plugin-vue": "^9.17.0",
     "postcss": "^8.4.28",
     "postcss-import": "^15.1.0",

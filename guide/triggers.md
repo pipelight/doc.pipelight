@@ -6,51 +6,74 @@ import ASync from '@components/ASync.vue';
 
 # Triggers (Automation)
 
-::: tip tl;dr
+Here is the part you were waiting for! What is the point of writting pipelines
+if you still have to execute them by hand?
 
-Triggers are a **set of conditions** that can **instantly launch multiple pipelines** when they are met.
+::: tip tl;dr 
+
+Triggers are a **set of conditions** that can **instantly launch
+multiple pipelines** when they are met.
 
 :::
 
 ## Prerequesits
 
+::: warning Triggers are opt-in
+
+The configuration file was initially polled to enable required triggers. But
+this has raised crucial concurrency issues. Until there is a fix, this feature
+is disabled and ** triggers have to be explicitly enable from the command
+line**.
+
+:::
+
 ### Enable git hooks (Optional)
 
-Most of triggers only work inside a Git repository.
-Be sure to initialize a repo if you want to take advantage of them all.
+Most of triggers only work inside a Git repository. Be sure to initialize a repo
+if you want to take advantage of them all.
 
 ```sh
 git init
 ```
 
-To enable git triggers on a fresh directory, run at least one random pipelight command.
+To enable git triggers (pipelight managed git hooks) on a fresh directory run:
 
 ```sh
-pipelight ls
+pipelight enable git-hooks
 ```
 
-::: warning
+::: danger
 
-For now, this operation overwrites the `.git/hooks` folder.
-Be sure to move your manually defined hooks elsewhere before enabling pipelight hooks.
+For now, this operation overwrites the `.git/hooks` folder. Be sure to move your
+manually defined hooks elsewhere before enabling pipelight hooks.
 
 :::
 
 ## Define pipeline triggers
 
-**Make a combination of branches and actions for which to trigger the pipeline.**
+**Make a combination of branches and actions for which to trigger the
+pipeline.**
 
-When triggers are added to a pipeline, the pipeline is not triggered until triggering requirements are met.
-Which means you need to checkout to the allowed branches or tags, and execute the allowed actions for the pipeline to run.
+When triggers are added to a pipeline, the pipeline is not triggered until
+triggering requirements are met. Which means you need to checkout to the allowed
+branches or tags, and execute the allowed actions for the pipeline to run.
 
-(debug): _When verbosity is increased, the CLI tells you what to do if requirements are not met._
+(debug): _When verbosity is increased, the CLI tells you what to do if
+requirements are not met._
+
+disable them with:
+
+```sh
+pipelight disable git-hooks.
+```
+
+Make a combination of branches and actions for which to trigger the pipeline.
 
 <div v-if="api.compositions">
-
 ```ts
 pipeline.add_trigger({
   branches: ["main"],
-  actions: ["pre-push"]
+  actions: ["pre-push"],
 });
 ```
 
@@ -61,8 +84,8 @@ pipeline.add_trigger({
 pipeline.triggers =
   {
     branches: ["main"],
-    actions: ["pre-push"]
-  }
+    actions: ["pre-push"],
+  },
 ];
 ```
 
@@ -82,10 +105,10 @@ Then, add triggers to your pipeline definition.
 ```ts
 //pipelight.ts
 const my_pipeline = pipeline("test", () => [
-  step("build", () => ["yarn install", "yarn build"])
+  step("build", () => ["yarn install", "yarn build"]),
 ]).add_trigger({
   branches: ["main"],
-  actions: ["pre-push"]
+  actions: ["pre-push"],
 });
 ```
 
@@ -100,16 +123,16 @@ pipelines: [
     steps: [
       {
         name: "build",
-        commands: ["yarn install", "yarn build"]
-      }
+        commands: ["yarn install", "yarn build"],
+      },
     ],
     triggers: [
       {
         branches: ["main"],
-        actions: ["pre-push"]
-      }
-    ]
-  }
+        actions: ["pre-push"],
+      },
+    ],
+  },
 ];
 ```
 
@@ -119,12 +142,13 @@ pipelines: [
 
 ### Branch and Tags
 
-Branches are your git project branches names (see: `git branch`).
-Tags are the commits you made with `git tag -a "v0.8"` (see: `git tag`).
+Branches are your git project branches names (see: `git branch`). Tags are the
+commits you made with `git tag -a "v0.8"` (see: `git tag`).
 
-_It has become common to do stuffs like tests and build on new `tag` when releasing software._
+Tags are the tag you added the commits you want to release with
+`git tag -a "v0.8"` (see: `git tag`).
 
-Branch and Tag combinations are enhanced by **globbing**.
+Branch and Tag combinations are enhanced by **globbing** pattern matching.
 
 <div v-if="api.compositions">
 
@@ -132,11 +156,11 @@ Branch and Tag combinations are enhanced by **globbing**.
 my_pipeline
   .add_trigger({
     branches: ["feature/*"],
-    actions: ["pre-push"]
+    actions: ["pre-push"],
   })
   .add_trigger({
     tags: ["v*-dev"],
-    actions: ["pre-commit"]
+    actions: ["pre-commit"],
   });
 ```
 
@@ -147,24 +171,21 @@ my_pipeline
 triggers: [
   {
     branches: ["feature/*"],
-    actions: ["pre-push"]
+    actions: ["pre-push"],
   },
   {
     tags: ["v*-dev"],
-    actions: ["pre-commit"]
-  }
+    actions: ["pre-commit"],
+  },
 ];
 ```
 
 </div>
 
-::: warning
-
-A pipeline whoes trigger has a branch alone without specified action can't be triggered.
-
-:::
-
 ## Actions
+
+Actions are named according to [git-hooks](https://githooks.com/) names, plus
+special flags "manual","watch" and "blank".
 
 ```ts
 export enum Action {
@@ -204,19 +225,20 @@ export enum Action {
   PushToCheckout = "push-to-checkout",
   // special flags
   Manual = "manual",
-  Watch = "watch"
-  Blank = "blank"
+  Watch = "watch",
+  Blank = "blank",
 }
 ```
 
 ### Git actions (Git-hooks)
 
-Actions are named according to [git-hooks](https://githooks.com/) names,
-plus special flags like `blank`,`manual` and `watch`.
+Actions are named according to [git-hooks](https://githooks.com/) names, plus
+special flags like `blank`,`manual` and `watch`.
 
 ::: warning
 
-A pipeline whoes trigger has an action alone without specified branch is triggered for every branches.
+A pipeline whoes trigger has an action alone without specified branch is
+triggered for every branches.
 
 :::
 
@@ -228,18 +250,12 @@ A pipeline whoes trigger has an action alone without specified branch is trigger
 actions: ["watch"];
 ```
 
-Trigger pipelines on file change.
-Whether a file is created, deleted or modified the pipeline is triggered.
+Trigger pipelines on file change. Whether a file is created, deleted or modified
+the pipeline is triggered.
 
-::: warning Ignore files
-
-As of today, you can ignore folders or files by writting their names inside the `.gitignore`,
-but this will also prevent git from saving changes made to those files.
-
-:::
-
-This flag rely on **[watchexec](https://github.com/watchexec/watchexec)**
-So for further tweaking see the cli tool documentation.
+You can ignore folders or files by declaring them inside the
+`.pipelight_itignore` hidden file which stick to the .gitignore file
+specifications.
 
 #### Security (Manual Flag)
 
@@ -247,35 +263,71 @@ So for further tweaking see the cli tool documentation.
 actions: ["manual"];
 ```
 
-If you want to manually run a pipeline that has non-empty triggers, with the command `pipelight run`
-you need to add the **special flag** `manual` to the pipeline trigger's actions.
-This **avoids unintentionnal manual triggering** aspecialy on critical production branches.
+If you want to manually run a pipeline that has non-empty triggers, with the
+command `pipelight run` you need to add the **special flag** `manual` to the
+pipeline trigger's actions. This **avoids unintentionnal manual triggering**
+aspecialy on critical production branches.
 
-#### Client-Server synchronisation (Blank Flag)
+## Client-Server synchronisation
+
+### with the blank flag
 
 ```ts
 actions: ["blank"];
 ```
 
-When you have pipelight installed **client and server side**.
-A push to the (git)server triggers both client and server side pipelines simultaneously.
+When you have pipelight installed **client and server side**. A push to the
+(git)server triggers both client and server side pipelines simultaneously.
 
 <Sync/>
 
-What if you want to trigger a server side pipeline only **once a client side pipeline has resolved**?
+What if you want to trigger a server side pipeline only **once a client side
+pipeline has resolved**?
 
-The workaround is to send an ssh command to the server at some point in your pipeline.
-`pipelight run <pipeline_name> --flag blank`
-or `pipelight trigger --flag blank`
+The first workaround is to force the pipeline to run in attach mode with the
+`--attach` option by creating an intermediary `glue_pipeline`.
 
-Add the required trigger to the pipeline to be executed server-side.
+<div v-if="api.compositions">
+
+```ts
+// pipelight.ts
+let glue_pipeline = pipeline("sync", () => [
+  step("nested attached pipeline", () => [
+    "pipelight run my_pipeline --attach",
+  ]),
+]);
+```
+
+</div>
+<div v-else>
+
+```ts
+// pipelight.ts
+let glue_pipeline = {
+  name: "sync",
+  steps: [{
+    name: "nested attached pipeline",
+    commands: [
+      "pipelight run my_pipeline --attach",
+    ],
+  }],
+};
+```
+
+</div>
+
+A workaround is to send an ssh command to the server at some point in your
+pipeline. `pipelight run <pipeline_name> --flag blank` or
+`pipelight trigger --flag blank` to trigger the server side pipeline.
+
+And add the required trigger to the pipeline to be executed server-side.
 
 <div v-if="api.compositions">
 
 ```ts
 // pipelight.ts
 server_pipeline.add_trigger({
-  action: ["blank"]
+  action: ["blank"],
 });
 ```
 
@@ -285,21 +337,21 @@ server_pipeline.add_trigger({
 ```ts
 // pipelight.ts
 server_pipeline.triggers.push({
-  action: ["blank"]
+  action: ["blank"],
 });
 ```
 
 </div>
 
-Emit the **trigger signal** from the client-side pipeline.
-Whether it be from a fallback or from a regular pipeline step.
+Emit the **trigger signal** from the client-side pipeline. Whether it be from a
+fallback or from a regular pipeline step.
 
 <div v-if="api.compositions">
 
 ```ts
 // pipelight.ts
 pipeline.on_success = step("sync", () => [
-  ...ssh((host) => ["pipelight run server_side_pipeline --flag blank"])
+  ...ssh((host) => ["pipelight run server_side_pipeline --flag blank"]),
 ]);
 ```
 
@@ -310,7 +362,7 @@ pipeline.on_success = step("sync", () => [
 // pipelight.ts
 pipeline.on_success = {
   name: "sync",
-  commands: `ssh ${host} -C "pipelight run server_side_pipeline --flag blank"`
+  commands: `ssh ${host} -C "pipelight run server_side_pipeline --flag blank"`,
 };
 ```
 
@@ -319,13 +371,6 @@ pipeline.on_success = {
 and voilà, you have synced your pipelines.
 
 <ASync/>
-
-::: tip
-
-This can be applied for client/server pipelines as well as for syncing pipelines
-on the client or server only.
-
-:::
 
 ## Forced flags (Manually set trigger action)
 
@@ -341,4 +386,5 @@ Or trigger a pipeline by simulating the appropriate action.
 pipelight run --flag <action>
 ```
 
-You can use it for debugging purpose or simply as a way to create unconventionnal pipelines.
+_You can use it for debugging purpose or simply as a way to create
+unconventionnal pipelines._

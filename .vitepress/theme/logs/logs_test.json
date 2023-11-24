@@ -5,6 +5,7 @@
     "trigger": {
       "action": "pre-commit",
       "branch": "dev",
+      "commit": "y54rr75f5fe3fcac3e461x9",
       "tag": null
     },
     "date": "2023-07-21 14:52:58.285059847 +0200",

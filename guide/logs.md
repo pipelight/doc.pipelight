@@ -21,24 +21,29 @@ The default log output is the following **pretty tree** output.
 
 **A pipeline can be either running, succeeded, failed or aborted.**
 
-Other existing status are for internal purpopse and are only discussed in the source code.
+Other existing status are for internal purpopse and are only discussed in the
+source code.
 
 <LogsMulti/>
 
 **Running** status is when a pipeline execution isn't finished yet.
 
-**Succeeded** status is when a command of the pipeline normally succeeded with an exit status.
+**Succeeded** status is when a command of the pipeline normally succeeded with
+an exit status.
 
-**Failed** status is when a command of the pipeline normally failed with an exit status (as opposed to aborted).
+**Failed** status is when a command of the pipeline normally failed with an exit
+status (as opposed to aborted).
 
-**Aborted** status means that something unexpected interupted the pipeline execution.
+**Aborted** status means that something unexpected interupted the pipeline
+execution.
 
 It can be due to:
 
 - a ressource outage.
 - a linux signal like SIGKILL or SIGTERM.
 - a Ctrl-C on a running attached pipeline.
-- litteraly everything that can abrubtly stop a process execution (coffee on keyboard, angry mother...)
+- litteraly everything that can abrubtly stop a process execution (coffee on
+  keyboard, angry mother...)
 
 ::: warning Corrupted logs
 
@@ -46,7 +51,8 @@ Corrupted logs are rare but can occur on unsanitized aborted pipelines log files
 or on a concurrent Read and Write operation.
 
 They are actually removed from the log output (with a discrete warning message).
-I am working on a way to recover them when possible and flag them as `corrupted`.
+I am working on a way to recover them when possible and flag them as
+`corrupted`.
 
 :::
 
@@ -61,10 +67,11 @@ The first level displays global informations.
 - pipeline status
 - date it was triggered at
 - environment in which it was triggered, which includes:
-  - [action](triggers#actions-git-hooks) that triggered the pipeline execution
   - branch, or tag name if the project has a git repository.
+  - [action](triggers#actions-git-hooks) that triggered the pipeline execution
+  - the commit number if the project has a git repository.
 - pipeline name
-- execution time
+- whole pipeline execution time
 
 <Logs/>
 
@@ -117,8 +124,9 @@ This log level is practical if you want to see what happenned or what happens:
 
 ## Raw logs (Json)
 
-Logs are stored in your project root directory in the `.pipelight/logs` folder in JSON format.
-You can checkout raw logs directly by inspecting the generated files or with the following commands:
+Logs are stored in your project root directory in the `.pipelight/logs` folder
+in JSON format. You can checkout raw logs directly by inspecting the generated
+files or with the following commands:
 
 ```sh
 pipelight logs --json | jq
@@ -147,6 +155,19 @@ pipelight logs --json | jq -C | less
 
 Prune/Remove logs
 
+As of today, no log rotation has been implemented. The best way to remove
+corrupted logs or to clean the log directory is with the following commands.
+
 ```sh
 pipelight logs rm
 ```
+
+Which does not erase the log of running pipelines.
+
+```sh
+rm -rf pipelight/logs
+# pkill pipelight
+```
+
+Which erases every log files.
+

@@ -5,6 +5,7 @@
     "trigger": {
       "action": "manual",
       "branch": "dev",
+      "commit": "5f5fe3fcac3e46117fcbfr",
       "tag": null
     },
     "date": "2023-07-21 14:52:58.285059847 +0200",

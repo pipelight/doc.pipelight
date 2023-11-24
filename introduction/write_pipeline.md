@@ -2,31 +2,49 @@
 import { api } from "@utils/preferences.ts";
 </script>
 
-# Write and Run your first pipeline
+# Write a pipeline
 
-## Write in programming languages
+Here after are the **same pipelines written in different languages**.
 
-Writting pipelines in programming languages allows you the usage of variable, loops and functions.
-A short file can then generate a base pipeline with its multiple declinations.
+## Start from a template
+
+You may want to generate a template config file with
+
+```sh
+pipelight init
+```
+
+```sh
+pipelight init --toml
+```
+
+## Write in a programming languages
+
+Writting pipelines in programming languages allows you the usage of variable,
+loops and functions. A short file can then generate a base pipeline with its
+multiple declinations.
 
 ### Javascript (discourage)
 
 ::: danger
 
-Javascript is a **weakly typed** language, and so **highly prone to errors**.
-It is **greatly recommanded to use Typescript** instead,
-to take full advantage of **types linting**.
+Javascript is a **weakly typed** language, and so **highly prone to errors**. It
+is **greatly recommanded to use Typescript** instead, to take full advantage of
+**types linting**.
 
 :::
 
 Typescript only supercharges Javascript syntax with optional type definition.
 
-If you are not at ease with Typescript, you can still write pipelines in Javascript in a `.ts` file
-and **use types later** to strenghten your pipeline definition.
+If you are not at ease with Typescript, you can still write pipelines in
+Javascript in a `.ts` file and **use types later** to strenghten your pipeline
+definition.
 
 ### Typescript
 
-Importing the types from the deno package will give you a **pleasant linting support**.
+Importing the types from the deno package will give you a **pleasant linting
+support**. Then create pipelines with steps and commands. Add automatic triggers
+and have fun.
 
 <div v-if="api.compositions">
 
@@ -35,14 +53,14 @@ Importing the types from the deno package will give you a **pleasant linting sup
 import type { pipeline, step } from "https://deno.land/x/pipelight/mod.ts";
 
 const my_pipe = pipeline("test", () => [
-  step("build", () => ["pnpm install", "pnpm build"])
+  step("build", () => ["pnpm install", "pnpm build"]),
 ]).add_trigger({
   branches: ["master", "dev"],
-  actions: ["pre-push", "pre-commit"]
+  actions: ["pre-push", "pre-commit"],
 });
 
 export default {
-  pipelines: my_pipe
+  pipelines: my_pipe,
 };
 ```
 
@@ -60,32 +78,32 @@ const config: Config = {
       steps: [
         {
           name: "build",
-          commands: ["pnpm install", "pnpm build"]
-        }
+          commands: ["pnpm install", "pnpm build"],
+        },
       ],
       triggers: [
         {
           branches: ["master", "dev"],
-          actions: ["pre-push", "pre-commit"]
-        }
-      ]
-    }
-  ]
+          actions: ["pre-push", "pre-commit"],
+        },
+      ],
+    },
+  ],
 };
 export default config;
 ```
 
 </div>
 
-## Write in configuration languages
+## Pipelines in configuration languages
 
-Configuration languages have proven to be great to define small pipelines in a blink.
-Those pipelines can replace the simplest bash scripts for atomic (small) and highly repetitive tasks.
+Configuration languages(marrkup languages) have proven to be great to define
+small pipelines in a blink. Those pipelines can replace the simplest bash
+scripts for atomic (small) and highly repetitive tasks.
 
 ### Toml
 
 ```toml
-
 [[pipelines]]
 name =  "test"
 
@@ -96,7 +114,6 @@ commands = ["pnpm install", "pnpm build"]
 [[pipelines.triggers]]
 branches = ["master","dev"]
 actions= ["pre-push", "pre-commit"]
-
 ```
 
 ### Yaml
@@ -117,6 +134,15 @@ pipelines:
           - pre-push
           - pre-commit
 ```
+
+Pipelines written in markup languages are less likely to become more complex
+than this because pipelight complexity does not resides in its inner types.
+
+The ability to write complex pipelines lays in the languages that are used to
+writte those pipelines.
+
+As the documentation tries to showcase more and more flexible workflows, Toml
+and Yaml are less documented in favor of programming languages.
 
 ## Run your pipeline
 
