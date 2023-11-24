@@ -39,7 +39,7 @@ It is by design only compatible with linux.
     # home manager packages
     pipelight.packages.${system}.default
 
-  }
+  };
 }
 ```
 
