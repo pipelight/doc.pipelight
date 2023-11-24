@@ -1,29 +1,43 @@
 # Triggers (Automation)
 
-Here is the part you were waiting for!
-What is the point of writting pipelines if you still have to execute them by hand?
+Here is the part you were waiting for! What is the point of writting pipelines
+if you still have to execute them by hand?
+
+::: warning Triggers are opt-in
+
+The configuration file was initially polled to enable required triggers. But
+this has raised crucial concurrency issues. Until there is a fix, this feature is
+disabled and ** triggers have to be explicitly enable from the command line**.
+
+:::
 
 ## Enable git hooks
 
-Most of triggers only work inside a Git repository.
-Be sure to initialize a repo if you want to take advantage of them all.
+Most of triggers only work inside a Git repository. Be sure to initialize a repo
+if you want to take advantage of them all.
 
 ```sh
 git init
 ```
 
-To enable git triggers on a fresh directory, run at least one random pipelight command.
+To enable git triggers (pipelight managed git hooks) on a fresh directory run:
 
 ```sh
-pipelight ls
+pipelight enable git-hooks
 ```
 
-::: warning
+::: danger
 
-For now, this operation overwrite the .git/hooks folder.
-Be sure to move your manually defined hooks elsewhere before enabling pipelight hooks
+This operation overwrite the .git/hooks folder. Be sure to move your manually
+defined hooks elsewhere before enabling pipelight hooks
 
 :::
+
+disable them with:
+
+```sh
+pipelight disable git-hooks.
+```
 
 Make a combination of branches and actions for which to trigger the pipeline.
 
@@ -31,8 +45,8 @@ Make a combination of branches and actions for which to trigger the pipeline.
 triggers: [
   {
     branches: ["main"],
-    actions: ["pre-push"]
-  }
+    actions: ["pre-push"],
+  },
 ];
 ```
 
@@ -70,7 +84,8 @@ pipelines: [
 
 Branches are your git project branches names (see: `git branch`).
 
-Tags are the tag you added the commits you want to release with `git tag -a "v0.8"` (see: `git tag`).
+Tags are the tag you added the commits you want to release with
+`git tag -a "v0.8"` (see: `git tag`).
 
 You can set multiple branch and tag combinations with **globbing** patterns.
 
@@ -78,19 +93,19 @@ You can set multiple branch and tag combinations with **globbing** patterns.
 triggers: [
   {
     branches: ["feature/*"],
-    actions: ["pre-push"]
+    actions: ["pre-push"],
   },
   {
     tags: ["v*-dev"],
-    actions: ["pre-commit"]
-  }
+    actions: ["pre-commit"],
+  },
 ];
 ```
 
 ## Actions (Git-hooks)
 
-Actions are named according to [git-hooks](https://githooks.com/) names,
-plus special flags "manual" and "watch".
+Actions are named according to [git-hooks](https://githooks.com/) names, plus
+special flags "manual" and "watch".
 
 ```ts
 export enum Action {
@@ -130,7 +145,7 @@ export enum Action {
   PushToCheckout = "push-to-checkout",
   // special flags
   Manual = "manual",
-  Watch = "watch"
+  Watch = "watch",
 }
 ```
 
@@ -140,12 +155,12 @@ export enum Action {
 actions: ["watch"];
 ```
 
-Trigger pipelines on file change.
-Whether a file is created, deleted or modified the pipeline will be triggered.
-You can ignore folders or files by putting them in the .gitignore file.
+Trigger pipelines on file change. Whether a file is created, deleted or modified
+the pipeline will be triggered. You can ignore folders or files by putting them
+in the .gitignore file.
 
-This flag rely on **[watchexec](https://github.com/watchexec/watchexec)**
-So for further tweaking see the cli tool documentation.
+This flag rely on **[watchexec](https://github.com/watchexec/watchexec)** So for
+further tweaking see the cli tool documentation.
 
 ### Security (Manual Flag)
 
@@ -153,11 +168,12 @@ So for further tweaking see the cli tool documentation.
 actions: ["manual"];
 ```
 
-When triggers are added to a pipeline, it will not be triggered until trigger requirements are met.
-Which mean you'll have to checkout to the allowed branches, tags, and execute the allowed actions.
+When triggers are added to a pipeline, it will not be triggered until trigger
+requirements are met. Which mean you'll have to checkout to the allowed
+branches, tags, and execute the allowed actions.
 
-If you want to manually run a pipeline that has some triggers with `pipelight run`
-you wiil have to add the **special flag** "manual" .
+If you want to manually run a pipeline that has some triggers with
+`pipelight run` you wiil have to add the **special flag** "manual" .
 
 ### Forced flags
 
@@ -173,5 +189,5 @@ Or trigger a pipeline by simulating the appropriate action.
 pipelight run --flag <action>
 ```
 
-You can use it for debugging purpose
-or simply as a way to create unconventionnal pipelines.
+You can use it for debugging purpose or simply as a way to create
+unconventionnal pipelines.

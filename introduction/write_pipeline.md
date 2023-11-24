@@ -1,16 +1,27 @@
-# Write your first pipeline
+# Write a pipeline
 
-Here we will write the **same pipeline in different formats**
-and discuss the advantages and drawbacks.
+Here after are the **same pipelines written in different languages**.
+
+## Start from a template
+
+You may want to generate a template config file with
+
+```sh
+pipelight init
+```
+
+```sh
+pipelight init --toml
+```
 
 ## Pipelines in programming languages
 
 ### Typescript
 
-Importing the Config type from the deno package will give you a pleasant typing support.
+Importing the Config type from the deno package will give you a pleasant typing
+support.
 
-Create pipelines with steps and commands.
-Add automatic triggers and have fun.
+Create pipelines with steps and commands. Add automatic triggers and have fun.
 
 ```ts
 //pipelight.ts
@@ -23,17 +34,17 @@ const config: Config = {
       steps: [
         {
           name: "build",
-          commands: ["pnpm install", "pnpm build"]
-        }
+          commands: ["pnpm install", "pnpm build"],
+        },
       ],
       triggers: [
         {
           branches: ["master", "dev"],
-          actions: ["pre-push", "pre-commit"]
-        }
-      ]
-    }
-  ]
+          actions: ["pre-push", "pre-commit"],
+        },
+      ],
+    },
+  ],
 };
 export default config;
 ```
@@ -48,9 +59,10 @@ deno cache --reload pipelight.ts
 
 It's the same syntax as Typescript but you don't benefit from Types linting.
 
-No error will be shown on the linter level if you write ,for example `title: "test"` instead of `name: "test"`
-to set the pipeline name.
-You will get an error on a deeper level telling that you messed up somwhere in your javascript.
+No error will be shown on the linter level if you write ,for example
+`title: "test"` instead of `name: "test"` to set the pipeline name. You will get
+an error on a deeper level telling that you messed up somwhere in your
+javascript.
 
 ```ts
 //pipelight.js
@@ -62,32 +74,31 @@ const config = {
       steps: [
         {
           name: "build",
-          commands: ["pnpm install", "pnpm build"]
-        }
+          commands: ["pnpm install", "pnpm build"],
+        },
       ],
       triggers: [
         {
           branches: ["master", "dev"],
-          actions: ["pre-push", "pre-commit"]
-        }
-      ]
-    }
-  ]
+          actions: ["pre-push", "pre-commit"],
+        },
+      ],
+    },
+  ],
 };
 export default config;
 ```
 
 ## Pipelines in configuration languages
 
-Configuration languages have proven to be great to define
-small and unflexible pipelines.
+Configuration languages have proven to be great to define small and unflexible
+pipelines.
 
 Those pipelines can replace the simplest bash scripts.
 
 ### Toml
 
 ```toml
-
 [[pipelines]]
 name =  "test"
 
@@ -98,7 +109,6 @@ commands = ["pnpm install", "pnpm build"]
 [[pipelines.triggers]]
 branches = ["master","dev"]
 actions= ["pre-push", "pre-commit"]
-
 ```
 
 ### Yaml
@@ -119,3 +129,12 @@ pipelines:
           - pre-push
           - pre-commit
 ```
+
+Pipelines written in markup languages are less likely to become more complex
+than this because pipelight complexity does not resides in its inner types.
+
+The ability to write complex pipelines lays in the languages that are used to
+writte those pipelines.
+
+As the documentation tries to showcase more and more flexible workflows, Toml
+and Yaml are less documented in favor of programming languages.

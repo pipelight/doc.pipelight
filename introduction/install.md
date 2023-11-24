@@ -9,13 +9,14 @@ const fedora = `pipelight-${import.meta.env.VITE_GIT_VERSION}.rpm`;
 
 ::: tip Software size
 
-Pipelight is a very **lightweight** binary that wheighs around **6Mb**.
+Pipelight is a relatively **lightweight** binary that wheighs around **13Mb**.
+It is by design only compatible with linux.
 
 :::
 
 ## Install with your package manager
 
-### Arch Linux
+### Arch Linux (and derivates)
 
 Install the binary from the AUR
 
@@ -29,32 +30,84 @@ or compile from the source code for latest updates
 paru -S pipelight-git
 ```
 
-### Other Linux
+### Debian based Linux (debian, ubuntu and derivated)
 
-The software being quite young, it can't be found in the big distros repository yet.
-You will have to install it manually.
+The software being quite young, it can't be found in the big distros repository
+yet. You will have to install it manually.
 
 First install dependencies:
 
 - Deno, javascript runtime (optionnal)
 - Git, software version manager (optionnal)
-- Watchexex, listen for file modification (optionnal)
-
-Fedora/CentOS and derivates
 
 ```sh-vue
 curl -O {{ base }}/{{ fedora }}
 yum install {{ fedora }}
 ```
 
-Debian/Ubuntu and derivates
+### Fedora Linux (fedora, centos and derivates)
+
+The software being quite young, it can't be found in the big distros repository
+yet. You will have to install it manually.
+
+First install dependencies:
+
+- Deno, javascript runtime (optionnal)
+- Git, software version manager (optionnal)
 
 ```sh-vue
-curl -O {{ base }}/{{ debian }}
-dpkg -i {{ debian }}
+curl -O {{ base }}/{{ fedora }}
+yum install {{ fedora }}
 ```
 
-## Install with the installation script <Badge type="warning" text="beta" />
+### Nixos (flake)
+
+Try it from inside a shell.
+
+```sh
+nix shell github:pipelight/pipelight
+```
+
+Install it on your system.
+
+```nix
+# A flake example
+{
+  description = "NixOS configuration for crocuda development";
+
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    pipelight.url = "github:pipelight/pipelight";
+  };
+
+  outputs = {
+    nixpkgs,
+    pipelight,
+  }: {
+
+    # Put this somewhere in your
+    # environment system packages
+    # user packages
+    # or
+    # home manager packages
+    pipelight.packages.${system}.default
+
+  }
+}
+```
+
+## Install from source
+
+Clone the repo. Build binaries. Move binaries to your bin directory.
+
+```sh
+git clone https://github.com/pipelight/pipelight.git
+cd pipelight
+cargo build --release
+cp target/release/pipelight /usr/bin
+```
+
+## Install with the installation script <Badge type="danger" text="alpha" />
 
 For any other linux distribution.
 

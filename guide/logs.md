@@ -13,24 +13,29 @@ import LogsVVVV from "@demos/LogsVVVV.vue";
 
 **A pipeline can be either running, succeeded, failed or aborted.**
 
-Other existing status are for internal purpopse and are only discussed in the source code.
+Other existing status are for internal purpopse and are only discussed in the
+source code.
 
 <LogsMulti/>
 
 **Running** status is when a pipeline execution isn't finished yet.
 
-**Succeeded** status is when a command of the pipeline normally succeeded with an exit status.
+**Succeeded** status is when a command of the pipeline normally succeeded with
+an exit status.
 
-**Failed** status is when a command of the pipeline normally failed with an exit status (as opposed to aborted).
+**Failed** status is when a command of the pipeline normally failed with an exit
+status (as opposed to aborted).
 
-**Aborted** status means that something unexpected interupted the pipeline execution.
+**Aborted** status means that something unexpected interupted the pipeline
+execution.
 
 It can be due to:
 
 - a ressource outage.
 - a linux signal like SIGKILL or SIGTERM.
 - a Ctrl-C on a running attached pipeline.
-- litteraly everything that can abrubtly stop a process execution (coffee on keyboard, angry mother...)
+- litteraly everything that can abrubtly stop a process execution (coffee on
+  keyboard, angry mother...)
 
 ## Verbosity levels
 
@@ -43,10 +48,11 @@ The first level displays global informations.
 - pipeline status
 - date it was triggered at
 - environment in which it was triggered, which includes:
-  - [action](triggers#actions-git-hooks) that triggered the pipeline execution
   - branch, or tag name if the project has a git repository.
+  - [action](triggers#actions-git-hooks) that triggered the pipeline execution
+  - the commit number if the project has a git repository.
 - pipeline name
-- execution time
+- whole pipeline execution time
 
 <Logs/>
 
@@ -131,9 +137,9 @@ pipelight logs --json | jq -C | less
 
 Prune logs
 
-As of today, no log rotation or log sanitizing has been implemented.
-The best way to remove corrupted logs or to clean the log directory
-is with the following command.
+As of today, no log rotation or log sanitizing has been implemented. The best
+way to remove corrupted logs or to clean the log directory is with the following
+command.
 
 ```sh
 pipelight logs rm

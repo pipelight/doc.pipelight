@@ -102,19 +102,19 @@ const draw_header = (pipeline: Pipeline) => {
       }),
     );
   }
-  if (!!pipeline.event.trigger.commit) {
-    env.push(
-      h("div", {
-        class: "tag secondary",
-        innerHTML: `commit: ${pipeline.event.trigger.commit}`,
-      }),
-    );
-  }
   if (!!pipeline.event.trigger.action) {
     env.push(
       h("div", {
         class: "tag secondary",
         innerHTML: `action: ${pipeline.event.trigger.action}`,
+      }),
+    );
+  }
+  if (!!pipeline.event.trigger.commit) {
+    env.push(
+      h("div", {
+        class: "tag secondary",
+        innerHTML: `commit: ${pipeline.event.trigger.commit}`,
       }),
     );
   }
