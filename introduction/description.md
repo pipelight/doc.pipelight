@@ -132,7 +132,7 @@ up to his needs and adapt quick**.
 
 But simple doesn't mean simplistic. Although you will first encounter simple
 pipelines definitions, complex and avant-gardist pipeline behaviors can still be
-achived with a minimal overhead. >>>>>>> dev
+achived with a minimal overhead.
 
 ### Pragmatic Programmers
 
