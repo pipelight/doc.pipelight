@@ -168,14 +168,6 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
       collapsed: true,
       items: [
         {
-          text: "Supercharge the cli",
-          link: "/cookbook/cli",
-        },
-        {
-          text: "Environment variables",
-          link: "/cookbook/environments",
-        },
-        {
           text: "Read files",
           link: "/cookbook/cli",
         },
@@ -200,16 +192,16 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           text: "Why another CICD Tool?",
           link: "/other_topics/why_detailed",
         },
-        {
-          text: "CHANGELOG",
-          link:
-            "https://gitea.com/pipelight/pipelight/src/branch/master/CHANGELOG.md",
-        },
-        {
-          text: "ROADMAP",
-          link:
-            "https://gitea.com/pipelight/pipelight/src/branch/master/ROADMAP.md",
-        },
+        // {
+        //   text: "CHANGELOG",
+        //   link:
+        //     "https://gitea.com/pipelight/pipelight/src/branch/master/CHANGELOG.md",
+        // },
+        // {
+        //   text: "ROADMAP",
+        //   link:
+        //     "https://gitea.com/pipelight/pipelight/src/branch/master/ROADMAP.md",
+        // },
       ],
     },
   ],

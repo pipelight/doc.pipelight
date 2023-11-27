@@ -32,7 +32,7 @@ warning(yellow) and danger(red) containers like this one.
 
 ## Alternatives
 
-You can make a quick idea of where is pipelight in the automation ecosystemif if
+You can make a quick idea of where is pipelight in the automation ecosystem if
 you know some of its alternatives.
 
 Mature Command runners:
@@ -48,6 +48,7 @@ Bigger software suits with Gui:
 Pipelight has a syntax pretty close to:
 
 - [Cicada](https://github.com/cicadahq/cicada)
+- [Katoa](https://github.com/katoahq/katoa)
 
 ## The core concept
 

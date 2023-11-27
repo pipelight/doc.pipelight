@@ -27,5 +27,5 @@ pnpm-debug.log*
 #*.lock
 *lock.json
 
-#pipelight logs
-.pipelight/logs/*
+# pipelight
+.pipelight

@@ -9,8 +9,7 @@ const fedora = `pipelight-${import.meta.env.VITE_GIT_VERSION}.rpm`;
 
 ::: tip Software size
 
-Pipelight is a relatively **lightweight** binary that wheighs around **13Mb**.
-It is by design only compatible with linux.
+Pipelight tries to keep it **lightweight** with a binary that wheights around **13Mb**.
 
 :::
 
@@ -65,7 +64,7 @@ or compile from the source code for latest updates
 paru -S pipelight-git
 ```
 
-### Debian based Linux (debian, ubuntu and derivated)
+### Debian based Linux (debian, ubuntu and derivates)
 
 The software being quite young, it can't be found in the big distros repository
 yet. You will have to install it manually.

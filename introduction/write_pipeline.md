@@ -8,7 +8,7 @@ Here after are the **same pipelines written in different languages**.
 
 ## Start from a template
 
-You may want to generate a template config file with
+You may want to generate a template config file with the following commands.
 
 ```sh
 pipelight init
@@ -20,7 +20,7 @@ pipelight init --toml
 
 ## Write in a programming languages
 
-Writting pipelines in programming languages allows you the usage of variable,
+Writting pipelines in programming languages enable the usage of variables,
 loops and functions. A short file can then generate a base pipeline with its
 multiple declinations.
 

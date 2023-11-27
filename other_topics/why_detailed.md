@@ -1,27 +1,26 @@
 # Why another CICD tool ?
 
-## The nindo (philosophy)
+## Deeper convictions
 
-### Deeper convictions
-
-knowing in which philosophy the software was built will for sure
-help you understand many architectural choices.
+Knowing with which philosophy the software was built will for sure help you
+understand many architectural choices.
 
 Born from the following philosohies:
 
 - [The Anti Mediocracy Manifesto for Software Development](https://gist.github.com/mathiasrw/cb3b15630a418f5cff3035463a048a59)
 - [The LunarDAO manifesto](https://lunardao.net/manifesto.html)
 
-#### Telos (The ultimate purpose)
+### The software telos (The ultimate purpose)
 
-Pipelight ultimate goal is to be a community owned ubiquitary solution for automation.
+Pipelight ultimate goal is to be a community owned ubiquitary solution for
+automation.
 
-#### Logos (The software reasonning)
+### The software nindo (The path taken to achieve)
 
-Pipelight follows some crucial guidelines:
+To reach this goal pipelight follows some crucial guidelines:
 
-- keep execution fast by remaining minimal
-- distribute lightweight binaries
+- keep execution fast by remaining minimal (suckless)
+- distribute lightweight binaries (for fast install)
 - transparent in its logs and error messages
 - beeing open-source
 - community driven
@@ -29,21 +28,19 @@ Pipelight follows some crucial guidelines:
 
 ### The Automation for everyone
 
-Pipelight ought to be the fastest and least painfull solution to set up if you seek to automate things.
+Pipelight ought to be the fastest and least painfull solution to set up if you
+seek to automate things.
 
-Other CI/CD tools make usage of runners and multiple internal instances that interacts between them without you noticing, and can therefore
-lead to hard to find bugs.
+There is many ways ones can achieved automation, and Pipelight chose to
+**leverage bash**, the every programmer common ground. Therefore, Pipelight
+integrates well with every existing tools.
 
-Pipelight chose to leverages bash, the every programmer common ground.
-By beeing a one and only executable and letting scaling decisions up to the user.
+If you are a bash guy, it will bring simplicity to your scripts. If you do
+devOps stuffs, it will bring flexibility to your pipelines.
 
-Therefore, Pipelight integrates well with every existing tools.
-
-If you are a bash guy, it will bring simplicity to your scripts.
-If you do devOps stuffs, it will bring flexibility to your pipelines.
-
-Whatever your skills in programming are, automation should be accessible.
-It would result in project early automation implementation for you to focus only on the code that matters.
+Whatever your skills in programming are, automation should be accessible. It
+would result in project early automation implementation for you to focus only on
+the code that matters.
 
 ### Bypass the classic harsh automation path
 
@@ -53,8 +50,8 @@ The solution Pipelight brings is to **bettern already existing shell scripts**.
 
 :::
 
-We usualy seek automation because we face repetitive thus painful tasks of varied nature.
-So we go down the automation road:
+We usualy seek automation because we face repetitive thus painful tasks of
+varied nature. So we go down the automation road:
 
 1. **Edite a shell script**
 
@@ -65,33 +62,26 @@ So we go down the automation road:
    rsync local_files to_my_remote_server
    ```
 
-   [+]
-   Bash is quick to set up, and very appaeling when scripting simple tasks,
+   [+] Bash is quick to set up, and very appaeling when scripting simple tasks.
 
-   [-]
-   Syntax isn't easy.
-   It lakes primitives/structures like Array, Object, Map...
-   It uickly becomes unreadable as it get complex.
+   [-] Bash syntax isn't easy. It lakes primitives/structures like Array,
+   Object, Map... It can quickly become unreadable as it get complex.
 
 2. **Then, write a python script**
 
-   [+]
-   More readable.
+   [+] More readable.
 
-   [-]
-   It is too specific - not reusable between projects without many efforts.
+   [-] It is too specific - not reusable between projects without many efforts.
 
 3. **Finally, set up a CICD pipeline with its entire ecosystem**
 
-   [+]
-   It's easy to reuse pipelines. Has logging.
+   [+] It's easy to reuse pipelines. Has logging.
 
-   [-]
-   Ressource and time consuming.
+   [-] Ressource and time consuming for full fledged solution installation and
+   configuration.
 
-On the automation road, Pipelight comes
-right after the shell script(1) in term of simplicity,
-while doing the heavy lift of a CICD ecosystem(3)
+On the automation road, Pipelight comes right after the shell script(1) in term
+of simplicity, while doing the heavy lift of a CICD ecosystem(3)
 
 1. Shell script
 
@@ -102,20 +92,19 @@ while doing the heavy lift of a CICD ecosystem(3)
 
 ## Technical choices
 
-Here after we'll discuss some technical choices and development decisions.
-
-### Why typescript over classic TOML/ YAML ?
+### Why Typescript over already wide spread TOML/ YAML ?
 
 ::: tip tl;dr
 
-for flexibility and reusability
+For flexibility and reusability
 
 :::
 
 Usual configuration optimised languages (TOML/ YAML) are not easy to tweak.
 
-**Variables**, **structs** and **loops** does not exist natively in those languages.
-Consequently, those features depends on the automation tool implementing them resulting in different syntax for every tool.
+**Variables**, **structs** and **loops** does not exist natively in those
+languages. Consequently, those features depends on the automation tool
+implementing them resulting in different syntax for every tools.
 
 ```yaml
 kind: pipeline
@@ -129,32 +118,54 @@ steps:
       - vite build
 ```
 
-To create another version of this pipeline with slightly different env variables.
-The pipeline will need to be entirely cloned, going against reusability and comfort.
+To create another version of this pipeline with slightly different env
+variables. The pipeline will need to be entirely cloned, going against
+reusability and comfort.
 
 **Typescript to the rescue**
 
-The most flexible way to write a configuration file is finally to write it in a programming language.
-Tailwind, Vite and many other web frameworks have already taken down this path.
+The most flexible way to write a configuration file is finally to write it in a
+programming language. Tailwind, Vite and many other web frameworks have already
+taken down this path.
 
-Pipelight is about **executing bash strings** so, it needed a popular, language for **string manipulation**,
-with an appaeling syntax and an as simple as possible learning curve.
+Pipelight is about **executing bash strings** so, it needed a popular language
+well suited for **string manipulation**, with an appaeling syntax and an as soft
+as possible learning curve.
 
-## Why only a cli ?
+Typescript was indeed well-suited for this mission.
+
+### Why only a cli ?
 
 ::: tip tl;dr
 
-lightweight
+To remain lightweight and familiar.
 
 :::
 
-Pipelight is made for efficency.
-As of today it's a single executable that weighs under 6Mb.
+Pipelight is made for **efficency**. As of today it's a single executable that
+weighs under 13Mb.
 
-In consequence, it is blazing fast.
-
-It has the minimum required functions for a cicd tool
-and delegate features to the already widely spread specialized softwares:
+It has the minimum required functions for a cicd tool and delegate features to
+the already widely spread specialized softwares:
 
 - Git for software versioning and event detection
 - Linux for security and access rights
+
+In consequence, it is blazing fast.
+
+Pipelight has also been built with **comfort** in mind.
+
+Most developers only feel soothed when in front of a terminal emulator.
+Pipelight avoids the disconfort of leaving the terminal by exposing a standard
+minimal unoriginal and unsurprising cli.
+
+### Why not container native ?
+
+There actually is helpers to enable container support if you don't want to
+implement a custom solution yourself.
+
+Pipelight intend to run wherever bash runs. It should by default permit the
+execution of nude pipelines for:
+
+- constraints environment that can't afford containers.
+- atomic tasks like one line scripts that usually resides in package.json.

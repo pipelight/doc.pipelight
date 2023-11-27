@@ -35,7 +35,7 @@ const docker = new Docker({
 });
 
 const nginxStep = step(`update remote nginx configuration`, () => [
-  `scp ./.pipelight/public/pipelight.nginx.conf ${host}:/etc/nginx/sites-enabled/pipelight.conf`,
+  `scp ./cicd/public/pipelight.nginx.conf ${host}:/etc/nginx/sites-enabled/pipelight.conf`,
   ...ssh(host, () => ["sudo nginx -t", "sudo systemctl restart nginx"]),
 ]);
 

@@ -15,7 +15,7 @@ The whole step fails and stop the pipeline execution.
 
 ```ts
 const defaultStep: Step = {
-  name "stop the pipeline and run on_failure hooks on pipeline failure",
+  name: "stop the pipeline and run on_failure hooks on pipeline failure",
   // mode: "stop"
 };
 ```
@@ -30,7 +30,7 @@ Then the following step is executed (the execution jumps to the next step).
 
 ```ts
 const nonBlocking: Step = {
-  name "jump to next step on failure",
+  name: "jump to next step on failure",
   mode: "jump_next"
 };
 ```
@@ -45,7 +45,7 @@ Then the following step is executed.
 
 ```ts
 const forcedStep: Step = {
-  name "execute next command on failure",
+  name: "execute next command on failure",
   mode: "continue"
 };
 ```
