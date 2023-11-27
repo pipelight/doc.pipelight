@@ -6,7 +6,7 @@
   .switch-container
     label(
       :class="[ api.compositions ? 'secondary' : 'primary']"
-      @click="toggleCompositionAPI(false)"
+      @click="toggleCompositionAPI(api.composition)"
     ) Objects
     VPSwitch.VPSwitchAppearance(
       title:="toggle compositions"
