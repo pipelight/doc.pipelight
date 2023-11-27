@@ -15,14 +15,14 @@ pipelight init
 ```
 
 ```sh
-pipelight init --toml
+pipelight init --template toml
 ```
 
 ## Write in a programming languages
 
-Writting pipelines in programming languages enable the usage of variables,
-loops and functions. A short file can then generate a base pipeline with its
-multiple declinations.
+Writting pipelines in programming languages enable the usage of variables, loops
+and functions. A short file can then generate a base pipeline with its multiple
+declinations.
 
 ### Javascript (discourage)
 
