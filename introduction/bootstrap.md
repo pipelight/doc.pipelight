@@ -1,28 +1,63 @@
 # Bootstrap a project
 
-## With git
+The only commands you need to type to be up and running are:
 
-Create a template config file.
+```sh
+pipelight init # Create a configuration file
+pipelight run # Run a pipeline (interactive)
+pipelight logs -v # Display logs (tree view)
+```
+
+Read the following to enable pipelines automatic **triggers** with or without
+git. These are optionnal, nonetheless pretty practical!
+
+## Start a project with git
+
+::: info Recommandations
+
+Pipelight saves its activity inside the `.pipelight` hidden directory. You may
+want to prevent the whole directory from being pushed by adding it in your
+`.gitignore` file.
+
+If you wish to keep record of the pipelines logs(Json) inside your repo only
+ignore `.pipelight/internals`.
+
+:::
+
+First, if you wish to create a template configuration file and immediately try
+it out, run:
 
 ```sh
 pipelight init
 ```
 
-Enable pipelight managed git-hooks.
+If they do not exists yet, you can see to files are created.
 
+```sh
+pipelight.ts # Your configuration file where your pipelines lay 
+.pipelight_ignore # List of files to be ignored by the file watcher
+```
+
+Pipelines can be automatically triggered on git events (pipelight managed
+git-hooks).
+
+Whether it be client side in a regular repository or server side in a bare
+repository, **triggers** needs to be manualy enabled.
 
 ::: danger
 
-This operation overwrite the .git/hooks folder. Be sure to move your manually
+This operation overwrites the .git/hooks folder. Be sure to move your manually
 defined hooks elsewhere before enabling pipelight hooks.
 
 :::
+
+Enable pipelight managed git-hooks:
 
 ```sh
 pipelight enable git-hooks
 ```
 
-Check that the `.git/hooks` dierctory has been modified.
+You may want to check that the `.git/hooks` dierctory has been modified.
 
 ```sh
 ls .git/hooks
@@ -36,13 +71,13 @@ Enable the file watcher
 pipelight enable watcher
 ```
 
-Check that the event listener is running in the background
+You may want to check that the event listener is running in the background
 
 ```sh
 ps aux | grep pipelight
 ```
 
-## Without git
+## Start a project without git
 
 Create a template config file.
 
