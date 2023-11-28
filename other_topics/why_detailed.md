@@ -134,6 +134,13 @@ as possible learning curve.
 
 Typescript was indeed well-suited for this mission.
 
+### Wy not another programming language ?
+
+Internally, pipelight calls the language interpreter to generate a Json Object
+and pass it to the rust code. Since a language can generate Json, Yaml or Toml,
+it can be used to generate pipelines interpretable by pipelight... I should maybe
+expose a commmand to pipe raw json into pipelight core.
+
 ### Why only a cli ?
 
 ::: tip tl;dr
