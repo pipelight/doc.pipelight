@@ -125,6 +125,8 @@ asdf install pipelight latest
 
 ```sh
 rtx plugin add https://github.com/kogeletey/asdf-pipelight
+
+# Install specific version
 rtx install pipelight@latest
 ```
 
