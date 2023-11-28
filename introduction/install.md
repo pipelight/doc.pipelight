@@ -9,7 +9,8 @@ const fedora = `pipelight-${import.meta.env.VITE_GIT_VERSION}.rpm`;
 
 ::: tip Software size
 
-Pipelight tries to keep it **lightweight** with a binary that wheights around **13Mb**.
+Pipelight tries to keep it **lightweight** with a binary that wheights around
+**13Mb**.
 
 :::
 
@@ -105,19 +106,14 @@ cargo build --release
 cp target/release/pipelight /usr/bin/
 ```
 
-## Install with the installation script <Badge type="danger" text="alpha" />
+## Install with tool version managers (asdf or rtx) <Badge type="danger" text="alpha" />
 
-For any other linux distribution.
+[Asdf](https://asdf-vm.com/) and [Rtx](https://github.com/jdx/rtx) are systems
+to manage your runtimes and ensure that versions are the same across multiple
+devices.
 
-```sh-vue
-curl {{ base }}/scripts/install.sh | sh
-```
+### Using asdf
 
-## Install with the asdf or rtx <Badge type="danger" text="alpha" />
-
-[asdf](https://asdf-vm.com/) and [rtx](https://github.com/jdx/rtx) - these are systems of manage your runtimes. 
-
-For asdf
 ```sh
 asdf plugin add pipelight https://github.com/kogeletey/asdf-pipelight
 
@@ -125,9 +121,17 @@ asdf plugin add pipelight https://github.com/kogeletey/asdf-pipelight
 asdf install pipelight latest
 ```
 
-or using rtx
+### Using rtx
 
 ```sh
 rtx plugin add https://github.com/kogeletey/asdf-pipelight
 rtx install pipelight@latest
+```
+
+## Install with the installation script <Badge type="danger" text="alpha" />
+
+For any other linux distribution.
+
+```sh-vue
+curl {{ base }}/scripts/install.sh | sh
 ```
