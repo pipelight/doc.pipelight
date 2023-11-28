@@ -113,3 +113,22 @@ For any other linux distribution.
 ```sh-vue
 curl {{ base }}/scripts/install.sh | sh
 ```
+
+## Install with the asdf or rtx <Badge type="danger" text="alpha" />
+
+[asdf](https://asdf-vm.com/) and [rtx](https://github.com/jdx/rtx) - these are systems of manage your runtimes. 
+
+For asdf
+```sh
+asdf plugin add pipelight https://github.com/kogeletey/asdf-pipelight
+
+# Install specific version
+asdf install pipelight latest
+```
+
+or using rtx
+
+```sh
+rtx plugin add https://github.com/kogeletey/asdf-pipelight
+rtx install pipelight@latest
+```
