@@ -9,25 +9,28 @@ import ASync from '@components/ASync.vue';
 Here is the part you were waiting for! What is the point of writting pipelines
 if you still have to execute them by hand?
 
-::: tip tl;dr 
+::: tip tl;dr
 
-Triggers are a **set of conditions** that can **instantly launch
-multiple pipelines** when they are met.
+Triggers are a **set of conditions** that can **instantly launch multiple
+pipelines** when they are met.
 
 :::
 
 ## Prerequesits
 
+In order to enable pipelight triggers these commands have to be executed
+somewhere inside your project directory.
+
 ::: warning Triggers are opt-in
 
 The configuration file was initially polled to enable required triggers. But
 this has raised crucial concurrency issues. Until there is a fix, this feature
-is disabled and ** triggers have to be explicitly enable from the command
+is disabled and ** triggers have to be explicitly enabled from the command
 line**.
 
 :::
 
-### Enable git hooks (Optional)
+### Enable git-hooks (Optional)
 
 Most of triggers only work inside a Git repository. Be sure to initialize a repo
 if you want to take advantage of them all.
@@ -48,6 +51,32 @@ For now, this operation overwrites the `.git/hooks` folder. Be sure to move your
 manually defined hooks elsewhere before enabling pipelight hooks.
 
 :::
+
+Disable them with:
+
+```sh
+pipelight disable git-hooks
+```
+
+### Enable file watcher (Optional)
+
+An instance of pipelight runs in the background and listens to filesystem.
+events.
+
+::: tip Minimum workload
+
+The listener remains easy on the os and consumes very poor ressources by using
+once again the kernel modules through rust most used crates.
+
+```sh
+pipelight enable watcher
+```
+
+Disable it with:
+
+```sh
+pipelight disable watcher
+```
 
 ## Define pipeline triggers
 
@@ -253,9 +282,8 @@ actions: ["watch"];
 Trigger pipelines on file change. Whether a file is created, deleted or modified
 the pipeline is triggered.
 
-You can ignore folders or files by declaring them inside the
-`.pipelight_itignore` hidden file which stick to the .gitignore file
-specifications.
+You can ignore folders or files by declaring them inside the `.pipelight_ignore`
+hidden file which stick to the .gitignore file specifications.
 
 #### Security (Manual Flag)
 
