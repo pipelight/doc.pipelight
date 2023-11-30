@@ -63,10 +63,12 @@ pipelight disable git-hooks
 An instance of pipelight runs in the background and listens to filesystem.
 events.
 
-::: tip Minimum workload
+::: tip Computiong ressources consumption
 
 The listener remains easy on the os and consumes very poor ressources by using
 once again the kernel modules through rust most used crates.
+
+:::
 
 ```sh
 pipelight enable watcher
@@ -167,6 +169,94 @@ pipelines: [
 
 </div>
 
+## Triggers behavior
+
+Before we dive aby deeper into the triggers.
+
+::: warning
+
+Heavy workloads should be trigger in detach mode with:
+
+```ts
+pipeline: {
+  options: {
+    attach: false;
+  }
+}
+```
+
+:::
+
+To stick to the git-hooks trivial usage, pipelines are triggerd **attached** to
+the standard output. Which means your git actions wait for the pipelines to be
+executed.
+
+To prevent waiting forever when triggering heavy workloads via a git action, you
+can set the pipeline to be executed **detached** from the standard output.
+
+<div v-if="api.compositions">
+
+```ts
+const my_pipeline = pipeline("always_detached_when_triggered_by_git", () => [])
+  .detach();
+```
+
+or
+
+```ts
+const my_pipeline = pipeline("always_detached_when_triggered_by_git", () => [])
+  .set_options(
+    {
+      attach: false,
+    },
+  );
+```
+
+</div>
+<div v-else>
+
+```ts
+const my_pipeline = {
+  name: "always_detached_when_triggered_by_git",
+  steps: [],
+  options: {
+    attach: false,
+  },
+};
+```
+
+</div>
+
+Note that this flag only influence the behavior of the `pipelight trigger`
+command, and does nothing to the `pipelight run`.
+
+You can set the default log level that the pipeline outputs with the log\_level
+property.
+
+<div v-if="api.compositions">
+
+```ts
+my_pipeline.set_options({
+  log_level: "warn",
+});
+```
+
+</div>
+<div v-else>
+
+```ts
+pipeline: {
+  options: {
+    attach: false;
+    log_level: "warn",
+  }
+}
+```
+
+</div>
+
+Available levels are `error`, `warn`, `info`, `debug` and `trace`.
+
 ## Git environment (optional)
 
 ### Branch and Tags
@@ -174,7 +264,7 @@ pipelines: [
 Branches are your git project branches names (see: `git branch`). Tags are the
 commits you made with `git tag -a "v0.8"` (see: `git tag`).
 
-Tags are the tag you added the commits you want to release with
+Tags are the tag you add to the commits you want to release with
 `git tag -a "v0.8"` (see: `git tag`).
 
 Branch and Tag combinations are enhanced by **globbing** pattern matching.
@@ -264,16 +354,9 @@ export enum Action {
 Actions are named according to [git-hooks](https://githooks.com/) names, plus
 special flags like `blank`,`manual` and `watch`.
 
-::: warning
+## Special actions
 
-A pipeline whoes trigger has an action alone without specified branch is
-triggered for every branches.
-
-:::
-
-### Special actions
-
-#### On file change (Watch Flag)
+### On file change (Watch Flag)
 
 ```ts
 actions: ["watch"];
@@ -285,7 +368,7 @@ the pipeline is triggered.
 You can ignore folders or files by declaring them inside the `.pipelight_ignore`
 hidden file which stick to the .gitignore file specifications.
 
-#### Security (Manual Flag)
+### Security (Manual Flag)
 
 ```ts
 actions: ["manual"];
@@ -296,53 +379,22 @@ command `pipelight run` you need to add the **special flag** `manual` to the
 pipeline trigger's actions. This **avoids unintentionnal manual triggering**
 aspecialy on critical production branches.
 
-## Client-Server synchronisation
-
-### with the blank flag
+### Client-Server synchronisation (Blank Flag)
 
 ```ts
 actions: ["blank"];
 ```
 
-When you have pipelight installed **client and server side**. A push to the
-(git)server triggers both client and server side pipelines simultaneously.
+When you have pipelight installed **client and server side**, and you use
+**detahed** pipeline triggering with git.
+
+A push to the (git)server triggers both client and server side pipelines nearly
+simultaneously.
 
 <Sync/>
 
 What if you want to trigger a server side pipeline only **once a client side
-pipeline has resolved**?
-
-The first workaround is to force the pipeline to run in attach mode with the
-`--attach` option by creating an intermediary `glue_pipeline`.
-
-<div v-if="api.compositions">
-
-```ts
-// pipelight.ts
-let glue_pipeline = pipeline("sync", () => [
-  step("nested attached pipeline", () => [
-    "pipelight run my_pipeline --attach",
-  ]),
-]);
-```
-
-</div>
-<div v-else>
-
-```ts
-// pipelight.ts
-let glue_pipeline = {
-  name: "sync",
-  steps: [{
-    name: "nested attached pipeline",
-    commands: [
-      "pipelight run my_pipeline --attach",
-    ],
-  }],
-};
-```
-
-</div>
+pipeline has resolved** whitout having to bring it to the foreground?
 
 A workaround is to send an ssh command to the server at some point in your
 pipeline. `pipelight run <pipeline_name> --flag blank` or

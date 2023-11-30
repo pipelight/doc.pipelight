@@ -47,3 +47,7 @@ pipelight ls --config ./tests/test.pipelight.ts;
 ```sh
 pipelight ls --config test.pipelight
 ```
+
+## Configuration global properties
+
+
