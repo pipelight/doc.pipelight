@@ -26,6 +26,7 @@ pnpm-debug.log*
 *.sw?
 #*.lock
 *lock.json
+*.lockdb
 
 # pipelight
 .pipelight

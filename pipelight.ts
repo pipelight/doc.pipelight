@@ -68,7 +68,7 @@ const compositionPipe = pipeline(
       },
     ],
   },
-);
+).detach();
 
 const config: Config = {
   pipelines: [compositionPipe],
