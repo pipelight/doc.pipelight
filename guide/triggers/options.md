@@ -61,7 +61,7 @@ When running a pipeline with the command `pipelight run`, this flag is not
 interpreted and therefore the pipeline is triggered in the background unless you
 attach it `pipelight run --attach`.
 
-## Set pipeline default log level
+## Set default log level
 
 Triggering a pipeline in attached state will print the minimum pipeline log.
 
@@ -85,6 +85,32 @@ pipeline: {
     attach: false;
     log_level: "warn",
   }
+}
+```
+
+</div>
+
+## Set defaults globally
+
+<div v-if="api.compositions">
+
+```ts
+my_config.set_options({
+attach: false,
+  log_level: "warn",
+});
+```
+
+</div>
+<div v-else>
+
+```ts
+config: {
+  options: {
+    attach: false;
+    log_level: "warn",
+  }
+  pipelines:[]
 }
 ```
 
