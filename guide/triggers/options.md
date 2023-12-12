@@ -92,11 +92,13 @@ pipeline: {
 
 ## Set defaults globally
 
+You can set those defaults globally
+
 <div v-if="api.compositions">
 
 ```ts
 my_config.set_options({
-attach: false,
+  attach: false,
   log_level: "warn",
 });
 ```
