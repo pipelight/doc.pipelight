@@ -16,17 +16,14 @@ pipelines** when they are met.
 
 :::
 
-## Prerequesits
+## Prerequesites
 
 In order to enable pipelight triggers these commands have to be executed
 somewhere inside your project directory.
 
 ::: warning Triggers are opt-in
 
-The configuration file was initially polled to enable required triggers. But
-this has raised crucial concurrency issues. Until there is a fix, this feature
-is disabled and ** triggers have to be explicitly enabled from the command
-line**.
+Triggers have to be explicitly enabled from the command line.
 
 :::
 
@@ -169,94 +166,6 @@ pipelines: [
 
 </div>
 
-## Triggers behavior
-
-Before we dive aby deeper into the triggers.
-
-::: warning
-
-Heavy workloads should be trigger in detach mode with:
-
-```ts
-pipeline: {
-  options: {
-    attach: false;
-  }
-}
-```
-
-:::
-
-To stick to the git-hooks trivial usage, pipelines are triggerd **attached** to
-the standard output. Which means your git actions wait for the pipelines to be
-executed.
-
-To prevent waiting forever when triggering heavy workloads via a git action, you
-can set the pipeline to be executed **detached** from the standard output.
-
-<div v-if="api.compositions">
-
-```ts
-const my_pipeline = pipeline("always_detached_when_triggered_by_git", () => [])
-  .detach();
-```
-
-or
-
-```ts
-const my_pipeline = pipeline("always_detached_when_triggered_by_git", () => [])
-  .set_options(
-    {
-      attach: false,
-    },
-  );
-```
-
-</div>
-<div v-else>
-
-```ts
-const my_pipeline = {
-  name: "always_detached_when_triggered_by_git",
-  steps: [],
-  options: {
-    attach: false,
-  },
-};
-```
-
-</div>
-
-Note that this flag only influence the behavior of the `pipelight trigger`
-command, and does nothing to the `pipelight run`.
-
-You can set the default log level that the pipeline outputs with the log\_level
-property.
-
-<div v-if="api.compositions">
-
-```ts
-my_pipeline.set_options({
-  log_level: "warn",
-});
-```
-
-</div>
-<div v-else>
-
-```ts
-pipeline: {
-  options: {
-    attach: false;
-    log_level: "warn",
-  }
-}
-```
-
-</div>
-
-Available levels are `error`, `warn`, `info`, `debug` and `trace`.
-
 ## Git environment (optional)
 
 ### Branch and Tags
@@ -379,92 +288,3 @@ command `pipelight run` you need to add the **special flag** `manual` to the
 pipeline trigger's actions. This **avoids unintentionnal manual triggering**
 aspecialy on critical production branches.
 
-### Client-Server synchronisation (Blank Flag)
-
-```ts
-actions: ["blank"];
-```
-
-When you have pipelight installed **client and server side**, and you use
-**detahed** pipeline triggering with git.
-
-A push to the (git)server triggers both client and server side pipelines nearly
-simultaneously.
-
-<Sync/>
-
-What if you want to trigger a server side pipeline only **once a client side
-pipeline has resolved** whitout having to bring it to the foreground?
-
-A workaround is to send an ssh command to the server at some point in your
-pipeline. `pipelight run <pipeline_name> --flag blank` or
-`pipelight trigger --flag blank` to trigger the server side pipeline.
-
-And add the required trigger to the pipeline to be executed server-side.
-
-<div v-if="api.compositions">
-
-```ts
-// pipelight.ts
-server_pipeline.add_trigger({
-  action: ["blank"],
-});
-```
-
-</div>
-<div v-else>
-
-```ts
-// pipelight.ts
-server_pipeline.triggers.push({
-  action: ["blank"],
-});
-```
-
-</div>
-
-Emit the **trigger signal** from the client-side pipeline. Whether it be from a
-fallback or from a regular pipeline step.
-
-<div v-if="api.compositions">
-
-```ts
-// pipelight.ts
-pipeline.on_success = step("sync", () => [
-  ...ssh((host) => ["pipelight run server_side_pipeline --flag blank"]),
-]);
-```
-
-</div>
-<div v-else>
-
-```ts
-// pipelight.ts
-pipeline.on_success = {
-  name: "sync",
-  commands: `ssh ${host} -C "pipelight run server_side_pipeline --flag blank"`,
-};
-```
-
-</div>
-
-and voilà, you have synced your pipelines.
-
-<ASync/>
-
-## Forced flags (Manually set trigger action)
-
-Simulate a specific action to trigger associated pipelines.
-
-```sh
-pipelight trigger <action>
-```
-
-Or trigger a pipeline by simulating the appropriate action.
-
-```sh
-pipelight run --flag <action>
-```
-
-_You can use it for debugging purpose or simply as a way to create
-unconventionnal pipelines._

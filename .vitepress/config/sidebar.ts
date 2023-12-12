@@ -71,7 +71,20 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
             },
             {
               text: "Triggers (Automation)",
-              link: "/guide/triggers",
+              items: [
+                {
+                  text: "Definition",
+                  link: "/guide/triggers/definition",
+                },
+                {
+                  text: "Options",
+                  link: "/guide/triggers/options",
+                },
+                {
+                  text: "Special flags",
+                  link: "/guide/triggers/specials",
+                },
+              ],
             },
             {
               text: "Fallbacks (Conditionnal Hooks)",
