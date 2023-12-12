@@ -112,15 +112,16 @@ Thus you remain **free** in your creation process, but you are **not helpless**.
 
 ## Types in depth
 
-You can see the complete type definition on [DenoLand](https://deno.land/x/pipelight/mod.ts).
+You can see the complete type definition on
+[DenoLand](https://deno.land/x/pipelight/mod.ts).
 
-There is some options that are discussed further in the documentation
-but that you can already explore by going through the [self documented deno documentation](https://deno.land/x/pipelight/mod.ts)
-
+There is some options that are discussed further in the documentation but that
+you can already explore by going through the
+[self documented deno documentation](https://deno.land/x/pipelight/mod.ts)
 
 A **pipeline** is an object that has an **array of steps**, optionnal
-[triggers](/guide/triggers) for automatique execution, and optionnal global
-[fallbacks](/guide/fallbacks) for out of the flow step execution.
+[triggers](/guide/triggers/definition) for automatique execution, and optionnal
+global [fallbacks](/guide/fallbacks) for out of the flow step execution.
 
 ```ts
 export interface Pipeline {
