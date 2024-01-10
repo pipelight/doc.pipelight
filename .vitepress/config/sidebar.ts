@@ -181,6 +181,10 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
       collapsed: true,
       items: [
         {
+          text: "Dig out VMs",
+          link: "/guide/vm/intro",
+        },
+        {
           text: "Read files",
           link: "/cookbook/cli",
         },
