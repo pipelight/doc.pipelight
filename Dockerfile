@@ -1,7 +1,10 @@
-FROM nginx:alpine
-RUN mkdir -p /var/www/html
-WORKDIR /var/www/html
-COPY ./.docker/nginx.conf /etc/nginx/nginx.conf
+FROM unit:latest
+
+COPY .docker/unit.conf.json /docker-entrypoint.d/
+
+RUN mkdir /static
+WORKDIR /static
+
 COPY ./.vitepress/dist .
+
 EXPOSE 80
-ENTRYPOINT ["nginx", "-g", "daemon off;"]

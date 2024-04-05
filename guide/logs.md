@@ -68,7 +68,7 @@ The first level displays global informations.
 - date it was triggered at
 - environment in which it was triggered, which includes:
   - branch, or tag name if the project has a git repository.
-  - [action](triggers#actions-git-hooks) that triggered the pipeline execution
+  - [action](/guide/triggers/definition#actions) that triggered the pipeline execution
   - the commit number if the project has a git repository.
 - pipeline name
 - whole pipeline execution time

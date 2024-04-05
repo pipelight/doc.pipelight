@@ -1,5 +1,10 @@
 # Why another CICD tool ?
 
+CICD: Stands for **C**ontinuous **I**ntegration and **C**ontinuous
+**D**elivery/**D**eployment, aims to streamline and accelerate the software
+development lifecycle.
+[from redhat](https://www.redhat.com/en/topics/devops/what-is-ci-cd)
+
 ## Deeper convictions
 
 Knowing with which philosophy the software was built will for sure help you
@@ -10,7 +15,17 @@ Born from the following philosohies:
 - [The Anti Mediocracy Manifesto for Software Development](https://gist.github.com/mathiasrw/cb3b15630a418f5cff3035463a048a59)
 - [The LunarDAO manifesto](https://lunardao.net/manifesto.html)
 
-### The software telos (The ultimate purpose)
+### The software telos
+
+As of today, the majority of CICD software are cloud native and unflexible
+behemoth, the actual landscape lakes of solutions for self-hosted easy
+replicable deployments.
+
+The open-source world direly needs a tool to deploy and share virtuous project
+faster. CICD shouldn't be a luxury. We need a solid free common ground to
+elevate FOSS.
+
+_I don't do it because I like it. I do it because we need it now._
 
 Pipelight ultimate goal is to be a community owned ubiquitary solution for
 automation.
@@ -20,11 +35,10 @@ automation.
 To reach this goal pipelight follows some crucial guidelines:
 
 - keep execution fast by remaining minimal (suckless)
-- distribute lightweight binaries (for fast install)
+- distribute lightweight binaries (for fast installation)
 - transparent in its logs and error messages
-- beeing open-source
+- beeing and remaining open-source
 - community driven
-- and sovereign
 
 ### The Automation for everyone
 
@@ -132,14 +146,16 @@ Pipelight is about **executing bash strings** so, it needed a popular language
 well suited for **string manipulation**, with an appaeling syntax and an as soft
 as possible learning curve.
 
-Typescript was indeed well-suited for this mission.
+Typescript was indeed well-suited for this mission. It realy shines when it
+comes to do simple things.
 
-### Wy not another programming language ?
+### Why not another programming language ?
 
 Internally, pipelight calls the language interpreter to generate a Json Object
 and pass it to the rust code. Since a language can generate Json, Yaml or Toml,
-it can be used to generate pipelines interpretable by pipelight... I should maybe
-expose a commmand to pipe raw json into pipelight core.
+it can be used to generate pipelines interpretable by pipelight.
+
+In short, every language can be used to generate pipelines.
 
 ### Why only a cli ?
 
@@ -152,11 +168,11 @@ To remain lightweight and familiar.
 Pipelight is made for **efficency**. As of today it's a single executable that
 weighs under 13Mb.
 
-It has the minimum required functions for a cicd tool and delegate features to
+It has the minimum required functions for a cicd tool and delegates features to
 the already widely spread specialized softwares:
 
-- Git for software versioning and event detection
-- Linux for security and access rights
+- Git for software versioning and event detection.
+- Linux for security and access rights.
 
 In consequence, it is blazing fast.
 
@@ -164,7 +180,7 @@ Pipelight has also been built with **comfort** in mind.
 
 Most developers only feel soothed when in front of a terminal emulator.
 Pipelight avoids the disconfort of leaving the terminal by exposing a standard
-minimal unoriginal and unsurprising cli.
+minimal cli.
 
 ### Why not container native ?
 

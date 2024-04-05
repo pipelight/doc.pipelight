@@ -206,14 +206,9 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           link: "/other_topics/why_detailed",
         },
         // {
-        //   text: "CHANGELOG",
-        //   link:
-        //     "https://gitea.com/pipelight/pipelight/src/branch/master/CHANGELOG.md",
-        // },
-        // {
         //   text: "ROADMAP",
         //   link:
-        //     "https://gitea.com/pipelight/pipelight/src/branch/master/ROADMAP.md",
+        //     "https://github.com/pipelight/pipelight/src/branch/master/ROADMAP.md",
         // },
       ],
     },

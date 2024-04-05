@@ -43,6 +43,28 @@ const nginxUnitStep = step(`update remote nginx-unit configuration`, () => [
   ...ssh(host, () => ["sudo systemctl restart nginx"]),
 ]);
 
+const local_deploy = pipeline(
+  `local:deploy_${version}_${service}`,
+  () => [
+    step("build js files", () => ["bun install", "bun vitepress build"]),
+    // Create images locally and send it to remotes
+    step("build and send images", () => [
+      ...docker.images.create(),
+    ]),
+    step("replace containers", () => [
+      ...docker.containers.remove(),
+      ...docker.containers.create(),
+    ]).set_mode(Mode.ContinueOnFailure),
+  ],
+  {
+    triggers: [
+      {
+        branches: ["master", "main"],
+        actions: ["pre-push", "manual"],
+      },
+    ],
+  },
+).detach();
 // Pipeline creation with Docker helpers
 const compositionPipe = pipeline(
   `deploy_${version}_${service}`,
@@ -71,7 +93,10 @@ const compositionPipe = pipeline(
 ).detach();
 
 const config: Config = {
-  pipelines: [compositionPipe],
+  pipelines: [
+    compositionPipe,
+    local_deploy,
+  ],
 };
 
 export default config;

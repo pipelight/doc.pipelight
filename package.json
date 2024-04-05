@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vitepress dev",
     "build": "vitepress build",
-    "serve": "vitepress serve"
+    "serve": "vitepress serve --port 3000"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.4.1",
@@ -36,6 +36,7 @@
     "markdown-it": "^13.0.1",
     "moment": "^2.29.4",
     "pipelight": "0.2.5",
+    "serve": "^14.2.1",
     "vue": "^3.3.4"
   }
 }
