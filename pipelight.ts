@@ -9,13 +9,19 @@ import {
   Mode,
   Network,
 } from "https://deno.land/x/pipelight/mod.ts";
+import $ from "https://deno.land/x/dax/mod.ts";
+
+// Comand line option parser
+import { parse } from "https://deno.land/std/flags/mod.ts";
+const flags = parse(Deno.args, {
+  string: ["host"],
+  default: { host: "localhost" },
+});
 
 // Global vars
 const version = "production";
 const service = "doc";
 const dns = "pipelight.dev";
-const host = "linode";
-
 // Docker object creation
 const docker = new Docker({
   images: [
@@ -34,53 +40,51 @@ const docker = new Docker({
   ],
 });
 
-const nginxStep = step(`update remote nginx configuration`, () => [
-  `scp ./cicd/public/pipelight.nginx.conf ${host}:/etc/nginx/sites-enabled/pipelight.conf`,
-  ...ssh(host, () => ["sudo nginx -t", "sudo systemctl restart nginx"]),
-]);
+const make_caddy_config = async () => {
+  const conf = await $`caddy adapt 2> /dev/null`.json();
 
-const nginxUnitStep = step(`update remote nginx-unit configuration`, () => [
-  ...ssh(host, () => ["sudo systemctl restart nginx"]),
-]);
+  const cmd = `curl localhost:2019/load \
+    --header "Content-Type:application/json" \
+    --data ${JSON.stringify(JSON.stringify(conf))}`;
 
-const local_deploy = pipeline(
-  `local:deploy_${version}_${service}`,
-  () => [
-    step("build js files", () => ["bun install", "bun vitepress build"]),
-    // Create images locally and send it to remotes
-    step("build and send images", () => [
-      ...docker.images.create(),
-    ]),
-    step("replace containers", () => [
-      ...docker.containers.remove(),
-      ...docker.containers.create(),
-    ]).set_mode(Mode.ContinueOnFailure),
-  ],
-  {
-    triggers: [
-      {
-        branches: ["master", "main"],
-        actions: ["pre-push", "manual"],
-      },
-    ],
+  return cmd;
+};
+
+const caddy_config_cmd = await make_caddy_config();
+
+// Update caddy webserver configuration
+const caddy = step(
+  "reload caddy configuration",
+  () => {
+    return ssh(flags.host, () => [caddy_config_cmd]);
   },
-).detach();
+);
+
 // Pipeline creation with Docker helpers
-const compositionPipe = pipeline(
-  `deploy_${version}_${service}`,
+//
+// Usage:
+//
+// ```sh
+// p run deploy -- --host localhost
+// ```
+const deploy = pipeline(
+  `deploy:host`,
   () => [
     step("build js files", () => ["bun install", "bun vitepress build"]),
     // Create images locally and send it to remotes
-    step("build and send images", () => [
+    step(`build and send images to ${flags.host}`, () => [
       ...docker.images.create(),
-      ...docker.images.send(host),
+      ...docker.images.send(flags.host),
     ]),
-    step("replace containers", () =>
-      ssh(host, () => [
-        ...docker.containers.remove(),
-        ...docker.containers.create(),
-      ])).set_mode(Mode.ContinueOnFailure),
-    nginxStep,
+    step(
+      `replace containers ${version}.${service}.${dns}`,
+      () =>
+        ssh(flags.host, () => [
+          ...docker.containers.remove(),
+          ...docker.containers.create(),
+        ]),
+    ).set_mode(Mode.ContinueOnFailure),
+    caddy,
   ],
   {
     triggers: [
@@ -94,8 +98,7 @@ const compositionPipe = pipeline(
 
 const config: Config = {
   pipelines: [
-    compositionPipe,
-    local_deploy,
+    deploy,
   ],
 };
 
