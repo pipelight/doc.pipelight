@@ -16,55 +16,26 @@ Pipelight tries to keep it **lightweight** with a binary that wheights around
 
 :::
 
+## Install with Cargo (the Rust package manager)
+
+::: details Cargo build from source
+
+```sh-vue
+cargo install --git https://github.com/pipelight/pipelight
+
+# Install specific version
+cargo install --git https://github.com/pipelight/pipelight --branch master
+cargo install --git https://github.com/pipelight/pipelight --tag v{{ tag }}
+```
+
+:::
+
 ## Install with your distribution package manager
 
-::: details Arch Linux (and derivates)
+::: warning Update: Deprecation of multiple distribution specific.
 
-Install the binary from the AUR with an AUR helper like yay, paru, aura...
-
-```sh
-paru -S pipelight
-```
-
-or compile from the source code for latest updates
-
-```sh
-paru -S pipelight-git
-```
-
-:::
-
-::: details Debian (ubuntu and derivates)
-
-The software being quite young, it can't be found in the big distros repository
-yet. You will have to install it manually.
-
-First install dependencies:
-
-- Deno, javascript runtime (optionnal)
-- Git, software version manager (optionnal)
-
-```sh-vue
-curl -O {{ base }}/{{ debian }}
-dpkg -i {{ debian }}
-```
-
-:::
-
-::: details Fedora (centos and derivates)
-
-The software being quite young, it can't be found in the big distros repository
-yet. You will have to install it manually.
-
-First install dependencies:
-
-- Deno, javascript runtime (optionnal)
-- Git, software version manager (optionnal)
-
-```sh-vue
-curl -O {{ base }}/{{ fedora }}
-yum install {{ fedora }}
-```
+Multiple distribution package have been abandoned
+**in favor of the cargo install** method.
 
 :::
 
@@ -106,26 +77,13 @@ Install it on your system.
 Do not forget to update for newest versions.
 
 ```sh
-nix flake upgrade
+nix flake update
+nixos-rebuild switch
 ```
 
 :::
 
-## Install with the Rust package manager (Cargo)
-
-::: details Cargo build from source
-
-```sh-vue
-cargo install --git https://github.com/pipelight/pipelight
-
-# Install specific version
-cargo install --git https://github.com/pipelight/pipelight --branch master
-cargo install --git https://github.com/pipelight/pipelight --tag v{{ tag }}
-```
-
-:::
-
-## Install with tool version managers (asdf or rtx) <Badge type="danger" text="alpha" />
+## Install with tool version managers (asdf or rtx)
 
 [Asdf](https://asdf-vm.com/) and [Rtx](https://github.com/jdx/rtx) are systems
 to manage your runtimes and ensure that versions are the same across multiple
@@ -162,12 +120,4 @@ git clone https://github.com/pipelight/pipelight.git
 cd pipelight
 cargo build --release
 cp target/release/pipelight /usr/bin/
-```
-
-## Install with the installation script <Badge type="danger" text="alpha" />
-
-For any other linux distribution.
-
-```sh-vue
-curl {{ base }}/scripts/install.sh | sh
 ```

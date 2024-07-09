@@ -1,4 +1,0 @@
-#prod
-pipelight.crocuda.com {
-	reverse_proxy :9080
-}

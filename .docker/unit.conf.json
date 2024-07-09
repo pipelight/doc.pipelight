@@ -10,5 +10,8 @@
         "share": "/static/$uri"
       }
     }
-  ]
+  ],
+  "access_log": {
+    "path": "/var/log/unit/access.log"
+  }
 }

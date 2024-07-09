@@ -11,7 +11,7 @@ import LogsVVVV from "@demos/LogsVVVV.vue";
 
 ::: tip Json support
 
-For purist, there is a **Json** output avaiilable with `pipelight logs --json`.
+For purist, there is a **Json** output available with `pipelight logs --json`.
 
 :::
 
@@ -108,6 +108,13 @@ Diplay the command output
 
 ### Trace level (-vvvv)
 
+::: tip
+
+Some tools such as linters, docker, nixos... usually print their activity/logs to stderr.
+You may want to use the trace level log to checkout your command progress.
+
+:::
+
 Displays every command output.
 
 - stdout
@@ -170,4 +177,3 @@ rm -rf pipelight/logs
 ```
 
 Which erases every log files.
-
