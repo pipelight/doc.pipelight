@@ -16,7 +16,7 @@ pipelines** when they are met.
 
 :::
 
-## Prerequesites
+## Prerequisites
 
 In order to enable pipelight triggers these commands have to be executed
 somewhere inside your project directory.
