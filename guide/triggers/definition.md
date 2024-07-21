@@ -16,7 +16,7 @@ pipelines** when they are met.
 
 :::
 
-## Prerequesites
+## Prerequisites
 
 In order to enable pipelight triggers these commands have to be executed
 somewhere inside your project directory.
@@ -60,10 +60,10 @@ pipelight disable git-hooks
 An instance of pipelight runs in the background and listens to filesystem.
 events.
 
-::: tip Computiong ressources consumption
+::: tip Computing resources consumption
 
-The listener remains easy on the os and consumes very poor ressources by using
-once again the kernel modules through rust most used crates.
+The listener remains easy on the OS and consumes very few resources by
+once again using the kernel modules through Rust's most used crates.
 
 :::
 
@@ -213,7 +213,7 @@ triggers: [
 ## Actions
 
 Actions are named according to [git-hooks](https://githooks.com/) names, plus
-special flags "manual","watch" and "blank".
+special flags "manual", "watch" and "blank".
 
 ```ts
 export enum Action {
@@ -261,7 +261,7 @@ export enum Action {
 ### Git actions (Git-hooks)
 
 Actions are named according to [git-hooks](https://githooks.com/) names, plus
-special flags like `blank`,`manual` and `watch`.
+special flags like `manual`, `watch` and `blank`.
 
 ## Special actions
 
@@ -285,6 +285,6 @@ actions: ["manual"];
 
 If you want to manually run a pipeline that has non-empty triggers, with the
 command `pipelight run` you need to add the **special flag** `manual` to the
-pipeline trigger's actions. This **avoids unintentionnal manual triggering**
-aspecialy on critical production branches.
+pipeline trigger's actions. This **avoids unintentional manual triggering**
+especially on critical production branches.
 
