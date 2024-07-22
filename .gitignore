@@ -4,7 +4,9 @@ node_modules
 .vitepress/build/
 .vitepress/dist/
 .vitepress/cache
-public/packages/**/*
+
+# Heavy images
+public/images/showcase.gif
 
 # local env files
 .env.local
