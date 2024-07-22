@@ -6,7 +6,7 @@ node_modules
 .vitepress/cache
 
 # Heavy images
-public/images/showcase.gif
+# public/images/showcase.gif
 public/images/showcase.mp4
 
 # local env files
