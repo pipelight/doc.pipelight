@@ -218,7 +218,7 @@ reusable configuration blocks (with Typescript).
 
 ### Terminal friendly (CLI)
 
-Run a pipeline and check logs **without living your terminal**. Pipelight
+Run a pipeline and check logs **without leaving your terminal**. Pipelight
 remains in the terminal, and is finally nothing more than a Command Line
 Tool/Interface.
 
