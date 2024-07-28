@@ -53,14 +53,14 @@ and have fun.
 import type { pipeline, step } from "https://deno.land/x/pipelight/mod.ts";
 
 const my_pipe = pipeline("test", () => [
-  step("build", () => ["pnpm install", "pnpm build"]),
+  step("build", () => ["pnpm install", "pnpm build"])
 ]).add_trigger({
   branches: ["master", "dev"],
-  actions: ["pre-push", "pre-commit"],
+  actions: ["pre-push", "pre-commit"]
 });
 
 export default {
-  pipelines: my_pipe,
+  pipelines: my_pipe
 };
 ```
 
@@ -78,17 +78,17 @@ const config: Config = {
       steps: [
         {
           name: "build",
-          commands: ["pnpm install", "pnpm build"],
-        },
+          commands: ["pnpm install", "pnpm build"]
+        }
       ],
       triggers: [
         {
           branches: ["master", "dev"],
-          actions: ["pre-push", "pre-commit"],
-        },
-      ],
-    },
-  ],
+          actions: ["pre-push", "pre-commit"]
+        }
+      ]
+    }
+  ]
 };
 export default config;
 ```
@@ -105,7 +105,7 @@ scripts for atomic (small) and highly repetitive tasks.
 
 ```toml
 [[pipelines]]
-name =  "test"
+name = "test"
 
 [[pipelines.steps]]
 name = "build"
@@ -114,6 +114,23 @@ commands = ["pnpm install", "pnpm build"]
 [[pipelines.triggers]]
 branches = ["master","dev"]
 actions= ["pre-push", "pre-commit"]
+```
+
+### Hcl (Hashicorp)
+
+```hcl
+# A pipeline
+pipelines {
+  name = "test"
+  steps {
+    name     = "build"
+    commands = ["pnpm install", "pnpm build"]
+  }
+  triggers {
+    branches = ["master","dev"]
+    actions  = ["pre-push", "pre-commit"]
+  }
+}
 ```
 
 ### Yaml
