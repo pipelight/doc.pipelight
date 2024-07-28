@@ -13,6 +13,8 @@ pipelight.js;
 # or
 pipelight.toml;
 # or
+pipelight.hcl;
+# or
 pipelight.yml;
 ```
 
@@ -49,5 +51,3 @@ pipelight ls --config test.pipelight
 ```
 
 ## Configuration global properties
-
-
