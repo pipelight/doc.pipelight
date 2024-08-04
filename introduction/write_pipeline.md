@@ -120,17 +120,17 @@ actions= ["pre-push", "pre-commit"]
 
 ```hcl
 # A pipeline
-pipelines {
+pipelines = [{
   name = "test"
-  steps {
+  steps = [{
     name     = "build"
     commands = ["pnpm install", "pnpm build"]
-  }
-  triggers {
+  }]
+  triggers = [{
     branches = ["master","dev"]
     actions  = ["pre-push", "pre-commit"]
-  }
-}
+  }]
+}]
 ```
 
 ### Yaml

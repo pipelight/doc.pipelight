@@ -80,17 +80,19 @@ It may sounds familiar because it is greatly inspired by nginx configuration syn
 
 ```hcl
 # A pipeline
-pipelines {
+pipelines =[{
   name = "simple_example"
-  steps {
-    name     = "list directory"
-    commands = ["ls"]
-  }
-  steps {
-    name     = "get working directory"
-    commands = ["pwd"]
-  }
-}
+  steps =[
+      {
+        name     = "list directory"
+        commands = ["ls"]
+      },
+      {
+        name     = "get working directory"
+        commands = ["pwd"]
+      }
+  ]
+}]
 ```
 
 ## Why so many options?
