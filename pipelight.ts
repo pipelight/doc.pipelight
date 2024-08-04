@@ -16,7 +16,7 @@ import { generate as uuid } from "https://deno.land/std/uuid/v1.ts";
 import { parse } from "https://deno.land/std/flags/mod.ts";
 const flags = parse(Deno.args, {
   string: ["host"],
-  default: { host: "localhost" }
+  default: { host: "hostry" }
 });
 
 // Global vars
