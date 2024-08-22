@@ -50,4 +50,20 @@ pipelight ls --config ./tests/test.pipelight.ts;
 pipelight ls --config test.pipelight
 ```
 
-## Configuration global properties
+## Configuration global options
+
+You can set pipelines default behavior globaly.
+You will need to override it with command line options.
+
+- Pipelines are processed in the foreground by default.
+- The default log level is set to `info` (-vv)
+
+```ts
+const config: Config = {
+  options: {
+    attach: true,
+    log_level: "info"
+  },
+  pipelines: []
+};
+```
