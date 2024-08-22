@@ -25,7 +25,7 @@ Perfect for:
 ::: warning
 
 Pipelight is a relatively young software, therefore it has some early features
-flaged as beta(yelow) and alpha(red). Its caveats are discussed into
+flagged as beta(yellow) and alpha(red). Its caveats are discussed into
 warning(yellow) and danger(red) containers like this one.
 
 :::
@@ -140,7 +140,7 @@ achived with a minimal overhead.
 Pipelight ends the struggle with configuration optimised languages (YAML/TOML).
 
 Instead of combining multiple keywords and flags, the pipeline logic can be
-written in Javascript/Typescript. You van then define pipelines with concepts
+written in Javascript/Typescript. You can then define pipelines with concepts
 you are already comfortable with like variables, loops and functions.
 
 ### Frugal Power User
@@ -240,7 +240,6 @@ You also can increase verbosity and get an exhaustive tree view of the pipeline.
 ### Quick Automation
 
 Add triggers to your pipeline definition. The pipeline automatically runs in the background on matching event (a triggering action and/or a git branch or tag).
-
 
 ```ts
 triggers: [
