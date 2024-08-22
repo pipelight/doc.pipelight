@@ -141,6 +141,6 @@ It can be aborted by an external signal like `Ctrl-C`, or a signal like `SIGTERM
 ::: info
 
 Hard signal handling must be supported for Pipelight to get closer to its ideal.
-A lockfile system is actually in work to optionnaly launch pipelines forbidden fallback steps when running a new Pipelight instance.
+A lockfile system is actually in work to optionaly launch pipelines forbidden fallback steps when running a new Pipelight instance.
 
 :::

@@ -9,7 +9,7 @@ pipelight logs -v # Display logs (tree view)
 ```
 
 Read the following to enable pipelines automatic **triggers** with or without
-git. These are optionnal, nonetheless pretty practical!
+git. These are optional, nonetheless pretty practical!
 
 ## Start a project with git
 
@@ -34,7 +34,7 @@ pipelight init
 If they do not exists yet, you can see to files are created.
 
 ```sh
-pipelight.ts # Your configuration file where your pipelines lay 
+pipelight.ts # Your configuration file where your pipelines lay
 .pipelight_ignore # List of files to be ignored by the file watcher
 ```
 
