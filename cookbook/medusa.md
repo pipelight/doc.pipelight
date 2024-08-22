@@ -6,7 +6,7 @@ when it comes to self-hosting.
 Bringing un up and running instance manually was quite heavy in commands,
 but in the end it came to be pretty simple using pipelight.
 
-Fore the sake of readability, I recommand putting your docker object definition in an env folder.
+Fore the sake of readability, I recommend putting your docker object definition in an env folder.
 
 ```sh
 .pipelight

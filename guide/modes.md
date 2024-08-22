@@ -45,8 +45,8 @@ const defaultMode = step(
 const defaultMode: Step = {
   name: "stop the pipeline and run on_failure hooks on pipeline failure",
   options: {
-    mode: "stop",
-  },
+    mode: "stop"
+  }
 };
 ```
 
@@ -56,9 +56,9 @@ const defaultMode: Step = {
 
 **This mode doesn't stop the execution flow and allows the next step to run.**
 
-If a command of the step fails. The step execution stops without interupting the
-pipeline execution. Then the following step is executed (the execution jumps to
-the next step).
+If a command of the step fails, the execution of the step stops without stopping the
+pipeline execution. Then the next step is executed
+(the execution jumps to the next step).
 
 <div v-if="api.compositions">
 
@@ -78,8 +78,8 @@ const nonBlocking = step("jump to next step on failure", () => [])
 const nonBlocking: Step = {
   name: "jump to next step on failure",
   options: {
-    mode: "jump_next",
-  },
+    mode: "jump_next"
+  }
 };
 ```
 
@@ -89,8 +89,9 @@ const nonBlocking: Step = {
 
 **This mode doesn't stop the execution flow and allows the next step to run.**
 
-If a command of the step fails. The next command is still executed, and so on
-until the last command of the step. Then the following step is executed.
+If a command of the step fails, the next command is still executed,
+and so on until the last command of the step.
+Then the following step is executed.
 
 <div v-if="api.compositions">
 
@@ -110,8 +111,8 @@ const forced = step("execute next command on failure", () => [])
 const forced: Step = {
   name: "execute next command on failure",
   options: {
-    mode: "continue",
-  },
+    mode: "continue"
+  }
 };
 ```
 

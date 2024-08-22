@@ -7,8 +7,8 @@ and open a window on the many **possibilities unlocked** by Typescript.
 
 ::: warning
 
-Every section integrates the previous one concept to build further on it.
-So I recommand to read them sequencially for a better understanding.
+Each section integrates the previous one concept to build on it.
+I therefore recommend that you read them in order for a better understanding.
 
 :::
 

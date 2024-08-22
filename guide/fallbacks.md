@@ -78,8 +78,8 @@ const pipeline = {
 Fallbacks are made to execute commands on other commands status.
 They are the **if/else** of a pipeline.
 
-Concidering that every Step has Fallbacks, and Fallbacks have Steps,
-managing your every conditionnal cases into fallbacks can lead to the following awefull pattern.
+Given that every Step has fallbacks, and fallbacks have steps,
+managing all your conditionnal cases in fallbacks can lead to the following awefull pattern.
 
 ```rs
 // Pseudo code that hurts less than a Javascript example
@@ -97,8 +97,8 @@ Step {
 
 ```
 
-It's not recommanded to overuse this pattern in pipeline definition for the sake of simplicity.
-Indeed, a too deep level of fallbacks could make the pipeline, and its tree logs unreadable.
+It's not recommended to overuse this pattern in the pipeline definition for the sake of simplicity.
+In fact, too deep a level of fallbacks could make the pipeline and its tree logs unreadable.
 
 ### Solutions against the fallback hell
 
@@ -134,8 +134,10 @@ It can be aborted by an external signal like `Ctrl-C`, or a signal like `SIGTERM
 
 - Hard signals
 
-  However, if the pipeline execution is stopped or halted by a more abrupt signal (SIGKILL) or directly by your kernel for ressource exceeding,
-  process panic reasons and a few more extrem but daily cases,
+  However, if the pipeline execution is stopped or halted by a more abrupt signal (SIGKILL) or directly by your kernel due to
+  resource overruns,
+  process panic,
+  and a few other extreme but common cases,
   the `on_abortion` fallback can't be executed by the ex-running pipelight instance.
 
 ::: info

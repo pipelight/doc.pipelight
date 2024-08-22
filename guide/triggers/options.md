@@ -15,11 +15,10 @@ bases.
 
 ## Set pipeline default I/O
 
-By default, pipelines are triggerd **attached** to the standard output.
+By default, pipelines are triggered **attached** to the standard output.
 
-For example, a git action like `git push` will wait until the pipelines
-execution is over before your shell gives you the control back and print another
-prompt line.
+For example, a git action like `git push` will wait for the pipeline
+execution to complete before giving you a new prompt.
 
 To prevent waiting forever when triggering heavy workloads, you can set the
 pipeline to be executed **detached** from the standard output.
@@ -27,19 +26,21 @@ pipeline to be executed **detached** from the standard output.
 <div v-if="api.compositions">
 
 ```ts
-const my_pipeline = pipeline("always_detached_when_triggered_by_git", () => [])
-  .detach();
+const my_pipeline = pipeline(
+  "always_detached_when_triggered_by_git",
+  () => []
+).detach();
 ```
 
 or
 
 ```ts
-const my_pipeline = pipeline("always_detached_when_triggered_by_git", () => [])
-  .set_options(
-    {
-      attach: false,
-    },
-  );
+const my_pipeline = pipeline(
+  "always_detached_when_triggered_by_git",
+  () => []
+).set_options({
+  attach: false
+});
 ```
 
 </div>
@@ -50,8 +51,8 @@ const my_pipeline = {
   name: "always_detached_when_triggered_by_git",
   steps: [],
   options: {
-    attach: false,
-  },
+    attach: false
+  }
 };
 ```
 
@@ -72,7 +73,7 @@ You can set the default log level Available levels are `error`, `warn`, `info`,
 
 ```ts
 my_pipeline.set_options({
-  log_level: "warn",
+  log_level: "warn"
 });
 ```
 
@@ -99,7 +100,7 @@ You can set those defaults globally
 ```ts
 my_config.set_options({
   attach: false,
-  log_level: "warn",
+  log_level: "warn"
 });
 ```
 
