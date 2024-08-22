@@ -90,7 +90,7 @@ So what internally happens when you run a pipeline ?
 
 2. Then only, it processes the parsed pipeline definition.
 
-   -> Pipelight spawns the commands into subprocesses while writting the outputs
+   -> Pipelight spawns the commands into subprocesses while writing the outputs
    into log files.
 
 <Schema/>
@@ -121,7 +121,7 @@ serde, rustix, watchexec, miette...).
 
 Pipelight uses the provided **kernel functions for process management**.
 
-Beeing this tightly coupled to the Linux kernel allows us to have very few
+Being this tightly coupled to the Linux kernel allows us to have very few
 software internal code that could disrupt processes execution without reporting.
 
 Resulting in **highly verbose** and **transparent logs**.

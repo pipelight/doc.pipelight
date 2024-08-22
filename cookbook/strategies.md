@@ -1,7 +1,7 @@
 # Deployment Strategies
 
-Pipelight is about deploying stuffs in the background as you write code.
-There is a moment where you need to set a deployment strategy that suits your needs.
+Pipelight is about deploying things in the background while you write code.
+There comes a time when you need to choose a deployment strategy that suits your needs.
 
 If you are unfamilliar with such words,
 you can check the [Harness guide on deployment strategies](https://www.harness.io/blog/blue-green-canary-deployment-strategies)

@@ -18,7 +18,7 @@ and you can still make interactions between namespaces.
 ::: tip Namespace isolation over Virtual isolation
 
 This **conceptual** separation avoids collision between docker entities
-while beeing much **flexible, lighter and cost effective** than another nested level of virtual separation.
+while being much **flexible, lighter and cost effective** than another nested level of virtual separation.
 
 :::
 

@@ -18,7 +18,7 @@ Born from the following philosohies:
 ### The software telos
 
 As of today, the majority of CICD software are cloud native and unflexible
-behemoth, the actual landscape lakes of solutions for self-hosted easy
+behemoth, the current landscape lacks solutions for self-hosted, easily
 replicable deployments.
 
 The open-source world direly needs a tool to deploy and share virtuous project
@@ -37,13 +37,13 @@ To reach this goal pipelight follows some crucial guidelines:
 - keep execution fast by remaining minimal (suckless)
 - distribute lightweight binaries (for fast installation)
 - transparent in its logs and error messages
-- beeing and remaining open-source
+- being and remaining open-source
 - community driven
 
 ### The Automation for everyone
 
-Pipelight ought to be the fastest and least painfull solution to set up if you
-seek to automate things.
+Pipelight should be the fastest and least painful solution to set up if you
+want to automate things.
 
 There is many ways ones can achieved automation, and Pipelight chose to
 **leverage bash**, the every programmer common ground. Therefore, Pipelight
@@ -60,14 +60,14 @@ the code that matters.
 
 ::: tip tl;dr
 
-The solution Pipelight brings is to **bettern already existing shell scripts**.
+The solution that pipelight brings is to **improve existing shell scripts**.
 
 :::
 
 We usualy seek automation because we face repetitive thus painful tasks of
 varied nature. So we go down the automation road:
 
-1. **Edite a shell script**
+1. **Edit a shell script**
 
    ```sh
    #deploy.sh
@@ -76,9 +76,9 @@ varied nature. So we go down the automation road:
    rsync local_files to_my_remote_server
    ```
 
-   [+] Bash is quick to set up, and very appaeling when scripting simple tasks.
+   [+] Bash is quick to set up, and very appealing when scripting simple tasks.
 
-   [-] Bash syntax isn't easy. It lakes primitives/structures like Array,
+   [-] Bash syntax isn't easy. It lacks primitives/structures like Array,
    Object, Map... It can quickly become unreadable as it get complex.
 
 2. **Then, write a python script**
@@ -143,7 +143,7 @@ programming language. Tailwind, Vite and many other web frameworks have already
 taken down this path.
 
 Pipelight is about **executing bash strings** so, it needed a popular language
-well suited for **string manipulation**, with an appaeling syntax and an as soft
+well suited for **string manipulation**, with an appealing syntax and an as soft
 as possible learning curve.
 
 Typescript was indeed well-suited for this mission. It realy shines when it
