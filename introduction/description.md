@@ -121,7 +121,7 @@ serde, rustix, watchexec, miette...).
 
 Pipelight uses the provided **kernel functions for process management**.
 
-Beeing this tightly coupled to the Linux kernel allows us to have very few
+Being this tightly coupled to the Linux kernel allows us to have very few
 software internal code that could disrupt processes execution without reporting.
 
 Resulting in **highly verbose** and **transparent logs**.

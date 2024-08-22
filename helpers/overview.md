@@ -129,13 +129,13 @@ step("build images and run containers", () => [
 
 ## A thrilling example
 
-Aside from the boring Docker Object defintion.
-This is what the core of a pipeline made with helpers looks like.
+Aside from the boring Docker Object definition,
+this is what the core of a pipeline made with helpers looks like.
 
 Here we use the **pipeline**, **step**, **ssh**, and **docker** helpers.
 
-This pipeline build some user defined docker images, send them to remote,
-Then, on the remote, it replaces the old existing containers with the new generated ones,
+This pipeline builds some custom docker images and sends them to remote,
+Then, on the remote, it replaces the old existing containers with the newly created ones
 to finally run them.
 
 ```ts

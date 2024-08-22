@@ -8,30 +8,30 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
       items: [
         {
           text: "What is Pipelight?",
-          link: "/introduction/description",
+          link: "/introduction/description"
         },
         {
           text: "Getting Started",
           items: [
             {
               text: "Install",
-              link: "/introduction/install",
+              link: "/introduction/install"
             },
             {
               text: "Start a project",
-              link: "/introduction/bootstrap",
+              link: "/introduction/bootstrap"
             },
             {
               text: "Write a pipeline",
-              link: "/introduction/write_pipeline",
+              link: "/introduction/write_pipeline"
             },
             {
               text: "Troubleshoot a pipeline",
-              link: "/introduction/troubleshoot",
-            },
-          ],
-        },
-      ],
+              link: "/introduction/troubleshoot"
+            }
+          ]
+        }
+      ]
     },
     {
       text: "Guide",
@@ -42,105 +42,105 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           items: [
             {
               text: "Configuration file",
-              link: "/guide/config",
+              link: "/guide/config"
             },
             {
               text: "Usage",
-              link: "/guide/cli",
+              link: "/guide/cli"
             },
             {
               text: "Display Logs",
-              link: "/guide/logs",
-            },
-          ],
+              link: "/guide/logs"
+            }
+          ]
         },
         {
           text: "Pipeline definition",
           items: [
             {
               text: "Which language?",
-              link: "/guide/which_lang",
+              link: "/guide/which_lang"
             },
             {
               text: "Base syntax",
-              link: "/guide/pipeline_definition",
+              link: "/guide/pipeline_definition"
             },
             {
               text: "Task Parallelism",
-              link: "/guide/parallelism",
+              link: "/guide/parallelism"
             },
             {
               text: "Triggers (Automation)",
               items: [
                 {
                   text: "Definition",
-                  link: "/guide/triggers/definition",
+                  link: "/guide/triggers/definition"
                 },
                 {
                   text: "Options",
-                  link: "/guide/triggers/options",
+                  link: "/guide/triggers/options"
                 },
                 {
                   text: "Special flags",
-                  link: "/guide/triggers/specials",
-                },
-              ],
+                  link: "/guide/triggers/specials"
+                }
+              ]
             },
             {
               text: "Fallbacks (Conditionnal Hooks)",
-              link: "/guide/fallbacks",
+              link: "/guide/fallbacks"
             },
             {
               text: "Execution modes (Behavior)",
-              link: "/guide/modes",
+              link: "/guide/modes"
             },
             {
               text: "Secrets storage",
-              link: "/guide/secrets",
-            },
-          ],
+              link: "/guide/secrets"
+            }
+          ]
         },
         {
           text: "Pipeline doping ⚡",
           items: [
             {
               text: "Overview",
-              link: "/guide/tips/overview",
+              link: "/guide/tips/overview"
             },
             {
               text: "String manipulation",
-              link: "/guide/tips/strings",
+              link: "/guide/tips/strings"
             },
             {
               text: "Split code blocks",
-              link: "/guide/tips/split",
+              link: "/guide/tips/split"
             },
             {
               text: "Supercharge the cli",
-              link: "/guide/tips/supercli",
+              link: "/guide/tips/supercli"
             },
             {
               text: "Environment variables",
-              link: "/guide/tips/environments",
-            },
+              link: "/guide/tips/environments"
+            }
             // {
             //   text: "Show off",
             //   link: "/guide/tips/showcase"
             // }
-          ],
-        },
-      ],
+          ]
+        }
+      ]
     },
     {
       text: "Helpers",
       items: [
         {
           text: "What is it?",
-          link: "/helpers/overview",
+          link: "/helpers/overview"
         },
         {
           text: "Common helpers",
-          link: "/helpers/common",
+          link: "/helpers/common"
         },
         {
           text: "Docker helpers",
@@ -148,21 +148,21 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           items: [
             {
               text: "Overview",
-              link: "/helpers/docker/overview",
+              link: "/helpers/docker/overview"
             },
             {
               text: "Loose declaration",
-              link: "/helpers/docker/loose",
+              link: "/helpers/docker/loose"
             },
             {
               text: "Strict declaration",
-              link: "/helpers/docker/strict",
+              link: "/helpers/docker/strict"
             },
             {
               text: "Usage",
-              link: "/helpers/docker/usage",
-            },
-          ],
+              link: "/helpers/docker/usage"
+            }
+          ]
         },
         {
           text: "Template helpers",
@@ -170,47 +170,43 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
           items: [
             {
               text: "Overview",
-              link: "/helpers/template/overview",
-            },
-          ],
-        },
-      ],
+              link: "/helpers/template/overview"
+            }
+          ]
+        }
+      ]
     },
     {
       text: "Cookbook",
       collapsed: true,
       items: [
         {
-          text: "Read files",
-          link: "/cookbook/cli",
-        },
-        {
           text: "Javascript frontend",
-          link: "/cookbook/vite",
+          link: "/cookbook/vite"
         },
         {
           text: "Medusa (e-commerce)",
-          link: "/cookbook/medusa",
+          link: "/cookbook/medusa"
         },
         {
           text: "Deployment Strategies",
-          link: "/cookbook/strategies",
-        },
-      ],
+          link: "/cookbook/strategies"
+        }
+      ]
     },
     {
       text: "Extra Topics",
       items: [
         {
           text: "Why another CICD Tool?",
-          link: "/other_topics/why_detailed",
-        },
+          link: "/other_topics/why_detailed"
+        }
         // {
         //   text: "ROADMAP",
         //   link:
         //     "https://github.com/pipelight/pipelight/src/branch/master/ROADMAP.md",
         // },
-      ],
-    },
-  ],
+      ]
+    }
+  ]
 };
