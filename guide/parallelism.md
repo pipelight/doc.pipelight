@@ -190,6 +190,10 @@ It will therefor **instantly** return the process status:
 - succeeded if the process is spawned
 - failed if the process couldn't be spawned
 
-You may want to run subpipelines in detached mode if you don't care about there result.
-Like if you bulk send emails and don't need to wait for this process to finish
-to continue the main pipeline execution.
+You may want to run subpipelines in detached mode if you don't care about the result.
+
+For example:
+
+If a step bulk sends emails and you can not afford to wait until it is finished to resume the pipeline execution.
+Then you should consider using a detached pipeline.
+The main pipeline execution will continue as soon as the emailing pipeline is spawned.

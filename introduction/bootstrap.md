@@ -13,7 +13,7 @@ git. These are optional, nonetheless pretty practical!
 
 ## Start a project with git
 
-::: info Recommandations
+::: info Recommendations
 
 Pipelight saves its activity inside the `.pipelight` hidden directory. You may
 want to prevent the whole directory from being pushed by adding it in your

@@ -6,14 +6,14 @@ const Badge = inject("Badge");
 
 # Secrets storage
 
-Pipelight doe not come with a secret/vault plugin.
-You can use whatever you want to store crucial informations.
+Pipelight doesn't come with a secret/vault plugin.
+You can use whatever you want to store crucial information.
 
 However here is a first aid kit for secret storage.
 
 ## User rights (default)
 
-The **first level of security** is provided by Linux access rights and user priviledges.
+The **first level of security** is provided by Linux access rights and user privileges.
 To ensure a first guard, you may want to **run pipelines as a specific user with dedicated rights** on needed files.
 
 ### Running process environment
@@ -31,8 +31,8 @@ For example, for ssh, no need to set every arguments on a single command.
 ssh [user]@[ip] -i [./ssh_secrets/id_rsa] -F [./my_config_file]
 ```
 
-The subprocess has access to the user local configuratons and aliases (/etc/hosts, .ssh/config),
-the command can therefor be shortened.
+The subprocess has access to the user's local configurations and aliases (/etc/hosts, .ssh/config).
+The command can therefore be shortened.
 
 ```sh
 ssh [server_name]
@@ -77,8 +77,8 @@ and go further with the [Deno documentation](https://deno.land/manual/basics/env
 
 ## Third party vaults
 
-You can still store your secrets in your favorite third party dedicated softwares
-and make an API call to the vault from your `pipelight.ts` file.
+You can still store your secrets in your favorite dedicated third-party software
+and make an API call to the Vault from your `pipelight.ts` file.
 
 If you seak to plug your vault more simply, [Novops](https://pierrebeucher.github.io/novops/intro.html) is the way to go.
 

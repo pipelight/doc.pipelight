@@ -29,7 +29,7 @@ declinations.
 ::: danger
 
 Javascript is a **weakly typed** language, and so **highly prone to errors**. It
-is **greatly recommanded to use Typescript** instead, to take full advantage of
+is **greatly recommended to use Typescript** instead, to take full advantage of
 **types linting**.
 
 :::

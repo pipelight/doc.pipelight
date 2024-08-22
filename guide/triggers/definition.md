@@ -29,8 +29,8 @@ Triggers have to be explicitly enabled from the command line.
 
 ### Enable git-hooks (Optional)
 
-Most of triggers only work inside a Git repository. Be sure to initialize a repo
-if you want to take advantage of them all.
+Most of triggers only work inside a Git repository. Make sure you initialize a repository
+if you want to take advantage of them.
 
 ```sh
 git init
@@ -39,7 +39,15 @@ git init
 To enable git triggers (pipelight managed git hooks) on a fresh directory run:
 
 ```sh
-pipelight enable git-hooks
+pipelight init
+# or
+pipelight enable git-hooks.
+```
+
+Disable them with:
+
+```sh
+pipelight disable git-hooks.
 ```
 
 ::: danger
@@ -57,8 +65,7 @@ pipelight disable git-hooks
 
 ### Enable file watcher (Optional)
 
-An instance of pipelight runs in the background and listens to filesystem.
-events.
+An instance of pipelight runs in the background and listens to filesystem events.
 
 ::: tip Computing resources consumption
 
@@ -79,23 +86,12 @@ pipelight disable watcher
 
 ## Define pipeline triggers
 
-**Make a combination of branches and actions for which to trigger the
-pipeline.**
+**Create a combination of branches and actions for which the pipeline is to be triggered.**
 
-When triggers are added to a pipeline, the pipeline is not triggered until
-triggering requirements are met. Which means you need to checkout to the allowed
-branches or tags, and execute the allowed actions for the pipeline to run.
-
-(debug): _When verbosity is increased, the CLI tells you what to do if
-requirements are not met._
-
-disable them with:
-
-```sh
-pipelight disable git-hooks.
-```
-
-Make a combination of branches and actions for which to trigger the pipeline.
+When triggers are added to a pipeline, the pipeline is not triggered until the
+triggering requirements are met.
+Which means that you need to checkout to the allowed
+branches or tags, and execute the allowed actions for the pipeline to be executed.
 
 <div v-if="api.compositions">
 ```ts
@@ -117,6 +113,9 @@ pipeline.triggers =
 ];
 ```
 
+(debug): _When verbosity is increased, the CLI tells you what to do if the
+requirements are not met._
+
 </div>
 
 ```ts
@@ -133,10 +132,10 @@ Then, add triggers to your pipeline definition.
 ```ts
 //pipelight.ts
 const my_pipeline = pipeline("test", () => [
-  step("build", () => ["yarn install", "yarn build"]),
+  step("build", () => ["yarn install", "yarn build"])
 ]).add_trigger({
   branches: ["main"],
-  actions: ["pre-push"],
+  actions: ["pre-push"]
 });
 ```
 
@@ -151,16 +150,16 @@ pipelines: [
     steps: [
       {
         name: "build",
-        commands: ["yarn install", "yarn build"],
-      },
+        commands: ["yarn install", "yarn build"]
+      }
     ],
     triggers: [
       {
         branches: ["main"],
-        actions: ["pre-push"],
-      },
-    ],
-  },
+        actions: ["pre-push"]
+      }
+    ]
+  }
 ];
 ```
 
@@ -170,11 +169,8 @@ pipelines: [
 
 ### Branch and Tags
 
-Branches are your git project branches names (see: `git branch`). Tags are the
-commits you made with `git tag -a "v0.8"` (see: `git tag`).
-
-Tags are the tag you add to the commits you want to release with
-`git tag -a "v0.8"` (see: `git tag`).
+Branches are your git project branches names (see: `git branch`).
+Tags are the commits you made with `git tag -a "v0.8"` (see: `git tag`).
 
 Branch and Tag combinations are enhanced by **globbing** pattern matching.
 
@@ -184,11 +180,11 @@ Branch and Tag combinations are enhanced by **globbing** pattern matching.
 my_pipeline
   .add_trigger({
     branches: ["feature/*"],
-    actions: ["pre-push"],
+    actions: ["pre-push"]
   })
   .add_trigger({
     tags: ["v*-dev"],
-    actions: ["pre-commit"],
+    actions: ["pre-commit"]
   });
 ```
 
@@ -199,12 +195,12 @@ my_pipeline
 triggers: [
   {
     branches: ["feature/*"],
-    actions: ["pre-push"],
+    actions: ["pre-push"]
   },
   {
     tags: ["v*-dev"],
-    actions: ["pre-commit"],
-  },
+    actions: ["pre-commit"]
+  }
 ];
 ```
 
@@ -254,7 +250,7 @@ export enum Action {
   // special flags
   Manual = "manual",
   Watch = "watch",
-  Blank = "blank",
+  Blank = "blank"
 }
 ```
 
@@ -287,4 +283,3 @@ If you want to manually run a pipeline that has non-empty triggers, with the
 command `pipelight run` you need to add the **special flag** `manual` to the
 pipeline trigger's actions. This **avoids unintentional manual triggering**
 especially on critical production branches.
-

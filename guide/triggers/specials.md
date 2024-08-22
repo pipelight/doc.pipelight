@@ -1,10 +1,8 @@
-
 <script setup lang="ts">
 import { api } from "@utils/preferences.ts";
 import Sync from '@components/Sync.vue';
 import ASync from '@components/ASync.vue';
 </script>
-
 
 # Detached pipelines everywhere
 
@@ -15,7 +13,7 @@ actions: ["blank"];
 ```
 
 When you have pipelight installed **client and server side**, and you use
-**detahed** pipeline triggering with git.
+**detached** pipeline triggering with git.
 
 A push to the (git)server triggers both client and server side pipelines nearly
 simultaneously.
@@ -36,7 +34,7 @@ And add the required trigger to the pipeline to be executed server-side.
 ```ts
 // pipelight.ts
 server_pipeline.add_trigger({
-  action: ["blank"],
+  action: ["blank"]
 });
 ```
 
@@ -46,7 +44,7 @@ server_pipeline.add_trigger({
 ```ts
 // pipelight.ts
 server_pipeline.triggers.push({
-  action: ["blank"],
+  action: ["blank"]
 });
 ```
 
@@ -60,7 +58,7 @@ fallback or from a regular pipeline step.
 ```ts
 // pipelight.ts
 pipeline.on_success = step("sync", () => [
-  ...ssh((host) => ["pipelight run server_side_pipeline --flag blank"]),
+  ...ssh((host) => ["pipelight run server_side_pipeline --flag blank"])
 ]);
 ```
 
@@ -71,7 +69,7 @@ pipeline.on_success = step("sync", () => [
 // pipelight.ts
 pipeline.on_success = {
   name: "sync",
-  commands: `ssh ${host} -C "pipelight run server_side_pipeline --flag blank"`,
+  commands: `ssh ${host} -C "pipelight run server_side_pipeline --flag blank"`
 };
 ```
 
