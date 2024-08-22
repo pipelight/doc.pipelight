@@ -91,8 +91,7 @@ varied nature. So we go down the automation road:
 
    [+] It's easy to reuse pipelines. Has logging.
 
-   [-] Ressource and time consuming for full fledged solution installation and
-   configuration.
+   [-] Resource and time consuming to install and configure a full solution.
 
 On the automation road, Pipelight comes right after the shell script(1) in term
 of simplicity, while doing the heavy lift of a CICD ecosystem(3)
@@ -116,9 +115,9 @@ For flexibility and reusability
 
 Usual configuration optimised languages (TOML/ YAML) are not easy to tweak.
 
-**Variables**, **structs** and **loops** does not exist natively in those
-languages. Consequently, those features depends on the automation tool
-implementing them resulting in different syntax for every tools.
+**Variables**, **structs** and **loops** don't exist natively in those
+languages. Consequently, these features depend on the automation tool that
+implements them, resulting in a different syntax for each tool.
 
 ```yaml
 kind: pipeline
@@ -133,8 +132,8 @@ steps:
 ```
 
 To create another version of this pipeline with slightly different env
-variables. The pipeline will need to be entirely cloned, going against
-reusability and comfort.
+variables, the pipeline has to be completely cloned, which goes against
+reusability and convenience.
 
 **Typescript to the rescue**
 
@@ -146,7 +145,7 @@ Pipelight is about **executing bash strings** so, it needed a popular language
 well suited for **string manipulation**, with an appealing syntax and an as soft
 as possible learning curve.
 
-Typescript was indeed well-suited for this mission. It realy shines when it
+Typescript was indeed well-suited for this mission. It really shines when it
 comes to do simple things.
 
 ### Why not another programming language ?
