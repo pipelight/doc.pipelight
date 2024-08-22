@@ -5,9 +5,10 @@ For further documentation checkout the [Deno documentation](https://deno.land/ma
 ## Create env files
 
 You may want to use env files for credential storage.
-Or to apply different settings to the same pipeline depending on the environment.
+Or you may want to apply different settings to the same pipeline
+depending on your environment.
 
-As for node.js and deno projects define .env, .env.devlopment, .env.production in your root directory.
+As for node.js and deno projects define .env, .env.development, .env.production in your root directory.
 (see: dotenv or deno load)
 
 ```sh
@@ -21,7 +22,7 @@ USER_PASSWORD=secret
 
 ### Static
 
-You can statically load env vars from `.env.production` into a pipeline with
+You can statically load env vars from `.env.production` into a pipeline using:
 
 ```ts
 // .pipelight/env/production
@@ -33,7 +34,7 @@ const password = env.USER_PASSWORD
 
 ### Dynamic
 
-You can dynamicly load env vars from `.env.<something>` into a pipeline with
+You can dynamically load env vars from `.env.<something>` into a pipeline using:
 
 ```ts
 // .pipelight/env/template
