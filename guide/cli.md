@@ -70,7 +70,7 @@ pipelight inspect <pipeline_name>
 pipelight ls -vvv <pipeline_name>
 ```
 
-Without an argument `inspect` shows an intercative prompt
+Without an argument `inspect` shows an interactive prompt
 with your pipeline names.
 
 <Terminal
@@ -85,7 +85,7 @@ Run a pipeline in the background (default).
 pipelight run <pipeline_name>
 ```
 
-Without an argument `run` shows an intercative prompt
+Without an argument `run` shows an interactive prompt
 with your pipeline names.
 
 <Terminal

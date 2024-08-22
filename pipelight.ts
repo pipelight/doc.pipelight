@@ -67,6 +67,7 @@ const nginx = pipeline(`nginx:host`, () => [
 ])
   .attach()
   .log_level("debug");
+
 const deploy = pipeline(
   `deploy:host`,
   () => [

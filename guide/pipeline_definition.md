@@ -18,14 +18,14 @@ needed.
 
 ::: tip
 
-The Option API is concidered as stable because it is unlikely to change in the
-comming updates. It has become complete enough to allow creation of every
+The Option API is considered stable because it is unlikely to change future updates.
+It has become complete enough to allow creation of every
 pipeline a man can dream of with mindfull combination of a small set of options.
 
 :::
 
 Simply import the `Config interface` for fast type-checking and define your
-pielines in an **Object syntax**.
+pipelines in an **Object syntax**.
 
 ```ts
 //pipelight.ts
@@ -38,17 +38,17 @@ const config: Config = {
       steps: [
         {
           name: "build",
-          commands: ["pnpm install", "pnpm build"],
-        },
+          commands: ["pnpm install", "pnpm build"]
+        }
       ],
       triggers: [
         {
           branches: ["master", "dev"],
-          actions: ["pre-push", "pre-commit"],
-        },
-      ],
-    },
-  ],
+          actions: ["pre-push", "pre-commit"]
+        }
+      ]
+    }
+  ]
 };
 export default config;
 ```
@@ -76,14 +76,14 @@ Simply import the provided common helper functions.
 import { pipeline, step } from "https://deno.land/x/pipelight/mod.ts";
 
 const my_pipe = pipeline("test", () => [
-  step("build", () => ["pnpm install"]),
+  step("build", () => ["pnpm install"])
 ]).trigger({
   branches: ["master", "dev"],
-  actions: ["pre-push", "pre-commit"],
+  actions: ["pre-push", "pre-commit"]
 });
 
 export default {
-  pipelines: [my_pipe],
+  pipelines: [my_pipe]
 };
 ```
 
@@ -119,9 +119,9 @@ There is some options that are discussed further in the documentation but that
 you can already explore by going through the
 [self documented deno documentation](https://deno.land/x/pipelight/mod.ts)
 
-A **pipeline** is an object that has an **array of steps**, optionnal
-[triggers](/guide/triggers/definition) for automatique execution, and optionnal
-global [fallbacks](/guide/fallbacks) for out of the flow step execution.
+A **pipeline** is an object that has an **array of steps**, optional
+[triggers](/guide/triggers/definition) for automatic execution, and optional
+global [fallbacks](/guide/fallbacks) for out-of-flow step execution.
 
 ```ts
 export interface Pipeline {

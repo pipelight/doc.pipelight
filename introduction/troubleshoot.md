@@ -19,7 +19,6 @@ The output will then be silenced if you run the resulting pipelines with
 the pipelight cli.
 `pipelight <command>`.
 
-
 Some times you may need to update the helpers to their latest version
 with:
 
@@ -28,7 +27,7 @@ deno cache --reload pipelight.ts
 ```
 
 If your pipeline is interpretable but still something goes wrong,
-you may want to inspect your resulting pipelines 
+you may want to inspect your resulting pipelines
 `pipelight inspect`.
 
 ## Linting and Formatting
@@ -45,5 +44,5 @@ built in linter** and got you cover on every `pipelight <whatever_command>` or
 `deno run`. For Yaml and Toml, Pipelight internally uses the rust specific
 crates to achieve the same result.
 
-For example, if `pipelight ls` doesn't yell any error. Your pipeline are exempt
+For example, if `pipelight ls` doesn't yell any error. Your pipelines are exempt
 from error and ready to be tested/run.
