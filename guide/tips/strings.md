@@ -47,7 +47,7 @@ export default config;
 
 ## Multiline strings
 
-Use the trailing slash to spread a sgtring on multiple lines and increase readability.
+Use the trailing slash to spread a string over multiple lines for easier reading.
 
 ```ts
 `docker build \

@@ -2,7 +2,7 @@
 
 ## Supercharge the cli
 
-Pipelight cli accepts a few options and arguments, see `pipelight --help`.
+Pipelight cli takes a few options and arguments, see `pipelight --help`.
 But you can add more like `--host`,`--docker`, `--env`...
 
 Those flags are processed by the pipelight.ts file iteself.
