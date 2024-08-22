@@ -146,7 +146,7 @@ you are already comfortable with like variables, loops and functions.
 ### Frugal Power User
 
 Decrease by two third the money spent in the Cloud by using local computing
-ressources.
+resources.
 
 You can push code from a machine, build on another, and send the resulting
 archive on hosting servers. It allows you to use the latent computing power

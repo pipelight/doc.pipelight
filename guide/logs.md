@@ -39,7 +39,7 @@ execution.
 
 It can be due to:
 
-- a ressource outage.
+- a resource outage.
 - a linux signal like SIGKILL or SIGTERM.
 - a Ctrl-C on a running attached pipeline.
 - litteraly everything that can abrubtly stop a process execution (coffee on
