@@ -144,7 +144,7 @@ export interface PipelineOpts {
 ```
 
 A **step** is an object that has an **array of commands**, an optional
-[execution](/guide/modes) mode and optionnal [fallbacks](/guide/fallbacks) for
+[execution](/guide/modes) mode and optional [fallbacks](/guide/fallbacks) for
 more specific out of the flow step execution.
 
 ```ts
