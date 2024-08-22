@@ -1,6 +1,6 @@
 # Pipeline doping ⚡
 
-## Powerfull pipeline writting tips
+## Powerfull pipeline writing tips
 
 The following sections shows the **power of programmation** inside the configuration file
 and open a window on the many **possibilities unlocked** by Typescript.
@@ -19,7 +19,7 @@ play nicely together to create **amazing pipelines**.
 
 ## The beginning of the journey
 
-Until now writting configuration was only about writting a javascript Object.
+Until now writing configuration was only about writing a javascript Object.
 This way it was easier to introduce you to the base `Pipeline` object.
 
 You are like the anime protagonist that just experienced the _ki_, knows its taste,

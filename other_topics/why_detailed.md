@@ -37,7 +37,7 @@ To reach this goal pipelight follows some crucial guidelines:
 - keep execution fast by remaining minimal (suckless)
 - distribute lightweight binaries (for fast installation)
 - transparent in its logs and error messages
-- beeing and remaining open-source
+- being and remaining open-source
 - community driven
 
 ### The Automation for everyone

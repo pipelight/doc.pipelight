@@ -6,7 +6,7 @@ import ASync from '@components/ASync.vue';
 
 # Triggers (Automation)
 
-Here is the part you were waiting for! What is the point of writting pipelines
+Here is the part you were waiting for! What is the point of writing pipelines
 if you still have to execute them by hand?
 
 ::: tip tl;dr

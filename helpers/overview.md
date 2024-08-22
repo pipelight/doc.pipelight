@@ -38,17 +38,17 @@ With each goup made on top of the previous one.
 ### Born from a dire need of simplicity
 
 Pipelight core features allow users to write all-mighty pipelines in whichever manner is possible.
-However beeing such a low level tool comes with its drawbacks.
+However being such a low level tool comes with its drawbacks.
 
-Even if you enjoy writting functions to simplify automation of trivial but heavy tasks
-like containerization, virtualization, test and deployments.
+Even if you enjoy writing functions that simplify the automation of trivial but difficult tasks
+such as containerisation, virtualisation, testing and deployment.
 Pipeline definition can quickly become time consuming.
 
 As the main goal of automation is to save you time, pipelight comes with already made functions
 that are called helpers.
 
 Helpers are made to **standardize** and **structurize pipeline definition**
-to finally ship great functions to **ease trivial pipeline writting**.
+to finally ship great functions to **ease trivial pipeline writing**.
 
 ### Embrace programmation (again)
 
@@ -59,7 +59,7 @@ You don't need to know what is docker to understand what helpers bring on the ta
 in the the following example.
 :::
 
-Instead of writting your commands explicitly,
+Instead of writing your commands explicitly,
 the helper generates the appropriate bash commands so you don't have to.
 
 <div class="landing">

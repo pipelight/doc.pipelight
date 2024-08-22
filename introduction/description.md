@@ -90,7 +90,7 @@ So what internally happens when you run a pipeline ?
 
 2. Then only, it processes the parsed pipeline definition.
 
-   -> Pipelight spawns the commands into subprocesses while writting the outputs
+   -> Pipelight spawns the commands into subprocesses while writing the outputs
    into log files.
 
 <Schema/>
