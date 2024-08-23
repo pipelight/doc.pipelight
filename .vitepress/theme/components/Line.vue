@@ -1,6 +1,6 @@
 <template lang="pug">
 .flex(:class="{ line : !!props.value}")
-  transition(
+  transition-group(
     enter-active-class="fade-in-slow"
     leave-active-class="fade-out"
     appear
@@ -9,7 +9,7 @@
       v-if="!!props.value"
     ) [g@ku ~] 
 
-  transition(
+  transition-group(
     enter-active-class="fade-in-slow"
     leave-active-class="fade-out"
     @before-enter="fadeIn"
@@ -21,7 +21,7 @@
       :id="!!props.value ? props.index + 1 : props.index"
         v-if="!!props.value"
       ) {{ props.value }}
-  transition(
+  transition-group(
     enter-active-class="fade-in-slow"
     leave-active-class="fade-out"
     @before-enter="fadeIn"
@@ -55,12 +55,12 @@ const emit = defineEmits<{
   (e: "finished", value: boolean): void;
 }>();
 
-const fadeIn = (el: any) => {
+const fadeIn = (el: any, done: any) => {
   const n = 800 * Number(el.id);
   const delay = n + "ms";
   el.style.animationDelay = delay;
 };
-const fadeOut = (el: any) => {
+const fadeOut = (el: any, done: any) => {
   el.style.animationDelay = "0ms";
 };
 </script>
