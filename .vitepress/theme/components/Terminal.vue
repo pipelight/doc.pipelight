@@ -17,8 +17,8 @@
       transition-group(
         enter-active-class="fade-in-slow"
         leave-active-class="fade-out"
-        @beforeEnter="fadeIn",
-        @beforeLeave="fadeOut",
+        @before-enter="fadeIn"
+        @before-leave="fadeOut"
       )
         Line(
           v-if="ready"
@@ -105,14 +105,15 @@ onMounted(async () => {
 //   { throttle: 1600 }
 // );
 
-const fadeIn = (el: any) => {
+const fadeIn = (el: any, done: any) => {
   const n = 1200 * Number(el.id);
   const delay = n + "ms";
   el.style.animationDelay = delay;
 };
-const fadeOut = (el: any) => {
+const fadeOut = (el: any, done: any) => {
   el.style.animationDelay = "0ms";
 };
+
 </script>
 <style lang="postcss" scoped>
 p {
