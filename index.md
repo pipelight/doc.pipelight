@@ -100,7 +100,7 @@ pwd;
 
 <Example>
 <h3> 
-..boosted with syntaxic sugar
+..boosted with syntactic sugar
 </h3>
 
 ```ts{2,3}
