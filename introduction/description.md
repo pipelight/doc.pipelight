@@ -115,7 +115,7 @@ See the core of Pipelight as Ferris (rust mascot) making the heavy lift.
 - And on the other it uses Git as an **event detector**.
 
 For every internal tasks, pipelight relays on well known rust crates (std,
-serde, rustix, watchexec, miette...).
+serde, rustix, watchexec, miette, tabled, gix...).
 
 ## As close to the kernel as possible.
 
@@ -216,6 +216,26 @@ As a pipeline gets complex, you want to add variables, conditions, loops and
 more. Pipelight allows you to **code in your configuration file** to create
 reusable configuration blocks (with Typescript).
 
+### Quick Automation
+
+Add triggers to your pipeline definition.
+The pipeline automatically runs in the background on matching event (a triggering action and/or a git branch or tag).
+
+```toml
+[[pipelines.triggers]]
+actions = ["pre-push"]
+branches = ["master"]
+```
+
+```ts
+triggers: [
+  {
+    actions: ["pre-push"],
+    branches: ["master"],
+  },
+],
+```
+
 ### Terminal friendly (CLI)
 
 Run a pipeline and check logs **without leaving your terminal**. Pipelight
@@ -237,15 +257,14 @@ pipelight logs
 
 You also can increase verbosity and get an exhaustive tree view of the pipeline.
 
-### Quick Automation
+### Project global state
 
-Add triggers to your pipeline definition. The pipeline automatically runs in the background on matching event (a triggering action and/or a git branch or tag).
+Get a quick glimps of the project health.
 
-```ts
-triggers: [
-  {
-    actions: ["pre-push"],
-    branches: ["master"],
-  },
-],
+```sh
+pipelight ls -vv
 ```
+
+<div class="flex justify-start">
+    <img src="/images/list_vv.png" alt="list_vv" class="md">
+</div>

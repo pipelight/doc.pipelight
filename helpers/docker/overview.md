@@ -5,6 +5,13 @@ const Badge = inject("Badge");
 
 # Docker helpers <Badge type="warning" text="beta" />
 
+::: warn Deprecated
+
+Will maybe be deprecated in favor of docker compose...
+If so, examples will be put here to help converting your pipelines.
+
+:::
+
 # Overview
 
 Pipelight by nature allows a great flexibility.

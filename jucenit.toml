@@ -1,9 +1,9 @@
 [[unit]]
-uuid = "d826affb-ef0b-4ada-973a-f7a7e759b3e3"
+uuid = "7ab4d667-e7b1-4575-a1fa-0c11605cccc2"
 listeners = ["*:443"]
 
 [unit.match]
-hosts = ["pipelight.crocuda.com", "pipelight.dev"]
+hosts = ["pipelight.dev"]
 
 [unit.action]
 proxy = "http://127.0.0.1:9080"

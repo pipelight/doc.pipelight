@@ -19,8 +19,8 @@ Pipelight saves its activity inside the `.pipelight` hidden directory. You may
 want to prevent the whole directory from being pushed by adding it in your
 `.gitignore` file.
 
-If you wish to keep record of the pipelines logs(Json) inside your repo only
-ignore `.pipelight/internals`.
+If you wish to keep record of the pipelines logs(Json) inside your repo, only
+ignore `.pipelight/proc`.
 
 :::
 

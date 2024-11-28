@@ -25,6 +25,7 @@ const service = "doc";
 const dns = "pipelight.dev";
 
 // Docker object creation
+
 const docker = new Docker({
   images: [
     {
@@ -82,15 +83,7 @@ const deploy = pipeline(
         ...docker.containers.remove(),
         ...docker.containers.create()
       ])
-    ).set_mode(Mode.ContinueOnFailure),
-
-    step("update jucenit config", () => [
-      `scp jucenit.toml ${flags.host}:/tmp/jucenit/`,
-      ...ssh(flags.host, () => [
-        `jucenit push /tmp/jucenit/jucenit.toml`,
-        "rm /tmp/jucenit/jucenit.toml"
-      ])
-    ])
+    ).set_mode(Mode.ContinueOnFailure)
   ],
   {
     triggers: [

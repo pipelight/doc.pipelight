@@ -1,0 +1,11 @@
+# Docker compose file to convert to yaml
+# with for example:
+#
+# ```sh
+# daesel --file compose.toml --write yaml`
+# ```
+#
+
+[services.website]
+build = "."
+ports = ["80:9080"]
