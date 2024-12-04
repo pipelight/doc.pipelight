@@ -19,5 +19,5 @@ bun dev
 ## CICD
 
 ```sh
-pipelight run deploy -- --host=linode
+pipelight run deploy -- --host=<my_host>
 ```

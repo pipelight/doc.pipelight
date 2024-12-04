@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { api } from "@utils/preferences.ts";
-import Sync from '@components/Sync.vue';
-import ASync from '@components/ASync.vue';
-</script>
-
 # Triggers behavior
 
 ::: tip
@@ -13,7 +7,7 @@ bases.
 
 :::
 
-## Set pipeline default I/O
+## Set a per pipeline behavior (attach/detach)
 
 By default, pipelines are triggered **attached** to the standard output.
 
@@ -23,65 +17,75 @@ execution to complete before giving you a new prompt.
 To prevent waiting forever when triggering heavy workloads, you can set the
 pipeline to be executed **detached** from the standard output.
 
-<div v-if="api.compositions">
+::: code-group
 
-```ts
-const my_pipeline = pipeline(
-  "always_detached_when_triggered_by_git",
-  () => []
-).detach();
+```toml [toml]
+[[pipelines.options]]
+attach = false
 ```
 
-or
-
-```ts
-const my_pipeline = pipeline(
-  "always_detached_when_triggered_by_git",
-  () => []
-).set_options({
-  attach: false
-});
+```yaml [yaml]
+- pipelines:
+    - options:
+        attach: false
 ```
 
-</div>
-<div v-else>
+```hcl [hcl]
+pipelines = [{
+    options = {
+        attach = false
+    }
+}]
+```
 
-```ts
+```ts [ts]
 const my_pipeline = {
-  name: "always_detached_when_triggered_by_git",
-  steps: [],
   options: {
     attach: false
   }
 };
 ```
 
-</div>
+```ts [ts(with helpers)]
+const my_pipeline = pipeline("example", () => []).detach();
+```
+
+:::
 
 When running a pipeline with the command `pipelight run`, this flag is not
 interpreted and therefore the pipeline is triggered in the background unless you
 attach it `pipelight run --attach`.
 
-## Set default log level
+## Set a per pipeline log level
 
 Triggering a pipeline in attached state will print the minimum pipeline log.
 
 You can set the default log level Available levels are `error`, `warn`, `info`,
 `debug` and `trace`.
 
-<div v-if="api.compositions">
+::: code-group
 
-```ts
-my_pipeline.set_options({
-  log_level: "warn"
-});
+```toml [toml]
+[[pipelines.options]]
+log_level = "warn"
 ```
 
-</div>
-<div v-else>
+```yaml [yaml]
+- pipelines:
+    - options:
+        log_level: warn
+```
 
-```ts
-pipeline: {
+```hcl [hcl]
+pipelines = [{
+    options = {
+        log_level = "warn"
+    }
+}]
+```
+
+```ts [ts]
+my_pipeline = {
   options: {
     attach: false;
     log_level: "warn",
@@ -89,32 +93,54 @@ pipeline: {
 }
 ```
 
-</div>
+```ts [ts(with helpers)]
+my_pipeline.set_options({
+  log_level: "warn"
+});
+```
 
-## Set defaults globally
+:::
+
+## Set global defaults
 
 You can set those defaults globally
 
-<div v-if="api.compositions">
+::: code-group
 
-```ts
+```toml [toml]
+[[options]]
+attach = false
+log_level = "warn"
+```
+
+```yaml [yaml]
+- options:
+    attach: false
+    log_level: warn
+```
+
+```hcl [hcl]
+options = {
+    attach = false
+    log_level = "warn"
+}
+```
+
+```ts [ts]
+my_config = {
+  options: {
+    attach: false,
+    log_level: "warn"
+  },
+  pipelines: []
+};
+```
+
+```ts [ts(with helpers)]
 my_config.set_options({
   attach: false,
   log_level: "warn"
 });
 ```
 
-</div>
-<div v-else>
-
-```ts
-config: {
-  options: {
-    attach: false;
-    log_level: "warn",
-  }
-  pipelines:[]
-}
-```
-
-</div>
+:::

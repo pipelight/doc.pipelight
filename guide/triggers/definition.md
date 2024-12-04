@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { api } from "@utils/preferences.ts";
-import Sync from '@components/Sync.vue';
-import ASync from '@components/ASync.vue';
-</script>
-
 # Triggers (Automation)
 
 Triggers are a **set of conditions** that can **instantly launch multiple
@@ -151,7 +145,7 @@ Add the triggers to your pipeline definition.
 
 ::: code-group
 
-```toml
+```toml [toml]
 [[pipelines]]
 name = "test"
 
@@ -164,7 +158,7 @@ branches = ["master"]
 actions= ["pre-push"]
 ```
 
-```yaml
+```yaml [yaml]
 pipelines:
   - name: test
     steps:
@@ -179,7 +173,7 @@ pipelines:
           - pre-push
 ```
 
-```hcl
+```hcl [hcl]
 # A pipeline
 pipelines = [{
   name = "test"
