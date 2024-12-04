@@ -182,7 +182,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
       items: [
         {
           text: "Expand Make/Just",
-          link: "/cookbook/pipeligh_and_make"
+          link: "/cookbook/pipelight_and_make"
         },
         {
           text: "Javascript frontend",
