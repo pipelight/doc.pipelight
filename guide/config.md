@@ -58,12 +58,34 @@ You will need to override it with command line options.
 - Pipelines are processed in the foreground by default.
 - The default log level is set to `info` (-vv)
 
-```ts
+::: code-group
+
+```toml [pipelight.toml]
+[options]
+attach = true
+log_level = "info"
+```
+
+```yaml [pipelight.yaml]
+options:
+  attach: true
+  log_level: info
+```
+
+```hcl [pipelight.hcl]
+options = {
+  attach =  true
+  log_level = "info"
+}
+```
+
+```ts [pipelight.ts]
 const config: Config = {
   options: {
     attach: true,
     log_level: "info"
-  },
-  pipelines: []
+  }
 };
 ```
+
+:::

@@ -10,10 +10,10 @@ export default {
   Layout: () => {
     // @ts-ignore
     return h(DefaultTheme.Layout, null, {
-      "sidebar-nav-before": () => h(PreferenceSwitch),
+      "sidebar-nav-before": () => h(PreferenceSwitch)
     });
   },
   enhanceApp({ app }: { app: App }) {
     app.provide("VPSwitch", VPSwitch);
-  },
+  }
 };

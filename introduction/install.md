@@ -1,10 +1,6 @@
 <script lang="ts" setup>
-const base = "https://packages.pipelight.dev";
 const version = import.meta.env.VITE_GIT_VERSION;
 const tag = version.split('-').shift();
-const debian = `pipelight-${version}.deb`;
-const archlinux = `pipelight-${version}.pkg.tar.zst`;
-const fedora = `pipelight-${version}.rpm`;
 </script>
 
 # Getting Started
@@ -18,7 +14,7 @@ Pipelight tries to keep it **lightweight** with a binary that wheights around
 
 ## Install with Cargo (the Rust package manager)
 
-::: details Cargo build from source
+::: details Cargo build from source {open}
 
 ```sh-vue
 cargo install --git https://github.com/pipelight/pipelight
@@ -31,13 +27,6 @@ cargo install --git https://github.com/pipelight/pipelight --tag v{{ tag }}
 :::
 
 ## Install with your distribution package manager
-
-::: warning Update: Deprecation of multiple distribution specific.
-
-Multiple distribution package have been abandoned
-**in favor of the cargo install** method.
-
-:::
 
 ::: details Nixos (with flakes)
 

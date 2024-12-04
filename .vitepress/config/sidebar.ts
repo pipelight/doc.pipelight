@@ -163,16 +163,6 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
               link: "/helpers/docker/usage"
             }
           ]
-        },
-        {
-          text: "Template helpers",
-          collapsed: true,
-          items: [
-            {
-              text: "Overview",
-              link: "/helpers/template/overview"
-            }
-          ]
         }
       ]
     },
@@ -204,6 +194,10 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
         {
           text: "Why another CICD Tool?",
           link: "/other_topics/why_detailed"
+        },
+        {
+          text: "Who is it for?",
+          link: "/introduction/who_for"
         }
         // {
         //   text: "ROADMAP",

@@ -6,22 +6,15 @@ import ASync from '@components/ASync.vue';
 
 # Triggers (Automation)
 
-Here is the part you were waiting for! What is the point of writing pipelines
-if you still have to execute them by hand?
-
-::: tip tl;dr
-
 Triggers are a **set of conditions** that can **instantly launch multiple
 pipelines** when they are met.
 
-:::
+Here is the part you were waiting for! What is the point of writing pipelines
+if you still have to execute them by hand?
 
 ## Prerequisites
 
-In order to enable pipelight triggers these commands have to be executed
-somewhere inside your project directory.
-
-::: warning Triggers are opt-in
+::: warning Opt in
 
 Triggers have to be explicitly enabled from the command line.
 
@@ -38,6 +31,13 @@ git init
 
 To enable git triggers (pipelight managed git hooks) on a fresh directory run:
 
+::: danger
+
+For now, this operation overwrites the `.git/hooks` folder. Be sure to move your
+manually defined hooks elsewhere before enabling pipelight hooks.
+
+:::
+
 ```sh
 pipelight init
 # or
@@ -50,13 +50,6 @@ Disable them with:
 pipelight disable git-hooks.
 ```
 
-::: danger
-
-For now, this operation overwrites the `.git/hooks` folder. Be sure to move your
-manually defined hooks elsewhere before enabling pipelight hooks.
-
-:::
-
 Disable them with:
 
 ```sh
@@ -67,7 +60,7 @@ pipelight disable git-hooks
 
 An instance of pipelight runs in the background and listens to filesystem events.
 
-::: tip Computing resources consumption
+::: info Low resources consumption
 
 The listener remains easy on the OS and consumes very few resources by
 once again using the kernel modules through Rust's most used crates.
@@ -84,65 +77,124 @@ Disable it with:
 pipelight disable watcher
 ```
 
-## Define pipeline triggers
+## Set the pipeline triggers
 
 **Create a combination of branches and actions for which the pipeline is to be triggered.**
 
-When triggers are added to a pipeline, the pipeline is not triggered until the
-triggering requirements are met.
-Which means that you need to checkout to the allowed
-branches or tags, and execute the allowed actions for the pipeline to be executed.
+::: code-group
 
-<div v-if="api.compositions">
-```ts
-pipeline.add_trigger({
-  branches: ["main"],
-  actions: ["pre-push"],
-});
+```toml [toml]
+[[pipelines.triggers]]
+branches= ["main"]
+actions= ["pre-push"]
 ```
 
-</div>
-<div v-else>
+```yaml [yaml]
+- pipelines:
+    - triggers:
+        -branches:
+          - main
+        -actions:
+          - pre-push
+```
 
-```ts
-pipeline.triggers =
+```hcl [hcl]
+pipelines = [{
+    triggers = [{
+        branches= ["main"]
+        actions= ["pre-push"]
+    }]
+}]
+```
+
+```ts [ts]
+pipeline.triggers = [
   {
     branches: ["main"],
-    actions: ["pre-push"],
-  },
+    actions: ["pre-push"]
+  }
 ];
 ```
 
-(debug): _When verbosity is increased, the CLI tells you what to do if the
-requirements are not met._
-
-</div>
-
-```ts
-type Trigger = TriggerBranch | TriggerTag;
-
-type TriggerBranch = { branches?: string[]; actions?: Action[] };
-type TriggerTag = { tags?: string[]; actions?: Action[] };
-```
-
-Then, add triggers to your pipeline definition.
-
-<div v-if="api.compositions">
-
-```ts
-//pipelight.ts
-const my_pipeline = pipeline("test", () => [
-  step("build", () => ["yarn install", "yarn build"])
-]).add_trigger({
+```ts [ts(with helpers)]
+pipeline.add_trigger({
   branches: ["main"],
   actions: ["pre-push"]
 });
 ```
 
-</div>
-<div v-else>
+:::
 
-```ts
+When triggers are added to a pipeline, the pipeline can't be triggered/run unless the
+triggering requirements are met.
+
+This is also to avoid running a pipeline in the wrong environment.
+
+You need to checkout to an authorized environment,
+otherwise the pipeline won't run even when using `p run <pipeline_name>`
+and the executable will yell at you this type of error.
+
+<div class="flex justify-start">
+    <img src="/images/trigger_alert.png" alt="trigger_alert" class="md">
+</div>
+
+::: tip
+
+You can however force a condition with `p run <pipeline_name> --flag pre-commit`
+
+Or if you want to run the pipeline manually, add the special flag `manual` to
+the trigger action list.
+
+:::
+
+Add the triggers to your pipeline definition.
+
+::: code-group
+
+```toml
+[[pipelines]]
+name = "test"
+
+[[pipelines.steps]]
+name = "build"
+commands = ["bun install", "bun build"]
+
+[[pipelines.triggers]]
+branches = ["master"]
+actions= ["pre-push"]
+```
+
+```yaml
+pipelines:
+  - name: test
+    steps:
+      - name: build
+        commands:
+          - bun install
+          - bun build
+  - triggers:
+      - branches:
+          - master
+        actions:
+          - pre-push
+```
+
+```hcl
+# A pipeline
+pipelines = [{
+  name = "test"
+  steps = [{
+    name     = "build"
+    commands = ["bun install", "bun build"]
+  }]
+  triggers = [{
+    branches = ["master"]
+    actions  = ["pre-push"]
+  }]
+}]
+```
+
+```ts [ts]
 //pipelight.ts
 pipelines: [
   {
@@ -150,12 +202,12 @@ pipelines: [
     steps: [
       {
         name: "build",
-        commands: ["yarn install", "yarn build"]
+        commands: ["bun install", "bun build"]
       }
     ],
     triggers: [
       {
-        branches: ["main"],
+        branches: ["master"],
         actions: ["pre-push"]
       }
     ]
@@ -163,35 +215,69 @@ pipelines: [
 ];
 ```
 
-</div>
+```ts [ts(with helpers)]
+//pipelight.ts
+const my_pipeline = pipeline("test", () => [
+  step("build", () => ["bun install", "bun build"])
+]).add_trigger({
+  branches: ["master"],
+  actions: ["pre-push"]
+});
+```
+
+:::
 
 ## Git environment (optional)
 
-### Branch and Tags
+### Branch and tags
 
 Branches are your git project branches names (see: `git branch`).
 Tags are the commits you made with `git tag -a "v0.8"` (see: `git tag`).
 
-Branch and Tag combinations are enhanced by **globbing** pattern matching.
+Branch and Tag combinations are enhanced by **glob** pattern matching.
 
-<div v-if="api.compositions">
+::: code-group
 
-```ts
-my_pipeline
-  .add_trigger({
-    branches: ["feature/*"],
-    actions: ["pre-push"]
-  })
-  .add_trigger({
-    tags: ["v*-dev"],
-    actions: ["pre-commit"]
-  });
+```toml [toml]
+[[pipelines.triggers]]
+branches= ["feature/*"]
+actions= ["pre-push"]
+
+[[pipelines.triggers]]
+tags= ["v*-dev"],
+actions= ["pre-commit"]
 ```
 
-</div>
-<div v-else>
+```yaml [yaml]
+- pipelines:
+    - triggers:
+        -branches:
+          - feature/*
+        -actions:
+          - pre-push
+    - triggers:
+        -branches:
+          - v*-dev
+        -actions:
+          - pre-commit
+```
 
-```ts
+```hcl [hcl]
+pipelines = [{
+  triggers = [
+    {
+      branches= ["feature/*"]
+      actions= ["pre-push"]
+    },
+    {
+      branches= ["v*-dev"]
+      actions= ["pre-commit"]
+    }
+  ]
+}]
+```
+
+```ts [ts]
 triggers: [
   {
     branches: ["feature/*"],
@@ -204,9 +290,21 @@ triggers: [
 ];
 ```
 
-</div>
+```ts [ts(with helpers)]
+my_pipeline
+  .add_trigger({
+    branches: ["feature/*"],
+    actions: ["pre-push"]
+  })
+  .add_trigger({
+    tags: ["v*-dev"],
+    actions: ["pre-commit"]
+  });
+```
 
-## Actions
+:::
+
+### Supported actions
 
 Actions are named according to [git-hooks](https://githooks.com/) names, plus
 special flags "manual", "watch" and "blank".
@@ -254,32 +352,25 @@ export enum Action {
 }
 ```
 
-### Git actions (Git-hooks)
+- On file change (Watch Flag)
 
-Actions are named according to [git-hooks](https://githooks.com/) names, plus
-special flags like `manual`, `watch` and `blank`.
+  ```ts
+  actions: ["watch"];
+  ```
 
-## Special actions
+  Trigger pipelines on file change. Whether a file is created, deleted or modified
+  the pipeline is triggered.
 
-### On file change (Watch Flag)
+  You can ignore folders or files by declaring them inside the `.pipelight_ignore`
+  hidden file which stick to the .gitignore file specifications.
 
-```ts
-actions: ["watch"];
-```
+* Security (Manual Flag)
 
-Trigger pipelines on file change. Whether a file is created, deleted or modified
-the pipeline is triggered.
+  ```ts
+  actions: ["manual"];
+  ```
 
-You can ignore folders or files by declaring them inside the `.pipelight_ignore`
-hidden file which stick to the .gitignore file specifications.
-
-### Security (Manual Flag)
-
-```ts
-actions: ["manual"];
-```
-
-If you want to manually run a pipeline that has non-empty triggers, with the
-command `pipelight run` you need to add the **special flag** `manual` to the
-pipeline trigger's actions. This **avoids unintentional manual triggering**
-especially on critical production branches.
+  If you want to manually run a pipeline that has non-empty triggers, with the
+  command `pipelight run` you need to add the **special flag** `manual` to the
+  pipeline trigger's actions. This **avoids unintentional manual triggering**
+  especially on critical production branches.

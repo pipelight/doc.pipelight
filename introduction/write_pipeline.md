@@ -46,29 +46,9 @@ Importing the types from the deno package will give you a **pleasant linting
 support**. Then create pipelines with steps and commands. Add automatic triggers
 and have fun.
 
-<div v-if="api.compositions">
+::: code-group
 
-```ts
-//pipelight.ts
-import type { pipeline, step } from "https://deno.land/x/pipelight/mod.ts";
-
-const my_pipe = pipeline("test", () => [
-  step("build", () => ["pnpm install", "pnpm build"])
-]).add_trigger({
-  branches: ["master", "dev"],
-  actions: ["pre-push", "pre-commit"]
-});
-
-export default {
-  pipelines: my_pipe
-};
-```
-
-</div>
-<div v-else>
-
-```ts
-//pipelight.ts
+```ts [pipelight.ts]
 import type { Config } from "https://deno.land/x/pipelight/mod.ts";
 
 const config: Config = {
@@ -93,7 +73,22 @@ const config: Config = {
 export default config;
 ```
 
-</div>
+```ts [pipelight.ts (with helpers)]
+import type { pipeline, step } from "https://deno.land/x/pipelight/mod.ts";
+
+const my_pipe = pipeline("test", () => [
+  step("build", () => ["pnpm install", "pnpm build"])
+]).add_trigger({
+  branches: ["master", "dev"],
+  actions: ["pre-push", "pre-commit"]
+});
+
+export default {
+  pipelines: my_pipe
+};
+```
+
+:::
 
 ## Pipelines in configuration languages
 
@@ -116,6 +111,25 @@ branches = ["master","dev"]
 actions= ["pre-push", "pre-commit"]
 ```
 
+### Yaml
+
+```yaml
+pipelines:
+  - name: test
+    steps:
+      - name: build
+        commands:
+          - pnpm install
+          - pnpm build
+  - triggers:
+      - branches:
+          - master
+          - dev
+        actions:
+          - pre-push
+          - pre-commit
+```
+
 ### Hcl (Hashicorp)
 
 ```hcl
@@ -131,25 +145,6 @@ pipelines = [{
     actions  = ["pre-push", "pre-commit"]
   }]
 }]
-```
-
-### Yaml
-
-```yml
-pipelines:
-  - name: test
-    steps:
-      - name: build
-        commands:
-          - pnpm install
-          - pnpm build
-  - triggers:
-      - branches:
-          - master
-          - dev
-        actions:
-          - pre-push
-          - pre-commit
 ```
 
 Pipelines written in markup languages are less likely to become more complex

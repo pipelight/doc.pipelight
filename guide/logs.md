@@ -172,7 +172,7 @@ pipelight logs rm
 Which does not erase the log of running pipelines.
 
 ```sh
-rm -rf pipelight/logs
+rm -rf .pipelight
 # pkill pipelight
 ```
 

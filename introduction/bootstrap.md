@@ -3,9 +3,9 @@
 The only commands you need to type to be up and running are:
 
 ```sh
-pipelight init # Create a configuration file
-pipelight run # Run a pipeline (interactive)
-pipelight logs -v # Display logs (tree view)
+p init # Create a configuration file
+p run # Run a pipeline (interactive)
+p logs -v # Display logs (tree view)
 ```
 
 Read the following to enable pipelines automatic **triggers** with or without
@@ -28,7 +28,7 @@ First, if you wish to create a template configuration file and immediately try
 it out, run:
 
 ```sh
-pipelight init
+p init
 ```
 
 If they do not exists yet, you can see to files are created.

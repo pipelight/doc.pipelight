@@ -97,7 +97,7 @@ pipelines =[{
 
 ## Why so many options?
 
-Thanks to the reach rust community and ecosystem, it is only worth a few line of code to add support for a language.
+Thanks to the rich rust community and ecosystem, it is only worth a few line of code to add support for a language.
 
 I had already bet on Typescript when I built the first prototype for pipelight.
 But using it each and every day and trying it for unexpected tasks has led to other needs.

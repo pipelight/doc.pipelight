@@ -76,7 +76,30 @@ Here is the list of the commands you will spam the most.
 If you do not provide a pipeline name, most commands will yield an interactive prompt
 for you to select between **availble** pipelines.
 
-### General project health
+### Run that pipeline!
+
+Run a pipeline in the background (default).
+
+```sh
+pipelight run <pipeline_name>
+```
+
+Without an argument `run` shows an interactive prompt
+with your pipeline names.
+
+<Terminal
+class="sm"
+:animate=false
+:lines="lines_run"
+/>
+
+Abort a pipeline execution.
+
+```sh
+pipelight stop <pipeline_name>
+```
+
+### Global project health
 
 List every pipelines.
 
@@ -113,7 +136,39 @@ pipelight ls -vvvv
     <img src="/images/list_vvvv.png" alt="list_vvvv" class="md">
 </div>
 
-### Inspect pipeline definition
+### Gimme those logs!
+
+Compulsively check pipelines execution states, and produced outputs.
+
+```sh
+pipelight logs
+```
+
+<div class="flex justify-start">
+    <img src="/images/logs.png" alt="logs" class="md">
+</div>
+
+```sh
+pipelight logs -vvv
+```
+
+<div class="flex justify-start">
+    <img src="/images/logs_vvv.png" alt="logs_vvv" class="md">
+</div>
+
+Soft clean logs.
+
+```sh
+pipelight logs rm
+```
+
+Hard remove logs.
+
+```sh
+rm -rf ./.pipelight
+```
+
+### Inspect a pipeline definition
 
 Inspect and pretty print your pipeline definitions.
 
@@ -129,42 +184,7 @@ class="sm"
 :lines="lines_inspect"
 />
 
-Run a pipeline in the background (default).
-
-```sh
-pipelight run <pipeline_name>
-```
-
-Without an argument `run` shows an interactive prompt
-with your pipeline names.
-
-<Terminal
-class="sm"
-:animate=false
-:lines="lines_run"
-/>
-
-Compulsively check pipelines execution states, and produced outputs.
-
-```sh
-pipelight logs
-# or
-pipelight logs -vvv
-```
-
-Clean log folder. Remove logs.
-
-```sh
-pipelight logs rm
-```
-
-Abort a pipeline execution.
-
-```sh
-pipelight stop <pipeline_name>
-```
-
-## Other useful commands
+## Other useful commands (Get help)
 
 Discover some options by using the help flag.
 

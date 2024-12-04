@@ -135,14 +135,5 @@ It can be aborted by an external signal like `Ctrl-C`, or a signal like `SIGTERM
 - Hard signals
 
   However, if the pipeline execution is stopped or halted by a more abrupt signal (SIGKILL) or directly by your kernel due to
-  resource overruns,
-  process panic,
-  and a few other extreme but common cases,
-  the `on_abortion` fallback can't be executed by the ex-running pipelight instance.
-
-::: info
-
-Hard signal handling must be supported for Pipelight to get closer to its ideal.
-A lockfile system is actually in work to optionaly launch pipelines forbidden fallback steps when running a new Pipelight instance.
-
-:::
+  resource overruns, process panic, and a few other extreme but common cases like coffee, rage, wife and children,
+  the `on_abortion` fallback can't be executed by the no-more-running pipelight instance.

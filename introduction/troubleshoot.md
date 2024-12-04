@@ -1,6 +1,6 @@
 # Troubleshoot a pipeline (tips)
 
-## Code debugging
+## Code debugging (Typescript)
 
 Like for every Typescript and Javascript scripts, at some point, you may want to
 check some variable, the output of some functions, what happens

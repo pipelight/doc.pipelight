@@ -1,12 +1,12 @@
 # Medusa backend (e-commerce)
 
-The emerging e-commerce plateform [medusa](https://medusajs.com) actually lacks documentation
+The e-commerce plateform [medusa](https://medusajs.com) actually lacks documentation
 when it comes to self-hosting.
 
-Bringing un up and running instance manually was quite heavy in commands,
+Bringing an up and running instance manually was quite a pain using command lines,
 but in the end it came to be pretty simple using pipelight.
 
-Fore the sake of readability, I recommend putting your docker object definition in an env folder.
+For the sake of readability, I recommend putting your docker object definition in an env folder.
 
 ```sh
 .pipelight
@@ -20,7 +20,7 @@ Here we will define our docker infrastructure using the **docker+** helpers.
 export const params: DockerAutoParams = {
   globals: {
     version: "production",
-    dns: "itsdizygote.com"
+    dns: "example.com"
   },
   containers: [
     {
