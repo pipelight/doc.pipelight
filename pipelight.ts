@@ -9,7 +9,7 @@ import {
   Mode,
   Network
 } from "https://deno.land/x/pipelight/mod.ts";
-import $ from "https://deno.land/x/dax/mod.ts";
+// import $ from "https://deno.land/x/dax/mod.ts";
 import { generate as uuid } from "https://deno.land/std/uuid/v1.ts";
 
 // Comand line option parser
