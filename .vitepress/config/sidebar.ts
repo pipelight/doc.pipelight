@@ -45,7 +45,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
               link: "/guide/config"
             },
             {
-              text: "Usage",
+              text: "Cli usage",
               link: "/guide/cli"
             },
             {
@@ -66,7 +66,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
               link: "/guide/pipeline_definition"
             },
             {
-              text: "Task Parallelism",
+              text: "Parallel tasks",
               link: "/guide/parallelism"
             },
             {

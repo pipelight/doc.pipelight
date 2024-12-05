@@ -80,13 +80,13 @@ touch .pipelight_ignore
 
 Whitelist a directory.
 
-```pipelight_ignore
+```txt [.pipelight_ignore]
 !./public
 ```
 
 Blacklist a directory.
 
-```pipelight_ignore
+```txt [pipelight_ignore]
 ./public
 ```
 

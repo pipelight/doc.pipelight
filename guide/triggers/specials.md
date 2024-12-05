@@ -1,12 +1,28 @@
 <script setup lang="ts">
-import { api } from "@utils/preferences.ts";
 import Sync from '@components/Sync.vue';
 import ASync from '@components/ASync.vue';
 </script>
 
-# Detached pipelines everywhere
+# Trigger with special events
 
-## Client-Server synchronisation (Blank Flag)
+## Use forced flags (debugging)
+
+Simulate a specific action to trigger associated pipelines.
+
+```sh
+p trigger --flag <action>
+```
+
+Or run a pipeline and pass the appropriate action flag.
+
+```sh
+p run --flag <action>
+```
+
+_You can use it for debugging purpose or simply as a way to create
+unconventionnal pipelines._
+
+## The blank flag (client/server synchronisation)
 
 ```ts
 actions: ["blank"];
@@ -29,41 +45,56 @@ pipeline. `pipelight run <pipeline_name> --flag blank` or
 
 And add the required trigger to the pipeline to be executed server-side.
 
-<div v-if="api.compositions">
+::: code-group
 
-```ts
-// pipelight.ts
-server_pipeline.add_trigger({
-  action: ["blank"]
-});
+```toml
+[[pipelines.triggers]]
+actions = ["blank"]
 ```
 
-</div>
-<div v-else>
+```yaml
+pipelines:
+  - triggers:
+      actions:
+        - blank
+```
 
 ```ts
 // pipelight.ts
 server_pipeline.triggers.push({
-  action: ["blank"]
+  actions: ["blank"]
 });
 ```
 
-</div>
+```ts [ts(with helpers)]
+// pipelight.ts
+server_pipeline.add_trigger({
+  actions: ["blank"]
+});
+```
+
+:::
 
 Emit the **trigger signal** from the client-side pipeline. Whether it be from a
 fallback or from a regular pipeline step.
 
-<div v-if="api.compositions">
+::: code-group
 
-```ts
-// pipelight.ts
-pipeline.on_success = step("sync", () => [
-  ...ssh((host) => ["pipelight run server_side_pipeline --flag blank"])
-]);
+```toml
+[[pipelines.on_success]]
+name = "sync"
+commands = """
+  ssh $host -C "pipelight run server_side_pipeline --flag blank"
+"""
 ```
 
-</div>
-<div v-else>
+```yaml
+pipelines:
+  on_success:
+    name: sync
+    commands:
+      - ssh $host -C "pipelight run server_side_pipeline --flag blank"
+```
 
 ```ts
 // pipelight.ts
@@ -73,25 +104,15 @@ pipeline.on_success = {
 };
 ```
 
-</div>
+```ts [ts(with helpers)]
+// pipelight.ts
+pipeline.on_success = step("sync", () => [
+  ...ssh((host) => ["pipelight run server_side_pipeline --flag blank"])
+]);
+```
+
+:::
 
 and voilà, you have synced your detached pipelines.
 
 <ASync/>
-
-## Forced flags (Manually set trigger action)
-
-Simulate a specific action to trigger associated pipelines.
-
-```sh
-pipelight trigger <action>
-```
-
-Or trigger a pipeline by simulating the appropriate action.
-
-```sh
-pipelight run --flag <action>
-```
-
-_You can use it for debugging purpose or simply as a way to create
-unconventionnal pipelines._

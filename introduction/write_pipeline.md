@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { api } from "@utils/preferences.ts";
-</script>
-
 # Write a pipeline
 
 Here after are the **same pipelines written in different languages**.

@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { api } from "@utils/preferences.ts";
-</script>
-
 # Pipeline execution modes
 
 The step execution mode defines the pipeline or step behavior on failure.
@@ -24,9 +20,26 @@ mode.
 If a command of the step fails. The whole step fails and stop the pipeline
 execution.
 
-<div v-if="api.compositions">
+::: code-group
+
+```toml
+[[pipelines]]
+name = "example"
+[[pipelines.options]]
+mode = "stop"
+
+```
 
 ```ts
+const defaultMode: Step = {
+  name: "stop the pipeline and run on_failure hooks on pipeline failure",
+  options: {
+    mode: "stop"
+  }
+};
+```
+
+```ts [ts(with helpers)]
 import { Mode } from "https://deno.land/x/pipelight/mod.ts";
 
 const defaultMode = step(
@@ -38,19 +51,7 @@ const defaultMode = step(
   .set_mode("stop");
 ```
 
-</div>
-<div v-else>
-
-```ts
-const defaultMode: Step = {
-  name: "stop the pipeline and run on_failure hooks on pipeline failure",
-  options: {
-    mode: "stop"
-  }
-};
-```
-
-</div>
+:::
 
 ## Jump next on failure
 
@@ -60,19 +61,7 @@ If a command of the step fails, the execution of the step stops without stopping
 pipeline execution. Then the next step is executed
 (the execution jumps to the next step).
 
-<div v-if="api.compositions">
-
-```ts
-import { Mode } from "https://deno.land/x/pipelight/mod.ts";
-
-const nonBlocking = step("jump to next step on failure", () => [])
-  .set_mode(Mode.JumpNextOnFailure);
-  // or
-  .set_mode("jump_next");
-```
-
-</div>
-<div v-else>
+::: code-group
 
 ```ts
 const nonBlocking: Step = {
@@ -83,7 +72,16 @@ const nonBlocking: Step = {
 };
 ```
 
-</div>
+```ts [ts(with helpers)]
+import { Mode } from "https://deno.land/x/pipelight/mod.ts";
+
+const nonBlocking = step("jump to next step on failure", () => [])
+  .set_mode(Mode.JumpNextOnFailure);
+  // or
+  .set_mode("jump_next");
+```
+
+:::
 
 ## Continue on failure
 
@@ -93,19 +91,7 @@ If a command of the step fails, the next command is still executed,
 and so on until the last command of the step.
 Then the following step is executed.
 
-<div v-if="api.compositions">
-
-```ts
-import { Mode } from "https://deno.land/x/pipelight/mod.ts";
-
-const forced = step("execute next command on failure", () => [])
-  .set_mode(Mode.ContinueOnFailure);
-  // or
-  .set_mode("continue");
-```
-
-</div>
-<div v-else>
+::: code-group
 
 ```ts
 const forced: Step = {
@@ -116,4 +102,13 @@ const forced: Step = {
 };
 ```
 
-</div>
+```ts [ts(with helpers)]
+import { Mode } from "https://deno.land/x/pipelight/mod.ts";
+
+const forced = step("execute next command on failure", () => [])
+  .set_mode(Mode.ContinueOnFailure);
+  // or
+  .set_mode("continue");
+```
+
+:::

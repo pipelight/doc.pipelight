@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { api } from "@utils/preferences.ts";
 import { inject } from "vue";
 const Badge = inject("Badge");
 </script>
@@ -147,19 +146,7 @@ novops load
 
 Now coupling it with Pipelight.
 
-<div v-if="api.compositions">
-
-```ts
-const my_pipeline = pipeline("test", () => [
-  step("provide environnment", () => [
-    // Provide your commands with the novops env vars
-    novops(() => [...my_commands])
-  ])
-]);
-```
-
-</div>
-<div v-else>
+::: code-group
 
 ```ts
 const my_pipeline = {
@@ -173,4 +160,13 @@ const my_pipeline = {
 };
 ```
 
-</div>
+```ts [ts(with helpers)]
+const my_pipeline = pipeline("test", () => [
+  step("provide environnment", () => [
+    // Provide your commands with the novops env vars
+    novops(() => [...my_commands])
+  ])
+]);
+```
+
+:::
