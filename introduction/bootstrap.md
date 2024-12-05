@@ -31,7 +31,7 @@ it out, run:
 p init
 ```
 
-If they do not exists yet, you can see to files are created.
+If they do not exists yet, you can see two files are created.
 
 ```sh
 pipelight.ts # Your configuration file where your pipelines lay
