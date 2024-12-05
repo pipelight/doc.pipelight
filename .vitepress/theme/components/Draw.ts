@@ -4,8 +4,9 @@ import { format, formatRFC3339, parse, parseISO } from "date-fns";
 import moment from "moment";
 
 export const useDraw = () => ({
+  draw_string,
   draw_pipeline,
-  draw_pipelines,
+  draw_pipelines
 });
 
 const parse_duration = (pipeline_duration: Duration): any => {
@@ -56,6 +57,10 @@ const format_date = (date: Date): string => {
   return rfc;
 };
 
+const draw_string = (string: string) => {
+  return h("div", { class: "string", id: "string", innerHTML: string });
+};
+
 const draw_pipelines = (pipelines: Pipeline[], verbosity: Verbosity) => {
   const children = [];
   for (const pipeline of pipelines) {
@@ -67,7 +72,7 @@ const draw_pipeline = (pipeline: Pipeline, verbosity: Verbosity) => {
   return h("div", { class: "pipeline line", id: "pipeline" }, [
     draw_status(pipeline),
     draw_header(pipeline),
-    draw_tree(pipeline, verbosity),
+    draw_tree(pipeline, verbosity)
   ]);
 };
 
@@ -76,10 +81,10 @@ const draw_status = (pipeline: Pipeline) => {
   const node = h("div", { class: "flex status", id: "pipeline_header" }, [
     h("span", {
       class: `capitalize tag unwrapped ${pipeline.status}`,
-      innerHTML: `● ${pipeline.status}`,
+      innerHTML: `● ${pipeline.status}`
     }),
     h("span", { class: "tag secondary px-1", innerHTML: `-` }),
-    h("span", { class: "tag secondary unwrapped", innerHTML: date }),
+    h("span", { class: "tag secondary unwrapped", innerHTML: date })
   ]);
   return node;
 };
@@ -90,32 +95,32 @@ const draw_header = (pipeline: Pipeline) => {
     env.push(
       h("div", {
         class: "tag secondary",
-        innerHTML: `tag: ${pipeline.event.trigger.tag}`,
-      }),
+        innerHTML: `tag: ${pipeline.event.trigger.tag}`
+      })
     );
   }
   if (!!pipeline.event.trigger.branch) {
     env.push(
       h("div", {
         class: "tag secondary",
-        innerHTML: `branch: ${pipeline.event.trigger.branch}`,
-      }),
+        innerHTML: `branch: ${pipeline.event.trigger.branch}`
+      })
     );
   }
   if (!!pipeline.event.trigger.action) {
     env.push(
       h("div", {
         class: "tag secondary",
-        innerHTML: `action: ${pipeline.event.trigger.action}`,
-      }),
+        innerHTML: `action: ${pipeline.event.trigger.action}`
+      })
     );
   }
   if (!!pipeline.event.trigger.commit) {
     env.push(
       h("div", {
         class: "tag secondary",
-        innerHTML: `commit: ${pipeline.event.trigger.commit}`,
-      }),
+        innerHTML: `commit: ${pipeline.event.trigger.commit}`
+      })
     );
   }
   const node = h("div", { class: "header", id: "pipeline_header" }, env);
@@ -129,19 +134,19 @@ const draw_tree = (pipeline: Pipeline, verbosity: Verbosity) => {
     h(
       "div",
       {
-        class: "flex",
+        class: "flex"
       },
       [
         h("span", {
           class: "tag unwrapped",
-          innerHTML: `pipeline: ${pipeline.name}`,
+          innerHTML: `pipeline: ${pipeline.name}`
         }),
         h("span", {
           class: "tag unwrapped secondary duration",
-          innerHTML: `(${duration})`,
-        }),
-      ],
-    ),
+          innerHTML: `(${duration})`
+        })
+      ]
+    )
   ];
   if (verbosity >= Verbosity.Error) {
     children.push(h("div", draw_steps_or_parallels(pipeline.steps, verbosity)));
@@ -152,7 +157,7 @@ const draw_tree = (pipeline: Pipeline, verbosity: Verbosity) => {
 
 const draw_steps_or_parallels = (
   steps: StepOrParallel,
-  verbosity: Verbosity,
+  verbosity: Verbosity
 ) => {
   const nodes = [];
   for (let step of steps) {
@@ -165,7 +170,7 @@ const draw_steps_or_parallels = (
 
 const draw_step_or_parallel = (
   stepOrParallel: StepOrParallel,
-  verbosity: Verbosity,
+  verbosity: Verbosity
 ) => {
   if ("steps" in stepOrParallel) {
     return draw_parallel(stepOrParallel, verbosity);
@@ -183,9 +188,9 @@ const draw_parallel = (parallel: Parallel, verbosity: Verbosity) => {
     h("div", {
       class: `tag ${parallel.status}`,
       innerHTML: "parallel",
-      id: "parallel_step",
+      id: "parallel_step"
     }),
-    [h("ul", { id: "pipeline_step" }, steps)],
+    [h("ul", { id: "pipeline_step" }, steps)]
   ]);
 };
 
@@ -195,15 +200,15 @@ const draw_step = (step: Step, verbosity: Verbosity) => {
     h("span", { class: `tag wrapped` }, [
       h("span", {
         class: `tag ${step.status}`,
-        innerHTML: `step: ${step.name}`,
+        innerHTML: `step: ${step.name}`
       }),
       !!step.duration
         ? h("span", {
-          class: "tag unwrapped secondary duration",
-          innerHTML: `(${duration})`,
-        })
-        : undefined,
-    ]),
+            class: "tag unwrapped secondary duration",
+            innerHTML: `(${duration})`
+          })
+        : undefined
+    ])
   ];
   if (verbosity >= Verbosity.Info) {
     children.push(h("div", draw_commands(step.commands, verbosity)));
@@ -225,15 +230,15 @@ const draw_command = (command: Command, verbosity: Verbosity) => {
     h("span", { class: `tag` }, [
       h("span", {
         class: `tag ${command.process.state.status}`,
-        innerHTML: command.process.state.stdin,
+        innerHTML: command.process.state.stdin
       }),
       !!command.duration
         ? h("span", {
-          class: "tag unwrapped secondary duration",
-          innerHTML: `(${duration})`,
-        })
-        : undefined,
-    ]),
+            class: "tag unwrapped secondary duration",
+            innerHTML: `(${duration})`
+          })
+        : undefined
+    ])
   ];
 
   if (verbosity >= Verbosity.Debug) {
@@ -250,14 +255,14 @@ const draw_out = (command: Command, verbosity: Verbosity) => {
         class: `tag wrapped ${command.process.state.status}`,
         innerHTML: `stdout: ${
           !!command.process.state.stdout ? command.process.state.stdout : ""
-        }`,
+        }`
       }),
       h("li", {
         class: `tag wrapped ${command.process.state.status}`,
         innerHTML: `stderr: ${
           !!command.process.state.stderr ? command.process.state.stderr : ""
-        }`,
-      }),
+        }`
+      })
     ]);
   } else if (verbosity >= Verbosity.Debug) {
     let out = undefined;
@@ -274,8 +279,8 @@ const draw_out = (command: Command, verbosity: Verbosity) => {
       return h("ul", { id: "pipeline_command" }, [
         h("li", {
           class: `tag wrapped ${command.process.state.status}`,
-          innerHTML: out,
-        }),
+          innerHTML: out
+        })
       ]);
     }
   }

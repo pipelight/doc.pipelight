@@ -23,6 +23,7 @@ import Example from "@components/Example.vue";
 import Sheet from "@components/Sheet.vue";
 import DemoLogs from "@demos/DemoLogs.vue";
 import DemoLogsVVV from "@demos/DemoLogsVVV.vue";
+import Health from "@demos/Health.vue";
 
 import { tailwind } from "@utils/breakpoints.ts";
 
@@ -48,7 +49,79 @@ Stay in the comfort of your terminal
 <Example>
 <h4 class="xl gradient">
 <span>
-Write readable and reusable blocks.
+Troubleshoot the pipe in a breeze.
+</span>
+</h4>
+</Example>
+</Sheet>
+
+<Sheet>
+<Example>
+<h4 class="lg"> 
+Get aggressively verbose
+</h4>
+<p>
+Gather every process outputs.
+</p>
+</Example>
+</Sheet>
+
+<Sheet>
+<Example>
+<DemoLogsVVV/>
+</Example>
+</Sheet>
+
+<Sheet>
+<Example>
+<h4 class="xl gradient"> 
+<span>
+Use well-known configuration languages..
+</span>
+</h4>
+</Example>
+</Sheet>
+
+<Sheet>
+<Example>
+
+```toml
+[[pipelines]]
+name =  "simple_example"
+
+[[pipelines.steps]]
+name = "list directory"
+commands = ["ls"]
+
+[[pipelines.steps]]
+name = "get working directory"
+commands = ["pwd"]
+```
+
+</Example>
+
+<Example>
+
+```yml
+pipelines:
+  - name: simple_example
+    steps:
+      - name: list directory
+        commands:
+          - ls
+      - name: get working directory
+        commands:
+          - pwd
+```
+
+</Example>
+</Sheet>
+
+<Sheet>
+<Example>
+<h4 class="xl gradient">
+<span>
+..or code in your config file
 </span>
 </h4>
 </Example>
@@ -117,96 +190,6 @@ pipeline("simple_example", () => [
 <Example>
 <h4 class="xl gradient">
 <span>
-Code in your config file.
-</span>
-</h4>
-</Example>
-</Sheet>
-
-<Sheet>
-<Example>
-
-```ts
-import { makeDeployPipe } from "./template/deploy.ts";
-
-const env = await load({ envPath: `./.env.production` });
-
-const params = {
-  remote: {
-    domain: "myserver.com",
-    path: "/remote/directory"
-  },
-  local: {
-    path: "/my/build/directory"
-  }
-};
-
-const deploy_pip = makeDeployPipe(params, env);
-
-export default {
-  pipelines: [deploy_pipe]
-};
-```
-
-</Example>
-</Sheet>
-
-<Sheet>
-<Example>
-<h4 class="lg">
-Define complex operations with less code.
-</h4>
-<p>
-with the Pipelight Helpers
-</p>
-</Example>
-</Sheet>
-
-<Sheet>
-<Example>
-
-```ts
-pipeline("docker_deploy", () => [
-  step("build images and run containers", () => [
-    ...docker.images.create(),
-    ...docker.containers.create()
-  ])
-]);
-```
-
-</Example>
-</Sheet>
-<Sheet>
-<Example>
-<h4 class="xl gradient">
-<span>
-Troubleshoot the pipe in a breeze.
-</span>
-</h4>
-</Example>
-</Sheet>
-
-<Sheet>
-<Example>
-<h4 class="lg"> 
-Get aggressively verbose
-</h4>
-<p>
-Gather every process outputs.
-</p>
-</Example>
-</Sheet>
-
-<Sheet>
-<Example>
-<DemoLogsVVV/>
-</Example>
-</Sheet>
-
-<Sheet>
-<Example>
-<h4 class="xl gradient">
-<span>
 Trigger pipelines automatically.
 </span>
 </h4>
@@ -262,57 +245,12 @@ git push
 
 <Sheet>
 <Example>
-<h4 class="xl gradient">
-<span>
-Write small pipelines for atomic tasks.
-</span>
-</h4>
-</Example>
-</Sheet>
-
-<Sheet>
-<Example>
 <h4 class="lg"> 
-Use minimal configuration formats
+Get your project health at a glance
 </h4>
-<p> 
-Old-school flavors
+<p>
 </p>
-</Example>
-</Sheet>
-
-<Sheet>
-<Example>
-
-```toml
-[[pipelines]]
-name =  "simple_example"
-
-[[pipelines.steps]]
-name = "list directory"
-commands = ["ls"]
-
-[[pipelines.steps]]
-name = "get working directory"
-commands = ["pwd"]
-```
-
-</Example>
-
-<Example>
-
-```yml
-pipelines:
-  - name: simple_example
-    steps:
-      - name: list directory
-        commands:
-          - ls
-      - name: get working directory
-        commands:
-          - pwd
-```
-
+<Health/>
 </Example>
 </Sheet>
 
