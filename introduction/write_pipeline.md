@@ -18,6 +18,92 @@ pipelight init
 pipelight init --template toml
 ```
 
+## Write in configuration languages
+
+Configuration languages (or markup languages) have proven to be great to define
+small pipelines in a blink. Those pipelines can replace the simplest bash
+scripts for small and highly repetitive tasks.
+
+::: code-group
+
+```toml
+[[pipelines]]
+name = "test"
+
+[[pipelines.steps]]
+name = "build"
+commands = ["bun install", "bun build"]
+
+[[pipelines.triggers]]
+branches = ["master","dev"]
+actions= ["pre-push", "pre-commit"]
+```
+
+```yaml
+pipelines:
+  - name: test
+    steps:
+      - name: build
+        commands:
+          - bun install
+          - bun build
+  - triggers:
+      - branches:
+          - master
+          - dev
+        actions:
+          - pre-push
+          - pre-commit
+```
+
+```hcl
+# A pipeline
+pipelines = [{
+  name = "test"
+  steps = [{
+    name     = "build"
+    commands = ["bun install", "bun build"]
+  }]
+  triggers = [{
+    branches = ["master","dev"]
+    actions  = ["pre-push", "pre-commit"]
+  }]
+}]
+```
+
+```json
+{
+  "pipelines": [
+    {
+      "name": "test",
+      "steps": [
+        {
+          "name": "build",
+          "commands": ["bun install", "bun build"]
+        }
+      ],
+      "triggers": [
+        {
+          "branches": ["master", "dev"],
+          "actions": ["pre-push", "pre-commit"]
+        }
+      ]
+    }
+  ]
+}
+```
+
+:::
+
+Pipelines written in markup languages are less likely to become more complex
+than this because pipelight complexity does not resides in its inner types.
+
+The ability to write complex pipelines lays in the languages that are used to
+write those pipelines.
+
+As the documentation tries to showcase more and more flexible workflows, Toml
+and Yaml are less documented in favor of programming languages.
+
 ## Write in a programming languages
 
 Writting pipelines in programming languages enable the usage of variables, loops
@@ -89,72 +175,6 @@ export default {
 ```
 
 :::
-
-## Pipelines in configuration languages
-
-Configuration languages(marrkup languages) have proven to be great to define
-small pipelines in a blink. Those pipelines can replace the simplest bash
-scripts for atomic (small) and highly repetitive tasks.
-
-### Toml
-
-```toml
-[[pipelines]]
-name = "test"
-
-[[pipelines.steps]]
-name = "build"
-commands = ["pnpm install", "pnpm build"]
-
-[[pipelines.triggers]]
-branches = ["master","dev"]
-actions= ["pre-push", "pre-commit"]
-```
-
-### Yaml
-
-```yaml
-pipelines:
-  - name: test
-    steps:
-      - name: build
-        commands:
-          - pnpm install
-          - pnpm build
-  - triggers:
-      - branches:
-          - master
-          - dev
-        actions:
-          - pre-push
-          - pre-commit
-```
-
-### Hcl (Hashicorp)
-
-```hcl
-# A pipeline
-pipelines = [{
-  name = "test"
-  steps = [{
-    name     = "build"
-    commands = ["pnpm install", "pnpm build"]
-  }]
-  triggers = [{
-    branches = ["master","dev"]
-    actions  = ["pre-push", "pre-commit"]
-  }]
-}]
-```
-
-Pipelines written in markup languages are less likely to become more complex
-than this because pipelight complexity does not resides in its inner types.
-
-The ability to write complex pipelines lays in the languages that are used to
-writte those pipelines.
-
-As the documentation tries to showcase more and more flexible workflows, Toml
-and Yaml are less documented in favor of programming languages.
 
 ## Run your pipeline
 

@@ -3,15 +3,17 @@
 The only commands you need to type to be up and running are:
 
 ```sh
-p init # Create a configuration file
+p init # Create a configuration file (default to toml)
+# or
 p run # Run a pipeline (interactive)
-p logs -v # Display logs (tree view)
+p logs -vv # Display logs (tree view)
+p ls -vv # Get repo health overview
 ```
 
-Read the following to enable pipelines automatic **triggers** with or without
-git. These are optional, nonetheless pretty practical!
+However you may want to take full advantages of git for your pipelines to
+be executed automatcally.
 
-## Start a project with git
+## Add pipelight to a git repository
 
 ::: info Recommendations
 
@@ -24,19 +26,21 @@ ignore `.pipelight/proc`.
 
 :::
 
-First, if you wish to create a template configuration file and immediately try
+To create a template configuration file and immediately try
 it out, run:
 
 ```sh
-p init
+p init # Create a pipeline template
 ```
 
-If they do not exists yet, you can see two files are created.
+If they do not exists yet, you can see that two files have been created.
 
 ```sh
-pipelight.ts # Your configuration file where your pipelines lay
-.pipelight_ignore # List of files to be ignored by the file watcher
+pipelight.toml # Your configuration file where your pipelines are.
+.pipelight_ignore # Optional list of files to be ignored by the file watcher
 ```
+
+### Enable git-hooks
 
 Pipelines can be automatically triggered on git events (pipelight managed
 git-hooks).
@@ -65,33 +69,15 @@ ls .git/hooks
 tree .git/hooks
 ```
 
-Enable the file watcher
+### Enable the file watcher
+
+Pipelight will watch for file changes in your repository.
 
 ```sh
 pipelight enable watcher
 ```
 
-You may want to check that the event listener is running in the background
-
-```sh
-ps aux | grep pipelight
-```
-
-## Start a project without git
-
-Create a template config file.
-
-```sh
-pipelight init
-```
-
-Enable the file watcher
-
-```sh
-pipelight enable watcher
-```
-
-Check that the event listener is running in the background
+Check that the watcher is running in the background.
 
 ```sh
 ps aux | grep pipelight

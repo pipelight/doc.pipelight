@@ -52,7 +52,7 @@ pipelight disable git-hooks
 
 ### Enable file watcher (Optional)
 
-An instance of pipelight runs in the background and listens to filesystem events.
+The watcher is an instance of pipelight running in the background and listening to filesystem events.
 
 ::: info Low resources consumption
 
@@ -70,6 +70,27 @@ Disable it with:
 ```sh
 pipelight disable watcher
 ```
+
+You can blacklist or whitelist files by adding them to `.pipelight_ignore`.
+They will be either watched or ignored by the watcher.
+
+```sh
+touch .pipelight_ignore
+```
+
+Whitelist a directory.
+
+```pipelight_ignore
+!./public
+```
+
+Blacklist a directory.
+
+```pipelight_ignore
+./public
+```
+
+This `.pipelight_ignore` file is not documented here as it follows exactly the same semantic as a `.gitignore` file, which documentation can be found at https://git-scm.com/docs/gitignore.
 
 ## Set the pipeline triggers
 

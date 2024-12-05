@@ -93,12 +93,65 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
             {
               text: "Execution modes (Behavior)",
               link: "/guide/modes"
-            },
-            {
-              text: "Secrets storage",
-              link: "/guide/secrets"
             }
           ]
+        }
+      ]
+    },
+    {
+      text: "Helpers",
+      items: [
+        {
+          text: "What is it?",
+          link: "/helpers/overview"
+        },
+        {
+          text: "Common helpers",
+          link: "/helpers/common"
+        }
+      ]
+    },
+    {
+      text: "Cookbook",
+      collapsed: true,
+      items: [
+        {
+          text: "Expand Make/Just",
+          link: "/cookbook/pipelight_and_make"
+        },
+        {
+          text: "Docker helpers",
+          collapsed: true,
+          items: [
+            {
+              text: "Overview",
+              link: "/helpers/docker/overview"
+            },
+            {
+              text: "Loose declaration",
+              link: "/helpers/docker/loose"
+            },
+            {
+              text: "Strict declaration",
+              link: "/helpers/docker/strict"
+            },
+            {
+              text: "Usage",
+              link: "/helpers/docker/usage"
+            }
+          ]
+        },
+        {
+          text: "Javascript frontend",
+          link: "/cookbook/vite"
+        },
+        {
+          text: "Medusa (e-commerce)",
+          link: "/cookbook/medusa"
+        },
+        {
+          text: "Deployment Strategies",
+          link: "/cookbook/strategies"
         },
         {
           text: "Pipeline doping ⚡",
@@ -122,69 +175,12 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
             {
               text: "Environment variables",
               link: "/guide/tips/environments"
-            }
-            // {
-            //   text: "Show off",
-            //   link: "/guide/tips/showcase"
-            // }
-          ]
-        }
-      ]
-    },
-    {
-      text: "Helpers",
-      items: [
-        {
-          text: "What is it?",
-          link: "/helpers/overview"
-        },
-        {
-          text: "Common helpers",
-          link: "/helpers/common"
-        },
-        {
-          text: "Docker helpers",
-          collapsed: true,
-          items: [
-            {
-              text: "Overview",
-              link: "/helpers/docker/overview"
             },
             {
-              text: "Loose declaration",
-              link: "/helpers/docker/loose"
-            },
-            {
-              text: "Strict declaration",
-              link: "/helpers/docker/strict"
-            },
-            {
-              text: "Usage",
-              link: "/helpers/docker/usage"
+              text: "Secrets storage",
+              link: "/guide/secrets"
             }
           ]
-        }
-      ]
-    },
-    {
-      text: "Cookbook",
-      collapsed: true,
-      items: [
-        {
-          text: "Expand Make/Just",
-          link: "/cookbook/pipelight_and_make"
-        },
-        {
-          text: "Javascript frontend",
-          link: "/cookbook/vite"
-        },
-        {
-          text: "Medusa (e-commerce)",
-          link: "/cookbook/medusa"
-        },
-        {
-          text: "Deployment Strategies",
-          link: "/cookbook/strategies"
         }
       ]
     },
