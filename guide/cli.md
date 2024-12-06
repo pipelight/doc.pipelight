@@ -110,7 +110,7 @@ pipelight ls
 ```
 
 <div class="flex justify-start">
-    <img src="/images/list.png" alt="list_vv" class="xs">
+    <img loading="lazy" src="/images/list.png" alt="list_vv" class="xs">
 </div>
 
 Increase verbosity to get a good project grasp of your project current health.
@@ -120,7 +120,7 @@ pipelight ls -vv
 ```
 
 <div class="flex justify-start">
-    <img src="/images/list_vv.png" alt="list_vv" class="md">
+    <img loading="lazy" src="/images/list_vv.png" alt="list_vv" class="md">
 </div>
 
 Show additional informations:
@@ -133,7 +133,7 @@ pipelight ls -vvvv
 ```
 
 <div class="flex justify-start">
-    <img src="/images/list_vvvv.png" alt="list_vvvv" class="md">
+    <img loading="lazy" src="/images/list_vvvv.png" alt="list_vvvv" class="md">
 </div>
 
 ### Gimme those logs!
@@ -145,7 +145,7 @@ pipelight logs
 ```
 
 <div class="flex justify-start">
-    <img src="/images/logs.png" alt="logs" class="md">
+    <img loading="lazy" src="/images/logs.png" alt="logs" class="md">
 </div>
 
 ```sh
@@ -153,7 +153,7 @@ pipelight logs -vvv
 ```
 
 <div class="flex justify-start">
-    <img src="/images/logs_vvv.png" alt="logs_vvv" class="md">
+    <img loading="lazy" src="/images/logs_vvv.png" alt="logs_vvv" class="md">
 </div>
 
 Soft clean logs.

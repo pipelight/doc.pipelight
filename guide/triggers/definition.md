@@ -150,7 +150,7 @@ otherwise the pipeline won't run even when using `p run <pipeline_name>`
 and the executable will yell at you this type of error.
 
 <div class="flex justify-start">
-    <img src="/images/trigger_alert.png" alt="trigger_alert" class="md">
+    <img loading="lazy" src="/images/trigger_alert.png" alt="trigger_alert" class="md">
 </div>
 
 ::: tip

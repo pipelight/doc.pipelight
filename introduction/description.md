@@ -161,7 +161,7 @@ delegating crucial functionnalities to the appropriate specialized tools such as
 Git, Watchexec and Deno (typescript/javascript runtime).
 
 <div class="flex justify-center">
-    <img src="/images/ferris_playing_pipelight.png" alt="ferris_playing_with_cubes" class="sm">
+    <img loading="lazy" src="/images/ferris_playing_pipelight.png" alt="ferris_playing_with_cubes" class="sm">
 </div>
 
 See the core of Pipelight as Ferris (rust mascot) making the heavy lift.
@@ -210,7 +210,7 @@ pipelight ls -vv
 ```
 
 <div class="flex justify-start">
-    <img src="/images/list_vv.png" alt="list_vv" class="md">
+    <img loading="lazy" src="/images/list_vv.png" alt="list_vv" class="md">
 </div>
 
 ### Quick Automation

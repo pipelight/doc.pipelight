@@ -245,17 +245,6 @@ git push
 
 <Sheet>
 <Example>
-<h4 class="lg"> 
-Get your project health at a glance
-</h4>
-<p>
-</p>
-<Health/>
-</Example>
-</Sheet>
-
-<Sheet>
-<Example>
 <h4 class="xl gradient">
 <span>
 tl;dr
