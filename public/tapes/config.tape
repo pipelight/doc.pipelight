@@ -1,0 +1,6 @@
+# Default config
+
+Set Theme { "name": "Goku", "black": "#171717" , "red": "#dc2626", "green": "#22c55e", "yellow": "#eac400", "blue": "#0ea5e0", "magenta": "#7e22ce", "cyan": "#22d3ee", "white": "#cccccc", "brightBlack": "#171717", "brighRed": "#dc2626", "brightGreen": "#22c55e", "brightYellow": "#eac400", "brightBlue": "#0ea5e0", "brightMagenta": "#7e22ce", "brightCyan": "#22d3ee", "brightWhite": "#ffffff", "background": "#171717", "foreground": "#bbbbbb", "selection": "#999999", "cursor": "#999999" }
+
+Set LetterSpacing 0
+Set CursorBlink false

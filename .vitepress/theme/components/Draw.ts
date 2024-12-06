@@ -1,4 +1,11 @@
-import { Duration, Pipeline, Step, StepOrParallel, Verbosity } from "pipelight";
+import {
+  Duration,
+  Pipeline,
+  Step,
+  StepOrParallel,
+  Verbosity,
+  Command
+} from "pipelight";
 import { h, ref } from "vue";
 import { format, formatRFC3339, parse, parseISO } from "date-fns";
 import moment from "moment";
@@ -57,14 +64,14 @@ const format_date = (date: Date): string => {
   return rfc;
 };
 
-const draw_string = (string: string) => {
-  return h("div", { class: "string", id: "string", innerHTML: string });
+const draw_string = (table: string) => {
+  return h("div", { class: "table", id: "table", innerHTML: table });
 };
 
 const draw_pipelines = (pipelines: Pipeline[], verbosity: Verbosity) => {
   const children = [];
   for (const pipeline of pipelines) {
-    children.push(draw_pipeline(pipeline));
+    children.push(draw_pipeline(pipeline, verbosity));
   }
   return h("div", children);
 };

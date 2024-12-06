@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   build: {
-    sourcemap: "inline"
+    sourcemap: false
   },
   resolve: {
     alias: {

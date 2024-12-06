@@ -6,7 +6,7 @@
   p {
     @apply leading-normal;
     @apply text-center;
-    &.2xl {
+    &.xxl {
       font-size: 50px;
     }
     &.xl {

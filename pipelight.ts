@@ -57,18 +57,6 @@ const docker = new Docker({
  * ```
  */
 
-const nginx = pipeline(`nginx:host`, () => [
-  step("update jucenit config", () => [
-    `scp jucenit.toml ${flags.host}:/tmp/jucenit/`,
-    ...ssh(flags.host, () => [
-      `jucenit push /tmp/jucenit/jucenit.toml`,
-      "rm /tmp/jucenit/jucenit.toml"
-    ])
-  ])
-])
-  .attach()
-  .log_level("debug");
-
 const deploy = pipeline(
   `deploy:host`,
   () => [
@@ -88,15 +76,41 @@ const deploy = pipeline(
   {
     triggers: [
       {
-        branches: ["master", "main"],
+        branches: ["master"],
         actions: ["pre-push", "manual"]
       }
     ]
   }
 ).detach();
 
+const deploy_test = pipeline(
+  `deploy_test`,
+  () => [
+    step("build js files", () => ["bun install", "bun vitepress build"]),
+    // Create images locally and send it to remotes
+    step(`build and send images to ${flags.host}`, () => [
+      ...docker.images.create(),
+      ...docker.images.send(flags.host)
+    ]),
+    step(`replace containers ${version}.${service}.${dns}`, () =>
+      ssh(flags.host, () => [
+        ...docker.containers.remove(),
+        ...docker.containers.create()
+      ])
+    ).set_mode(Mode.ContinueOnFailure)
+  ],
+  {
+    triggers: [
+      {
+        branches: ["dev", "master"],
+        actions: ["manual"]
+      }
+    ]
+  }
+).detach();
+
 const config: Config = {
-  pipelines: [deploy, nginx]
+  pipelines: [deploy, deploy_test]
 };
 
 export default config;

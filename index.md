@@ -23,7 +23,6 @@ import Example from "@components/Example.vue";
 import Sheet from "@components/Sheet.vue";
 import DemoLogs from "@demos/DemoLogs.vue";
 import DemoLogsVVV from "@demos/DemoLogsVVV.vue";
-import Health from "@demos/Health.vue";
 
 import { tailwind } from "@utils/breakpoints.ts";
 
