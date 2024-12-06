@@ -3,7 +3,7 @@
 
 Set Padding 4
 Set FontSize 16
-Set Width 1000
+Set Width 800
 Set Height 1000
 
 Source config.tape
