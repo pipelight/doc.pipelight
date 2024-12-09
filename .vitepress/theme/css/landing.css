@@ -64,16 +64,11 @@
     opacity: 100%;
   }
 }
-.terminal {
+.tty {
   @apply rounded-lg;
+  @apply sm:w-2/3;
   &.solid {
     @apply border border-solid border-gray-700;
-  }
-  &.md {
-    @apply sm:w-3/4 sm:p-5;
-  }
-  &.sm {
-    @apply sm:w-2/3 sm:p-5;
   }
 }
 img {
