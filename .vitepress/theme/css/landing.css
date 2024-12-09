@@ -64,14 +64,31 @@
     opacity: 100%;
   }
 }
+.terminal {
+  @apply rounded-lg;
+  &.solid {
+    @apply border border-solid border-gray-700;
+  }
+  &.md {
+    @apply w-3/4 p-5;
+  }
+  &.sm {
+    @apply w-2/3 p-5;
+  }
+}
 img {
   &.VPImage {
     &.image-src {
       @apply h-44 w-44;
     }
   }
+  &.md {
+    @apply w-3/4 p-5;
+    @apply rounded-lg border border-solid border-gray-700;
+  }
   &.sm {
     @apply w-2/3 p-5;
+    @apply rounded-lg border border-solid border-gray-700;
   }
   &.terminal {
     width: 100%;

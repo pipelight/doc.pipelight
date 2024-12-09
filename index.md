@@ -40,7 +40,9 @@ import { tailwind } from "@utils/breakpoints.ts";
     </p>
     </Example>
     <Example>
-    <DemoLogs/>
+        <div class="flex justify-center">
+        <img src="./public/tapes/gifs/logs.gif" class="terminal md">
+            </div>
     </Example>
 </Sheet>
 
