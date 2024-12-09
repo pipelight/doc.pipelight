@@ -31,17 +31,17 @@ import { tailwind } from "@utils/breakpoints.ts";
 <div class="landing">
 
 <Sheet>
-<Example>
-<h4 class="lg"> 
-Command-line Interface
-</h4>
-<p>
-Stay in the comfort of your terminal
-</p>
-</Example>
-<Example>
-<DemoLogs/>
-</Example>
+    <Example>
+    <h4 class="lg"> 
+    Command-line Interface
+    </h4>
+    <p>
+    Stay in the comfort of your terminal
+    </p>
+    </Example>
+    <Example>
+    <DemoLogs/>
+    </Example>
 </Sheet>
 
 <Sheet>

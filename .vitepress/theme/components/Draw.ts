@@ -4,14 +4,14 @@ import {
   Step,
   StepOrParallel,
   Verbosity,
-  Command
+  Command,
+  Parallel
 } from "pipelight";
 import { h, ref } from "vue";
 import { format, formatRFC3339, parse, parseISO } from "date-fns";
 import moment from "moment";
 
 export const useDraw = () => ({
-  draw_string,
   draw_pipeline,
   draw_pipelines
 });
@@ -31,10 +31,10 @@ const parse_duration = (pipeline_duration: Duration): any => {
 };
 const format_duration = (moment_duration: any): string => {
   //Guard
-  if (!moment_duration) {
-    return;
-  }
   let res = "";
+  if (!moment_duration) {
+    return res;
+  }
   const minutes = moment_duration.minutes();
   if (!!minutes) {
     res += `${minutes}m`;
@@ -45,7 +45,7 @@ const format_duration = (moment_duration: any): string => {
   }
   const milliseconds = Math.round(moment_duration.milliseconds());
 
-  if (!!milliseconds & !minutes) {
+  if (!!milliseconds && !minutes) {
     res += `${milliseconds}ms`;
   }
   return res;
@@ -62,10 +62,6 @@ const parse_date = (iso: string): Date => {
 const format_date = (date: Date): string => {
   const rfc = format(date, "eee, i MMM yyyy HH:mm:ss xx");
   return rfc;
-};
-
-const draw_string = (table: string) => {
-  return h("div", { class: "table", id: "table", innerHTML: table });
 };
 
 const draw_pipelines = (pipelines: Pipeline[], verbosity: Verbosity) => {
@@ -188,7 +184,7 @@ const draw_step_or_parallel = (
 
 const draw_parallel = (parallel: Parallel, verbosity: Verbosity) => {
   const steps = [];
-  for (let step of parallel.steps) {
+  for (const step of parallel.steps) {
     steps.push(draw_step(step, verbosity));
   }
   return h("li", [
@@ -225,7 +221,7 @@ const draw_step = (step: Step, verbosity: Verbosity) => {
 
 const draw_commands = (commands: Command[], verbosity: Verbosity) => {
   const children = [];
-  for (let command of commands) {
+  for (const command of commands) {
     children.push(draw_command(command, verbosity));
   }
   return h("ul", { id: "pipeline_commands" }, children);
