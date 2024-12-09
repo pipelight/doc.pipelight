@@ -151,7 +151,7 @@ pipelight logs <pipeline_name>
 Keep a colorful output in pagers.
 
 ```sh
-pipelight logs --color always | less
+pipelight logs --color | less
 ```
 
 Print colorful raw json logs in pagers (debugging)
