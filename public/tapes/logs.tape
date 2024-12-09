@@ -11,7 +11,6 @@ Env PS1 "\n\033[1;32m\][g@ku ~]$\033[0m\] "
 ## Actions
 
 Type "pipelight run deploy_test"
-Sleep 0.5s
 Enter
 Sleep 0.5s
 Type "pipelight logs"
