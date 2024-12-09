@@ -70,10 +70,10 @@
     @apply border border-solid border-gray-700;
   }
   &.md {
-    @apply w-3/4 p-5;
+    @apply sm:w-3/4 sm:p-5;
   }
   &.sm {
-    @apply w-2/3 p-5;
+    @apply sm:w-2/3 sm:p-5;
   }
 }
 img {

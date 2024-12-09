@@ -41,8 +41,8 @@ import { tailwind } from "@utils/breakpoints.ts";
     </Example>
     <Example>
         <div class="flex justify-center">
-        <img src="./public/tapes/gifs/logs.gif" class="terminal md">
-            </div>
+        <img src="/tapes/gifs/logs.gif" class="terminal md">
+        </div>
     </Example>
 </Sheet>
 
@@ -69,7 +69,9 @@ Gather every process outputs.
 
 <Sheet>
 <Example>
-<DemoLogsVVV/>
+    <div class="flex justify-center">
+    <img src="/tapes/images/logs_vvvv.png" class="terminal md">
+    </div>
 </Example>
 </Sheet>
 
